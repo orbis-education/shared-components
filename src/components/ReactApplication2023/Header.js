@@ -1,6 +1,6 @@
 import React from 'react';
 import { isEmpty, getDateTime } from "shared-functions";
-import logo from "../assets/images/OrbisLogo.svg";
+import logo from "../../assets/images/OrbisLogo.svg";
 
 const Header = (props) => {
 

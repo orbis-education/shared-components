@@ -9,17 +9,28 @@
     "url": "https://github.com/orbis-education/shared-components"
   },
   "private": true,
-  "main": "index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prebuild": "rimraf dist",
+    "build": "rollup -c",
+    "watch": "rollup -c --watch",
+    "dev": "concurrently \" npm run watch \" \" npm run start --prefix playground \"",
+    "prepublish": "npm run build"
   },
   "devDependencies": {
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^25.0.3",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.1.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
     "autoprefixer": "^10.4.14",
     "classnames": "^2.3.2",
+    "dotenv": "^16.3.1",
     "html-react-parser": "^4.0.0",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.4.26",
     "postcss-cli": "^10.1.0",
     "postcss-import": "^15.1.0",
@@ -28,6 +39,10 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
+    "rollup": "^2.79.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-svg": "^2.0.0",
     "shared-functions": "github:orbis-education/shared-functions",
     "web-vitals": "^3.4.0"
   },
