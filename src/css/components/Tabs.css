@@ -1,0 +1,39 @@
+/* Default Tab Styles
+======================================== */
+
+.tabs {
+  background-color: #fff;
+  border-radius: 10px 10px 0 0;
+  padding-top: 1rem;
+  margin-bottom: -1px;
+
+  .tabs__tab-item, button {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    padding: 14px 16px;
+    transition: 0.3s;
+    border-radius: 10px 10px 0 0;
+    display: inline-block;
+    background-color: #ccc;
+    color: var(--drakBlue);
+  
+    &:hover {
+      background-color: #aaa;
+    }
+
+    &.active {
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-bottom: 1px solid #f9f9f9;
+      position: relative;
+      z-index: 2;
+    }
+  }
+}
+
+.tab-content {
+  border: 1px solid #ccc;
+  border-radius: 0 10px 10px 10px;
+  padding: 1rem;
+  background-color: #f9f9f9;
+}

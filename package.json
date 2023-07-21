@@ -1,0 +1,52 @@
+{
+  "name": "shared-components",
+  "version": "0.0.1",
+  "description": "Contains common components that are available for use by all applications developed.",
+  "author": "Orbis Education",
+  "copyrightYear": "2023",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/orbis-education/shared-components"
+  },
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "autoprefixer": "^10.4.14",
+    "classnames": "^2.3.2",
+    "html-react-parser": "^4.0.0",
+    "postcss": "^8.4.26",
+    "postcss-cli": "^10.1.0",
+    "postcss-import": "^15.1.0",
+    "postcss-nested": "^6.0.1",
+    "postcss-preset-env": "^9.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1",
+    "shared-functions": "github:orbis-education/shared-functions",
+    "web-vitals": "^3.4.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
