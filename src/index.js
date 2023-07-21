@@ -1,3 +1,4 @@
+import "./css/styles.css";
 
 export { default as AlertPopup } from './components/ReactApplication2023/AlertPopup';
 export { default as FormInput } from './components/ReactApplication2023/FormInput';
