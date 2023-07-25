@@ -56,6 +56,11 @@
   --green_03: rgba(4, 147, 114, .3);
   --green_01: rgba(4, 147, 114, .1);
 
+  --darkerGreen: rgba(0, 124, 96, 1);
+  --darkerGreen_05: rgba(0, 124, 96, .5);
+  --darkerGreen_03: rgba(0, 124, 96, .3);
+  --darkerGreen_01: rgba(0, 124, 96, .1);
+
   /* #3C3C3C */
   --charcoal: rgba(60, 60, 60, 1);
   --charcoal_05: rgba(60, 60, 60, .5);
@@ -73,6 +78,9 @@
   --darkerRed_05: rgba(175, 52, 63, .5);
   --darkerRed_03: rgba(175, 52, 63, .3);
   --darkerRed_01: rgba(175, 52, 63, .1);
+
+  /* new, non-Orbis colors */
+  --yellow: rgba(255, 165, 8, 1);
 
   /* Orbis Fonts */
   /*==========================================================*/

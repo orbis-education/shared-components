@@ -6,10 +6,10 @@
 @import "./layout/Header.css";
 @import "./layout/Table.css";
 
+@import "./components/Buttons.css";
 @import "./components/Form.css";
 @import "./components/AlertPopup.css";
 @import "./components/Tabs.css";
-@import "./components/Buttons.css";
 @import "./components/Modal.css";
 
 @import "./Custom.css";

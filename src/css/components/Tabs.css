@@ -7,11 +7,12 @@
   padding-top: 1rem;
   margin-bottom: -1px;
 
-  .tabs__tab-item, button {
+  .tabs__tab-item, 
+  button.tabs__tab-item {
     border: none;
     border-bottom: 1px solid #ccc;
     padding: 14px 16px;
-    transition: 0.3s;
+    /* transition: 0.3s; */
     border-radius: 10px 10px 0 0;
     display: inline-block;
     background-color: #ccc;
@@ -19,6 +20,8 @@
   
     &:hover {
       background-color: #aaa;
+      border: none;
+      border-bottom: 1px solid #ccc;
     }
 
     &.active {
@@ -27,6 +30,11 @@
       border-bottom: 1px solid #f9f9f9;
       position: relative;
       z-index: 2;
+
+      &:hover {
+        background-color: #aaa;
+        border-color: #aaa;
+      }
     }
   }
 }

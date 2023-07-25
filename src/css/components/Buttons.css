@@ -29,7 +29,7 @@ a.btn,
 a.btn:visited {
   color: rgba(255,255,255,1);
   background-color: var(--darkBlue);
-  border: var(--darkBlue);
+  border: 1px solid var(--darkBlue);
   cursor: pointer;
   border-radius: 4px;
   padding: 10px 12px;
@@ -158,6 +158,37 @@ a.btn:visited {
     }
   }
 
+  &.btn-info {
+    color: rgba(255,255,255,1);
+    background-color: rgba(82,76,76,1);
+    border-color: rgba(82,76,76,1);
+
+    &:hover,
+    &:active {
+      background-color: rgba(46,40,40,1);
+      border-color: rgba(46,40,40,1);
+      color: #fff;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.2rem rgba(46,40,40,.5);
+    }
+
+    &.disabled {
+      background-color: rgba(82,76,76,.3);
+      border-color: rgba(82,76,76,.1);
+      color: rgba(255,255,255,1);
+      opacity: 1;
+
+      &:hover {
+        background-color: rgba(82,76,76,.3);
+        border-color: rgba(82,76,76,.1);
+      }
+    }
+
+
+  }
+
   &.btn-transparent {
     /* * The color property is the same as one defined for button, btn. -- 03/16/2023 MF */
     color: rgba(0, 0, 0, 0.5);
@@ -187,6 +218,36 @@ a.btn:visited {
         cursor: default;
         background-color: rgba(255,255,255,0);
         border-color: rgba(255,255,255,0);
+      }
+    }
+  }
+
+  &.btn-outline {
+    background-color: rgba(255,255,255, 1);
+    border-color: rgba(108, 117, 125, 1);
+    color: rgba(0,0,0, 1);
+
+    &:hover,
+    &:active {
+      background-color: rgba(239,239,239, 1);
+      border-color: rgba(108, 117, 125, 1);
+      color: rgba(0,0,0, 1);
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.2rem rgba(108, 117, 125,.5);
+    }
+
+    &.disabled {
+      background-color: rgba(255,255,255, .3);
+      border-color: rgba(108, 117, 125, .3);
+      color: rgba(0,0,0,.3);
+      opacity: 1;
+
+      &:hover {
+        background-color: rgba(255,255,255, .3);
+        border-color: rgba(108, 117, 125, .3);
+        color: rgba(0,0,0,.3);
       }
     }
   }
