@@ -8,13 +8,9 @@ header {
   position: relative;
   z-index: 1;
 
-  * {
-    padding: 1rem 2rem;
-  }
-
   h1 {
     margin: 0;
-    padding: 0 2rem 0 2rem;
+    padding: 1rem 2rem 1rem 2rem;
     font-size: 1.5rem;
     background-color: var(--green);
     color: #fff;
@@ -40,6 +36,9 @@ header {
 
 .orbis-logo {
   max-width: 150px;
+  width: 100%;
+  height: auto;
+  padding: 1rem 2rem;
 }
 
 .sub-header-nav {

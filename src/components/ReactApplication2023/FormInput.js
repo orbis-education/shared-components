@@ -32,9 +32,13 @@ const FormInput = (props) => {
 
     if (inputType === "number") {
 
-      if (isNaN(event.target.value) === false) {
+      if (isEmpty(event.target.value) === false && isNaN(event.target.value) === false) {
 
         updateValue(Number.parseInt(event.target.value));
+
+      } else {
+
+        updateValue(event.target.value);
 
       };
 
