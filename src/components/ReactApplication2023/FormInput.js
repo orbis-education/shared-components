@@ -5,7 +5,7 @@ import { noFunctionAvailable, isEmpty, getDateTime } from "shared-functions";
 const FormInput = (props) => {
 
   // * Available props: -- 06/21/2023 MF
-  // * Properties: formInputID, labelText, srOnly, isRequired, inputType, placeholderText, inputValue, inputDisabled -- 06/21/2023 MF
+  // * Properties: formInputID, labelText, srOnly, isRequired, inputType, placeholderText, inputValue, inputDisabled, inputMin, inputMax, inputStep -- 06/21/2023 MF
   // * Functions: onChange -- 06/21/2023 MF
 
   let componentName = "FormInput";
@@ -19,6 +19,12 @@ const FormInput = (props) => {
   let inputValue = isEmpty(props) === false && isEmpty(props.inputValue) === false ? props.inputValue : "";
   let inputDisabled = isEmpty(props) === false && isEmpty(props.inputDisabled) === false ? props.inputDisabled : false;
   let inputHint = isEmpty(props) === false && isEmpty(props.inputHint) === false ? props.inputHint : "";
+
+  // * For number, range, date, datetime-local, month, time and week -- 07/25/2023 JH
+  // * Default value is null to prevent other input types from having the attribute -- 07/25/2023 JH
+  let inputMin = isEmpty(props) === false && isEmpty(props.inputMin) === false ? props.inputMin : null;
+  let inputMax = isEmpty(props) === false && isEmpty(props.inputMax) === false ? props.inputMax : null;
+  let inputStep = isEmpty(props) === false && isEmpty(props.inputStep) === false ? props.inputStep : null;
 
   let updateValue = isEmpty(props.updateValue) === false ? props.updateValue : noFunctionAvailable;
 
@@ -34,7 +40,7 @@ const FormInput = (props) => {
 
       if (isEmpty(event.target.value) === false && isNaN(event.target.value) === false) {
 
-        updateValue(Number.parseInt(event.target.value));
+        updateValue(Number.parseFloat(event.target.value));
 
       } else {
 
@@ -64,7 +70,7 @@ const FormInput = (props) => {
 
       {isEmpty(inputHint) === false ? <p className="input-hint">{inputHint}</p> : null}
 
-      <input type={inputType} id={formInputID} placeholder={placeholderText} value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} />
+      <input type={inputType} id={formInputID} placeholder={placeholderText} value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} min={inputMin} max={inputMax} step={inputStep} />
 
     </div>
   );
