@@ -188,8 +188,16 @@
   content: "\f013";
 }
 
+.fa-copy:before {
+  content: "\f0c5";
+}
+
 .fa-crosshairs:before {
   content: "\f05b";
+}
+
+.fa-equals:before {
+  content: "\f52c";
 }
 
 .fa-eye:before {
@@ -198,6 +206,14 @@
 
 .fa-eye-slash:before {
   content: "\f070";
+}
+
+.fa-external-link-alt:before {
+  content: "\f35d";
+}
+
+.fa-grip-horizontal:before {
+  content: "\f58d";
 }
 
 .fa-info-circle:before {
