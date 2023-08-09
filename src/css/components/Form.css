@@ -33,6 +33,7 @@ form {
 .form-row-flex {
   display: flex;
   flex-direction: row;
+  gap: 1rem;
 }
 
 /* individual form item
@@ -57,12 +58,14 @@ p.input-hint {
 }
 
 .form-group select,
-.form-group input {
+.form-group input,
+.form-group textarea {
   padding: 10px 12px;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
   width: calc(100% - 26px);
+  /* line-height: 1; */
 }
 
 .form-group select {
@@ -113,17 +116,18 @@ p.input-hint {
 }
 
 form button {
-  padding: 10px 12px;
+  /* padding: 10px 12px;
   font-size: 1rem;
   border: none;
   border-radius: 5px;
-  font-weight: 700;
+  font-weight: 700; */
   align-self: flex-end;
 }
 
 .submit-button {
-  display: block;
-  padding: 10px 12px;
+  /* display: block; */
+  /* display: flex; */
+  /* padding: 10px 12px;
   font-size: 1rem;
   background-color: #3561B5;
   color: #fff;
@@ -131,7 +135,7 @@ form button {
   font-weight: 700;
   text-decoration: none;
   text-align: center;
-  border: none;
+  border: none; */
   align-self: flex-end;
 }
 
@@ -194,4 +198,15 @@ input[type="time"], input[type="date"] {
   + p {
     margin-top: 0;
   }
+}
+
+.form-group textarea {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+.form-group input[type="checkbox"] {
+  width: auto;
+  align-self: flex-start;
 }
