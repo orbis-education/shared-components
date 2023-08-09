@@ -1,11 +1,12 @@
 import React from "react";
 import classnames from "classnames";
 import { noFunctionAvailable, isEmpty, getDateTime } from "shared-functions";
+import { parse } from "../../utilities/ApplicationFunctions";
 
 const FormInput = (props) => {
 
   // * Available props: -- 06/21/2023 MF
-  // * Properties: formInputID, labelText, srOnly, isRequired, inputType, placeholderText, inputValue, inputDisabled, inputMin, inputMax, inputStep -- 06/21/2023 MF
+  // * Properties: formInputID, labelText, srOnly, isRequired, inputType, placeholderText, inputValue, inputDisabled, inputHint, textareaRows, inputMin, inputMax, inputStep -- 06/21/2023 MF
   // * Functions: onChange -- 06/21/2023 MF
 
   let componentName = "FormInput";
@@ -19,6 +20,8 @@ const FormInput = (props) => {
   let inputValue = isEmpty(props) === false && isEmpty(props.inputValue) === false ? props.inputValue : "";
   let inputDisabled = isEmpty(props) === false && isEmpty(props.inputDisabled) === false ? props.inputDisabled : false;
   let inputHint = isEmpty(props) === false && isEmpty(props.inputHint) === false ? props.inputHint : "";
+  let textareaRows = isEmpty(props) === false && isEmpty(props.textareaRows) === false ? props.textareaRows : 10;
+  // let textareaCols = isEmpty(props) === false && isEmpty(props.textareaCols) === false ? props.textareaCols : "";
 
   // * For number, range, date, datetime-local, month, time and week -- 07/25/2023 JH
   // * Default value is null to prevent other input types from having the attribute -- 07/25/2023 JH
@@ -68,9 +71,20 @@ const FormInput = (props) => {
 
       </label>
 
-      {isEmpty(inputHint) === false ? <p className="input-hint">{inputHint}</p> : null}
+      {isEmpty(inputHint) === false ? <p className="input-hint">{parse(inputHint)}</p> : null}
 
-      <input type={inputType} id={formInputID} placeholder={placeholderText} value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} min={inputMin} max={inputMax} step={inputStep} />
+      {inputType === "textarea" ?
+
+        <textarea id={formInputID} name={formInputID} placeholder={placeholderText} rows={textareaRows} /* cols={textareaCols} */ value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} />
+
+        : null}
+
+      {/* // TODO add other input types -- 08/07/2023 JH */}
+      {inputType !== "textarea" ?
+
+        <input type={inputType} id={formInputID} placeholder={placeholderText} value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} min={inputMin} max={inputMax} step={inputStep} />
+
+        : null}
 
     </div>
   );
