@@ -6,10 +6,12 @@ import { parse } from "../../utilities/ApplicationFunctions";
 const AlertPopup = (props) => {
 
   // * Available props: -- 12/30/2022 MF
-  // * Properties: alertItem -- 12/30/2022 MF
+  // * Properties: alertItem, includeResetButton -- 12/30/2022 MF
   // * Functions: setAlertItem -- 12/30/2022 MF
 
   let componentName = "AlertPopup";
+
+  let includeResetButton = isEmpty(props) === false && isEmpty(props.includeResetButton) === false ? props.includeResetButton : false;
 
   let operationValue = isEmpty(props) === false && isEmpty(props.alertItem) === false && isEmpty(props.alertItem.operationValue) === false ? props.alertItem.operationValue : "";
   let alertType = isEmpty(props) === false && isEmpty(props.alertItem) === false && isEmpty(props.alertItem.alertItemType) === false ? props.alertItem.alertItemType : "";
@@ -46,6 +48,14 @@ const AlertPopup = (props) => {
         <div className="alert__message-text">
           {parse(operationValue)} - {parse(message)}
         </div>
+
+        {includeResetButton === true ?
+
+          <button type="button" className="refresh" onClick={() => window.location.reload()}>
+            Refresh
+          </button>
+
+          : null}
 
         <button type="button" className="alert__close-button" onClick={() => { setAlertItem(null); }}>
           <i className="fas fa-close"></i>
