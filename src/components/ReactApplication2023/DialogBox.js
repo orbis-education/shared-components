@@ -1,6 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import { noFunctionAvailable, isEmpty, getDateTime } from "shared-functions";
+import logo from "../assets/images/OrbisLogo.svg";
 
 const DialogBox = (props) => {
 
@@ -89,6 +90,13 @@ const DialogBox = (props) => {
 
   };
 
+  const modalStyles = classnames("modal-dialog", {
+    "modal-sm": size === "sm",
+    "modal-md": size === "md",
+    "modal-lg": size === "lg",
+    "modal-xl": size === "xl"
+  });
+
 
   const toggle = (event) => {
 
@@ -105,13 +113,6 @@ const DialogBox = (props) => {
 
   };
 
-  const modalStyles = classnames("modal-dialog", {
-    "modal-sm": size === "sm",
-    "modal-md": size === "md",
-    "modal-lg": size === "lg",
-    "modal-xl": size === "xl"
-  });
-
 
   return (
     <React.Fragment>
@@ -122,6 +123,7 @@ const DialogBox = (props) => {
           <div className={modalStyles}>
             <div className="modal-content">
               <div className="modal-header">
+                <img src={logo} alt="Orbis Education" width="70px" className="img-responsive" />
                 <h5 className="modal-title" id="exampleModalLabel">
                   {title}
                 </h5>
