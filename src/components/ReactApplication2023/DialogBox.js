@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import { noFunctionAvailable, isEmpty, getDateTime } from "shared-functions";
-import logo from "../assets/images/OrbisLogo.svg";
+import logo from "../../assets/images/OrbisLogo.svg";
 
 const DialogBox = (props) => {
 
