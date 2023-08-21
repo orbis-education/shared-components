@@ -1,4 +1,5 @@
 @import "./utilities/Variables.css";
+@import "./utilities/Utilities.css";
 
 @import "./vendor/FontAwesome.css";
 
@@ -11,5 +12,6 @@
 @import "./components/AlertPopup.css";
 @import "./components/Tabs.css";
 @import "./components/Modal.css";
+@import "./components/Spinner.css";
 
 @import "./Custom.css";

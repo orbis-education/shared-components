@@ -37,7 +37,7 @@ a {
 hr {
   border: none;
   border-bottom: 1px solid #ddd;
-  margin: 2rem 0;
+  margin: 1rem 0 2rem 0;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -82,16 +82,3 @@ footer {
     }
   }
 } */
-
-/* hidden content for screen readers */
-.sr-only {
-  position: absolute;
-  clip: rect(1px 1px 1px 1px);
-  /* for Internet Explorer */
-  clip: rect(1px, 1px, 1px, 1px);
-  padding: 0;
-  border: 0;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-}

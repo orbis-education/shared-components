@@ -20,14 +20,7 @@ const FormInput = (props) => {
   let inputValue = isEmpty(props) === false && isEmpty(props.inputValue) === false ? props.inputValue : "";
   let inputDisabled = isEmpty(props) === false && isEmpty(props.inputDisabled) === false ? props.inputDisabled : false;
   let inputHint = isEmpty(props) === false && isEmpty(props.inputHint) === false ? props.inputHint : "";
-  let textareaRows = isEmpty(props) === false && isEmpty(props.textareaRows) === false ? props.textareaRows : 10;
-  // let textareaCols = isEmpty(props) === false && isEmpty(props.textareaCols) === false ? props.textareaCols : "";
 
-  // * For number, range, date, datetime-local, month, time and week -- 07/25/2023 JH
-  // * Default value is null to prevent other input types from having the attribute -- 07/25/2023 JH
-  let inputMin = isEmpty(props) === false && isEmpty(props.inputMin) === false ? props.inputMin : null;
-  let inputMax = isEmpty(props) === false && isEmpty(props.inputMax) === false ? props.inputMax : null;
-  let inputStep = isEmpty(props) === false && isEmpty(props.inputStep) === false ? props.inputStep : null;
 
   let updateValue = isEmpty(props.updateValue) === false ? props.updateValue : noFunctionAvailable;
 
@@ -37,56 +30,36 @@ const FormInput = (props) => {
   });
 
 
-  const handleOnChange = (event) => {
-
-    if (inputType === "number") {
-
-      if (isEmpty(event.target.value) === false && isNaN(event.target.value) === false) {
-
-        updateValue(Number.parseFloat(event.target.value));
-
-      } else {
-
-        updateValue(event.target.value);
-
-      };
-
-    } else {
-
-      updateValue(event.target.value);
-
-    };
-
-  };
-
-
   return (
-    <div className="form-group">
+    <fieldset className="form-group toggle-switch-container">
 
-      <label htmlFor={formInputID} className={labelClasses}>
+      <legend htmlFor={formInputID} className={labelClasses}>
 
         {labelText}
 
         {isRequired === true ? <span className="required"> * <span className="sr-only">required</span></span> : null}
 
-      </label>
+      </legend>
 
       {isEmpty(inputHint) === false ? <p className="input-hint">{parse(inputHint)}</p> : null}
 
-      {inputType === "textarea" ?
+      <div className="toggle-switch" onClick={() => { updateValue(!inputValue); }}>
 
-        <textarea id={formInputID} name={formInputID} placeholder={placeholderText} rows={textareaRows} /* cols={textareaCols} */ value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} />
+        <div className={`toggle-switch__button ${inputValue === true ? "active" : ""}`}></div>
 
-        : null}
+        <label className="sr-only">
+          <input type="radio" id={formInputID} checked={inputValue !== true} value="false" disabled={inputDisabled} />
+          <span className="sr-only">No</span>
+        </label>
 
-      {/* // TODO add other input types -- 08/07/2023 JH */}
-      {inputType !== "textarea" && inputType !== "toggle" ?
+        <label className="sr-only">
+          <input type="radio" id={formInputID} checked={inputValue === true} value="true" disabled={inputDisabled} />
+          <span className="sr-only">Yes</span>
+        </label>
 
-        <input type={inputType} id={formInputID} placeholder={placeholderText} value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} min={inputMin} max={inputMax} step={inputStep} />
+      </div>
 
-        : null}
-
-    </div>
+    </fieldset>
   );
 };
 
