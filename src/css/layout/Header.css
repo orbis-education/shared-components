@@ -46,7 +46,7 @@ header {
   background-color: #fff;
   border-bottom: 1px solid #ddd;
   padding: .5rem 2rem;
-  margin: -2rem 0 2rem 0;
+  margin: 2rem 0;
 
   ul {
     display: flex;
@@ -75,6 +75,10 @@ header {
       }
     }
   }
+}
+
+header + .sub-header-nav {
+  margin-top: -2rem;
 }
 
 @media (max-width: 480px) {

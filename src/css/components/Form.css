@@ -196,18 +196,74 @@ input[type="time"], input[type="date"] {
   align-self: flex-start;
 }
 
-.toggle-switch-container {
+fieldset.form-group {
   border: none;
   padding: 0;
-  
+  margin: 0;
 
   legend {
     font-weight: 700;
+    margin-bottom: .25rem;
+    padding: 0;
+
+    .btn.btn-transparent.collapse-checkboxes-button {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #333;
+      padding: 0;
+      margin: 0;
+      border: none;
+      
+      i {
+        margin-left: .5rem;
+        color: #333;
+      }
+    }
+  }
+
+  .checkbox-group {
+    display: none;
+
+    &.show {
+      display: block;
+    }
+
+    label {
+      font-weight: normal;
+      display: flex;
+      gap: .5rem;
+      line-height: 1;
+      margin-top: .75rem;
+      margin-left: 1px;
+      cursor: pointer;
+
+      input[type="checkbox"] {
+        cursor: pointer;
+    }
+  
+      input[type=checkbox] {
+        margin: 0;
+        padding: 0;
+      }
+  
+      &:first-of-type {
+        margin-top: .5rem;
+      }
+    }
+  }
+}
+
+.toggle-switch-container {
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  legend {
     margin-bottom: 1rem;
   }
 
   .toggle-switch {
-    display: flex;
+    display: inline-flex;
     height: 10px;
     width: 50px;
     background-color: #ddd;
@@ -217,9 +273,12 @@ input[type="time"], input[type="date"] {
     position: relative;
     cursor: pointer;
     margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     .toggle-switch__button {
-      display: block;
+      display: inline-block;
       background-color: var(--grayBlue);
       border-radius: 50rem;
       width: 25px;
@@ -230,6 +289,7 @@ input[type="time"], input[type="date"] {
       left: 0;
       transition: left .2s ease-in-out, background-color .2s ease-in-out;
       /* box-shadow: 0 2px 4px 0 rgba(0,0,0,.2); */
+      
 
       &.active {
         left: calc(100% - 25px);
@@ -237,6 +297,21 @@ input[type="time"], input[type="date"] {
         background-color: var(--green);
         /* background-color: rgba(36, 111, 255, 1); */
       }
+    }
+
+    .toggle-switch__text {
+      /* display: block; */
+      font-size: .875em;
+      /* color: #fff; */
+      font-weight: 700;
+      position: absolute;
+      /* left: calc(100% - 35px); */
+      left: 115%;
+      /* transition: left .2s; */
+
+      /* &.active {
+        left: 15px;
+      } */
     }
   }
 }

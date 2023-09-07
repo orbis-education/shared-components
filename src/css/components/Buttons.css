@@ -4,16 +4,24 @@
   gap: .5rem;
   /* margin-bottom: 1rem; */
 
-  &.align-right {
+  &.justify-right {
     justify-content: flex-end;
   }
 
-  &.align-center {
+  &.justify-center {
     justify-content: center;
   }
 
   &.space-between {
     justify-content: space-between;
+  }
+
+  &.align-center {
+    align-items: center;
+  }
+
+  &.align-end {
+    align-items: flex-end;
   }
 }
 
@@ -330,4 +338,8 @@ a.btn:visited {
   &:focus-visible {
     outline: 2px solid red;
   }
+}
+
+a.btn {
+  line-height: 1;
 }

@@ -18,6 +18,7 @@ const FormDropdown = (props) => {
   let isRequired = isEmpty(props) === false && isEmpty(props.isRequired) === false ? props.isRequired : false;
   let inputDisabled = isEmpty(props) === false && isEmpty(props.inputDisabled) === false ? props.inputDisabled : false;
 
+  let emptyOption = isEmpty(props) === false && isEmpty(props.emptyOption) === false ? props.emptyOption : false;
   let optionData = isEmpty(props) === false && isEmpty(props.optionData) === false ? props.optionData : null;
   let optionID = isEmpty(props) === false && isEmpty(props.optionID) === false ? props.optionID : "";
   let optionText = isEmpty(props) === false && isEmpty(props.optionText) === false ? props.optionText : [];
@@ -54,7 +55,9 @@ const FormDropdown = (props) => {
 
       <select className="form-control" id={formInputID} value={inputValue} onChange={(event) => { handleOnChange(event.target.value); }} disabled={inputDisabled}>
 
-        <option value="">{placeholderText}</option>
+        {emptyOption !== true ?
+          <option value="">{placeholderText}</option>
+          : null}
 
         {isNonEmptyArray(optionData) === true && isEmpty(optionID) === false && isNonEmptyArray(optionText) === true ?
 
