@@ -49,13 +49,19 @@ const FormInput = (props) => {
         <div className="toggle-switch__text">{inputValue === true ? <React.Fragment>{trueValue}</React.Fragment> : <React.Fragment>{falseValue}</React.Fragment>}</div>
 
         <label className="sr-only">
+
           <input type="radio" id={formInputID} checked={inputValue !== true} value="false" onChange={(event) => { updateValue(event.target.value); }} disabled={inputDisabled} />
+
           {falseValue}
+
         </label>
 
         <label className="sr-only">
+
           <input type="radio" id={formInputID} checked={inputValue === true} value="true" onChange={(event) => { updateValue(event.target.value); }} disabled={inputDisabled} />
+
           {trueValue}
+
         </label>
 
       </div>

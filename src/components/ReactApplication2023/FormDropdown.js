@@ -55,9 +55,7 @@ const FormDropdown = (props) => {
 
       <select className="form-control" id={formInputID} value={inputValue} onChange={(event) => { handleOnChange(event.target.value); }} disabled={inputDisabled}>
 
-        {emptyOption !== true ?
-          <option value="">{placeholderText}</option>
-          : null}
+        {emptyOption !== true ? <option value="">{placeholderText}</option> : null}
 
         {isNonEmptyArray(optionData) === true && isEmpty(optionID) === false && isNonEmptyArray(optionText) === true ?
 

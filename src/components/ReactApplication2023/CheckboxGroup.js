@@ -82,9 +82,21 @@ const CheckboxGroup = (props) => {
             {isRequired === true ? <span className="required"> * <span className="sr-only">required</span></span> : null}
 
             {isCollapsed === true ?
-              <React.Fragment><i className="fa fa-angle-down"></i><span className="sr-only">Open</span></React.Fragment>
+
+              <React.Fragment>
+
+                <i className="fa fa-angle-down"></i><span className="sr-only">Open</span>
+
+              </React.Fragment>
+
               :
-              <React.Fragment><i className="fa fa-angle-up"></i><span className="sr-only">Close</span></React.Fragment>
+
+              <React.Fragment>
+
+                <i className="fa fa-angle-up"></i><span className="sr-only">Close</span>
+
+              </React.Fragment>
+
             }
 
           </button>
@@ -92,9 +104,11 @@ const CheckboxGroup = (props) => {
           :
 
           <React.Fragment>
+
             {legendText}
 
             {isRequired === true ? <span className="required"> * <span className="sr-only">required</span></span> : null}
+
           </React.Fragment>
 
         }
@@ -123,6 +137,7 @@ const CheckboxGroup = (props) => {
                     <input type="checkbox" id={formInputID} value={optionDataItem[optionID]} checked={isChecked} onChange={(event) => { handleOnChange(event); }} />
 
                     <span className="checkbox-label-text">
+
                       {optionText.map((optionTextItem, index) => {
 
                         let displayOptionText = "";
@@ -142,6 +157,7 @@ const CheckboxGroup = (props) => {
                         );
 
                       })}
+
                     </span>
 
                   </label>
