@@ -6,8 +6,8 @@ import { parse } from "../../utilities/ApplicationFunctions";
 const FormInput = (props) => {
 
   // * Available props: -- 06/21/2023 MF
-  // * Properties: formInputID, labelText, srOnly, isRequired, inputType, placeholderText, inputValue, inputDisabled, inputHint, textareaRows, inputMin, inputMax, inputStep -- 06/21/2023 MF
-  // * Functions: onChange -- 06/21/2023 MF
+  // * Properties: formInputID, labelText, srOnly, isRequired, inputValue, inputDisabled, inputHint -- 06/21/2023 MF
+  // * Functions: updateValue -- 06/21/2023 MF
 
   let componentName = "FormInput";
 
@@ -15,12 +15,11 @@ const FormInput = (props) => {
   let labelText = isEmpty(props) === false && isEmpty(props.labelText) === false ? props.labelText : "";
   let srOnly = isEmpty(props) === false && isEmpty(props.srOnly) === false ? props.srOnly : "";
   let isRequired = isEmpty(props) === false && isEmpty(props.isRequired) === false ? props.isRequired : false;
-  let inputType = isEmpty(props) === false && isEmpty(props.inputType) === false ? props.inputType : "text";
-  let placeholderText = isEmpty(props) === false && isEmpty(props.placeholderText) === false ? props.placeholderText : "";
   let inputValue = isEmpty(props) === false && isEmpty(props.inputValue) === false ? props.inputValue : "";
   let inputDisabled = isEmpty(props) === false && isEmpty(props.inputDisabled) === false ? props.inputDisabled : false;
   let inputHint = isEmpty(props) === false && isEmpty(props.inputHint) === false ? props.inputHint : "";
-
+  let trueValue = isEmpty(props) === false && isEmpty(props.trueValue) === false ? props.trueValue : "Yes";
+  let falseValue = isEmpty(props) === false && isEmpty(props.falseValue) === false ? props.falseValue : "No";
 
   let updateValue = isEmpty(props.updateValue) === false ? props.updateValue : noFunctionAvailable;
 
@@ -47,14 +46,22 @@ const FormInput = (props) => {
 
         <div className={`toggle-switch__button ${inputValue === true ? "active" : ""}`}></div>
 
+        <div className="toggle-switch__text">{inputValue === true ? <React.Fragment>{trueValue}</React.Fragment> : <React.Fragment>{falseValue}</React.Fragment>}</div>
+
         <label className="sr-only">
-          <input type="radio" id={formInputID} checked={inputValue !== true} value="false" disabled={inputDisabled} />
-          <span className="sr-only">No</span>
+
+          <input type="radio" id={formInputID} checked={inputValue !== true} value="false" onChange={(event) => { updateValue(event.target.value); }} disabled={inputDisabled} />
+
+          {falseValue}
+
         </label>
 
         <label className="sr-only">
-          <input type="radio" id={formInputID} checked={inputValue === true} value="true" disabled={inputDisabled} />
-          <span className="sr-only">Yes</span>
+
+          <input type="radio" id={formInputID} checked={inputValue === true} value="true" onChange={(event) => { updateValue(event.target.value); }} disabled={inputDisabled} />
+
+          {trueValue}
+
         </label>
 
       </div>
