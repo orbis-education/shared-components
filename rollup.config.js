@@ -33,6 +33,6 @@ export default {
     json(),
     postcss(),
     external(),
-    svg()
+    svg({ base64: true })
   ]
 };
