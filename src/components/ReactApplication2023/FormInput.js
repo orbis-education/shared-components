@@ -22,6 +22,7 @@ const FormInput = (props) => {
   let inputHint = isEmpty(props) === false && isEmpty(props.inputHint) === false ? props.inputHint : "";
   let textareaRows = isEmpty(props) === false && isEmpty(props.textareaRows) === false ? props.textareaRows : 10;
   // let textareaCols = isEmpty(props) === false && isEmpty(props.textareaCols) === false ? props.textareaCols : "";
+  let useInputAddon = isEmpty(props) === false && isEmpty(props.useInputAddon) === false ? props.useInputAddon : false;
 
   // * For number, range, date, datetime-local, month, time and week -- 07/25/2023 JH
   // * Default value is null to prevent other input types from having the attribute -- 07/25/2023 JH
@@ -33,7 +34,12 @@ const FormInput = (props) => {
 
   // * If srOnly is set to true, then the form item label is only visible to screen readers. -- 06/21/2023 MF
   let labelClasses = classnames("", {
-    "sr-only": srOnly === true
+    "sr-only": srOnly === true,
+    "input-addon": useInputAddon === true
+  });
+
+  let formGroupClasses = classnames("form-group", {
+    "with-addon": useInputAddon === true
   });
 
 
@@ -61,7 +67,7 @@ const FormInput = (props) => {
 
 
   return (
-    <div className="form-group">
+    <div className={formGroupClasses}>
 
       <label htmlFor={formInputID} className={labelClasses}>
 

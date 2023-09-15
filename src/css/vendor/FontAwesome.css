@@ -293,6 +293,10 @@
   content: "\f00d";
 }
 
+.fa-trash:before {
+  content: "\f2ed";
+}
+
 .fa-undo:before {
   content: "\f0e2";
 }

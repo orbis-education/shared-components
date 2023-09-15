@@ -24,6 +24,8 @@ const CheckboxGroup = (props) => {
   let inputValue = isEmpty(props) === false && isEmpty(props.inputValue) === false ? props.inputValue : [];
   let inputHint = isEmpty(props) === false && isEmpty(props.inputHint) === false ? props.inputHint : "";
 
+  let formColumns = isEmpty(props) === false && isEmpty(props.formColumns) === false ? props.formColumns : 1;
+
   let updateValue = isEmpty(props.updateValue) === false ? props.updateValue : noFunctionAvailable;
 
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -115,7 +117,7 @@ const CheckboxGroup = (props) => {
 
       </legend>
 
-      <div className={checkboxGroupClasses}>
+      <ul className={checkboxGroupClasses} style={{ columns: formColumns }}>
 
         {isEmpty(inputHint) === false ? <p className="input-hint">{parse(inputHint)}</p> : null}
 
@@ -132,35 +134,37 @@ const CheckboxGroup = (props) => {
                 let isChecked = isNonEmptyArray(filterInputValue) === true ? true : false;
 
                 return (
-                  <label key={optionDataItem[optionID]}>
+                  <li key={optionDataItem[optionID]}>
+                    <label>
 
-                    <input type="checkbox" id={formInputID} value={optionDataItem[optionID]} checked={isChecked} onChange={(event) => { handleOnChange(event); }} />
+                      <input type="checkbox" id={formInputID} value={optionDataItem[optionID]} checked={isChecked} onChange={(event) => { handleOnChange(event); }} />
 
-                    <span className="checkbox-label-text">
+                      <span className="checkbox-label-text">
 
-                      {optionText.map((optionTextItem, index) => {
+                        {optionText.map((optionTextItem, index) => {
 
-                        let displayOptionText = "";
+                          let displayOptionText = "";
 
-                        if (optionTextItem.type === "property") {
+                          if (optionTextItem.type === "property") {
 
-                          displayOptionText = optionDataItem[optionTextItem.text];
+                            displayOptionText = optionDataItem[optionTextItem.text];
 
-                        } else if (optionTextItem.type === "string") {
+                          } else if (optionTextItem.type === "string") {
 
-                          displayOptionText = optionTextItem.text;
+                            displayOptionText = optionTextItem.text;
 
-                        };
+                          };
 
-                        return (
-                          <React.Fragment key={index}>{displayOptionText}</React.Fragment>
-                        );
+                          return (
+                            <React.Fragment key={index}>{displayOptionText}</React.Fragment>
+                          );
 
-                      })}
+                        })}
 
-                    </span>
+                      </span>
 
-                  </label>
+                    </label>
+                  </li>
                 );
 
               };
@@ -171,7 +175,7 @@ const CheckboxGroup = (props) => {
 
           : null}
 
-      </div>
+      </ul>
 
     </fieldset>
   );

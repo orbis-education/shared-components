@@ -34,15 +34,20 @@ header {
   }
 }
 
+.orbis-logo-link {
+  display: flex;
+}
+
 .orbis-logo {
-  max-width: 150px;
+  max-width: 214px;
   width: 100%;
   height: auto;
   padding: 1rem 2rem;
 }
 
 .sub-header-nav {
-  width: calc(100% - 4rem);
+  /* width: calc(100% - 4rem); */
+  width: 100%;
   background-color: #fff;
   border-bottom: 1px solid #ddd;
   padding: .5rem 2rem;
