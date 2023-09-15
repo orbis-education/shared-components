@@ -17,7 +17,7 @@ const Header = (props) => {
   return (
     <header>
 
-      <a href="./">
+      <a href="./" className="orbis-logo-link">
         <img src={logo} className="orbis-logo" alt="Orbis Education Logo" />
       </a>
 

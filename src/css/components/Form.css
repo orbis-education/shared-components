@@ -2,8 +2,10 @@
 ======================================= */
 
 .form-section {
-  width: calc(100% - 4rem);
-  max-width: calc(1114px - 4rem);
+  /* width: calc(100% - 4rem);
+  max-width: calc(1114px - 4rem); */
+  width: 100%;
+  max-width: 1114px;
   display: flex;
   flex-direction: column;
   background-color: #fff;
@@ -64,14 +66,48 @@ p.input-hint {
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
-  width: calc(100% - 26px);
+  /* width: calc(100% - 26px); */
+  width: 100%;
   /* line-height: 1; */
 }
+
+/* .form-group select,
+.form-group input {
+  max-height: 38.5px;
+} */
 
 .form-group select {
   width: 100%;
   /* max-width: 275px; */
 }
+
+.form-group.with-addon {
+  flex-direction: row;
+  justify-content: flex-start;
+
+  label.input-addon {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    /* font-size: 1rem; */
+    /* font-weight: 400; */
+    /* line-height: 1.5; */
+    color: #212529;
+    white-space: nowrap;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    margin: 0;
+  }
+
+  select,
+  input,
+  textarea {
+    border-radius: 0 5px 5px 0;
+  }
+}
+
 
 /* radio buttons
 ============================== */
@@ -227,29 +263,58 @@ fieldset.form-group {
     &.show {
       display: block;
     }
+  }
+
+  .checkbox-group,
+  .radio-group {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    
+    li {
+      margin: 0;
+      padding: 0;
+    
+      label {
+        font-weight: normal;
+        display: flex;
+        gap: .5rem;
+        cursor: pointer;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        input[type="checkbox"],
+        input[type="radio"] {
+          cursor: pointer;
+          margin: 0;
+          padding: 0;
+          width: auto;
+          margin-top: .35rem;
+        }
+      }
+
+    }
+  }
+
+  .checkbox-group {
 
     label {
-      font-weight: normal;
-      display: flex;
-      gap: .5rem;
-      line-height: 1;
-      margin-top: .75rem;
+      margin-top: .5rem;
       margin-left: 1px;
-      cursor: pointer;
+    }
 
-      input[type="checkbox"] {
-        cursor: pointer;
-    }
-  
-      input[type=checkbox] {
-        margin: 0;
-        padding: 0;
-      }
-  
+  }
+
+  .radio-group {
+
+    label {
+      margin: 0 0 .25rem 0;
+
       &:first-of-type {
-        margin-top: .5rem;
+        margin-top: .25rem;
       }
     }
+
   }
 }
 

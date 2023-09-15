@@ -1,3 +1,4 @@
+/* TODO in all repos, this should be replaced with the form-row class (added in Base.css) -- 09/07/2023 JH */
 .button-row {
   display: flex;
   justify-content: flex-start;
@@ -44,7 +45,7 @@ a.btn:visited {
   padding: 10px 12px;
   font-size: 1rem;
   font-weight: 700;
-  /* line-height: 1; */
+  line-height: 1;
 
   &:hover, 
   &:active {

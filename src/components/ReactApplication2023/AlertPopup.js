@@ -14,13 +14,13 @@ const AlertPopup = (props) => {
   let includeResetButton = isEmpty(props) === false && isEmpty(props.includeResetButton) === false ? props.includeResetButton : false;
 
   let operationValue = isEmpty(props) === false && isEmpty(props.alertItem) === false && isEmpty(props.alertItem.operationValue) === false ? props.alertItem.operationValue : "";
-  let alertType = isEmpty(props) === false && isEmpty(props.alertItem) === false && isEmpty(props.alertItem.alertItemType) === false ? props.alertItem.alertItemType : "";
+  let alertType = isEmpty(props) === false && isEmpty(props.alertItem) === false && isEmpty(props.alertItem.alertType) === false ? props.alertItem.alertType : "";
   let message = isEmpty(props) === false && isEmpty(props.alertItem) === false && isEmpty(props.alertItem.message) === false ? props.alertItem.message : "";
   let error = isEmpty(props) === false && isEmpty(props.alertItem) === false && isEmpty(props.alertItem.error) === false ? props.alertItem.error : "";
 
   let setAlertItem = isEmpty(props) === false && isEmpty(props.setAlertItem) === false ? props.setAlertItem : noFunctionAvailable;
 
-  let alertClasses = classnames("alert alert-danger", {
+  let alertClasses = classnames("alert", {
     "alert-success": alertType === "success",
     "alert-warning": alertType === "warning",
     "alert-info": alertType === "info",
