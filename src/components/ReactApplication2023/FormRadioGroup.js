@@ -23,6 +23,8 @@ const FormRadioGroup = (props) => {
   let inputValue = isEmpty(props) === false && isEmpty(props.inputValue) === false ? props.inputValue : "";
   let inputHint = isEmpty(props) === false && isEmpty(props.inputHint) === false ? props.inputHint : "";
 
+  let formColumns = isEmpty(props) === false && isEmpty(props.formColumns) === false ? props.formColumns : 1;
+
   let updateValue = isEmpty(props.updateValue) === false ? props.updateValue : noFunctionAvailable;
 
   // * If srOnly is set to true, then the form item label is only visible to screen readers. -- 06/21/2023 MF
@@ -42,7 +44,7 @@ const FormRadioGroup = (props) => {
 
       </legend>
 
-      <ul className="radio-group">
+      <ul className="radio-group" style={{ columns: formColumns }}>
 
         {isEmpty(inputHint) === false ? <p className="input-hint">{parse(inputHint)}</p> : null}
 

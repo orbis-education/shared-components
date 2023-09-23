@@ -71,7 +71,6 @@ a.btn:visited {
       background-color: var(--darkBlue_03);
       border-color: var(--darkBlue_01);
     }
-
   }
 
   &.btn-danger {
@@ -197,8 +196,6 @@ a.btn:visited {
         border-color: rgba(82,76,76,.1);
       }
     }
-
-
   }
 
   &.btn-light-gray {
@@ -217,10 +214,11 @@ a.btn:visited {
       box-shadow: 0 0 0 0.2rem rgba(209,209,209,.5);
     }
 
-    &.disabled {
+    &.disabled,
+    &:disabled {
       background-color: rgba(230,230,230,.3);
       border-color: rgba(230,230,230,.1);
-      color: var(--darkBlue);
+      color: var(--darkBlue_03);
       opacity: 1;
 
       &:hover {

@@ -119,6 +119,10 @@
   content: "\f104";
 }
 
+.fa-angle-right:before {
+  content: "\f105";
+}
+
 .fa-angle-down:before {
   content: "\f107";
 }
@@ -129,6 +133,14 @@
 
 .fa-arrow-left:before {
   content: "\f060";
+}
+
+.fa-angle-double-left:before {
+  content: "\f100";
+}
+
+.fa-angle-double-right:before {
+  content: "\f101";
 }
 
 .fa-arrow-right:before {
@@ -206,6 +218,10 @@
 
 .fa-eye-slash:before {
   content: "\f070";
+}
+
+.fa-exclamation-triangle {
+  content: "\f071";
 }
 
 .fa-external-link-alt:before {

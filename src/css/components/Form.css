@@ -78,6 +78,7 @@ p.input-hint {
 
 .form-group select {
   width: 100%;
+  height: 40.5px;
   /* max-width: 275px; */
 }
 
@@ -89,12 +90,13 @@ p.input-hint {
     display: flex;
     align-items: center;
     padding: 10px 12px;
-    /* font-size: 1rem; */
+    font-size: .875rem;
     /* font-weight: 400; */
-    /* line-height: 1.5; */
+    line-height: 1;
     color: #212529;
     white-space: nowrap;
-    background-color: #e9ecef;
+    /* background-color: #e9ecef; */
+    background-color: rgba(230,230,230,1);
     border: 1px solid #ced4da;
     border-right: none;
     border-radius: 5px 0 0 5px;
@@ -106,39 +108,6 @@ p.input-hint {
   textarea {
     border-radius: 0 5px 5px 0;
   }
-}
-
-
-/* radio buttons
-============================== */
-
-.radio-group {
-  border: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  gap: .4rem;
-  align-items: stretch;
-  justify-content: stretch;
-}
-
-.radio-group legend {
-  font-weight: 700;
-  padding: 0;
-  margin-bottom: 5px;
-
-}
-
-.radio-group .radio-button-container {
-  display: flex;
-  justify-content: stretch;
-  align-items: stretch;
-  height: 100%;
-  width: 100%;
-  gap: .75rem;
 }
 
 
@@ -195,7 +164,7 @@ button:disabled {
 
 input[type="time"], input[type="date"] {
   font-family: var(--defaultFonts);
-  height: 18.5px;
+  height: 40.5px;
   max-width: 150px;
 
   &:placeholder {
@@ -270,14 +239,18 @@ fieldset.form-group {
     margin: 0;
     padding: 0;
     list-style-type: none;
+    /* column-count: 1;
+    column-gap: 8px;
+    column-width: auto; */
     
     li {
+      /* display: inline-block; */
       margin: 0;
       padding: 0;
     
       label {
         font-weight: normal;
-        display: flex;
+        display: inline-flex;
         gap: .5rem;
         cursor: pointer;
         justify-content: flex-start;
