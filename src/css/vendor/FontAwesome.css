@@ -8,9 +8,9 @@
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  /* src: url("../assets/fonts/fa-regular-400.eot");
-  src: url("../assets/fonts/fa-regular-400.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/fa-regular-400.woff2") format("woff2"), url("../assets/fonts/fa-regular-400.woff") format("woff"), url("../assets/fonts/fa-regular-400.ttf") format("truetype"), url("../assets/fonts/fa-regular-400.svg#fontawesome") format("svg"); */
-  src: url("../assets/fonts/fa-regular-400.ttf") format("truetype");
+  /* src: url("/src/assets/fonts/fa-regular-400.eot");
+  src: url("/src/assets/fonts/fa-regular-400.eot?#iefix") format("embedded-opentype"), url("/src/assets/fonts/fa-regular-400.woff2") format("woff2"), url("/src/assets/fonts/fa-regular-400.woff") format("woff"), url("/src/assets/fonts/fa-regular-400.ttf") format("truetype"), url("/src/assets/fonts/fa-regular-400.svg#fontawesome") format("svg"); */
+  src: url("/src/assets/fonts/fa-regular-400.ttf") format("truetype");
 }
 
 .fa,
@@ -24,9 +24,9 @@
   font-style: normal;
   font-weight: 900;
   font-display: block;
-  /* src: url("../assets/fonts/fa-solid-900.eot");
-  src: url("../assets/fonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/fa-solid-900.woff2") format("woff2"), url("../assets/fonts/fa-solid-900.woff") format("woff"), url("../assets/fonts/fa-solid-900.ttf") format("truetype"), url("../assets/fonts/fa-solid-900.svg#fontawesome") format("svg"); */
-  src: url("../assets/fonts/fa-solid-900.ttf") format("truetype");
+  /* src: url("/src/assets/fonts/fa-solid-900.eot");
+  src: url("/src/assets/fonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("/src/assets/fonts/fa-solid-900.woff2") format("woff2"), url("/src/assets/fonts/fa-solid-900.woff") format("woff"), url("/src/assets/fonts/fa-solid-900.ttf") format("truetype"), url("/src/assets/fonts/fa-solid-900.svg#fontawesome") format("svg"); */
+  src: url("/src/assets/fonts/fa-solid-900.ttf") format("truetype");
 }
 
 .fa,
@@ -220,7 +220,7 @@
   content: "\f070";
 }
 
-.fa-exclamation-triangle {
+.fa-exclamation-triangle:before {
   content: "\f071";
 }
 
