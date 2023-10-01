@@ -128,7 +128,7 @@ const DialogBox = (props) => {
                   {title}
                 </h5>
                 <button type="button" className="close" onClick={(event) => { toggle(event); }}>
-                  <i className="fa fa-close"></i> <span className="sr-only">Close</span>
+                  <i className="fa fa-close"></i><span className="sr-only">Close</span>
                 </button>
               </div>
               <div className="modal-body">

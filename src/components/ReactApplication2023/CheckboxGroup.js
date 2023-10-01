@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import classnames from "classnames";
-import { noFunctionAvailable, isEmpty, getDateTime, isNonEmptyArray, formatToString } from "shared-functions";
-import { parse } from "../../utilities/ApplicationFunctions";
+import { noFunctionAvailable, isEmpty, getDateTime, isNonEmptyArray, formatToString, parse } from "shared-functions";
 
 const CheckboxGroup = (props) => {
 

@@ -1,7 +1,6 @@
 import React from "react";
 import classnames from "classnames";
-import { noFunctionAvailable, isEmpty, getDateTime } from "shared-functions";
-import { parse } from "../../utilities/ApplicationFunctions";
+import { noFunctionAvailable, isEmpty, getDateTime, parse } from "shared-functions";
 
 const FormInput = (props) => {
 

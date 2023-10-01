@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import classnames from "classnames";
-import { noFunctionAvailable, isEmpty, getDateTime, addLog, addErrorLog } from "shared-functions";
-import { parse } from "../../utilities/ApplicationFunctions";
+import { noFunctionAvailable, isEmpty, getDateTime, addLog, addErrorLog, parse } from "shared-functions";
 
 const AlertPopup = (props) => {
 
