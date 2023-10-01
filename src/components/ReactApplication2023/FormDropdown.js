@@ -1,7 +1,6 @@
 import React from "react";
 import classnames from "classnames";
-import { noFunctionAvailable, isEmpty, getDateTime, isNonEmptyArray } from "shared-functions";
-import { parse } from "../../utilities/ApplicationFunctions";
+import { noFunctionAvailable, isEmpty, getDateTime, isNonEmptyArray, parse } from "shared-functions";
 
 const FormDropdown = (props) => {
 
