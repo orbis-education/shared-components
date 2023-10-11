@@ -16,6 +16,7 @@ const CheckboxGroup = (props) => {
   let isRequired = isEmpty(props) === false && isEmpty(props.isRequired) === false ? props.isRequired : false;
   let inputDisabled = isEmpty(props) === false && isEmpty(props.inputDisabled) === false ? props.inputDisabled : false;
   let isCollapsible = isEmpty(props) === false && isEmpty(props.isCollapsible) === false ? props.isCollapsible : false;
+  let startCollapsed = isEmpty(props) === false && isEmpty(props.startCollapsed) === false ? props.startCollapsed : true;
 
   let optionData = isEmpty(props) === false && isEmpty(props.optionData) === false ? props.optionData : null;
   let optionID = isEmpty(props) === false && isEmpty(props.optionID) === false ? props.optionID : "";
@@ -27,7 +28,7 @@ const CheckboxGroup = (props) => {
 
   let updateValue = isEmpty(props.updateValue) === false ? props.updateValue : noFunctionAvailable;
 
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
 
   // * If srOnly is set to true, then the form item label is only visible to screen readers. -- 06/21/2023 MF
   let labelClasses = classnames("", {
@@ -41,13 +42,29 @@ const CheckboxGroup = (props) => {
 
   useEffect(() => {
 
+    // * If isCollapsible is false, then isCollapsed is always false. -- 10/10/2023 MF
     if (isCollapsible === true) {
 
       setIsCollapsed(true);
 
+    } else {
+
+      setIsCollapsed(false);
+
     };
 
   }, [isCollapsible]);
+
+
+  useEffect(() => {
+
+    if (startCollapsed === false) {
+
+      setIsCollapsed(false);
+
+    };
+
+  }, [startCollapsed]);
 
 
   const handleOnChange = (event) => {
