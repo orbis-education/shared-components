@@ -2,8 +2,6 @@
 ======================================= */
 
 .form-section {
-  /* width: calc(100% - 4rem);
-  max-width: calc(1114px - 4rem); */
   width: 100%;
   max-width: 1114px;
   display: flex;
@@ -11,10 +9,35 @@
   background-color: #fff;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
   border-radius: 10px;
-  /* margin-top: 2rem; */
   margin-bottom: 2rem;
   padding: 2rem;
   position: relative;
+}
+
+.form-section.large {
+  margin: 1rem 2rem;
+  width: 100%;
+  max-width: 1632px;
+}
+
+.transparent-section {
+  width: 100%;
+  margin: 0 0 0 2rem;
+  max-width: 1632px;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+  position: relative;
+}
+
+@media (max-width: 600px) {
+  .form-section,
+  .form-section.large  {
+    width: 100%;
+    border-radius: 0;
+    margin: 0;
+    padding: 1rem;
+  }
 }
 
 form {
@@ -49,7 +72,7 @@ form {
 
 p.input-hint {
   padding: 0;
-  margin: 0;
+  margin: -5px 0 5px 0;
 }
 
 .form-group label {
@@ -207,18 +230,23 @@ fieldset.form-group {
   margin: 0;
 
   legend {
+    display: block;
+    width: 100%;
     font-weight: 700;
-    margin-bottom: .25rem;
+    /* margin-bottom: .25rem; */
     padding: 0;
 
     .btn.btn-transparent.collapse-checkboxes-button {
+      display: block;
+      width: 100%;
       font-weight: 700;
       /* font-size: 1rem; */
       /* font-size: 0.875rem; */
       color: #333;
-      padding: 0;
+      padding: 1rem 0;
       margin: 0;
       border: none;
+      text-align: left;
       
       i {
         margin-right: .5rem;
@@ -275,6 +303,12 @@ fieldset.form-group {
     label {
       margin-top: .5rem;
       margin-left: 1px;
+    }
+
+    li {
+      &:last-of-type {
+        margin-bottom: .5rem;
+      }
     }
 
   }
