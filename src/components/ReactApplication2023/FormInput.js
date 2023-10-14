@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classnames from "classnames";
 import { noFunctionAvailable, isEmpty, getDateTime, parse } from "shared-functions";
 
@@ -20,7 +20,7 @@ const FormInput = (props) => {
   let inputDisabled = isEmpty(props) === false && isEmpty(props.inputDisabled) === false ? props.inputDisabled : false;
   let inputHint = isEmpty(props) === false && isEmpty(props.inputHint) === false ? props.inputHint : "";
   let textareaRows = isEmpty(props) === false && isEmpty(props.textareaRows) === false ? props.textareaRows : 10;
-  // let textareaCols = isEmpty(props) === false && isEmpty(props.textareaCols) === false ? props.textareaCols : "";
+  // let textareaColumns = isEmpty(props) === false && isEmpty(props.textareaColumns) === false ? props.textareaColumns : "";
   let useInputAddon = isEmpty(props) === false && isEmpty(props.useInputAddon) === false ? props.useInputAddon : false;
 
   // * For number, range, date, datetime-local, month, time and week -- 07/25/2023 JH
@@ -30,6 +30,8 @@ const FormInput = (props) => {
   let inputStep = isEmpty(props) === false && isEmpty(props.inputStep) === false ? props.inputStep : null;
 
   let updateValue = isEmpty(props.updateValue) === false ? props.updateValue : noFunctionAvailable;
+
+  const [showPassword, setShowPassword] = useState("password");
 
   // * If srOnly is set to true, then the form item label is only visible to screen readers. -- 06/21/2023 MF
   let labelClasses = classnames("", {
@@ -80,14 +82,27 @@ const FormInput = (props) => {
 
       {inputType === "textarea" ?
 
-        <textarea id={formInputID} name={formInputID} placeholder={placeholderText} rows={textareaRows} /* cols={textareaCols} */ value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} />
+        <textarea id={formInputID} name={formInputID} placeholder={placeholderText} rows={textareaRows} /* cols={textareaColumns} */ value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} />
 
         : null}
 
       {/* // TODO add other input types -- 08/07/2023 JH */}
-      {inputType !== "textarea" && inputType !== "toggle" ?
+      {inputType !== "textarea" && inputType !== "toggle" && inputType !== "password" ?
 
         <input type={inputType} id={formInputID} placeholder={placeholderText} value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} min={inputMin} max={inputMax} step={inputStep} />
+
+        : null}
+
+      {inputType === "password" ?
+
+        <React.Fragment>
+
+          <input type={showPassword} id={formInputID} placeholder={placeholderText} value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} min={inputMin} max={inputMax} step={inputStep} />
+
+          <i className="fas fa-eye" onMouseOver={(event) => { setShowPassword("text"); }} onMouseOut={(event) => { setShowPassword("password"); }}></i>
+          {/* <InputGroupText><i className="fas fa-eye-slash"></i></InputGroupText> */}
+
+        </React.Fragment>
 
         : null}
 
