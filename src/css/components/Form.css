@@ -105,6 +105,7 @@ p.input-hint {
   /* max-width: 275px; */
 }
 
+/* TODO change class name, this is displaying the label as a left add-on, not for dynamically showing icons or buttons on the left or right of input -- 10/17/2023 JH */
 .form-group.with-addon {
   flex-direction: row;
   justify-content: flex-start;
@@ -133,6 +134,32 @@ p.input-hint {
   }
 }
 
+.form-group .form-group__password-input-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  input {
+    border-radius: 5px 0 0 5px;
+  }
+
+  .form-group__password-input-group__password-addon {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    font-size: .875rem;
+    /* font-weight: 400; */
+    line-height: 1;
+    color: #212529;
+    white-space: nowrap;
+    /* background-color: #e9ecef; */
+    background-color: rgba(230,230,230,1);
+    border: 1px solid #ced4da;
+    border-left: none;
+    border-radius:  0 5px 5px 0;
+    margin: 0;
+  }
+}
 
 /* button row */
 

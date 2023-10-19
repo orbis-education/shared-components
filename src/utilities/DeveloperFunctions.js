@@ -81,19 +81,19 @@ export const showDemonstration = (environmentMode, demonstrationMode) => {
 // };
 
 
-export const showDashboard = (environmentMode) => {
+// export const showDashboard = (environmentMode) => {
 
-  if (process.env.REACT_APP_DISPLAY_DASHBOARD === "True" && showDevelopment(environmentMode) === true) {
+//   if (process.env.REACT_APP_DISPLAY_DASHBOARD === "True" && showDevelopment(environmentMode) === true) {
 
-    return true;
+//     return true;
 
-  } else {
+//   } else {
 
-    return false;
+//     return false;
 
-  };
+//   };
 
-};
+// };
 
 
 // export const showSelectDataFile = (environmentMode, allowSelectDataFile) => {
