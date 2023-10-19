@@ -95,14 +95,16 @@ const FormInput = (props) => {
 
       {inputType === "password" ?
 
-        <React.Fragment>
+        <div className="form-group__password-input-group">
 
           <input type={showPassword} id={formInputID} placeholder={placeholderText} value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} min={inputMin} max={inputMax} step={inputStep} />
 
-          <i className="fas fa-eye" onMouseOver={(event) => { setShowPassword("text"); }} onMouseOut={(event) => { setShowPassword("password"); }}></i>
-          {/* <InputGroupText><i className="fas fa-eye-slash"></i></InputGroupText> */}
+          <div className="form-group__password-input-group__password-addon" onMouseOver={(event) => { setShowPassword("text"); }} onMouseOut={(event) => { setShowPassword("password"); }} title="Hover to show password.">
+            <i className="fas fa-eye"></i>
+            <span className="sr-only">Hover to show password.</span>
+          </div>
 
-        </React.Fragment>
+        </div>
 
         : null}
 

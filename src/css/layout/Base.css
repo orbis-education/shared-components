@@ -95,6 +95,7 @@ footer {
   justify-content: flex-start;
   align-items: flex-start;
   gap: .5rem;
+  width: 100%;
 
   &.justify-end {
     justify-content: flex-end;

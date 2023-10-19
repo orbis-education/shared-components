@@ -39,6 +39,14 @@
   cursor: pointer;
 }
 
+.width-100 {
+  width: 100%;
+}
+
+.mt-1rem {
+  margin-top: 1rem;
+}
+
 .mb-1rem {
   margin-bottom: 1rem;
 }
