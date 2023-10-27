@@ -36,6 +36,7 @@ const CheckboxGroup = (props) => {
   });
 
   let checkboxGroupClasses = classnames("checkbox-group", {
+    "is-collapsible": isCollapsible === true,
     "show": isCollapsed !== true
   });
 
@@ -95,11 +96,17 @@ const CheckboxGroup = (props) => {
 
           <button type="button" className="btn btn-transparent collapse-checkboxes-button" onClick={(event) => { setIsCollapsed(!isCollapsed); }}>
 
+            {legendText}
+
+            {isRequired === true ? <span className="required"> * <span className="sr-only">required</span></span> : null}
+
+            {isNonEmptyArray(inputValue) === true ? <div className="search-filter-count">{inputValue.length}</div> : null}
+
             {isCollapsed === true ?
 
               <React.Fragment>
 
-                <i className="fa fa-plus"></i><span className="sr-only">Open</span>
+                <i className="fa fa-chevron-down"></i><span className="sr-only">Open</span>
 
               </React.Fragment>
 
@@ -107,17 +114,11 @@ const CheckboxGroup = (props) => {
 
               <React.Fragment>
 
-                <i className="fa fa-minus"></i><span className="sr-only">Close</span>
+                <i className="fa fa-chevron-up"></i><span className="sr-only">Close</span>
 
               </React.Fragment>
 
             }
-
-            {legendText}
-
-            {isRequired === true ? <span className="required"> * <span className="sr-only">required</span></span> : null}
-
-            {isNonEmptyArray(inputValue) === true ? <div className="search-filter-count">{inputValue.length}</div> : null}
 
           </button>
 

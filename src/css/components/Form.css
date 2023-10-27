@@ -269,13 +269,21 @@ fieldset.form-group {
       font-weight: 700;
       /* font-size: 1rem; */
       /* font-size: 0.875rem; */
+      background-color: transparent;
       color: #333;
-      padding: 1rem 0;
+      padding: 1rem .5rem;
       margin: 0;
       border: none;
+      border-radius: 0;
       text-align: left;
+
+      &:hover {
+        background-color: #ddd;
+      }
       
       i {
+        position: absolute;
+        right: 0;
         margin-right: .5rem;
         color: #333;
       }
@@ -284,6 +292,10 @@ fieldset.form-group {
 
   .checkbox-group {
     display: none;
+
+    &.is-collapsible {
+      padding: 0 .5rem;
+    }
 
     &.show {
       display: block;

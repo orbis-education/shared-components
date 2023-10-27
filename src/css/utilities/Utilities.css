@@ -11,42 +11,52 @@
   overflow: hidden;
 }
 
+/* * copying the way bootstrap does things by adding !important to utility classes -- 10/19/2023 JH */
+
 .hide-element {
-  display: none;
+  display: none !important;
 }
 
 .no-visibility {
-  visibility: hidden;
+  visibility: hidden !important;
 }
 
 .red-text {
-  color: var(--red);
+  color: var(--red) !important;
 }
 
 .yellow-text {
-  color: var(--yellow);
+  color: var(--yellow) !important;
 }
 
 .green-text {
-  color: var(--green);
+  color: var(--green) !important;
 }
 
 .text-center {
-  text-align: center;
+  text-align: center !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-right {
+  text-align: right !important;
 }
 
 .pointer-cursor {
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 .width-100 {
-  width: 100%;
+  width: 100% !important;
 }
 
 .mt-1rem {
-  margin-top: 1rem;
+  margin-top: 1rem !important;
 }
 
 .mb-1rem {
-  margin-bottom: 1rem;
+  margin-bottom: 1rem !important;
 }
