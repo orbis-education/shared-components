@@ -216,6 +216,10 @@
   content: "\f05b";
 }
 
+.fa-edit:before {
+  content: "\f044";
+}
+
 .fa-equals:before {
   content: "\f52c";
 }
@@ -234,6 +238,10 @@
 
 .fa-external-link-alt:before {
   content: "\f35d";
+}
+
+.fa-file-upload:before {
+  content: "\f574";
 }
 
 .fa-grip-horizontal:before {
@@ -300,6 +308,18 @@
   content: "\f010";
 }
 
+.fa-sort:before {
+  content: "\f0dc";
+}
+
+.fa-sort-down:before {
+  content: "\f0dd";
+}
+
+.fa-sort-up:before {
+  content: "\f0de";
+}
+
 .fa-star:before {
   content: "\f005";
 }
@@ -327,6 +347,10 @@
 
 .fa-upload:before {
   content: "\f093";
+}
+
+.fa-users:before {
+  content: "\f0c0";
 }
 
 .fa-video-camera:before {
@@ -365,3 +389,11 @@
 .fa-drumstick-bite:before {
   content: "\f6d7";
 }
+
+
+
+
+
+
+
+

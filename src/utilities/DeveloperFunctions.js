@@ -47,53 +47,26 @@ export const showDemonstration = (environmentMode, demonstrationMode) => {
 };
 
 
-// export const showPlayground = (environmentMode) => {
+export const showPlayground = (environmentMode, demonstrationMode) => {
 
-//   // * This should be true in two cases: -- 12/02/2021 MF
-//   // * 1. When showDevelopment === true
-//   // * 2. When window.location.hostname === "intranet.orbiseducation.com" and environmentMode !== "production"
-//   // if (showDevelopment(environmentMode) === true || (window.location.hostname === "intranet.orbiseducation.com" && environmentMode !== "production")) {
-//   if (showDevelopment(environmentMode) === true || (window.location.href.includes("intranet.orbiseducation.com/test_local/") === true && environmentMode !== "production")) {
+  // * This should be true in two cases: -- 12/02/2021 MF
+  // * 1. When showDevelopment === true
+  // * 2. When window.location.href contains "intranet.orbiseducation.com/test_local/" or window.location.href contains "product.orbiseducation.com/for-review/" (and environmentMode !== "production")
+  // * The intranet.orbiseducation.com/test_local directory is the location that the web developers can place code to test or demonstrate learning object functionality. -- 01/13/2023 MF
+  // * The product.orbiseducation.com/for-review directory is the location that the ELD Team can place learning objects to test or demonstrate functionality. -- 01/13/2023 MF
+  // * On these web servers, there may be other directories in which this behavior is not desired so the check needs to be at a directory level and not only at the web server level. -- 01/13/2023 MF
 
-//     return true;
+  if (showDevelopment(environmentMode, demonstrationMode) === true || ((window.location.href.includes("intranet.orbiseducation.com/test_local/") === true || window.location.href.includes("product.orbiseducation.com/for-review/") === true) && environmentMode !== "production")) {
 
-//   } else {
+    return true;
 
-//     return false;
+  } else {
 
-//   };
+    return false;
 
-// };
+  };
 
-
-// export const showDeveloperDashboard = (environmentMode) => {
-
-//   if (process.env.REACT_APP_DISPLAY_DEVELOPER_DASHBOARD === "True" && showDevelopment(environmentMode) === true) {
-
-//     return true;
-
-//   } else {
-
-//     return false;
-
-//   };
-
-// };
-
-
-// export const showDashboard = (environmentMode) => {
-
-//   if (process.env.REACT_APP_DISPLAY_DASHBOARD === "True" && showDevelopment(environmentMode) === true) {
-
-//     return true;
-
-//   } else {
-
-//     return false;
-
-//   };
-
-// };
+};
 
 
 // export const showSelectDataFile = (environmentMode, allowSelectDataFile) => {

@@ -5,7 +5,7 @@ import { noFunctionAvailable, isEmpty, getDateTime, isNonEmptyArray, formatToStr
 const CheckboxGroup = (props) => {
 
   // * Available props: -- 06/21/2023 MF
-  // * Properties: formInputID, legendText, srOnly, isRequired, inputValue, inputDisabled, inputHint -- 06/21/2023 MF
+  // * Properties: formInputID, legendText, srOnly, isRequired, inputDisabled, isCollapsible, startCollapsed, optionData, optionID, optionText, inputValue, inputHint -- 06/21/2023 MF
   // * Functions: updateValue -- 06/21/2023 MF
 
   let componentName = "CheckboxGroup";
@@ -144,7 +144,7 @@ const CheckboxGroup = (props) => {
 
           <React.Fragment>
 
-            {optionData.map((optionDataItem) => {
+            {optionData.map((optionDataItem, index) => {
 
               if ((isEmpty(optionDataItem.active) === false && optionDataItem.active === true) || isEmpty(optionDataItem.active) === true) {
 
@@ -153,11 +153,11 @@ const CheckboxGroup = (props) => {
                 let isChecked = isNonEmptyArray(filterInputValue) === true ? true : false;
 
                 return (
-                  <li key={optionDataItem[optionID]}>
+                  <li key={index}>
 
                     <label>
 
-                      <input type="checkbox" id={formInputID} value={optionDataItem[optionID]} checked={isChecked} onChange={(event) => { handleOnChange(event); }} />
+                      <input type="checkbox" id={formInputID} value={optionDataItem[optionID]} checked={isChecked} disabled={inputDisabled} onChange={(event) => { handleOnChange(event); }} />
 
                       <span className="checkbox-label-text">
 

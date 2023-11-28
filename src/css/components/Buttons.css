@@ -32,7 +32,17 @@
   right: 2rem;
 }
 
-button,
+button {
+  font-family: var(--defaultFonts);
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 10px 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
 .btn,
 a.btn,
 a.btn:visited {

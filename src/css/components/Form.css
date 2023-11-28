@@ -290,7 +290,11 @@ fieldset.form-group {
     }
   }
 
-  .checkbox-group {
+  .checkbox-group,
+  .radio-group {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
     display: none;
 
     &.is-collapsible {
@@ -300,19 +304,8 @@ fieldset.form-group {
     &.show {
       display: block;
     }
-  }
-
-  .checkbox-group,
-  .radio-group {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    /* column-count: 1;
-    column-gap: 8px;
-    column-width: auto; */
     
     li {
-      /* display: inline-block; */
       margin: 0;
       padding: 0;
     
@@ -323,6 +316,8 @@ fieldset.form-group {
         cursor: pointer;
         justify-content: flex-start;
         align-items: flex-start;
+        margin-top: .5rem;
+        margin-left: 1px;
 
         input[type="checkbox"],
         input[type="radio"] {
@@ -334,34 +329,10 @@ fieldset.form-group {
         }
       }
 
-    }
-  }
-
-  .checkbox-group {
-
-    label {
-      margin-top: .5rem;
-      margin-left: 1px;
-    }
-
-    li {
       &:last-of-type {
         margin-bottom: .5rem;
       }
     }
-
-  }
-
-  .radio-group {
-
-    label {
-      margin: 0 0 .25rem 0;
-
-      &:first-of-type {
-        margin-top: .25rem;
-      }
-    }
-
   }
 }
 

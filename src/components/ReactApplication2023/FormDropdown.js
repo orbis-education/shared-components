@@ -51,7 +51,7 @@ const FormDropdown = (props) => {
 
       {isEmpty(inputHint) === false ? <p className="input-hint">{parse(inputHint)}</p> : null}
 
-      <select className="form-control" id={formInputID} value={inputValue} onChange={(event) => { updateValue(event.target.value); }} disabled={inputDisabled}>
+      <select className="form-control" id={formInputID} value={inputValue} disabled={inputDisabled} onChange={(event) => { updateValue(event.target.value); }}>
 
         {emptyOption !== true ? <option value="">{placeholderText}</option> : null}
 

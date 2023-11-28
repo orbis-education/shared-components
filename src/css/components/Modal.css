@@ -96,7 +96,7 @@ button.close {
   opacity: 0.5;
 }
 .modal-header {
-  padding: 15px;
+  padding: 1rem 1.5rem;
   border-bottom: 1px solid #e5e5e5;
   display: flex;
   justify-content: space-between;
@@ -111,10 +111,10 @@ button.close {
 }
 .modal-body {
   position: relative;
-  padding: 15px;
+  padding: 1.5rem;
 }
 .modal-footer {
-  padding: 15px;
+  padding: 1rem 1.5rem;
   text-align: right;
   border-top: 1px solid #e5e5e5;
 }
