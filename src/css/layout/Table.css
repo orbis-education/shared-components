@@ -35,3 +35,14 @@ table {
     border-bottom: none;
   }
 }
+
+.sortable-column-heading {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 3px;
+  
+  .sort-button {
+    padding: 10px 6px;
+  }
+}

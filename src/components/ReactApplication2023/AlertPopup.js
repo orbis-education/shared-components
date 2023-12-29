@@ -1,23 +1,21 @@
 import React, { useEffect } from "react";
 import classnames from "classnames";
-import { noFunctionAvailable, isEmpty, getDateTime, addLog, addErrorLog, parse } from "shared-functions";
+import { noFunctionAvailable, isEmpty, isNonEmptyArray, getDateTime, addLog, addErrorLog, parse } from "shared-functions";
 
 const AlertPopup = (props) => {
 
   // * Available props: -- 12/30/2022 MF
-  // * Properties: alertItem, includeResetButton -- 12/30/2022 MF
-  // * Functions: setAlertItem -- 12/30/2022 MF
+  // * Properties: message, alertType, includeResetButton -- 12/30/2022 MF
+  // * Functions: setMessage -- 12/30/2022 MF
 
   let componentName = "AlertPopup";
 
+  // let operationValue = isEmpty(props) === false && isEmpty(props.operationValue) === false ? props.operationValue : "";
+  let alertType = isEmpty(props) === false && isEmpty(props.alertType) === false ? props.alertType : "";
+  let message = isEmpty(props) === false && isEmpty(props.message) === false ? props.message : "";
   let includeResetButton = isEmpty(props) === false && isEmpty(props.includeResetButton) === false ? props.includeResetButton : false;
 
-  let operationValue = isEmpty(props) === false && isEmpty(props.alertItem) === false && isEmpty(props.alertItem.operationValue) === false ? props.alertItem.operationValue : "";
-  let alertType = isEmpty(props) === false && isEmpty(props.alertItem) === false && isEmpty(props.alertItem.alertType) === false ? props.alertItem.alertType : "";
-  let message = isEmpty(props) === false && isEmpty(props.alertItem) === false && isEmpty(props.alertItem.message) === false ? props.alertItem.message : "";
-  let error = isEmpty(props) === false && isEmpty(props.alertItem) === false && isEmpty(props.alertItem.error) === false ? props.alertItem.error : "";
-
-  let setAlertItem = isEmpty(props) === false && isEmpty(props.setAlertItem) === false ? props.setAlertItem : noFunctionAvailable;
+  let setMessage = isEmpty(props) === false && isEmpty(props.setMessage) === false ? props.setMessage : noFunctionAvailable;
 
   let alertClasses = classnames("alert", {
     "alert-success": alertType === "success",
@@ -27,25 +25,13 @@ const AlertPopup = (props) => {
   });
 
 
-  // * Log the full error, if available -- 08/19/2022 JH
-  useEffect(() => {
-
-    if (isEmpty(error) === false) {
-
-      console.error(componentName, getDateTime(), "alertItem error", error);
-
-    };
-
-  }, [error]);
-
-
   return (
     <div className="alert-container">
 
       <div className={alertClasses}>
 
         <div className="alert__message-text">
-          {parse(operationValue)} - {parse(message)}
+          {parse(message)}
         </div>
 
         {includeResetButton === true ?
@@ -56,7 +42,7 @@ const AlertPopup = (props) => {
 
           : null}
 
-        <button type="button" className="alert__close-button" onClick={() => { setAlertItem(null); }}>
+        <button type="button" className="alert__close-button" onClick={() => { setMessage(""); }}>
           <i className="fas fa-close"></i>
         </button>
 

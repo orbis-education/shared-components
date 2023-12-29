@@ -1,20 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import classnames from "classnames";
 import { noFunctionAvailable, isEmpty, getDateTime, isNonEmptyArray, formatToString, parse } from "shared-functions";
 
 const FormRadioGroup = (props) => {
 
   // * Available props: -- 06/21/2023 MF
-  // * Properties: formInputID, labelText, srOnly, placeholderText,isRequired, inputDisabled, optionData, optionID, optionText, inputValue, inputHint -- 06/21/2023 MF
+  // * Properties: formInputID, legendText, srOnly, placeholderText,isRequired, inputDisabled, optionData, optionID, optionText, inputValue, inputHint, formColumns -- 06/21/2023 MF
   // * Functions: updateValue -- 06/21/2023 MF
 
   let componentName = "FormRadioGroup";
 
   let formInputID = isEmpty(props) === false && isEmpty(props.formInputID) === false ? props.formInputID : "";
-  let labelText = isEmpty(props) === false && isEmpty(props.labelText) === false ? props.labelText : "";
+  let legendText = isEmpty(props) === false && isEmpty(props.legendText) === false ? props.legendText : "";
   let srOnly = isEmpty(props) === false && isEmpty(props.srOnly) === false ? props.srOnly : "";
   let isRequired = isEmpty(props) === false && isEmpty(props.isRequired) === false ? props.isRequired : false;
   let inputDisabled = isEmpty(props) === false && isEmpty(props.inputDisabled) === false ? props.inputDisabled : false;
+  let isCollapsible = isEmpty(props) === false && isEmpty(props.isCollapsible) === false ? props.isCollapsible : false;
+  let startCollapsed = isEmpty(props) === false && isEmpty(props.startCollapsed) === false ? props.startCollapsed : true;
 
   let optionData = isEmpty(props) === false && isEmpty(props.optionData) === false ? props.optionData : null;
   let optionID = isEmpty(props) === false && isEmpty(props.optionID) === false ? props.optionID : "";
@@ -26,24 +28,96 @@ const FormRadioGroup = (props) => {
 
   let updateValue = isEmpty(props.updateValue) === false ? props.updateValue : noFunctionAvailable;
 
+  const [isCollapsed, setIsCollapsed] = useState(true);
+
   // * If srOnly is set to true, then the form item label is only visible to screen readers. -- 06/21/2023 MF
   let labelClasses = classnames("", {
     "sr-only": srOnly === true
   });
 
+  let radioGroupClasses = classnames("radio-group", {
+    "is-collapsible": isCollapsible === true,
+    "show": isCollapsed !== true
+  });
+
+
+  useEffect(() => {
+
+    // * If isCollapsible is false, then isCollapsed is always false. -- 10/10/2023 MF
+    if (isCollapsible === true) {
+
+      setIsCollapsed(true);
+
+    } else {
+
+      setIsCollapsed(false);
+
+    };
+
+  }, [isCollapsible]);
+
+
+  useEffect(() => {
+
+    if (startCollapsed === false) {
+
+      setIsCollapsed(false);
+
+    };
+
+  }, [startCollapsed]);
+
 
   return (
     <fieldset className="form-group">
 
-      <legend htmlFor={formInputID} className={labelClasses}>
+      <legend className={labelClasses}>
 
-        {labelText}
+        {isCollapsible === true ?
 
-        {isRequired === true ? <span className="required"> * <span className="sr-only">required</span></span> : null}
+          <button type="button" className="btn btn-transparent collapse-checkboxes-button" onClick={(event) => { setIsCollapsed(!isCollapsed); }}>
+
+            {legendText}
+
+            {isRequired === true ? <span className="required"> * <span className="sr-only">required</span></span> : null}
+
+            {isEmpty(inputValue) === false ? <div className="search-filter-count">1</div> : null}
+
+            {isCollapsed === true ?
+
+              <React.Fragment>
+
+                <i className="fa fa-chevron-down"></i><span className="sr-only">Open</span>
+
+              </React.Fragment>
+
+              :
+
+              <React.Fragment>
+
+                <i className="fa fa-chevron-up"></i><span className="sr-only">Close</span>
+
+              </React.Fragment>
+
+            }
+
+          </button>
+
+          :
+
+          <React.Fragment>
+
+            {legendText}
+
+            {isRequired === true ? <span className="required"> * <span className="sr-only">required</span></span> : null}
+
+          </React.Fragment>
+
+        }
 
       </legend>
 
-      <ul className="radio-group" style={{ columns: formColumns }}>
+      <ul className={radioGroupClasses} style={{ columns: formColumns }}>
 
         {isEmpty(inputHint) === false ? <p className="input-hint">{parse(inputHint)}</p> : null}
 
@@ -55,7 +129,7 @@ const FormRadioGroup = (props) => {
 
               if ((isEmpty(optionDataItem.active) === false && optionDataItem.active === true) || isEmpty(optionDataItem.active) === true) {
 
-                // * temp fix to convert true/false to 1/2
+                // TODO: Temporary fix to convert true/false to 1/2. -- 09/13/2023 JH
                 let newInputValue = inputValue;
 
                 if (typeof newInputValue == "boolean") {
@@ -68,7 +142,7 @@ const FormRadioGroup = (props) => {
                   <li key={optionDataItem[optionID]}>
                     <label>
 
-                      <input type="radio" id={formInputID} value={optionDataItem[optionID]} checked={formatToString(optionDataItem[optionID]) === formatToString(newInputValue)} onChange={(event) => { updateValue(event.target.value); }} disabled={inputDisabled} />
+                      <input type="radio" id={formInputID} value={optionDataItem[optionID]} checked={formatToString(optionDataItem[optionID]) === formatToString(newInputValue)} disabled={inputDisabled} onChange={(event) => { updateValue(event.target.value); }} />
 
                       {optionText.map((optionTextItem, index) => {
 
@@ -103,6 +177,12 @@ const FormRadioGroup = (props) => {
           : null}
 
       </ul>
+
+      {isCollapsible === true ?
+
+        <hr />
+
+        : null}
 
     </fieldset>
   );

@@ -5,7 +5,7 @@ import { noFunctionAvailable, isEmpty, getDateTime, parse } from "shared-functio
 const FormInput = (props) => {
 
   // * Available props: -- 06/21/2023 MF
-  // * Properties: formInputID, labelText, srOnly, isRequired, inputValue, inputDisabled, inputHint -- 06/21/2023 MF
+  // * Properties: formInputID, labelText, srOnly, isRequired, inputValue, inputDisabled, inputHint, trueValue, falseValue -- 06/21/2023 MF
   // * Functions: updateValue -- 06/21/2023 MF
 
   let componentName = "FormInput";
@@ -49,7 +49,7 @@ const FormInput = (props) => {
 
         <label className="sr-only">
 
-          <input type="radio" id={formInputID} checked={inputValue !== true} value="false" onChange={(event) => { updateValue(event.target.value); }} disabled={inputDisabled} />
+          <input type="radio" id={formInputID} checked={inputValue !== true} value="false" disabled={inputDisabled} onChange={(event) => { updateValue(event.target.value); }} />
 
           {falseValue}
 
@@ -57,7 +57,7 @@ const FormInput = (props) => {
 
         <label className="sr-only">
 
-          <input type="radio" id={formInputID} checked={inputValue === true} value="true" onChange={(event) => { updateValue(event.target.value); }} disabled={inputDisabled} />
+          <input type="radio" id={formInputID} checked={inputValue === true} value="true" disabled={inputDisabled} onChange={(event) => { updateValue(event.target.value); }} />
 
           {trueValue}
 

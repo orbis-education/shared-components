@@ -13,5 +13,6 @@
 @import "./components/Tabs.css";
 @import "./components/Modal.css";
 @import "./components/Spinner.css";
+@import "./components/Tooltip.css";
 
 @import "./Custom.css";

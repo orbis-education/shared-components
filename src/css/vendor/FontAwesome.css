@@ -191,6 +191,14 @@
   content: "\f053";
 }
 
+.fa-chevron-up:before {
+  content: "\f077";
+}
+
+.fa-chevron-down:before {
+  content: "\f078";
+}
+
 .fa-closed-captioning:before {
   content: "\f20a";
   font-size: 1.5em;
@@ -206,6 +214,10 @@
 
 .fa-crosshairs:before {
   content: "\f05b";
+}
+
+.fa-edit:before {
+  content: "\f044";
 }
 
 .fa-equals:before {
@@ -226,6 +238,10 @@
 
 .fa-external-link-alt:before {
   content: "\f35d";
+}
+
+.fa-file-upload:before {
+  content: "\f574";
 }
 
 .fa-grip-horizontal:before {
@@ -292,6 +308,18 @@
   content: "\f010";
 }
 
+.fa-sort:before {
+  content: "\f0dc";
+}
+
+.fa-sort-down:before {
+  content: "\f0dd";
+}
+
+.fa-sort-up:before {
+  content: "\f0de";
+}
+
 .fa-star:before {
   content: "\f005";
 }
@@ -319,6 +347,10 @@
 
 .fa-upload:before {
   content: "\f093";
+}
+
+.fa-users:before {
+  content: "\f0c0";
 }
 
 .fa-video-camera:before {
@@ -357,3 +389,11 @@
 .fa-drumstick-bite:before {
   content: "\f6d7";
 }
+
+
+
+
+
+
+
+

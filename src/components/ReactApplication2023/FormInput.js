@@ -5,7 +5,7 @@ import { noFunctionAvailable, isEmpty, getDateTime, parse } from "shared-functio
 const FormInput = (props) => {
 
   // * Available props: -- 06/21/2023 MF
-  // * Properties: formInputID, labelText, srOnly, isRequired, inputType, placeholderText, inputValue, inputDisabled, inputHint, textareaRows, inputMin, inputMax, inputStep -- 06/21/2023 MF
+  // * Properties: formInputID, labelText, srOnly, isRequired, inputType, placeholderText, inputValue, inputDisabled, inputHint, textareaRows, textareaColumns, inputMin, inputMax, inputStep -- 06/21/2023 MF
   // * Functions: onChange -- 06/21/2023 MF
 
   let componentName = "FormInput";
@@ -22,6 +22,7 @@ const FormInput = (props) => {
   let textareaRows = isEmpty(props) === false && isEmpty(props.textareaRows) === false ? props.textareaRows : 10;
   // let textareaColumns = isEmpty(props) === false && isEmpty(props.textareaColumns) === false ? props.textareaColumns : "";
   let useInputAddon = isEmpty(props) === false && isEmpty(props.useInputAddon) === false ? props.useInputAddon : false;
+  let datalistName = isEmpty(props) === false && isEmpty(props.datalistName) === false ? props.datalistName : [];
 
   // * For number, range, date, datetime-local, month, time and week -- 07/25/2023 JH
   // * Default value is null to prevent other input types from having the attribute -- 07/25/2023 JH
@@ -89,7 +90,7 @@ const FormInput = (props) => {
       {/* // TODO add other input types -- 08/07/2023 JH */}
       {inputType !== "textarea" && inputType !== "toggle" && inputType !== "password" ?
 
-        <input type={inputType} id={formInputID} placeholder={placeholderText} value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} min={inputMin} max={inputMax} step={inputStep} />
+        <input type={inputType} id={formInputID} placeholder={placeholderText} value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} min={inputMin} max={inputMax} step={inputStep} list={datalistName} />
 
         : null}
 
