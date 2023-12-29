@@ -50,7 +50,7 @@ const DialogBox = (props) => {
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-primary" onClick={(event) => { setDialogBoxOpen(!dialogBoxOpen); }}>OK</button>
-                {/* <button type="button" className="btn btn-cancel" onClick={(event) => { setDialogBoxOpen(!dialogBoxOpen); }}>Cancel</button> */}
+                {/* <button type="button" className="btn btn-cancel" onClick={(event) => { dispatch(clearMessages()); setDialogBoxOpen(!dialogBoxOpen); }}>Cancel</button> */}
               </div>
             </div>
           </div>
