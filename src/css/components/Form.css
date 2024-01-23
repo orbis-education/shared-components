@@ -398,3 +398,133 @@ fieldset.form-group {
     }
   }
 }
+
+/* * For inline error messages -- 12/05/2023 JH */
+/* ============================================ */
+.input-error {
+  input,
+  select,
+  textarea {
+    border: 1px solid #721c24 !important;
+  }
+
+  .input-addon {
+    background-color: #fffafa !important;
+    border: 1px solid #721c24 !important;
+    border-right: none !important;
+  }
+
+
+  .form-group__password-input-group__password-addon {
+    background-color: #fffafa !important;
+    border: 1px solid #721c24 !important;
+    border-left: none !important;
+  }
+}
+
+.inline-alert {
+  position: relative;
+  width: max-content;
+  max-width: 100%;
+  color: #343434;
+  padding: 5px 10px 5px 4rem;
+  margin: .75rem 0 1rem 0;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
+
+  &:before {
+    color: rgba(255,255,255,1);
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    width: 50px;
+    display: block;
+    margin: 0 1rem 0 -4rem;
+    border-radius: 0 0 0 0;
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 15px;
+    border: 10px solid #ddd;
+    border-color: transparent transparent #ddd transparent;
+    display: block;
+  }
+
+  /* * Not being used, but available in case of future use -- 12/05/2023 JH */
+  /* &.inline-alert-success {
+    border: 1px solid #155724;
+    background-color: #fcfffc;
+  
+    &:before {
+      content: "\f00c";
+      background-color: #155724;
+    }
+
+    &:after {
+      border: 10px solid #155724;
+      border-color: transparent transparent #155724 transparent;
+    }
+  } */
+
+  /* * Not being used, but available in case of future use -- 12/05/2023 JH */
+  /* &.inline-alert-warning {
+    border: 1px solid #856405;
+    background-color: #fffefb;
+  
+    &:before {
+      content: "\f071";
+      background-color: #856405;
+    }
+
+    &:after {
+      border: 10px solid #856405;
+      border-color: transparent transparent #856405 transparent;
+    }
+  } */
+
+  &.inline-alert-danger {
+    border: 1px solid #721c24;
+    background-color: #fffafa;
+
+    &:before {
+      /* content: "\f057"; */
+      content: "\f071";
+      background-color: #721c24;
+    }
+  
+    &:after {
+      border: 10px solid #721c24;
+      border-color: transparent transparent #721c24 transparent;
+    }
+  }
+
+  /* * Not being used, but available in case of future use -- 12/05/2023 JH */
+  /* &.inline-alert-info {
+    border: 1px solid #0c5460;
+    background-color: #fafeff;
+  
+    &:before {
+      content: "\f05a";
+      background-color: #0c5460;
+    }
+
+    &:after {
+      border: 10px solid #0c5460;
+      border-color: transparent transparent #0c5460 transparent;
+    }
+  } */
+}
+
+fieldset .inline-alert {
+  margin-top: 0;
+}

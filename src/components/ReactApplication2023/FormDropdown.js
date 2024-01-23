@@ -25,6 +25,8 @@ const FormDropdown = (props) => {
   let inputValue = isEmpty(props) === false && isEmpty(props.inputValue) === false ? props.inputValue : "";
   let inputHint = isEmpty(props) === false && isEmpty(props.inputHint) === false ? props.inputHint : "";
 
+  let inlineError = isEmpty(props) === false && isEmpty(props.inlineError) === false ? props.inlineError : "";
+
   let updateValue = isEmpty(props.updateValue) === false ? props.updateValue : noFunctionAvailable;
 
   // * If srOnly is set to true, then the form item label is only visible to screen readers. -- 06/21/2023 MF
@@ -34,7 +36,8 @@ const FormDropdown = (props) => {
   });
 
   let formGroupClasses = classnames("form-group", {
-    "with-addon": useInputAddon === true
+    "with-addon": useInputAddon === true,
+    "input-error": isEmpty(inlineError) === false
   });
 
 
@@ -93,6 +96,12 @@ const FormDropdown = (props) => {
           : null}
 
       </select>
+
+      {isEmpty(inlineError) === false ?
+
+        <div className="inline-alert inline-alert-danger">{parse(inlineError)}</div>
+
+        : null}
 
     </div>
   );
