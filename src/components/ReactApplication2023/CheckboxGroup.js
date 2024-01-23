@@ -26,6 +26,8 @@ const CheckboxGroup = (props) => {
 
   let formColumns = isEmpty(props) === false && isEmpty(props.formColumns) === false ? props.formColumns : 1;
 
+  let inlineError = isEmpty(props) === false && isEmpty(props.inlineError) === false ? props.inlineError : "";
+
   let updateValue = isEmpty(props.updateValue) === false ? props.updateValue : noFunctionAvailable;
 
   const [isCollapsed, setIsCollapsed] = useState(true);
@@ -37,7 +39,8 @@ const CheckboxGroup = (props) => {
 
   let checkboxGroupClasses = classnames("checkbox-group", {
     "is-collapsible": isCollapsible === true,
-    "show": isCollapsed !== true
+    "show": isCollapsed !== true,
+    "input-error": isEmpty(inlineError) === false
   });
 
 
@@ -197,6 +200,12 @@ const CheckboxGroup = (props) => {
           : null}
 
       </ul>
+
+      {isEmpty(inlineError) === false ?
+
+        <div className="inline-alert inline-alert-danger">{parse(inlineError)}</div>
+
+        : null}
 
       {isCollapsible === true ?
 

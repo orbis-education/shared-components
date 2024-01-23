@@ -30,6 +30,8 @@ const FormInput = (props) => {
   let inputMax = isEmpty(props) === false && isEmpty(props.inputMax) === false ? props.inputMax : null;
   let inputStep = isEmpty(props) === false && isEmpty(props.inputStep) === false ? props.inputStep : null;
 
+  let inlineError = isEmpty(props) === false && isEmpty(props.inlineError) === false ? props.inlineError : "";
+
   let updateValue = isEmpty(props.updateValue) === false ? props.updateValue : noFunctionAvailable;
 
   const [showPassword, setShowPassword] = useState("password");
@@ -41,7 +43,8 @@ const FormInput = (props) => {
   });
 
   let formGroupClasses = classnames("form-group", {
-    "with-addon": useInputAddon === true
+    "with-addon": useInputAddon === true,
+    "input-error": isEmpty(inlineError) === false
   });
 
 
@@ -106,6 +109,12 @@ const FormInput = (props) => {
           </div>
 
         </div>
+
+        : null}
+
+      {isEmpty(inlineError) === false ?
+
+        <div className="inline-alert inline-alert-danger">{parse(inlineError)}</div>
 
         : null}
 

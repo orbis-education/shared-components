@@ -13,11 +13,19 @@ const Header = (props) => {
 
   document.title = "Orbis Education | " + applicationName;
 
+  let homeURL = "/";
+
+  if (window.location.href.includes("intranet.orbiseducation.com/test_local/") === true) {
+
+    homeURL = "./";
+
+  };
+
 
   return (
     <header>
 
-      <a href="./" className="orbis-logo-link">
+      <a href={homeURL} className="orbis-logo-link">
         <img src={logo} className="orbis-logo" alt="Orbis Education Logo" />
       </a>
 
