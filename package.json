@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Contains common components that are available for use by all applications developed.",
   "author": "Orbis Education",
-  "copyrightYear": "2023",
+  "copyrightYear": "2024",
   "repository": {
     "type": "git",
     "url": "https://github.com/orbis-education/shared-components"
