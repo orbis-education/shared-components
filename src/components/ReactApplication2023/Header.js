@@ -15,7 +15,7 @@ const Header = (props) => {
 
   let homeURL = "/";
 
-  if (window.location.href.includes("intranet.orbiseducation.com/test_local/") === true) {
+  if (window.location.href.includes("intranet.orbiseducation.com") === true) {
 
     homeURL = "./";
 
