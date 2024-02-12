@@ -1,4 +1,3 @@
-import parseHTML from "html-react-parser";
 import { isEmpty, getDateTime } from "shared-functions";
 
 const componentName = "ApplicationFunctions";
