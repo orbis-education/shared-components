@@ -5,6 +5,7 @@
 
 @import "./layout/Base.css";
 @import "./layout/Header.css";
+@import "./layout/SectionBlock.css";
 @import "./layout/Table.css";
 
 @import "./components/Buttons.css";
