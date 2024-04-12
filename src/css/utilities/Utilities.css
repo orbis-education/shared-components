@@ -1,3 +1,66 @@
+.ul-no-bullets {
+  list-style-type: none;
+  margin: 0 0 2rem 0;
+  padding: 0;
+
+  li {
+    margin-bottom: .5rem;
+  }
+}
+
+/* ? No longer needed? -- 07/21/2023 MF */
+/* .horizontal-list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  gap: 1rem;
+
+  strong {
+    display: block;
+    margin-bottom: .5rem;
+  }
+
+  li {
+    border-right: 1px solid #777;
+    padding-right: 1rem;
+
+    &:last-child {
+      border-right: none;
+      padding-right: 0;
+    }
+  }
+} */
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: .5rem;
+  width: 100%;
+
+  &.justify-end {
+    justify-content: flex-end;
+  }
+
+  &.justify-center {
+    justify-content: center;
+  }
+
+  &.space-between {
+    justify-content: space-between;
+  }
+
+  &.align-center {
+    align-items: center;
+  }
+
+  &.align-end {
+    align-items: flex-end;
+  }
+}
+
 /* hidden content for screen readers */
 .sr-only {
   position: absolute;
@@ -53,6 +116,9 @@
   width: 100% !important;
 }
 
+.opacity-50 {
+  opacity: .5 !important;
+}
 
 /* margin utilities copied from bootstrap */
 /*==========================================================*/
@@ -121,14 +187,4 @@
 }
 .mb-5 {
   margin-bottom: calc(var(--spacer) * 3) !important;
-}
-
-/* TODO remove -- 11/21/2023 JH */
-.mt-1rem {
-  margin-top: 1rem !important;
-}
-
-/* TODO remove -- 11/21/2023 JH */
-.mb-1rem {
-  margin-bottom: 1rem !important;
 }
