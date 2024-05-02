@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classnames from "classnames";
 import { noFunctionAvailable, isEmpty, getDateTime } from "shared-functions";
 
@@ -27,6 +27,28 @@ const DialogBox = (props) => {
     "modal-lg": size === "lg",
     "modal-xl": size === "xl"
   });
+
+
+  // * Close modal on ESC key. -- 02/13/2024 JH
+  useEffect(() => {
+
+    const handleKeyDown = (event) => {
+
+      if (event.key === "Escape") {
+
+        setDialogBoxOpen(false);
+
+      };
+
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+
+  }, []);
 
 
   return (
