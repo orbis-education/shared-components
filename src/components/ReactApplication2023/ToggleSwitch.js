@@ -8,7 +8,7 @@ const FormInput = (props) => {
   // * Properties: formInputID, labelText, srOnly, isRequired, inputValue, inputDisabled, inputHint, trueValue, falseValue -- 06/21/2023 MF
   // * Functions: updateValue -- 06/21/2023 MF
 
-  let componentName = "FormInput";
+  const componentName = "FormInput";
 
   let formInputID = isEmpty(props) === false && isEmpty(props.formInputID) === false ? props.formInputID : "";
   let labelText = isEmpty(props) === false && isEmpty(props.labelText) === false ? props.labelText : "";

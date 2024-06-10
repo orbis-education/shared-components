@@ -76,6 +76,7 @@ const DialogBox = (props) => {
               </div>
             </div>
           </div>
+          <div className="modal-backdrop" onClick={(event) => { setDialogBoxOpen(!dialogBoxOpen); }}></div>
         </div>
 
         : null}

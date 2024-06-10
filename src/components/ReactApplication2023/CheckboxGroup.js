@@ -8,7 +8,7 @@ const CheckboxGroup = (props) => {
   // * Properties: formInputID, legendText, srOnly, isRequired, inputDisabled, isCollapsible, startCollapsed, optionData, optionID, optionText, inputValue, inputHint -- 06/21/2023 MF
   // * Functions: updateValue -- 06/21/2023 MF
 
-  let componentName = "CheckboxGroup";
+  const componentName = "CheckboxGroup";
 
   let formInputID = isEmpty(props) === false && isEmpty(props.formInputID) === false ? props.formInputID : "";
   let legendText = isEmpty(props) === false && isEmpty(props.legendText) === false ? props.legendText : "";

@@ -8,7 +8,7 @@ const AlertPopup = (props) => {
   // * Properties: message, alertType, includeResetButton -- 12/30/2022 MF
   // * Functions: setMessage -- 12/30/2022 MF
 
-  let componentName = "AlertPopup";
+  const componentName = "AlertPopup";
 
   // let operationValue = isEmpty(props) === false && isEmpty(props.operationValue) === false ? props.operationValue : "";
   let alertType = isEmpty(props) === false && isEmpty(props.alertType) === false ? props.alertType : "";
