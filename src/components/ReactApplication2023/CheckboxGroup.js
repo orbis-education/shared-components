@@ -149,7 +149,7 @@ const CheckboxGroup = (props) => {
 
             {optionData.map((optionDataItem, index) => {
 
-              if ((isEmpty(optionDataItem.active) === false && optionDataItem.active === true) || isEmpty(optionDataItem.active) === true) {
+              if (optionDataItem.active === true || isEmpty(optionDataItem.active) === true) {
 
                 let filterInputValue = inputValue.filter(value => value === formatToString(optionDataItem[optionID]));
 

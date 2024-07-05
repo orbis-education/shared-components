@@ -130,7 +130,7 @@ const FormRadioGroup = (props) => {
 
             {optionData.map((optionDataItem) => {
 
-              if ((isEmpty(optionDataItem.active) === false && optionDataItem.active === true) || isEmpty(optionDataItem.active) === true) {
+              if (optionDataItem.active === true || isEmpty(optionDataItem.active) === true) {
 
                 // TODO: Temporary fix to convert true/false to 1/2. -- 09/13/2023 JH
                 let newInputValue = inputValue;
