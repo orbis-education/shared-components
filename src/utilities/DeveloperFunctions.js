@@ -198,7 +198,7 @@ export const allowLogging = ( /* baseURLLOR */) => {
 
   // // * Checking window.location.href.includes(baseURLLOR + "1387/index.html") and window.location.href.includes(baseURLLOR + "1293/index.html" are temporary to test on the LOR without other learning objects going out to production before this is ready. -- 01/14/2022 MF
   // if (isLocalDevelopment() === true || window.location.href.includes("intranet.orbiseducation.com/test_local/") === true || window.location.href.includes(baseURLLOR + "1387/index.html") || window.location.href.includes(baseURLLOR + "1293/index.html") === true) {
-  if (inLearningObjectEcosystem() === true && isLocalDevelopment() === false || process.env.REACT_APP_ALLOW_DEVELOPMENT_COMPUTERLOG === "True") {
+  if ((inLearningObjectEcosystem() === true && isLocalDevelopment() === false) || process.env.REACT_APP_ALLOW_DEVELOPMENT_COMPUTERLOG === "True") {
 
     return true;
 
