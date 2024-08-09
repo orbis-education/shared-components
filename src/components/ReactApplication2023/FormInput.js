@@ -91,9 +91,18 @@ const FormInput = (props) => {
         : null}
 
       {/* // TODO add other input types -- 08/07/2023 JH */}
-      {inputType !== "textarea" && inputType !== "toggle" && inputType !== "password" ?
+      {inputType !== "textarea" && inputType !== "toggle" && inputType !== "password" && inputType !== "color" ?
 
         <input type={inputType} id={formInputID} placeholder={placeholderText} value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} min={inputMin} max={inputMax} step={inputStep} list={datalistName} />
+
+        : null}
+
+      {inputType === "color" ?
+
+        <div className="color-input-container">
+          <input type={inputType} id={formInputID} placeholder={placeholderText} value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} />
+          {inputValue}
+        </div>
 
         : null}
 
