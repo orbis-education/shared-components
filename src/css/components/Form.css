@@ -154,6 +154,18 @@ input[type="time"], input[type="date"] {
   }
 } 
 
+.color-input-container {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+
+  input[type="color"] {
+    height: 45px;
+    width: 55px;
+    padding: 1px 2px;
+  }
+}
+
 /* * typically for checkboxes and radio buttons -- 02/23/2024 JH */
 fieldset.form-group {
   border: none;
@@ -418,5 +430,5 @@ fieldset.form-group {
 }
 
 fieldset .inline-alert {
-  margin-top: 0;
+  margin-top: 1rem;
 }

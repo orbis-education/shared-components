@@ -8,7 +8,7 @@ const FormInput = (props) => {
   // * Properties: formInputID, labelText, srOnly, isRequired, inputType, placeholderText, inputValue, inputDisabled, inputHint, textareaRows, textareaColumns, inputMin, inputMax, inputStep -- 06/21/2023 MF
   // * Functions: onChange -- 06/21/2023 MF
 
-  let componentName = "FormInput";
+  const componentName = "FormInput";
 
   let formInputID = isEmpty(props) === false && isEmpty(props.formInputID) === false ? props.formInputID : "";
   let labelText = isEmpty(props) === false && isEmpty(props.labelText) === false ? props.labelText : "";
@@ -91,9 +91,18 @@ const FormInput = (props) => {
         : null}
 
       {/* // TODO add other input types -- 08/07/2023 JH */}
-      {inputType !== "textarea" && inputType !== "toggle" && inputType !== "password" ?
+      {inputType !== "textarea" && inputType !== "toggle" && inputType !== "password" && inputType !== "color" ?
 
         <input type={inputType} id={formInputID} placeholder={placeholderText} value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} min={inputMin} max={inputMax} step={inputStep} list={datalistName} />
+
+        : null}
+
+      {inputType === "color" ?
+
+        <div className="color-input-container">
+          <input type={inputType} id={formInputID} placeholder={placeholderText} value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} />
+          {inputValue}
+        </div>
 
         : null}
 

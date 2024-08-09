@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classnames from "classnames";
 import { noFunctionAvailable, isEmpty, getDateTime } from "shared-functions";
 
@@ -61,6 +61,29 @@ const DialogBoxConfirmation = (props) => {
     content = "Are you sure you want to close this program?";
 
   };
+
+
+  // * Close modal on ESC key. -- 02/13/2024 JH
+  useEffect(() => {
+
+    const handleKeyDown = (event) => {
+
+      if (event.key === "Escape") {
+
+        setDialogBoxContinue(false);
+
+      };
+
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+
+  }, []);
+
 
   const modalStyles = classnames("modal-dialog", {
     "modal-sm": size === "sm",

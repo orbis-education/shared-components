@@ -116,6 +116,9 @@
   width: 100% !important;
 }
 
+.opacity-50 {
+  opacity: .5 !important;
+}
 
 /* margin utilities copied from bootstrap */
 /*==========================================================*/

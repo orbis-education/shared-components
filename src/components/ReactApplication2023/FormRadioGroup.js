@@ -8,7 +8,7 @@ const FormRadioGroup = (props) => {
   // * Properties: formInputID, legendText, srOnly, placeholderText,isRequired, inputDisabled, optionData, optionID, optionText, inputValue, inputHint, formColumns -- 06/21/2023 MF
   // * Functions: updateValue -- 06/21/2023 MF
 
-  let componentName = "FormRadioGroup";
+  const componentName = "FormRadioGroup";
 
   let formInputID = isEmpty(props) === false && isEmpty(props.formInputID) === false ? props.formInputID : "";
   let legendText = isEmpty(props) === false && isEmpty(props.legendText) === false ? props.legendText : "";
@@ -130,7 +130,7 @@ const FormRadioGroup = (props) => {
 
             {optionData.map((optionDataItem) => {
 
-              if ((isEmpty(optionDataItem.active) === false && optionDataItem.active === true) || isEmpty(optionDataItem.active) === true) {
+              if (optionDataItem.active === true || isEmpty(optionDataItem.active) === true) {
 
                 // TODO: Temporary fix to convert true/false to 1/2. -- 09/13/2023 JH
                 let newInputValue = inputValue;

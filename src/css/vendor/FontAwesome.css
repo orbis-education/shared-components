@@ -390,9 +390,17 @@
   content: "\f6d7";
 }
 
+.fa-user-md:before {
+  content: "\f0f0";
+}
 
+.fa-heartbeat:before {
+  content: "\f21e";
+}
 
-
+.fa-plus-square:before {
+  content: "\f0fe"
+}
 
 
 
