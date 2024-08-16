@@ -86,7 +86,11 @@ export const showDevelopment = (environmentMode, demonstrationMode) => {
 };
 
 
-export const showDemonstration = (environmentMode, demonstrationMode) => {
+export const showDemonstration = (/* environmentMode, */ demonstrationMode) => {
+
+  // TODO: Ignore the query string if the user doesn't view the learning object from a playground, executive demonstration, or linked to from the learning object repository administration application (if it's being viewed from a learning management system (LMS) or other outside location). -- 09/20/2023 MF
+
+  // * Demonstration Mode would always override the environmentMode value. -- 09/20/2023 MF
 
   if ( /* showDevelopment(environmentMode, demonstrationMode) === true || */ (demonstrationMode === true || process.env.REACT_APP_FORCE_DEMONSTRATION_MODE === "True") /* && environmentMode !== "production" */) {
 
@@ -151,7 +155,7 @@ export const showPlayground = (environmentMode, demonstrationMode) => {
 
 //   // * The reason behind marking learning objects this way is so that they aren't linked to from a learning management system (LMS) and used as a production learning object. The only production learning objects should be on the LOR. There are no exceptions that I'm aware of. -- 06/30/2023 MF
 
-//   if (environmentMode === "production" || (inElectron() === true && showDevelopment(environmentMode, demonstrationMode) !== true) || (showDevelopment(environmentMode, demonstrationMode) !== true && showDemonstration(/* environmentMode, */ demonstrationMode) !== true && window.location.href.includes("lor.orbiseducation.com") === true)) {
+//   if (environmentMode === "production" || (inElectron() === true && showDevelopment(environmentMode, demonstrationMode) !== true) || (showDevelopment(environmentMode, demonstrationMode) !== true && showDemonstration(demonstrationMode) !== true && window.location.href.includes("lor.orbiseducation.com") === true)) {
 
 //     return false;
 
