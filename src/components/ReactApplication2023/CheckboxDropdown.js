@@ -85,7 +85,7 @@ const CheckboxDropdown = (props) => {
 
           <React.Fragment>
 
-            <i className="fa fa-angle-down"></i><span className="sr-only">Open</span>
+            <i className="fa fa-angle-up"></i><span className="sr-only">Close</span>
 
           </React.Fragment>
 
@@ -93,7 +93,7 @@ const CheckboxDropdown = (props) => {
 
           <React.Fragment>
 
-            <i className="fa fa-angle-up"></i><span className="sr-only">Close</span>
+            <i className="fa fa-angle-down"></i><span className="sr-only">Open</span>
 
           </React.Fragment>
 

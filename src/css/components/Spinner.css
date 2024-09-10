@@ -6,14 +6,23 @@
   border-radius: 10px;
   margin-top: 2rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  padding: 2rem;
 }
 
 .loading-spinner {
-  width: 100%;
-  /* max-width: 200px; */
+  font-size: 4rem;
+  animation: .75s linear infinite loading-spinner;
+}
+
+@keyframes loading-spinner {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 
 .section-block .spinner-container {

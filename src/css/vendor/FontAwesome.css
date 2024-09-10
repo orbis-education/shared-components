@@ -320,6 +320,10 @@
   content: "\f0de";
 }
 
+.fa-spinner:before {
+  content: "\f110";
+}
+
 .fa-star:before {
   content: "\f005";
 }
