@@ -35,6 +35,7 @@ header {
 
 .orbis-logo-link {
   display: flex;
+  padding: 0;
 }
 
 .orbis-logo {

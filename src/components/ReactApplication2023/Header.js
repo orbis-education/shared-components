@@ -1,6 +1,6 @@
 import React from 'react';
 import { isEmpty, getDateTime } from "shared-functions";
-import logo from "../../assets/images/OrbisLogo.svg";
+import OrbisLogo from "./OrbisLogo";
 
 const Header = (props) => {
 
@@ -26,7 +26,7 @@ const Header = (props) => {
     <header>
 
       <a href={homeURL} className="orbis-logo-link">
-        <img src={logo} className="orbis-logo" alt="Orbis Education Logo" />
+        <OrbisLogo />
       </a>
 
       <h1>{applicationName}</h1>
