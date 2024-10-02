@@ -10,6 +10,8 @@
   overflow-x: auto;
 
   &.tabs--with-divider {
+    background-color: #fff;
+    
     &:before {
       content: "";
       position: absolute;
