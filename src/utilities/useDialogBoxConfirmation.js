@@ -121,7 +121,6 @@ export const useDialogBoxConfirmation = () => {
 
     let newDialogBoxType = isEmpty(data) === false && isEmpty(data.dialogBoxType) === false ? data.dialogBoxType : "confirmRemove";
 
-    // * Scroll to top of the page after clicking the button. -- 08/05/2021 MF
     // window.scrollTo(0, 0);
 
     setDeletingRecord(true);
@@ -137,7 +136,6 @@ export const useDialogBoxConfirmation = () => {
 
     let newDialogBoxType = isEmpty(data) === false && isEmpty(data.dialogBoxType) === false ? data.dialogBoxType : "confirmRemove";
 
-    // * Scroll to top of the page after clicking the button. -- 08/05/2021 MF
     // window.scrollTo(0, 0);
 
     setHardDeletingRecord(true);
