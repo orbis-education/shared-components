@@ -68,6 +68,50 @@
       }
     }
   }
+
+  &.vertical-tabs {
+    flex-direction: column;
+    gap: 2px;
+    padding: 0;
+
+    .tabs__tab-item, 
+    button.tabs__tab-item {
+      background-color: rgba(0,0,0,.075);
+      border: none;
+      border-right: 1px solid #ddd;
+      border-radius: .5rem 0 0 .5rem;
+      padding: 12px 14px;
+      text-align: left;
+      line-height: 1.2;
+      font-weight: normal;
+    
+      &:hover {
+        border: none;
+        border-right: 1px solid #ddd;
+      }
+
+      &:focus {
+        box-shadow: none;
+        border: none;
+      }
+
+      &.active {
+        background-color: #fff;
+        border: none;
+        border-right: 1px solid #fff;
+        color: #3561B5;
+        font-weight: 700;
+        position: relative;
+        z-index: 3;
+
+        &:hover {
+          background-color: #aaa;
+          border: none;
+          border-right: 1px solid #ddd;
+        }
+      }
+    }
+  }
 }
 
 .tab-content {

@@ -17,6 +17,12 @@
   max-width: 1632px;
 }
 
+.section-block.extra-large {
+  margin: 1rem 2rem;
+  width: calc(100% - 4rem);
+  max-width: unset;
+}
+
 .transparent-section {
   width: 100%;
   margin: 0 0 0 2rem;
