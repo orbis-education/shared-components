@@ -9,7 +9,7 @@ const OrbisLogo = (props) => {
   const componentName = "OrbisLogo";
 
   let classes = isEmpty(props) === false && isEmpty(props.classes) === false ? props.classes : "orbis-logo";
-  let width = isEmpty(props) === false && isEmpty(props.width) === false ? props.width : "";
+  let width = isEmpty(props) === false && isEmpty(props.width) === false ? props.width : "100%";
 
   return (
     <svg className={classes} width={width} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1624.91 556.67">
