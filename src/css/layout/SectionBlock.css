@@ -9,18 +9,18 @@
   flex-direction: column;
   width: 100%;
   max-width: 1114px;
-}
+  
+  &.large {
+    margin: 1rem 2rem;
+    width: 100%;
+    max-width: 1632px;
+  }
 
-.section-block.large {
-  margin: 1rem 2rem;
-  width: 100%;
-  max-width: 1632px;
-}
-
-.section-block.extra-large {
-  margin: 1rem 2rem;
-  width: calc(100% - 4rem);
-  max-width: unset;
+  &.extra-large {
+    margin: 1rem 2rem;
+    width: calc(100% - 4rem);
+    max-width: unset;
+  }
 }
 
 .transparent-section {
@@ -31,6 +31,12 @@
   flex-direction: column;
   padding: 2rem 0;
   position: relative;
+
+  &.extra-large {
+    margin: 1rem 2rem;
+    width: calc(100% - 4rem);
+    max-width: unset;
+  }
 }
 
 @media (max-width: 600px) {

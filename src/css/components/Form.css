@@ -270,6 +270,7 @@ fieldset.form-group.checkbox-dropdown-group {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: .5rem;
     width: 100%;
     font-weight: 400;
     background-color: #fff;
@@ -281,6 +282,7 @@ fieldset.form-group.checkbox-dropdown-group {
     border-radius: 5px;
     height: 40.5px;
     position: relative;
+    text-wrap: nowrap;
 
     &:hover {
       background-color: #ddd;
@@ -299,7 +301,8 @@ fieldset.form-group.checkbox-dropdown-group {
     border-radius: 5px;
     box-shadow: 0 3px 6px 0 rgba(0,0,0,.4);
     padding: .5rem 1rem;
-    width: 100%;
+    min-width: 100%;
+    width: max-content;
     max-height: 300px;
     overflow-y: scroll;
     z-index: 20;
