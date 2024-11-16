@@ -213,3 +213,18 @@ export const allowLogging = ( /* baseURLLOR */) => {
   };
 
 };
+
+
+export const showAuthentication = () => {
+
+  if (isLocalDevelopment() === true || inElectron() === true || window.location.href.includes("lor.orbiseducation.com") === true) {
+
+    return false;
+
+  } else {
+
+    return true;
+
+  };
+
+};
