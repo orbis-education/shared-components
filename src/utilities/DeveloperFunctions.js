@@ -217,13 +217,13 @@ export const allowLogging = ( /* baseURLLOR */) => {
 
 export const showAuthentication = () => {
 
-  if (isLocalDevelopment() === true || inElectron() === true || window.location.href.includes("lor.orbiseducation.com") === true) {
+  if (window.location.href.includes("lor.orbiseducation.com") === false && window.location.href.includes("lor-dev.") === false && window.location.href.includes("lor-staging.") === false && (window.location.href.includes("orbiseducation.com") === true || window.location.href.includes("dewfapvs2001e.gce.com") === true)) {
 
-    return false;
+    return true;
 
   } else {
 
-    return true;
+    return false;
 
   };
 
