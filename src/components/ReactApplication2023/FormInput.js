@@ -23,6 +23,7 @@ const FormInput = (props) => {
   // let textareaColumns = isEmpty(props) === false && isEmpty(props.textareaColumns) === false ? props.textareaColumns : "";
   let useInputAddon = isEmpty(props) === false && isEmpty(props.useInputAddon) === false ? props.useInputAddon : false;
   let datalistName = isEmpty(props) === false && isEmpty(props.datalistName) === false ? props.datalistName : [];
+  let autoFocus = isEmpty(props) === false && isEmpty(props.autoFocus) === false ? props.autoFocus : false;
 
   // * For number, range, date, datetime-local, month, time and week -- 07/25/2023 JH
   // * Default value is null to prevent other input types from having the attribute -- 07/25/2023 JH
@@ -93,14 +94,14 @@ const FormInput = (props) => {
       {/* // TODO add other input types -- 08/07/2023 JH */}
       {inputType !== "textarea" && inputType !== "toggle" && inputType !== "password" && inputType !== "color" ?
 
-        <input type={inputType} id={formInputID} placeholder={placeholderText} value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} min={inputMin} max={inputMax} step={inputStep} list={datalistName} />
+        <input type={inputType} id={formInputID} placeholder={placeholderText} value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} min={inputMin} max={inputMax} step={inputStep} list={datalistName} autoFocus={autoFocus} />
 
         : null}
 
       {inputType === "color" ?
 
         <div className="color-input-container">
-          <input type={inputType} id={formInputID} placeholder={placeholderText} value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} />
+          <input type={inputType} id={formInputID} placeholder={placeholderText} value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} autoFocus={autoFocus} />
           {inputValue}
         </div>
 
@@ -110,7 +111,7 @@ const FormInput = (props) => {
 
         <div className="form-group__password-input-group">
 
-          <input type={showPassword} id={formInputID} placeholder={placeholderText} value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} min={inputMin} max={inputMax} step={inputStep} />
+          <input type={showPassword} id={formInputID} placeholder={placeholderText} value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} min={inputMin} max={inputMax} step={inputStep} autoFocus={autoFocus} />
 
           <div className="form-group__password-input-group__password-addon" onMouseOver={(event) => { setShowPassword("text"); }} onMouseOut={(event) => { setShowPassword("password"); }} title="Hover to show password.">
             <i className="fas fa-eye"></i>
