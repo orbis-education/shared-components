@@ -23,9 +23,9 @@
   ],
   "scripts": {
     "build:css": "postcss lib/css/Index.css -o dist/css/styles.css",
+    "build:vite": "vite build",
     "prebuild": "rimraf dist",
-    "build": "npm-run-all build:css rollup",
-    "rollup": "rollup -c",
+    "build": "npm-run-all build:css build:vite",
     "prepublish": "npm run build"
   },
   "devDependencies": {
