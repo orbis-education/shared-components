@@ -9,10 +9,20 @@
     "url": "https://github.com/orbis-education/shared-components"
   },
   "private": true,
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "main": "dist/shared-components.umd.cjs",
+  "module": "dist/shared-components.js",
+  "exports": {
+    ".": {
+      "import": "./dist/shared-components.js",
+      "require": "./dist/shared-components.umd.cjs"
+    },
+    "./css/styles.css": "./dist/css/styles.css"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build:css": "postcss src/css/Index.css -o src/css/styles.css",
+    "build:css": "postcss lib/css/Index.css -o dist/css/styles.css",
     "prebuild": "rimraf dist",
     "build": "npm-run-all build:css rollup",
     "rollup": "rollup -c",
@@ -26,6 +36,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
+    "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
     "classnames": "^2.5.1",
     "dotenv": "^16.4.5",
