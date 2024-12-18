@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import classnames from "classnames";
 import { noFunctionAvailable, isEmpty, isNonEmptyArray, formatToString, parse } from "shared-functions";
-import { useNativeClickListener } from "../../hooks/useNativeClickListener";
+import { useNativeClickListener } from "../hooks/useNativeClickListener";
 
 const CheckboxDropdown = (props) => {
 
