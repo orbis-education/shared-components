@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import classnames from "classnames";
-import { noFunctionAvailable, isEmpty, getDateTime, isNonEmptyArray, addLog, addErrorLog, parse } from "shared-functions";
+import { noFunctionAvailable, isEmpty, parse } from "shared-functions";
 
 const AlertPopup = (props) => {
 
@@ -8,7 +8,7 @@ const AlertPopup = (props) => {
   // * Properties: message, alertType, includeResetButton -- 12/30/2022 MF
   // * Functions: setMessage -- 12/30/2022 MF
 
-  const componentName = "AlertPopup";
+  // const componentName = "AlertPopup";
 
   // let operationValue = isEmpty(props) === false && isEmpty(props.operationValue) === false ? props.operationValue : "";
   let alertType = isEmpty(props) === false && isEmpty(props.alertType) === false ? props.alertType : "";

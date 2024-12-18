@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import classnames from "classnames";
-import { noFunctionAvailable, isEmpty, getDateTime } from "shared-functions";
+import { noFunctionAvailable, isEmpty } from "shared-functions";
 
 const DialogBoxConfirmation = (props) => {
 
@@ -8,7 +8,7 @@ const DialogBoxConfirmation = (props) => {
   // * Properties: dialogBoxOpen, dialogBoxType, dialogBoxSize, dialogBoxTitle, dialogBoxContent -- 11/17/2023 MF
   // * Functions: setDialogBoxContinue -- 07/20/2023 MF
 
-  const componentName = "DialogBoxConfirmation";
+  // const componentName = "DialogBoxConfirmation";
 
   let dialogBoxOpen = isEmpty(props) === false && isEmpty(props.dialogBoxOpen) === false ? props.dialogBoxOpen : "";
   let dialogBoxType = isEmpty(props) === false && isEmpty(props.dialogBoxType) === false ? props.dialogBoxType : ""; // * confirmDelete -- 07/15/2021 MF
@@ -82,6 +82,7 @@ const DialogBoxConfirmation = (props) => {
       window.removeEventListener("keydown", handleKeyDown);
     };
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 

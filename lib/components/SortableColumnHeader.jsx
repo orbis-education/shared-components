@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from "classnames";
-import { noFunctionAvailable, isEmpty, getDateTime } from "shared-functions";
+import { noFunctionAvailable, isEmpty } from "shared-functions";
 
 const SortableColumnHeader = (props) => {
 
@@ -8,7 +8,7 @@ const SortableColumnHeader = (props) => {
   // * Properties: columnText, columnPropertyName, sortDirection, sortProperty -- 06/27/2024 JH
   // * Functions: setSortProperty, setSortDirection -- 06/27/2024 JH
 
-  const componentName = "SortableColumnHeader";
+  // const componentName = "SortableColumnHeader";
 
   let columnText = isEmpty(props) === false && isEmpty(props.columnText) === false ? props.columnText : "";
   let columnPropertyName = isEmpty(props) === false && isEmpty(props.columnPropertyName) === false ? props.columnPropertyName : "";
