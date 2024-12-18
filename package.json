@@ -15,8 +15,7 @@
     ".": {
       "import": "./dist/shared-components.js",
       "require": "./dist/shared-components.umd.cjs"
-    },
-    "./css/styles.css": "./dist/css/styles.css"
+    }
   },
   "files": [
     "dist"
