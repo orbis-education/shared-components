@@ -23,10 +23,8 @@
   ],
   "scripts": {
     "start": "vite",
-    "build:css": "postcss lib/css/Index.css -o dist/css/styles.css",
-    "build:vite": "vite build",
+    "build": "vite build",
     "prebuild": "rimraf dist",
-    "build": "npm-run-all build:css build:vite",
     "prepublish": "npm run build"
   },
   "devDependencies": {
