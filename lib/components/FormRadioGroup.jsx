@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import classnames from "classnames";
-import { noFunctionAvailable, isEmpty, getDateTime, isNonEmptyArray, formatToString, parse } from "shared-functions";
+import { noFunctionAvailable, isEmpty, isNonEmptyArray, formatToString, parse } from "shared-functions";
 
 const FormRadioGroup = (props) => {
 
@@ -8,7 +8,7 @@ const FormRadioGroup = (props) => {
   // * Properties: formInputID, legendText, srOnly, placeholderText,isRequired, inputDisabled, optionData, optionID, optionText, inputValue, inputHint, formColumns -- 06/21/2023 MF
   // * Functions: updateValue -- 06/21/2023 MF
 
-  const componentName = "FormRadioGroup";
+  // const componentName = "FormRadioGroup";
 
   let formInputID = isEmpty(props) === false && isEmpty(props.formInputID) === false ? props.formInputID : "";
   let legendText = isEmpty(props) === false && isEmpty(props.legendText) === false ? props.legendText : "";
@@ -171,7 +171,7 @@ const FormRadioGroup = (props) => {
                   </li>
                 );
 
-              };
+              } else { return null; };
 
             })}
 

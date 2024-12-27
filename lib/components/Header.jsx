@@ -1,5 +1,5 @@
 import React from 'react';
-import { isEmpty, getDateTime } from "shared-functions";
+import { isEmpty } from "shared-functions";
 import OrbisLogo from "./OrbisLogo";
 
 const Header = (props) => {
@@ -7,7 +7,7 @@ const Header = (props) => {
   // * Available props: -- 07/17/2023 MF
   // * Properties: applicationName -- 07/17/2023 MF
 
-  const componentName = "Header";
+  // const componentName = "Header";
 
   let applicationName = isEmpty(props) === false && isEmpty(props.applicationName) === false ? props.applicationName : "0.0.0";
 
