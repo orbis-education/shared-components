@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import classnames from "classnames";
-import { noFunctionAvailable, isEmpty, isNonEmptyArray, formatToString, parse } from "shared-functions";
+import { noFunctionAvailable, isEmpty, getDateTime, isNonEmptyArray, formatToString, parse } from "shared-functions";
 
 const FormRadioGroup = (props) => {
 
@@ -8,7 +8,7 @@ const FormRadioGroup = (props) => {
   // * Properties: formInputID, legendText, srOnly, placeholderText,isRequired, inputDisabled, optionData, optionID, optionText, inputValue, inputHint, formColumns -- 06/21/2023 MF
   // * Functions: updateValue -- 06/21/2023 MF
 
-  // const componentName = "FormRadioGroup";
+  const componentName = "FormRadioGroup";
 
   let formInputID = isEmpty(props) === false && isEmpty(props.formInputID) === false ? props.formInputID : "";
   let legendText = isEmpty(props) === false && isEmpty(props.legendText) === false ? props.legendText : "";
@@ -143,7 +143,7 @@ const FormRadioGroup = (props) => {
 
                 return (
                   <li key={optionDataItem[optionID]}>
-                    <label>
+                    <label className={`${formatToString(optionDataItem[optionID]) === formatToString(newInputValue) ? "active" : ""}`}>
 
                       <input type="radio" id={formInputID} value={optionDataItem[optionID]} checked={formatToString(optionDataItem[optionID]) === formatToString(newInputValue)} disabled={inputDisabled} onChange={(event) => { updateValue(event.target.value); }} />
 
@@ -157,7 +157,7 @@ const FormRadioGroup = (props) => {
 
                         } else if (optionTextItem.type === "string") {
 
-                          displayOptionText = optionTextItem.text;
+                          displayOptionText = parse(optionTextItem.text);
 
                         };
 

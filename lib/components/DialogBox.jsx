@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import classnames from "classnames";
-import { noFunctionAvailable, isEmpty } from "shared-functions";
+import { noFunctionAvailable, isEmpty, getDateTime } from "shared-functions";
 
 const DialogBox = (props) => {
 
@@ -8,7 +8,7 @@ const DialogBox = (props) => {
   // * Properties: dialogBoxOpen, dialogBoxType, dialogBoxSize, dialogBoxTitle, dialogBoxContent -- 11/17/2023 MF
   // * Functions: setDialogBoxOpen -- 07/20/2023 MF
 
-  // const componentName = "DialogBox";
+  const componentName = "DialogBox";
 
   let dialogBoxOpen = isEmpty(props) === false && isEmpty(props.dialogBoxOpen) === false ? props.dialogBoxOpen : "";
   let dialogBoxSize = isEmpty(props) === false && isEmpty(props.dialogBoxSize) === false ? props.dialogBoxSize : ""; // * sm, md, lg, xl -- 07/15/2021 MF

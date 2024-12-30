@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import classnames from "classnames";
-import { noFunctionAvailable, isEmpty, isNonEmptyArray, formatToString, parse } from "shared-functions";
+import { noFunctionAvailable, isEmpty, getDateTime, isNonEmptyArray, formatToString, parse } from "shared-functions";
 import { useNativeClickListener } from "../hooks/useNativeClickListener";
 
 const CheckboxDropdown = (props) => {
@@ -9,7 +9,7 @@ const CheckboxDropdown = (props) => {
   // * Properties: formInputID, legendText, srOnly, isRequired, inputDisabled, isCollapsible, startCollapsed, optionData, optionID, optionText, inputValue, inputHint -- 06/21/2023 MF
   // * Functions: updateValue -- 06/21/2023 MF
 
-  // const componentName = "CheckboxDropdown";
+  const componentName = "CheckboxDropdown";
 
   const dropdownRef = useRef(null);
 
