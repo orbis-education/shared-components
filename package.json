@@ -1,9 +1,9 @@
 {
   "name": "shared-components",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Contains common components that are available for use by all applications developed.",
   "author": "Orbis Education",
-  "copyrightYear": "2024",
+  "copyrightYear": "2025",
   "repository": {
     "type": "git",
     "url": "https://github.com/orbis-education/shared-components"
