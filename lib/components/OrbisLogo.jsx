@@ -1,12 +1,12 @@
 import React from 'react';
-import { isEmpty, getDateTime } from "shared-functions";
+import { isEmpty /* , getDateTime */ } from "shared-functions";
 
 const OrbisLogo = (props) => {
 
   // * Available props: -- 07/17/2023 MF
   // * Properties: classes, width -- 07/17/2023 MF
 
-  const componentName = "OrbisLogo";
+  // const componentName = "OrbisLogo";
 
   let classes = isEmpty(props) === false && isEmpty(props.classes) === false ? props.classes : "orbis-logo";
   let width = isEmpty(props) === false && isEmpty(props.width) === false ? props.width : "100%";

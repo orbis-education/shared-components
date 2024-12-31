@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import classnames from "classnames";
-import { noFunctionAvailable, isEmpty, getDateTime, parse } from "shared-functions";
+import { noFunctionAvailable, isEmpty, /* getDateTime, */ parse } from "shared-functions";
 
 const FormInput = (props) => {
 
@@ -8,7 +8,7 @@ const FormInput = (props) => {
   // * Properties: formInputID, labelText, srOnly, isRequired, inputType, placeholderText, inputValue, inputDisabled, inputHint, textareaRows, textareaColumns, inputMin, inputMax, inputStep -- 06/21/2023 MF
   // * Functions: onChange -- 06/21/2023 MF
 
-  const componentName = "FormInput";
+  // const componentName = "FormInput";
 
   let formInputID = isEmpty(props) === false && isEmpty(props.formInputID) === false ? props.formInputID : "";
   let labelText = isEmpty(props) === false && isEmpty(props.labelText) === false ? props.labelText : "";

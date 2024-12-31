@@ -1,6 +1,6 @@
 import React from "react";
 import classnames from "classnames";
-import { noFunctionAvailable, isEmpty, getDateTime, isNonEmptyArray, parse } from "shared-functions";
+import { noFunctionAvailable, isEmpty, /* getDateTime, */ isNonEmptyArray, parse } from "shared-functions";
 
 const FormDropdown = (props) => {
 
@@ -8,7 +8,7 @@ const FormDropdown = (props) => {
   // * Properties: formInputID, labelText, srOnly, placeholderText,isRequired, inputDisabled, optionData, optionID, optionText, inputValue, inputHint -- 06/21/2023 MF
   // * Functions: updateValue -- 06/21/2023 MF
 
-  const componentName = "FormDropdown";
+  // const componentName = "FormDropdown";
 
   let formInputID = isEmpty(props) === false && isEmpty(props.formInputID) === false ? props.formInputID : "";
   let labelText = isEmpty(props) === false && isEmpty(props.labelText) === false ? props.labelText : "";
