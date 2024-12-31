@@ -9,9 +9,9 @@ const Header = (props) => {
 
   // const componentName = "Header";
 
-  let applicationName = isEmpty(props) === false && isEmpty(props.applicationName) === false ? props.applicationName : "0.0.0";
+  let applicationName = isEmpty(props) === false && isEmpty(props.applicationName) === false ? props.applicationName : "Application";
 
-  document.title = "Orbis Education | " + applicationName;
+  document.title = `Orbis Education | ${applicationName}`;
 
   let homeURL = "/";
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import classnames from "classnames";
 import { noFunctionAvailable, isEmpty, /* getDateTime, */ isNonEmptyArray, formatToString, parse } from "shared-functions";
 
-const CheckboxGroup = (props) => {
+const CheckboxGroup = ({ formInputID = "", ...props }) => {
 
   // * Available props: -- 06/21/2023 MF
   // * Properties: formInputID, legendText, srOnly, isRequired, inputDisabled, isCollapsible, startCollapsed, optionData, optionID, optionText, inputValue, inputHint -- 06/21/2023 MF
@@ -10,7 +10,7 @@ const CheckboxGroup = (props) => {
 
   // const componentName = "CheckboxGroup";
 
-  let formInputID = isEmpty(props) === false && isEmpty(props.formInputID) === false ? props.formInputID : "";
+  // let formInputID = isEmpty(props) === false && isEmpty(props.formInputID) === false ? props.formInputID : "";
   let legendText = isEmpty(props) === false && isEmpty(props.legendText) === false ? props.legendText : "";
   let srOnly = isEmpty(props) === false && isEmpty(props.srOnly) === false ? props.srOnly : "";
   let isRequired = isEmpty(props) === false && isEmpty(props.isRequired) === false ? props.isRequired : false;

@@ -3,7 +3,7 @@ import classnames from "classnames";
 import { noFunctionAvailable, isEmpty, /* getDateTime, */ isNonEmptyArray, formatToString, parse } from "shared-functions";
 import { useNativeClickListener } from "../hooks/useNativeClickListener";
 
-const CheckboxDropdown = (props) => {
+const CheckboxDropdown = ({ formInputID = "", ...props }) => {
 
   // * Available props: -- 06/21/2023 MF
   // * Properties: formInputID, legendText, srOnly, isRequired, inputDisabled, isCollapsible, startCollapsed, optionData, optionID, optionText, inputValue, inputHint -- 06/21/2023 MF
@@ -13,7 +13,7 @@ const CheckboxDropdown = (props) => {
 
   const dropdownRef = useRef(null);
 
-  let formInputID = isEmpty(props) === false && isEmpty(props.formInputID) === false ? props.formInputID : "";
+  // let formInputID = isEmpty(props) === false && isEmpty(props.formInputID) === false ? props.formInputID : "";
   let legendText = isEmpty(props) === false && isEmpty(props.legendText) === false ? props.legendText : "";
   let srOnly = isEmpty(props) === false && isEmpty(props.srOnly) === false ? props.srOnly : "";
   let placeholderText = isEmpty(props) === false && isEmpty(props.placeholderText) === false ? props.placeholderText : "Select Value";

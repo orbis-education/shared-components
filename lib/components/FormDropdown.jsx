@@ -2,7 +2,7 @@ import React from "react";
 import classnames from "classnames";
 import { noFunctionAvailable, isEmpty, /* getDateTime, */ isNonEmptyArray, parse } from "shared-functions";
 
-const FormDropdown = (props) => {
+const FormDropdown = ({ formInputID = "", ...props }) => {
 
   // * Available props: -- 06/21/2023 MF
   // * Properties: formInputID, labelText, srOnly, placeholderText,isRequired, inputDisabled, optionData, optionID, optionText, inputValue, inputHint -- 06/21/2023 MF
@@ -10,7 +10,7 @@ const FormDropdown = (props) => {
 
   // const componentName = "FormDropdown";
 
-  let formInputID = isEmpty(props) === false && isEmpty(props.formInputID) === false ? props.formInputID : "";
+  // let formInputID = isEmpty(props) === false && isEmpty(props.formInputID) === false ? props.formInputID : "";
   let labelText = isEmpty(props) === false && isEmpty(props.labelText) === false ? props.labelText : "";
   let srOnly = isEmpty(props) === false && isEmpty(props.srOnly) === false ? props.srOnly : "";
   let placeholderText = isEmpty(props) === false && isEmpty(props.placeholderText) === false ? props.placeholderText : "Select Value";

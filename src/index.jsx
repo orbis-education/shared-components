@@ -15,14 +15,15 @@ const root = createRoot(document.getElementById("root"));
 
 const App = () => (
 	<div>
-		<Header />
+		<Header applicationName="Shared Components" />
 		<FormInput inputType="text" placeholderText="hello" />
 		<FormInput inputType="textarea" placeholderText="hello" />
 		<FormInput inputType="password" />
 		<AlertPopup message="also hello" alertType="success" />
 		<AlertPopup message="also hello, again" alertType="error" />
+		<footer className="copy">&copy; {copyrightYear} Orbis Education. All rights reserved. Version: {applicationVersion}</footer>
 	</div>
 );
 
-root.render(<App applicationVersion={applicationVersion} copyrightYear={copyrightYear} />);
+root.render(<App />);
 
