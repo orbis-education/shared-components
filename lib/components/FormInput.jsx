@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import classnames from "classnames";
-import { noFunctionAvailable, isEmpty, parse } from "shared-functions";
+import { noFunctionAvailable, isEmpty, /* getDateTime, */ parse } from "shared-functions";
 
-const FormInput = (props) => {
+const FormInput = ({ formInputID = "", ...props }) => {
 
   // * Available props: -- 06/21/2023 MF
   // * Properties: formInputID, labelText, srOnly, isRequired, inputType, placeholderText, inputValue, inputDisabled, inputHint, textareaRows, textareaColumns, inputMin, inputMax, inputStep -- 06/21/2023 MF
@@ -10,7 +10,7 @@ const FormInput = (props) => {
 
   // const componentName = "FormInput";
 
-  let formInputID = isEmpty(props) === false && isEmpty(props.formInputID) === false ? props.formInputID : "";
+  // let formInputID = isEmpty(props) === false && isEmpty(props.formInputID) === false ? props.formInputID : "";
   let labelText = isEmpty(props) === false && isEmpty(props.labelText) === false ? props.labelText : "";
   let srOnly = isEmpty(props) === false && isEmpty(props.srOnly) === false ? props.srOnly : "";
   let isRequired = isEmpty(props) === false && isEmpty(props.isRequired) === false ? props.isRequired : false;
@@ -26,7 +26,7 @@ const FormInput = (props) => {
   let autoFocus = isEmpty(props) === false && isEmpty(props.autoFocus) === false ? props.autoFocus : false;
 
   // * For number, range, date, datetime-local, month, time and week -- 07/25/2023 JH
-  // * Default value is null to prevent other input types from having the attribute -- 07/25/2023 JH
+  // * Default value is null to prevent other input types from having the attribute. -- 07/25/2023 JH
   let inputMin = isEmpty(props) === false && isEmpty(props.inputMin) === false ? props.inputMin : null;
   let inputMax = isEmpty(props) === false && isEmpty(props.inputMax) === false ? props.inputMax : null;
   let inputStep = isEmpty(props) === false && isEmpty(props.inputStep) === false ? props.inputStep : null;
@@ -91,7 +91,7 @@ const FormInput = (props) => {
 
         : null}
 
-      {/* // TODO add other input types -- 08/07/2023 JH */}
+      {/* // TODO: Add other input types. -- 08/07/2023 JH */}
       {inputType !== "textarea" && inputType !== "toggle" && inputType !== "password" && inputType !== "color" ?
 
         <input type={inputType} id={formInputID} placeholder={placeholderText} value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} min={inputMin} max={inputMax} step={inputStep} list={datalistName} autoFocus={autoFocus} />

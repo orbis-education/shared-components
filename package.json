@@ -1,9 +1,9 @@
 {
   "name": "shared-components",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Contains common components that are available for use by all applications developed.",
   "author": "Orbis Education",
-  "copyrightYear": "2024",
+  "copyrightYear": "2025",
   "repository": {
     "type": "git",
     "url": "https://github.com/orbis-education/shared-components"
@@ -21,8 +21,10 @@
     "dist"
   ],
   "scripts": {
-    "start": "vite",
+    "dev": "vite --open",
+    "start": "vite --open",
     "build": "vite build",
+    "preview": "vite preview",
     "prebuild": "rimraf dist",
     "prepublish": "npm run build"
   },
@@ -30,7 +32,6 @@
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
     "classnames": "^2.5.1",
-    "npm-run-all": "^4.1.5",
     "postcss": "^8.4.49",
     "postcss-cli": "^11.0.0",
     "postcss-import": "^16.1.0",

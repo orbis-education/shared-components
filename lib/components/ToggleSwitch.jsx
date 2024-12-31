@@ -1,8 +1,8 @@
 import React from "react";
 import classnames from "classnames";
-import { noFunctionAvailable, isEmpty, parse } from "shared-functions";
+import { noFunctionAvailable, isEmpty, /* getDateTime, */ parse } from "shared-functions";
 
-const FormInput = (props) => {
+const FormInput = ({ formInputID = "", ...props }) => {
 
   // * Available props: -- 06/21/2023 MF
   // * Properties: formInputID, labelText, srOnly, isRequired, inputValue, inputDisabled, inputHint, trueValue, falseValue -- 06/21/2023 MF
@@ -10,7 +10,7 @@ const FormInput = (props) => {
 
   // const componentName = "FormInput";
 
-  let formInputID = isEmpty(props) === false && isEmpty(props.formInputID) === false ? props.formInputID : "";
+  // let formInputID = isEmpty(props) === false && isEmpty(props.formInputID) === false ? props.formInputID : "";
   let labelText = isEmpty(props) === false && isEmpty(props.labelText) === false ? props.labelText : "";
   let srOnly = isEmpty(props) === false && isEmpty(props.srOnly) === false ? props.srOnly : "";
   let isRequired = isEmpty(props) === false && isEmpty(props.isRequired) === false ? props.isRequired : false;
