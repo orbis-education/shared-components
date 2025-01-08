@@ -1,6 +1,7 @@
+import path from "path";
 import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
-import path from "path";
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 
 export default defineConfig(({ mode }) => {
 	// * Load env file based on `mode` in the current working directory.
@@ -9,7 +10,7 @@ export default defineConfig(({ mode }) => {
 	const env = loadEnv(mode, process.cwd(), "");
 	return {
 		base: "./",
-		plugins: [react()],
+		plugins: [react(), cssInjectedByJsPlugin()],
 		server: {
 			port: env.PORT
 		},
@@ -22,7 +23,8 @@ export default defineConfig(({ mode }) => {
 			},
 			rollupOptions: {
 				external: ["react", "react-dom"] // * External dependencies
-			}
+			},
+			cssCodeSplit: false
 		}
 	};
 });
