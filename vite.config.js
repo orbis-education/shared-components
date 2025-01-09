@@ -24,7 +24,6 @@ export default defineConfig(({ mode }) => {
 			rollupOptions: {
 				external: ["react", "react-dom"] // * External dependencies
 			},
-			cssCodeSplit: false
 		}
 	};
 });
