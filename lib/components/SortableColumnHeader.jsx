@@ -6,7 +6,7 @@ const SortableColumnHeader = (props) => {
 
   // * Available props: -- 06/27/2024 JH
   // * Properties: columnText, columnPropertyName, sortDirection, sortProperty -- 06/27/2024 JH
-  // * Functions: setSortProperty, setSortDirection -- 06/27/2024 JH
+  // * Functions: setSortDirection, setSortProperty -- 06/27/2024 JH
 
   // const componentName = "SortableColumnHeader";
 
