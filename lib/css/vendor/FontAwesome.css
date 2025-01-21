@@ -8,9 +8,9 @@
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  /* src: url("src: url("../../assets/fonts/fa-regular-400.eot");
-  src: url("src: url("../../assets/fonts/fa-regular-400.eot?#iefix") format("embedded-opentype"), url("src: url("../../assets/fonts/fa-regular-400.woff2") format("woff2"), url("src: url("../../assets/fonts/fa-regular-400.woff") format("woff"), url("src: url("../../assets/fonts/fa-regular-400.ttf") format("truetype"), url("src: url("../../assets/fonts/fa-regular-400.svg#fontawesome") format("svg"); */
-  src: url("../../assets/fonts/fa-regular-400.ttf") format("truetype");
+  /* src: url("/src/assets/fonts/fa-regular-400.eot");
+  src: url("/src/assets/fonts/fa-regular-400.eot?#iefix") format("embedded-opentype"), url("/src/assets/fonts/fa-regular-400.woff2") format("woff2"), url("/src/assets/fonts/fa-regular-400.woff") format("woff"), url("/src/assets/fonts/fa-regular-400.ttf") format("truetype"), url("/src/assets/fonts/fa-regular-400.svg#fontawesome") format("svg"); */
+  src: url("/src/assets/fonts/fa-regular-400.ttf") format("truetype");
 }
 
 .fa,
@@ -24,9 +24,9 @@
   font-style: normal;
   font-weight: 900;
   font-display: block;
-  /* src: url("src: url("../../assets/fonts/fa-solid-900.eot");
-  src: url("src: url("../../assets/fonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("src: url("../../assets/fonts/fa-solid-900.woff2") format("woff2"), url("src: url("../../assets/fonts/fa-solid-900.woff") format("woff"), url("src: url("../../assets/fonts/fa-solid-900.ttf") format("truetype"), url("src: url("../../assets/fonts/fa-solid-900.svg#fontawesome") format("svg"); */
-  src: url("../../assets/fonts/fa-solid-900.ttf") format("truetype");
+  /* src: url("/src/assets/fonts/fa-solid-900.eot");
+  src: url("/src/assets/fonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("/src/assets/fonts/fa-solid-900.woff2") format("woff2"), url("/src/assets/fonts/fa-solid-900.woff") format("woff"), url("/src/assets/fonts/fa-solid-900.ttf") format("truetype"), url("/src/assets/fonts/fa-solid-900.svg#fontawesome") format("svg"); */
+  src: url("/src/assets/fonts/fa-solid-900.ttf") format("truetype");
 }
 
 .fa,
@@ -163,12 +163,24 @@
   content: "\f0b2";
 }
 
+.fa-backward-step:before {
+  content: "\f048";
+}
+
+.fa-backward-fast:before {
+  content: "\f049";
+}
+
 .fa-battery-empty:before {
   content: "\f244";
 }
 
 .fa-battery-half:before {
   content: "\f242";
+}
+
+.fa-binoculars:before {
+  content: "\f1e5";
 }
 
 .fa-bookmark:before {
@@ -217,6 +229,18 @@
 
 .fa-chevron-down:before {
   content: "\f078";
+}
+
+.fa-circle-check:before {
+  content: "\f058";
+}
+
+.fa-circle-stop:before {
+  content: "\f28d";
+}
+
+.fa-circle-xmark:before {
+  content: "\f057";
 }
 
 .fa-closed-captioning:before {
@@ -280,6 +304,10 @@
   content: "\f1c2";
 }
 
+.fa-flag:before {
+  content: "\f024";
+}
+
 .fa-grip-horizontal:before {
   content: "\f58d";
 }
@@ -298,6 +326,14 @@
 
 .fa-long-arrow-down:before {
   content: "\f309";
+}
+
+.fa-microphone:before {
+  content: "\f130";
+}
+
+.fa-microphone-slash:before {
+  content: "\f131";
 }
 
 .fa-minus:before {
@@ -427,4 +463,8 @@
 
 .fa-volume-off:before {
   content: "\f026";
+}
+
+.fa-wifi:before {
+  content: "\f1eb";
 }
