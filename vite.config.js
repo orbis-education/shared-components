@@ -2,6 +2,10 @@ import path from "path";
 import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
+import postcssImport from "postcss-import";
+import postcssPresetEnv from "postcss-preset-env";
+import postcssNested from "postcss-nested";
+import autoprefixer from "autoprefixer";
 
 export default defineConfig(({ mode }) => {
 	// * Load env file based on `mode` in the current working directory.
@@ -13,6 +17,16 @@ export default defineConfig(({ mode }) => {
 		plugins: [react(), cssInjectedByJsPlugin()],
 		server: {
 			port: env.PORT
+		},
+		css: {
+			postcss: {
+				plugins: [
+					postcssImport,
+					postcssNested,
+					autoprefixer,
+					postcssPresetEnv({ stage: 1 })
+				]
+			}
 		},
 		build: {
 			lib: {
