@@ -5,8 +5,8 @@ import { noFunctionAvailable, isEmpty, /* getDateTime, */ isNonEmptyArray, forma
 const FormRadioGroup = ({ formInputID = "", ...props }) => {
 
   // * Available props: -- 06/21/2023 MF
-  // * Properties: formInputID, legendText, srOnly, placeholderText,isRequired, inputDisabled, optionData, optionID, optionText, inputValue, inputHint, formColumns -- 06/21/2023 MF
-  // * Functions: updateValue -- 06/21/2023 MF
+  // * Properties: formInputID, legendText, srOnly, isRequired, inputDisabled, isCollapsible, startCollapsed, collapseList, optionData, optionID, optionText, inputValue, inputHint, formColumns -- 06/21/2023 MF
+  // * Functions: updateValue, setCollapseList -- 06/21/2023 MF
 
   // const componentName = "FormRadioGroup";
 
@@ -17,6 +17,7 @@ const FormRadioGroup = ({ formInputID = "", ...props }) => {
   let inputDisabled = isEmpty(props) === false && isEmpty(props.inputDisabled) === false ? props.inputDisabled : false;
   let isCollapsible = isEmpty(props) === false && isEmpty(props.isCollapsible) === false ? props.isCollapsible : false;
   let startCollapsed = isEmpty(props) === false && isEmpty(props.startCollapsed) === false ? props.startCollapsed : true;
+  let collapseList = isEmpty(props) === false && isEmpty(props.collapseList) === false ? props.collapseList : false;
 
   let optionData = isEmpty(props) === false && isEmpty(props.optionData) === false ? props.optionData : null;
   let optionID = isEmpty(props) === false && isEmpty(props.optionID) === false ? props.optionID : "";
@@ -29,6 +30,7 @@ const FormRadioGroup = ({ formInputID = "", ...props }) => {
   let inlineError = isEmpty(props) === false && isEmpty(props.inlineError) === false ? props.inlineError : "";
 
   let updateValue = isEmpty(props.updateValue) === false ? props.updateValue : noFunctionAvailable;
+  let setCollapseList = isEmpty(props.setCollapseList) === false ? props.setCollapseList : noFunctionAvailable;
 
   const [isCollapsed, setIsCollapsed] = useState(true);
 
@@ -69,6 +71,18 @@ const FormRadioGroup = ({ formInputID = "", ...props }) => {
     };
 
   }, [startCollapsed]);
+
+
+  useEffect(() => {
+
+    if (collapseList === true) {
+
+      setIsCollapsed(true);
+      setCollapseList(false);
+
+    };
+
+  }, [collapseList]);
 
 
   return (
