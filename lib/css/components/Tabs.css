@@ -120,15 +120,17 @@
 .vertical-tab-content-container {
   display: grid;
   grid-template-columns: 1fr 5fr;
-  margin: 1rem 2rem;
-  width: calc(100% - 4rem);
+  margin-top: 2rem;
+  width: 100%;
+  /* margin: 1rem 2rem; */
+  /* width: calc(100% - 4rem); */
 
   .vertical-tabs {
     &.tabs {
       display: flex;
       flex-direction: column;
       width: 100%;
-      padding: 1rem 0 1rem 1rem;
+      padding: 1rem 0 1rem 0;
       background-color: #efefef;
       border-radius: .5rem 0 0 .5rem;
       min-width: 161px;
