@@ -40,6 +40,14 @@ const FormDropdown = ({ formInputID = "", ...props }) => {
     "input-error": isEmpty(inlineError) === false
   });
 
+  const getOptionDisplayText = (optionDataItem, optionText) =>
+    optionText
+      .map((optionTextItem) =>
+        optionTextItem.type === "property"
+          ? optionDataItem[optionTextItem.text] // Extract value from object
+          : optionTextItem.text // Use direct string
+      )
+      .join(" "); // Join to ensure a single string output
 
   return (
     <div className={formGroupClasses}>
@@ -59,41 +67,12 @@ const FormDropdown = ({ formInputID = "", ...props }) => {
         {emptyOption !== true ? <option value="">{placeholderText}</option> : null}
 
         {isNonEmptyArray(optionData) === true && isEmpty(optionID) === false && isNonEmptyArray(optionText) === true ?
-
-          <React.Fragment>
-
-            {optionData.map((optionDataItem) => {
-
-              return (
-                <option key={optionDataItem[optionID]} value={optionDataItem[optionID]}>
-
-                  {optionText.map((optionTextItem, index) => {
-
-                    let displayOptionText = "";
-
-                    if (optionTextItem.type === "property") {
-
-                      displayOptionText = optionDataItem[optionTextItem.text];
-
-                    } else if (optionTextItem.type === "string") {
-
-                      displayOptionText = optionTextItem.text;
-
-                    };
-
-                    return (
-                      <React.Fragment key={index}>{displayOptionText}</React.Fragment>
-                    );
-
-                  })}
-
-                </option>
-              );
-            })}
-
-          </React.Fragment>
-
-          : null}
+          optionData.map((optionDataItem) => (
+            <option key={optionDataItem[optionID]} value={optionDataItem[optionID]}>
+              {getOptionDisplayText(optionDataItem, optionText)}
+            </option>
+          ))
+        : null}
 
       </select>
 
