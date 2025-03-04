@@ -15,7 +15,8 @@
     ".": {
       "import": "./dist/shared-components.js",
       "require": "./dist/shared-components.umd.cjs"
-    }
+    },
+    "./shared-components.css": "./dist/shared-components.css"
   },
   "files": [
     "dist"
@@ -47,7 +48,6 @@
     "rimraf": "^6.0.1",
     "shared-functions": "github:orbis-education/shared-functions",
     "vite": "^6.0.3",
-    "vite-plugin-css-injected-by-js": "^3.5.2",
     "web-vitals": "^4.2.4"
   },
   "browserslist": {
