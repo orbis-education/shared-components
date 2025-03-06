@@ -175,8 +175,20 @@
   content: "\f244";
 }
 
+.fa-battery-quarter:before {
+  content: "\f243";
+}
+
 .fa-battery-half:before {
   content: "\f242";
+}
+
+.fa-battery-three-quarters:before {
+  content: "\f241";
+}
+
+.fa-battery-full:before {
+  content: "\f240";
 }
 
 .fa-binoculars:before {
