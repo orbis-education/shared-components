@@ -56,6 +56,7 @@
   --green_03: rgba(4, 147, 114, .3);
   --green_01: rgba(4, 147, 114, .1);
 
+  /* #007C60 */
   --darkerGreen: rgba(0, 124, 96, 1);
   --darkerGreen_05: rgba(0, 124, 96, .5);
   --darkerGreen_03: rgba(0, 124, 96, .3);
@@ -80,7 +81,7 @@
   --darkerRed_01: rgba(175, 52, 63, .1);
 
   /* new, non-Orbis colors */
-  /* #cc3645 */
+  /* #FFA508 */
   --yellow: rgba(255, 165, 8, 1);
 
   /* Orbis Fonts */
