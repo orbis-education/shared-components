@@ -2,7 +2,7 @@ import React from "react";
 import classnames from "classnames";
 import { noFunctionAvailable, isEmpty, /* getDateTime, */ parse } from "shared-functions";
 
-const FormInput = ({ formInputID = "", ...props }) => {
+const ToggleSwitch = ({ formInputID = "", ...props }) => {
 
   // * Available props: -- 06/21/2023 MF
   // * Properties: formInputID, labelText, srOnly, isRequired, inputValue, inputDisabled, inputHint, trueValue, falseValue -- 06/21/2023 MF
@@ -41,7 +41,7 @@ const FormInput = ({ formInputID = "", ...props }) => {
 
       {isEmpty(inputHint) === false ? <p className="input-hint">{parse(inputHint)}</p> : null}
 
-      <div className="toggle-switch" onClick={() => { updateValue(!inputValue); }}>
+      <div className="toggle-switch" onClick={() => { if (!inputDisabled) { updateValue(!inputValue); } }}>
 
         <div className={`toggle-switch__button ${inputValue === true ? "active" : ""}`}></div>
 
@@ -69,4 +69,4 @@ const FormInput = ({ formInputID = "", ...props }) => {
   );
 };
 
-export default FormInput;
+export default ToggleSwitch;
