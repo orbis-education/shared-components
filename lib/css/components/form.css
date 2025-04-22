@@ -55,6 +55,7 @@ form {
   textarea {
     padding: 10px 12px;
     font-size: 1rem;
+    background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
     width: 100%;
@@ -346,12 +347,17 @@ fieldset.form-group.checkbox-dropdown-group {
 
 /* * toggle switch (looks like typical "slider" button on apple devices) -- 02/23/2024 JH */
 .toggle-switch-container {
-  flex-direction: row;
+  /* flex-direction: row; */
   justify-content: flex-start;
   align-items: flex-start;
 
   legend {
     margin-bottom: 1rem;
+  }
+
+  p.input-hint {
+    margin-top: -1rem;
+    margin-bottom: 1.25rem;
   }
 
   .toggle-switch {
