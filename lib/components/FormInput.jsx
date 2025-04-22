@@ -6,7 +6,7 @@ const FormInput = ({ formInputID = "", ...props }) => {
 
   // * Available props: -- 06/21/2023 MF
   // * Properties: formInputID, labelText, srOnly, isRequired, inputType, placeholderText, inputValue, inputDisabled, inputHint, textareaRows, textareaColumns, inputMin, inputMax, inputStep -- 06/21/2023 MF
-  // * Functions: onChange -- 06/21/2023 MF
+  // * Functions: onChange, onKeyDown -- 06/21/2023 MF
 
   // const componentName = "FormInput";
 
@@ -34,6 +34,9 @@ const FormInput = ({ formInputID = "", ...props }) => {
   let inlineError = isEmpty(props) === false && isEmpty(props.inlineError) === false ? props.inlineError : "";
 
   let updateValue = isEmpty(props.updateValue) === false ? props.updateValue : noFunctionAvailable;
+
+  // * onKeyDown is used exclusively for being able to press enter to submit in a textarea. -- 04/22/2025 JH
+  let onKeyDown = isEmpty(props.onKeyDown) === false ? props.onKeyDown : noFunctionAvailable;
 
   const [showPassword, setShowPassword] = useState("password");
 
@@ -87,21 +90,51 @@ const FormInput = ({ formInputID = "", ...props }) => {
 
       {inputType === "textarea" ?
 
-        <textarea id={formInputID} name={formInputID} placeholder={placeholderText} rows={textareaRows} /* cols={textareaColumns} */ value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} />
+        <textarea
+          id={formInputID}
+          name={formInputID}
+          placeholder={placeholderText}
+          rows={textareaRows}
+          // cols={textareaColumns} 
+          value={inputValue}
+          disabled={inputDisabled}
+          onChange={(event) => { handleOnChange(event); }}
+          onKeyDown={(event) => { onKeyDown(event); }}
+        />
 
         : null}
 
       {/* // TODO: Add other input types. -- 08/07/2023 JH */}
       {inputType !== "textarea" && inputType !== "toggle" && inputType !== "password" && inputType !== "color" ?
 
-        <input type={inputType} id={formInputID} placeholder={placeholderText} value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} min={inputMin} max={inputMax} step={inputStep} list={datalistName} autoFocus={autoFocus} />
+        <input
+          type={inputType}
+          id={formInputID}
+          placeholder={placeholderText}
+          value={inputValue}
+          disabled={inputDisabled}
+          onChange={(event) => { handleOnChange(event); }}
+          min={inputMin}
+          max={inputMax}
+          step={inputStep}
+          list={datalistName}
+          autoFocus={autoFocus}
+        />
 
         : null}
 
       {inputType === "color" ?
 
         <div className="color-input-container">
-          <input type={inputType} id={formInputID} placeholder={placeholderText} value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} autoFocus={autoFocus} />
+          <input
+            type={inputType}
+            id={formInputID}
+            placeholder={placeholderText}
+            value={inputValue}
+            disabled={inputDisabled}
+            onChange={(event) => { handleOnChange(event); }}
+            autoFocus={autoFocus}
+          />
           {inputValue}
         </div>
 
@@ -111,9 +144,25 @@ const FormInput = ({ formInputID = "", ...props }) => {
 
         <div className="form-group__password-input-group">
 
-          <input type={showPassword} id={formInputID} placeholder={placeholderText} value={inputValue} disabled={inputDisabled} onChange={(event) => handleOnChange(event)} min={inputMin} max={inputMax} step={inputStep} autoFocus={autoFocus} />
+          <input
+            type={showPassword}
+            id={formInputID}
+            placeholder={placeholderText}
+            value={inputValue}
+            disabled={inputDisabled}
+            onChange={(event) => { handleOnChange(event); }}
+            // min={inputMin}
+            // max={inputMax}
+            // step={inputStep}
+            autoFocus={autoFocus}
+          />
 
-          <div className="form-group__password-input-group__password-addon" onMouseOver={(event) => { setShowPassword("text"); }} onMouseOut={(event) => { setShowPassword("password"); }} title="Hover to show password.">
+          <div
+            className="form-group__password-input-group__password-addon"
+            onMouseOver={() => { setShowPassword("text"); }}
+            onMouseOut={() => { setShowPassword("password"); }}
+            title="Hover to show password."
+          >
             <i className="fas fa-eye"></i>
             <span className="sr-only">Hover to show password.</span>
           </div>
