@@ -403,7 +403,7 @@ fieldset.form-group.checkbox-dropdown-group {
     opacity: .5;
 
     .toggle-switch {
-      cursor: default !important;
+      cursor: default;
     }
   }
 }
