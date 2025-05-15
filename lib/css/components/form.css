@@ -398,6 +398,14 @@ fieldset.form-group.checkbox-dropdown-group {
       left: 115%;
     }
   }
+
+  &.disabled {
+    opacity: .5;
+
+    .toggle-switch {
+      cursor: default !important;
+    }
+  }
 }
 
 /* * For inline error messages -- 12/05/2023 JH */
