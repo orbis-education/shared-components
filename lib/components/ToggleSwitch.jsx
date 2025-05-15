@@ -27,9 +27,13 @@ const ToggleSwitch = ({ formInputID = "", ...props }) => {
     "sr-only": srOnly === true
   });
 
+  let fieldsetClasses = classnames("form-group toggle-switch-container", {
+    "disabled": inputDisabled
+  });
+
 
   return (
-    <fieldset className="form-group toggle-switch-container">
+    <fieldset className={fieldsetClasses}>
 
       <legend htmlFor={formInputID} className={labelClasses}>
 
