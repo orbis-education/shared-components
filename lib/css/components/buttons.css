@@ -23,12 +23,15 @@ a.btn:visited {
   color: rgba(255,255,255,1);
   background-color: var(--darkBlue);
   border: 1px solid var(--darkBlue);
-  cursor: pointer;
   border-radius: 4px;
   padding: 10px 12px;
   font-size: 1rem;
   font-weight: 700;
   line-height: 1;
+
+  &:not(.disabled, :disabled, .readonly) {
+    cursor: pointer;
+  }
 
   &:hover:not(.disabled, :disabled, .readonly), 
   &:active:not(.disabled, :disabled, .readonly) {
