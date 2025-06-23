@@ -1,6 +1,6 @@
 {
   "name": "shared-components",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "Contains common components that are available for use by all applications developed.",
   "author": "Orbis Education",
   "copyrightYear": "2025",
@@ -43,8 +43,8 @@
     "postcss-import": "^16.1.0",
     "postcss-nested": "^7.0.2",
     "postcss-preset-env": "^10.1.1",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "rimraf": "^6.0.1",
     "shared-functions": "github:orbis-education/shared-functions",
     "vite": "^6.0.3",
