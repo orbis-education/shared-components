@@ -465,16 +465,24 @@
   content: "\f03d";
 }
 
-.fa-volume-down:before {
+/* * new name is volume-low -- 06/30/2025 JH */
+.fa-volume-down:before,
+.fa-volume-low:before {
   content: "\f027";
 }
 
-.fa-volume-up:before {
+/* * new name is volume-high -- 06/30/2025 JH */
+.fa-volume-up:before,
+.fa-volume-high:before {
   content: "\f028";
 }
 
 .fa-volume-off:before {
   content: "\f026";
+}
+
+.fa-volume-xmark:before {
+  content: "\f6a9";
 }
 
 .fa-wifi:before {
