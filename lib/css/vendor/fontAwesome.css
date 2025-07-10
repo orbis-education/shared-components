@@ -428,6 +428,10 @@
   content: "\f005";
 }
 
+.fa-stopwatch:before {
+  content: "\f2f2";
+}
+
 .fa-sync:before {
   content: "\f021";
 }
