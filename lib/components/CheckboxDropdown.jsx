@@ -34,6 +34,10 @@ const CheckboxDropdown = ({ formInputID = "", ...props }) => {
 
   const [isDropdownOpen, setIsDropdownOpen] = useNativeClickListener(dropdownRef, false);
 
+  let fieldsetClasses = classnames("form-group checkbox-dropdown-group", {
+    "input-disabled": inputDisabled === true
+  });
+
   // * If srOnly is set to true, then the form item label is only visible to screen readers. -- 06/21/2023 MF
   let labelClasses = classnames("", {
     "sr-only": srOnly === true
@@ -65,7 +69,7 @@ const CheckboxDropdown = ({ formInputID = "", ...props }) => {
 
 
   return (
-    <fieldset className="form-group checkbox-dropdown-group" ref={dropdownRef}>
+    <fieldset className={fieldsetClasses} ref={dropdownRef}>
 
       <legend className={labelClasses}>
 

@@ -37,7 +37,8 @@ const FormDropdown = ({ formInputID = "", ...props }) => {
 
   let formGroupClasses = classnames("form-group", {
     "with-addon": useInputAddon === true,
-    "input-error": isEmpty(inlineError) === false
+    "input-error": isEmpty(inlineError) === false,
+    "input-disabled": inputDisabled === true
   });
 
   const getOptionDisplayText = (optionDataItem, optionText) =>
@@ -72,7 +73,7 @@ const FormDropdown = ({ formInputID = "", ...props }) => {
               {getOptionDisplayText(optionDataItem, optionText)}
             </option>
           ))
-        : null}
+          : null}
 
       </select>
 

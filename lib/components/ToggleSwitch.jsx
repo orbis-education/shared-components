@@ -28,7 +28,7 @@ const ToggleSwitch = ({ formInputID = "", ...props }) => {
   });
 
   let fieldsetClasses = classnames("form-group toggle-switch-container", {
-    "disabled": inputDisabled
+    "input-disabled": inputDisabled === true
   });
 
 

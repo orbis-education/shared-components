@@ -34,6 +34,10 @@ const CheckboxGroup = ({ formInputID = "", ...props }) => {
 
   const [isCollapsed, setIsCollapsed] = useState(true);
 
+  let fieldsetClasses = classnames("form-group", {
+    "input-disabled": inputDisabled === true
+  });
+
   // * If srOnly is set to true, then the form item label is only visible to screen readers. -- 06/21/2023 MF
   let labelClasses = classnames("", {
     "sr-only": srOnly === true
@@ -105,7 +109,7 @@ const CheckboxGroup = ({ formInputID = "", ...props }) => {
 
 
   return (
-    <fieldset className="form-group">
+    <fieldset className={fieldsetClasses}>
 
       <legend className={labelClasses}>
 

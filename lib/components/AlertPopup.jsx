@@ -26,7 +26,7 @@ const AlertPopup = (props) => {
 
 
   return (
-    <div className="alert-messages-container">
+    <div className="alert-container">
 
       <div className={alertClasses}>
 

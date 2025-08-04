@@ -34,6 +34,10 @@ const FormRadioGroup = ({ formInputID = "", ...props }) => {
 
   const [isCollapsed, setIsCollapsed] = useState(true);
 
+  let fieldsetClasses = classnames("form-group", {
+    "input-disabled": inputDisabled === true
+  });
+
   // * If srOnly is set to true, then the form item label is only visible to screen readers. -- 06/21/2023 MF
   let labelClasses = classnames("", {
     "sr-only": srOnly === true
@@ -86,7 +90,7 @@ const FormRadioGroup = ({ formInputID = "", ...props }) => {
 
 
   return (
-    <fieldset className="form-group">
+    <fieldset className={fieldsetClasses}>
 
       <legend className={labelClasses}>
 
@@ -102,19 +106,19 @@ const FormRadioGroup = ({ formInputID = "", ...props }) => {
 
             {isCollapsed === true ?
 
-              <React.Fragment>
+              <>
 
                 <i className="fa fa-chevron-down"></i><span className="sr-only">Open</span>
 
-              </React.Fragment>
+              </>
 
               :
 
-              <React.Fragment>
+              <>
 
                 <i className="fa fa-chevron-up"></i><span className="sr-only">Close</span>
 
-              </React.Fragment>
+              </>
 
             }
 
@@ -122,13 +126,13 @@ const FormRadioGroup = ({ formInputID = "", ...props }) => {
 
           :
 
-          <React.Fragment>
+          <>
 
             {legendText}
 
             {isRequired === true ? <span className="required"> * <span className="sr-only">required</span></span> : null}
 
-          </React.Fragment>
+          </>
 
         }
 
@@ -140,7 +144,7 @@ const FormRadioGroup = ({ formInputID = "", ...props }) => {
 
         {isNonEmptyArray(optionData) === true && isEmpty(optionID) === false && isNonEmptyArray(optionText) === true ?
 
-          <React.Fragment>
+          <>
 
             {optionData.map((optionDataItem) => {
 
@@ -189,7 +193,7 @@ const FormRadioGroup = ({ formInputID = "", ...props }) => {
 
             })}
 
-          </React.Fragment>
+          </>
 
           : null}
 

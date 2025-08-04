@@ -48,7 +48,8 @@ const FormInput = ({ formInputID = "", ...props }) => {
 
   let formGroupClasses = classnames("form-group", {
     "with-addon": useInputAddon === true,
-    "input-error": isEmpty(inlineError) === false
+    "input-error": isEmpty(inlineError) === false,
+    "input-disabled": inputDisabled === true
   });
 
 
