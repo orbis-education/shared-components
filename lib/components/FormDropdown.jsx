@@ -3,7 +3,23 @@ import classnames from "classnames";
 import { isEmpty, isNonEmptyArray, parse } from "shared-functions";
 import RequiredFieldAsterisk from "./RequiredFieldAsterisk";
 
-const FormDropdown = ({ formInputID = "", labelText = "", srOnly = "", placeholderText = "Select Value", isRequired = false, inputDisabled = false, useInputAddon = false, emptyOption = false, optionData = [], optionID = "", optionText = [], inputValue = "", inputHint = "", inlineError = "", updateValue }) => {
+const FormDropdown = ({
+  emptyOption = false,
+  formInputID = "",
+  inlineError = "",
+  inputDisabled = false,
+  inputHint = "",
+  inputValue = "",
+  isRequired = false,
+  labelText = "",
+  optionData = [],
+  optionID = "",
+  optionText = [],
+  placeholderText = "Select Value",
+  srOnly = "",
+  updateValue,
+  useInputAddon = false
+}) => {
 
   Component.displayName = "FormDropdown";
 

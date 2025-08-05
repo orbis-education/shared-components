@@ -1,7 +1,13 @@
 import { Component, useEffect } from "react";
 import classnames from "classnames";
 
-const DialogBox = ({ dialogBoxOpen = "", dialogBoxSize = "", dialogBoxTitle = "", dialogBoxContent = "", setDialogBoxOpen }) => {
+const DialogBox = ({
+  dialogBoxContent = "",
+  dialogBoxOpen = "",
+  dialogBoxSize = "",
+  dialogBoxTitle = "",
+  setDialogBoxOpen
+}) => {
 
   Component.displayName = "DialogBox";
 

@@ -4,7 +4,22 @@ import { isEmpty, isNonEmptyArray, formatToString, parse } from "shared-function
 import { useNativeClickListener } from "../hooks/useNativeClickListener";
 import RequiredFieldAsterisk from "./RequiredFieldAsterisk";
 
-const CheckboxDropdown = ({ formInputID = "", legendText = "", srOnly = "", placeholderText = "Select Value", isRequired = false, inputDisabled = false, optionData = [], optionID = "", optionText = [], inputValue = [], inputHint = "", formColumns = 1, inlineError = "", updateValue }) => {
+const CheckboxDropdown = ({
+  formColumns = 1,
+  formInputID = "",
+  inlineError = "",
+  inputDisabled = false,
+  inputHint = "",
+  inputValue = [],
+  isRequired = false,
+  legendText = "",
+  optionData = [],
+  optionID = "",
+  optionText = [],
+  placeholderText = "Select Value",
+  srOnly = "",
+  updateValue
+}) => {
 
   Component.displayName = "CheckboxDropdown";
 

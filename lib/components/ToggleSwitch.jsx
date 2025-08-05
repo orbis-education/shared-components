@@ -3,7 +3,18 @@ import classnames from "classnames";
 import { isEmpty, parse } from "shared-functions";
 import RequiredFieldAsterisk from "./RequiredFieldAsterisk";
 
-const ToggleSwitch = ({ formInputID = "", labelText = "", srOnly = "", isRequired = false, inputValue = "", inputDisabled = false, inputHint = "", trueValue = "Yes", falseValue = "No", updateValue }) => {
+const ToggleSwitch = ({
+  falseValue = "No",
+  formInputID = "",
+  inputDisabled = false,
+  inputHint = "",
+  inputValue = "",
+  isRequired = false,
+  labelText = "",
+  srOnly = "",
+  trueValue = "Yes",
+  updateValue
+}) => {
 
   Component.displayName = "FormInput";
 

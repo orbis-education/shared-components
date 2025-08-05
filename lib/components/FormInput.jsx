@@ -3,7 +3,28 @@ import classnames from "classnames";
 import { isEmpty, parse } from "shared-functions";
 import RequiredFieldAsterisk from "./RequiredFieldAsterisk";
 
-const FormInput = ({ formInputID = "", labelText = "", srOnly = "", isRequired = false, inputType = "text", placeholderText = "", inputValue = "", inputDisabled = false, inputHint = "", textareaRows = 10, /* textareaColumns = "", */ useInputAddon = false, datalistName = [], autoFocus = false, inputMin = null, inputMax = null, inputStep = null, inlineError = "", updateValue, onKeyDown }) => {
+const FormInput = ({
+  autoFocus = false,
+  datalistName = [],
+  formInputID = "",
+  inlineError = "",
+  inputDisabled = false,
+  inputHint = "",
+  inputMax = null,
+  inputMin = null,
+  inputStep = null,
+  inputType = "text",
+  inputValue = "",
+  isRequired = false,
+  labelText = "",
+  onKeyDown,
+  placeholderText = "",
+  srOnly = "",
+  // textareaColumns = "",
+  textareaRows = 10,
+  updateValue,
+  useInputAddon = false
+}) => {
 
   Component.displayName = "FormInput";
 

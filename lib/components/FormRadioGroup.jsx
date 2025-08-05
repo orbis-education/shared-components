@@ -3,7 +3,25 @@ import classnames from "classnames";
 import { isEmpty, isNonEmptyArray, formatToString, parse } from "shared-functions";
 import RequiredFieldAsterisk from "./RequiredFieldAsterisk";
 
-const FormRadioGroup = ({ formInputID = "", legendText = "", srOnly = "", isRequired = false, inputDisabled = false, isCollapsible = false, startCollapsed = true, collapseList = false, optionData = [], optionID = "", optionText = [], inputValue = "", inputHint = "", formColumns = 1, inlineError = "", updateValue, setCollapseList }) => {
+const FormRadioGroup = ({
+  collapseList = false,
+  formColumns = 1,
+  formInputID = "",
+  inlineError = "",
+  inputDisabled = false,
+  inputHint = "",
+  inputValue = "",
+  isCollapsible = false,
+  isRequired = false,
+  legendText = "",
+  optionData = [],
+  optionID = "",
+  optionText = [],
+  setCollapseList,
+  srOnly = "",
+  startCollapsed = true,
+  updateValue
+}) => {
 
   Component.displayName = "FormRadioGroup";
 

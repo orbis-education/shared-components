@@ -1,7 +1,14 @@
 import { Component } from "react";
 import classnames from "classnames";
 
-const SortableColumnHeader = ({ columnText = "", columnPropertyName = "", sortDirection = "", sortProperty = "", setSortDirection, setSortProperty }) => {
+const SortableColumnHeader = ({
+  columnPropertyName = "",
+  columnText = "",
+  setSortDirection,
+  setSortProperty,
+  sortDirection = "",
+  sortProperty = ""
+}) => {
 
   Component.displayName = "SortableColumnHeader";
 

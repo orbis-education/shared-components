@@ -1,7 +1,14 @@
 import { Component, useEffect } from "react";
 import classnames from "classnames";
 
-const DialogBoxConfirmation = ({ dialogBoxOpen = "", dialogBoxType = "", dialogBoxSize = "", dialogBoxTitle = "", dialogBoxContent = "", setDialogBoxContinue }) => {
+const DialogBoxConfirmation = ({
+  dialogBoxContent = "",
+  dialogBoxOpen = "",
+  dialogBoxSize = "",
+  dialogBoxTitle = "",
+  dialogBoxType = "",
+  setDialogBoxContinue
+}) => {
 
   Component.displayName = "DialogBoxConfirmation";
 
