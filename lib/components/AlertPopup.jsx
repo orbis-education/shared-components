@@ -1,21 +1,14 @@
-import React from "react";
+import { Component } from "react";
 import classnames from "classnames";
-import { noFunctionAvailable, isEmpty, /* getDateTime, */ parse } from "shared-functions";
+import { parse } from "shared-functions";
 
-const AlertPopup = (props) => {
+const AlertPopup = ({ alertType = "", message = "", includeResetButton = false, setMessage }) => {
 
   // * Available props: -- 12/30/2022 MF
   // * Properties: message, alertType, includeResetButton -- 12/30/2022 MF
   // * Functions: setMessage -- 12/30/2022 MF
 
-  // const componentName = "AlertPopup";
-
-  // let operationValue = isEmpty(props) === false && isEmpty(props.operationValue) === false ? props.operationValue : "";
-  let alertType = isEmpty(props) === false && isEmpty(props.alertType) === false ? props.alertType : "";
-  let message = isEmpty(props) === false && isEmpty(props.message) === false ? props.message : "";
-  let includeResetButton = isEmpty(props) === false && isEmpty(props.includeResetButton) === false ? props.includeResetButton : false;
-
-  let setMessage = isEmpty(props) === false && isEmpty(props.setMessage) === false ? props.setMessage : noFunctionAvailable;
+  Component.displayName = "AlertPopup";
 
   let alertClasses = classnames("alert", {
     "alert-success": alertType === "success",

@@ -1,33 +1,11 @@
-import React from "react";
+import { Component } from "react";
 import classnames from "classnames";
-import { noFunctionAvailable, isEmpty, /* getDateTime, */ isNonEmptyArray, parse } from "shared-functions";
+import { isEmpty, isNonEmptyArray, parse } from "shared-functions";
+import RequiredFieldAsterisk from "./RequiredFieldAsterisk";
 
-const FormDropdown = ({ formInputID = "", ...props }) => {
+const FormDropdown = ({ formInputID = "", labelText = "", srOnly = "", placeholderText = "Select Value", isRequired = false, inputDisabled = false, useInputAddon = false, emptyOption = false, optionData = [], optionID = "", optionText = [], inputValue = "", inputHint = "", inlineError = "", updateValue }) => {
 
-  // * Available props: -- 06/21/2023 MF
-  // * Properties: formInputID, labelText, srOnly, placeholderText,isRequired, inputDisabled, optionData, optionID, optionText, inputValue, inputHint -- 06/21/2023 MF
-  // * Functions: updateValue -- 06/21/2023 MF
-
-  // const componentName = "FormDropdown";
-
-  // let formInputID = isEmpty(props) === false && isEmpty(props.formInputID) === false ? props.formInputID : "";
-  let labelText = isEmpty(props) === false && isEmpty(props.labelText) === false ? props.labelText : "";
-  let srOnly = isEmpty(props) === false && isEmpty(props.srOnly) === false ? props.srOnly : "";
-  let placeholderText = isEmpty(props) === false && isEmpty(props.placeholderText) === false ? props.placeholderText : "Select Value";
-  let isRequired = isEmpty(props) === false && isEmpty(props.isRequired) === false ? props.isRequired : false;
-  let inputDisabled = isEmpty(props) === false && isEmpty(props.inputDisabled) === false ? props.inputDisabled : false;
-  let useInputAddon = isEmpty(props) === false && isEmpty(props.useInputAddon) === false ? props.useInputAddon : false;
-
-  let emptyOption = isEmpty(props) === false && isEmpty(props.emptyOption) === false ? props.emptyOption : false;
-  let optionData = isEmpty(props) === false && isEmpty(props.optionData) === false ? props.optionData : null;
-  let optionID = isEmpty(props) === false && isEmpty(props.optionID) === false ? props.optionID : "";
-  let optionText = isEmpty(props) === false && isEmpty(props.optionText) === false ? props.optionText : [];
-  let inputValue = isEmpty(props) === false && isEmpty(props.inputValue) === false ? props.inputValue : "";
-  let inputHint = isEmpty(props) === false && isEmpty(props.inputHint) === false ? props.inputHint : "";
-
-  let inlineError = isEmpty(props) === false && isEmpty(props.inlineError) === false ? props.inlineError : "";
-
-  let updateValue = isEmpty(props.updateValue) === false ? props.updateValue : noFunctionAvailable;
+  Component.displayName = "FormDropdown";
 
   // * If srOnly is set to true, then the form item label is only visible to screen readers. -- 06/21/2023 MF
   let labelClasses = classnames("", {
@@ -45,10 +23,10 @@ const FormDropdown = ({ formInputID = "", ...props }) => {
     optionText
       .map((optionTextItem) =>
         optionTextItem.type === "property"
-          ? optionDataItem[optionTextItem.text] // Extract value from object
-          : optionTextItem.text // Use direct string
+          ? optionDataItem[optionTextItem.text] // * Extract value from object. -- 02/25/2025 JW
+          : optionTextItem.text // * Use direct string. -- 02/25/2025 JW
       )
-      .join(" "); // Join to ensure a single string output
+      .join(" "); // * Join to ensure a single string output. -- 02/25/2025 JW
 
   return (
     <div className={formGroupClasses}>
@@ -57,7 +35,7 @@ const FormDropdown = ({ formInputID = "", ...props }) => {
 
         {labelText}
 
-        {isRequired === true ? <span className="required"> * <span className="sr-only">required</span></span> : null}
+        {isRequired === true ? <RequiredFieldAsterisk /> : null}
 
       </label>
 
@@ -68,20 +46,18 @@ const FormDropdown = ({ formInputID = "", ...props }) => {
         {emptyOption !== true ? <option value="">{placeholderText}</option> : null}
 
         {isNonEmptyArray(optionData) === true && isEmpty(optionID) === false && isNonEmptyArray(optionText) === true ?
+
           optionData.map((optionDataItem) => (
             <option key={optionDataItem[optionID]} value={optionDataItem[optionID]}>
               {getOptionDisplayText(optionDataItem, optionText)}
             </option>
           ))
+
           : null}
 
       </select>
 
-      {isEmpty(inlineError) === false ?
-
-        <div className="inline-alert inline-alert-danger">{parse(inlineError)}</div>
-
-        : null}
+      {isEmpty(inlineError) === false ? <div className="inline-alert inline-alert-danger">{parse(inlineError)}</div> : null}
 
     </div>
   );

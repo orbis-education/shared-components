@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { Component, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { FormInput, FormDropdown, ToggleSwitch, Header, AlertPopup, CheckboxDropdown, CheckboxGroup, FormRadioGroup } from "../lib";
 // * https://stackoverflow.com/questions/66384368/how-is-it-possible-to-access-homepage-from-package-json-in-a-react-app -- 12/17/2021 MF
@@ -7,7 +7,7 @@ import { version, copyrightYear } from "../package.json";
 import "../lib/css/index.css";
 const applicationVersion = version;
 
-// const componentName = "index";
+Component.displayName = "index";
 
 // console.log(componentName, "applicationVersion", applicationVersion);
 // console.log(componentName, "copyrightYear", copyrightYear);

@@ -1,26 +1,11 @@
-import React from "react";
+import { Component } from "react";
 import classnames from "classnames";
-import { noFunctionAvailable, isEmpty, /* getDateTime, */ parse } from "shared-functions";
+import { isEmpty, parse } from "shared-functions";
+import RequiredFieldAsterisk from "./RequiredFieldAsterisk";
 
-const ToggleSwitch = ({ formInputID = "", ...props }) => {
+const ToggleSwitch = ({ formInputID = "", labelText = "", srOnly = "", isRequired = false, inputValue = "", inputDisabled = false, inputHint = "", trueValue = "Yes", falseValue = "No", updateValue }) => {
 
-  // * Available props: -- 06/21/2023 MF
-  // * Properties: formInputID, labelText, srOnly, isRequired, inputValue, inputDisabled, inputHint, trueValue, falseValue -- 06/21/2023 MF
-  // * Functions: updateValue -- 06/21/2023 MF
-
-  // const componentName = "FormInput";
-
-  // let formInputID = isEmpty(props) === false && isEmpty(props.formInputID) === false ? props.formInputID : "";
-  let labelText = isEmpty(props) === false && isEmpty(props.labelText) === false ? props.labelText : "";
-  let srOnly = isEmpty(props) === false && isEmpty(props.srOnly) === false ? props.srOnly : "";
-  let isRequired = isEmpty(props) === false && isEmpty(props.isRequired) === false ? props.isRequired : false;
-  let inputValue = isEmpty(props) === false && isEmpty(props.inputValue) === false ? props.inputValue : "";
-  let inputDisabled = isEmpty(props) === false && isEmpty(props.inputDisabled) === false ? props.inputDisabled : false;
-  let inputHint = isEmpty(props) === false && isEmpty(props.inputHint) === false ? props.inputHint : "";
-  let trueValue = isEmpty(props) === false && isEmpty(props.trueValue) === false ? props.trueValue : "Yes";
-  let falseValue = isEmpty(props) === false && isEmpty(props.falseValue) === false ? props.falseValue : "No";
-
-  let updateValue = isEmpty(props.updateValue) === false ? props.updateValue : noFunctionAvailable;
+  Component.displayName = "FormInput";
 
   // * If srOnly is set to true, then the form item label is only visible to screen readers. -- 06/21/2023 MF
   let labelClasses = classnames("", {
@@ -39,7 +24,7 @@ const ToggleSwitch = ({ formInputID = "", ...props }) => {
 
         {labelText}
 
-        {isRequired === true ? <span className="required"> * <span className="sr-only">required</span></span> : null}
+        {isRequired === true ? <RequiredFieldAsterisk /> : null}
 
       </legend>
 
@@ -49,11 +34,11 @@ const ToggleSwitch = ({ formInputID = "", ...props }) => {
 
         <div className={`toggle-switch__button ${inputValue === true ? "active" : ""}`}></div>
 
-        <div className="toggle-switch__text">{inputValue === true ? <React.Fragment>{trueValue}</React.Fragment> : <React.Fragment>{falseValue}</React.Fragment>}</div>
+        <div className="toggle-switch__text">{inputValue === true ? <>{trueValue}</> : <>{falseValue}</>}</div>
 
         <label className="sr-only">
 
-          <input type="radio" id={formInputID} checked={inputValue !== true} value="false" disabled={inputDisabled} onChange={(event) => { updateValue(event.target.value); }} />
+          <input type="radio" id={`${formInputID}false`} checked={inputValue !== true} value="false" disabled={inputDisabled} onChange={(event) => { updateValue(event.target.value); }} />
 
           {falseValue}
 
@@ -61,7 +46,7 @@ const ToggleSwitch = ({ formInputID = "", ...props }) => {
 
         <label className="sr-only">
 
-          <input type="radio" id={formInputID} checked={inputValue === true} value="true" disabled={inputDisabled} onChange={(event) => { updateValue(event.target.value); }} />
+          <input type="radio" id={`${formInputID}true`} checked={inputValue === true} value="true" disabled={inputDisabled} onChange={(event) => { updateValue(event.target.value); }} />
 
           {trueValue}
 

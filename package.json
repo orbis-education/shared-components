@@ -26,6 +26,7 @@
     "start": "vite --open",
     "build": "vite build",
     "preview": "vite preview",
+    "lint": "eslint --max-warnings=0 src",
     "prebuild": "rimraf dist",
     "prepublish": "npm run build"
   },
