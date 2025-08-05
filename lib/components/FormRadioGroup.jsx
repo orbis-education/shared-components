@@ -1,36 +1,35 @@
-import React, { useState, useEffect } from "react";
+import { Component, Fragment, useState, useEffect } from "react";
 import classnames from "classnames";
-import { noFunctionAvailable, isEmpty, /* getDateTime, */ isNonEmptyArray, formatToString, parse } from "shared-functions";
+import { isEmpty, isNonEmptyArray, formatToString, parse } from "shared-functions";
+import RequiredFieldAsterisk from "./RequiredFieldAsterisk";
 
-const FormRadioGroup = ({ formInputID = "", ...props }) => {
+const FormRadioGroup = ({
+  collapseList = false,
+  formColumns = 1,
+  formInputID = "",
+  inlineError = "",
+  inputDisabled = false,
+  inputHint = "",
+  inputValue = "",
+  isCollapsible = false,
+  isRequired = false,
+  legendText = "",
+  optionData = [],
+  optionID = "",
+  optionText = [],
+  setCollapseList,
+  srOnly = "",
+  startCollapsed = true,
+  updateValue
+}) => {
 
-  // * Available props: -- 06/21/2023 MF
-  // * Properties: formInputID, legendText, srOnly, placeholderText,isRequired, inputDisabled, optionData, optionID, optionText, inputValue, inputHint, formColumns -- 06/21/2023 MF
-  // * Functions: updateValue -- 06/21/2023 MF
-
-  // const componentName = "FormRadioGroup";
-
-  // let formInputID = isEmpty(props) === false && isEmpty(props.formInputID) === false ? props.formInputID : "";
-  let legendText = isEmpty(props) === false && isEmpty(props.legendText) === false ? props.legendText : "";
-  let srOnly = isEmpty(props) === false && isEmpty(props.srOnly) === false ? props.srOnly : "";
-  let isRequired = isEmpty(props) === false && isEmpty(props.isRequired) === false ? props.isRequired : false;
-  let inputDisabled = isEmpty(props) === false && isEmpty(props.inputDisabled) === false ? props.inputDisabled : false;
-  let isCollapsible = isEmpty(props) === false && isEmpty(props.isCollapsible) === false ? props.isCollapsible : false;
-  let startCollapsed = isEmpty(props) === false && isEmpty(props.startCollapsed) === false ? props.startCollapsed : true;
-
-  let optionData = isEmpty(props) === false && isEmpty(props.optionData) === false ? props.optionData : null;
-  let optionID = isEmpty(props) === false && isEmpty(props.optionID) === false ? props.optionID : "";
-  let optionText = isEmpty(props) === false && isEmpty(props.optionText) === false ? props.optionText : [];
-  let inputValue = isEmpty(props) === false && isEmpty(props.inputValue) === false ? props.inputValue : "";
-  let inputHint = isEmpty(props) === false && isEmpty(props.inputHint) === false ? props.inputHint : "";
-
-  let formColumns = isEmpty(props) === false && isEmpty(props.formColumns) === false ? props.formColumns : 1;
-
-  let inlineError = isEmpty(props) === false && isEmpty(props.inlineError) === false ? props.inlineError : "";
-
-  let updateValue = isEmpty(props.updateValue) === false ? props.updateValue : noFunctionAvailable;
+  Component.displayName = "FormRadioGroup";
 
   const [isCollapsed, setIsCollapsed] = useState(true);
+
+  let fieldsetClasses = classnames("form-group", {
+    "input-disabled": inputDisabled === true
+  });
 
   // * If srOnly is set to true, then the form item label is only visible to screen readers. -- 06/21/2023 MF
   let labelClasses = classnames("", {
@@ -71,8 +70,20 @@ const FormRadioGroup = ({ formInputID = "", ...props }) => {
   }, [startCollapsed]);
 
 
+  useEffect(() => {
+
+    if (collapseList === true) {
+
+      setIsCollapsed(true);
+      setCollapseList(false);
+
+    };
+
+  }, [collapseList]);
+
+
   return (
-    <fieldset className="form-group">
+    <fieldset className={fieldsetClasses}>
 
       <legend className={labelClasses}>
 
@@ -82,25 +93,25 @@ const FormRadioGroup = ({ formInputID = "", ...props }) => {
 
             {legendText}
 
-            {isRequired === true ? <span className="required"> * <span className="sr-only">required</span></span> : null}
+            {isRequired === true ? <RequiredFieldAsterisk /> : null}
 
             {isEmpty(inputValue) === false ? <div className="search-filter-count">1</div> : null}
 
             {isCollapsed === true ?
 
-              <React.Fragment>
+              <>
 
                 <i className="fa fa-chevron-down"></i><span className="sr-only">Open</span>
 
-              </React.Fragment>
+              </>
 
               :
 
-              <React.Fragment>
+              <>
 
                 <i className="fa fa-chevron-up"></i><span className="sr-only">Close</span>
 
-              </React.Fragment>
+              </>
 
             }
 
@@ -108,13 +119,13 @@ const FormRadioGroup = ({ formInputID = "", ...props }) => {
 
           :
 
-          <React.Fragment>
+          <>
 
             {legendText}
 
-            {isRequired === true ? <span className="required"> * <span className="sr-only">required</span></span> : null}
+            {isRequired === true ? <RequiredFieldAsterisk /> : null}
 
-          </React.Fragment>
+          </>
 
         }
 
@@ -126,7 +137,7 @@ const FormRadioGroup = ({ formInputID = "", ...props }) => {
 
         {isNonEmptyArray(optionData) === true && isEmpty(optionID) === false && isNonEmptyArray(optionText) === true ?
 
-          <React.Fragment>
+          <>
 
             {optionData.map((optionDataItem) => {
 
@@ -143,9 +154,10 @@ const FormRadioGroup = ({ formInputID = "", ...props }) => {
 
                 return (
                   <li key={optionDataItem[optionID]}>
+
                     <label className={`${formatToString(optionDataItem[optionID]) === formatToString(newInputValue) ? "active" : ""}`}>
 
-                      <input type="radio" id={formInputID} value={optionDataItem[optionID]} checked={formatToString(optionDataItem[optionID]) === formatToString(newInputValue)} disabled={inputDisabled} onChange={(event) => { updateValue(event.target.value); }} />
+                      <input type="radio" id={`${formInputID}${optionDataItem[optionID]}`} name={formInputID} value={optionDataItem[optionID]} checked={formatToString(optionDataItem[optionID]) === formatToString(newInputValue)} disabled={inputDisabled} onChange={(event) => { updateValue(event.target.value); }} />
 
                       {optionText.map((optionTextItem, index) => {
 
@@ -162,12 +174,13 @@ const FormRadioGroup = ({ formInputID = "", ...props }) => {
                         };
 
                         return (
-                          <React.Fragment key={index}>{displayOptionText}</React.Fragment>
+                          <Fragment key={index}>{displayOptionText}</Fragment>
                         );
 
                       })}
 
                     </label>
+
                   </li>
                 );
 
@@ -175,23 +188,15 @@ const FormRadioGroup = ({ formInputID = "", ...props }) => {
 
             })}
 
-          </React.Fragment>
+          </>
 
           : null}
 
       </ul>
 
-      {isEmpty(inlineError) === false ?
+      {isEmpty(inlineError) === false ? <div className="inline-alert inline-alert-danger">{parse(inlineError)}</div> : null}
 
-        <div className="inline-alert inline-alert-danger">{parse(inlineError)}</div>
-
-        : null}
-
-      {isCollapsible === true ?
-
-        <hr />
-
-        : null}
+      {isCollapsible === true ? <hr /> : null}
 
     </fieldset>
   );

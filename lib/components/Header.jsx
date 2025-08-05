@@ -1,15 +1,9 @@
-import React from 'react';
-import { isEmpty /* , getDateTime */ } from "shared-functions";
+import { Component } from "react";
 import OrbisLogo from "./OrbisLogo";
 
-const Header = (props) => {
+const Header = ({ applicationName = "Application" }) => {
 
-  // * Available props: -- 07/17/2023 MF
-  // * Properties: applicationName -- 07/17/2023 MF
-
-  // const componentName = "Header";
-
-  let applicationName = isEmpty(props) === false && isEmpty(props.applicationName) === false ? props.applicationName : "Application";
+  Component.displayName = "Header";
 
   document.title = `Orbis Education | ${applicationName}`;
 

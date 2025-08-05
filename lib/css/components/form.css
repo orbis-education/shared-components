@@ -55,6 +55,7 @@ form {
   textarea {
     padding: 10px 12px;
     font-size: 1rem;
+    background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
     width: 100%;
@@ -122,6 +123,30 @@ form {
       border-left: none;
       border-radius:  0 5px 5px 0;
       margin: 0;
+    }
+  }
+
+  &.input-disabled {
+    label,
+    p.input-hint {
+      opacity: .5;
+    }
+
+    input, select, textarea {
+      opacity: .5;
+      background-color: rgba(0,0,0,.05);
+    }
+
+    &.with-addon {
+      label.input-addon {
+        opacity: .5;
+      }
+    }
+
+    .form-group__password-input-group {
+      .form-group__password-input-group__password-addon {
+        opacity: .5;
+      }
     }
   }
 }
@@ -204,6 +229,10 @@ fieldset.form-group {
         color: #333;
       }
     }
+
+    &.input-disabled {
+      opacity: .5;
+    }
   }
 
   .checkbox-group,
@@ -251,6 +280,28 @@ fieldset.form-group {
       }
     }
   }
+
+  &.input-disabled {
+    legend {
+      opacity: .5;
+    }
+
+    .checkbox-group,
+    .radio-group {
+      li {
+        label {
+          opacity: .5;
+          cursor: default;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+          opacity: .5;
+          cursor: default;
+        }
+      }
+    }
+  }
 }
 
 fieldset.form-group.checkbox-dropdown-group {
@@ -284,7 +335,8 @@ fieldset.form-group.checkbox-dropdown-group {
     position: relative;
     text-wrap: nowrap;
 
-    &:hover {
+    &:hover:not(.disabled, :disabled, .readonly), 
+    &:active:not(.disabled, :disabled, .readonly) {
       background-color: #ddd;
     }
     
@@ -342,16 +394,38 @@ fieldset.form-group.checkbox-dropdown-group {
       }
     }
   }
+
+  &.input-disabled {
+    legend {
+      opacity: .5;
+    }
+
+    .btn.btn-transparent.open-dropdown-button {
+      opacity: .5;
+      background-color: rgba(0,0,0,.05);
+      cursor: default;
+
+      &:hover,
+      &:active {
+        background-color: rgba(0,0,0,.05);
+      }
+    }
+  }
 }
 
 /* * toggle switch (looks like typical "slider" button on apple devices) -- 02/23/2024 JH */
 .toggle-switch-container {
-  flex-direction: row;
+  /* flex-direction: row; */
   justify-content: flex-start;
   align-items: flex-start;
 
   legend {
     margin-bottom: 1rem;
+  }
+
+  p.input-hint {
+    margin-top: -1rem;
+    margin-bottom: 1.25rem;
   }
 
   .toggle-switch {
@@ -390,6 +464,13 @@ fieldset.form-group.checkbox-dropdown-group {
       font-weight: 700;
       position: absolute;
       left: 115%;
+    }
+  }
+
+  &.input-disabled {
+    .toggle-switch {
+      opacity: .5;
+      cursor: default;
     }
   }
 }

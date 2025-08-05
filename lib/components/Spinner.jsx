@@ -1,6 +1,10 @@
-import React from 'react';
+import { Component } from "react";
 
 const Spinner = () => {
+
+  Component.displayName = "Spinner";
+
+
   return (
     <div className="spinner-container">
       <i className="fa fa-spinner loading-spinner"></i>

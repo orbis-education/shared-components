@@ -143,6 +143,10 @@
   content: "\f101";
 }
 
+.fa-apple-alt:before {
+  content: "\f5d1";
+}
+
 .fa-arrow-right:before {
   content: "\f061";
 }
@@ -159,16 +163,44 @@
   content: "\f0b2";
 }
 
+.fa-backward-step:before {
+  content: "\f048";
+}
+
+.fa-backward-fast:before {
+  content: "\f049";
+}
+
 .fa-battery-empty:before {
   content: "\f244";
+}
+
+.fa-battery-quarter:before {
+  content: "\f243";
 }
 
 .fa-battery-half:before {
   content: "\f242";
 }
 
+.fa-battery-three-quarters:before {
+  content: "\f241";
+}
+
+.fa-battery-full:before {
+  content: "\f240";
+}
+
+.fa-binoculars:before {
+  content: "\f1e5";
+}
+
 .fa-bookmark:before {
   content: "\f02e";
+}
+
+.fa-bread-slice:before {
+  content: "\f7ec";
 }
 
 .fa-caret-up:before {
@@ -179,8 +211,20 @@
   content: "\f0d7";
 }
 
+.fa-caret-left:before {
+  content: "\f0d9";
+}
+
+.fa-caret-right:before {
+  content: "\f0da";
+}
+
 .fa-check:before {
   content: "\f00c";
+}
+
+.fa-cheese:before {
+  content: "\f7ef";
 }
 
 .fa-chevron-right:before {
@@ -199,6 +243,18 @@
   content: "\f078";
 }
 
+.fa-circle-check:before {
+  content: "\f058";
+}
+
+.fa-circle-stop:before {
+  content: "\f28d";
+}
+
+.fa-circle-xmark:before {
+  content: "\f057";
+}
+
 .fa-closed-captioning:before {
   content: "\f20a";
   font-size: 1.5em;
@@ -214,6 +270,10 @@
 
 .fa-crosshairs:before {
   content: "\f05b";
+}
+
+.fa-drumstick-bite:before {
+  content: "\f6d7";
 }
 
 .fa-edit:before {
@@ -240,12 +300,32 @@
   content: "\f35d";
 }
 
+.fa-file-excel:before {
+  content: "\f1c3";
+}
+
+.fa-file-pdf:before {
+  content: "\f1c1";
+}
+
 .fa-file-upload:before {
   content: "\f574";
 }
 
+.fa-file-word:before {
+  content: "\f1c2";
+}
+
+.fa-flag:before {
+  content: "\f024";
+}
+
 .fa-grip-horizontal:before {
   content: "\f58d";
+}
+
+.fa-heartbeat:before {
+  content: "\f21e";
 }
 
 .fa-info-circle:before {
@@ -258,6 +338,14 @@
 
 .fa-long-arrow-down:before {
   content: "\f309";
+}
+
+.fa-microphone:before {
+  content: "\f130";
+}
+
+.fa-microphone-slash:before {
+  content: "\f131";
 }
 
 .fa-minus:before {
@@ -288,6 +376,14 @@
   content: "\f067";
 }
 
+.fa-plus-square:before {
+  content: "\f0fe"
+}
+
+.fa-portrait:before {
+  content: "\f3e0";
+}
+
 .fa-question-circle:before {
   content: "\f059";
 }
@@ -308,6 +404,10 @@
   content: "\f010";
 }
 
+.fa-seedling:before {
+  content: "\f4d8";
+}
+
 .fa-sort:before {
   content: "\f0dc";
 }
@@ -326,6 +426,10 @@
 
 .fa-star:before {
   content: "\f005";
+}
+
+.fa-stopwatch:before {
+  content: "\f2f2";
 }
 
 .fa-sync:before {
@@ -353,6 +457,10 @@
   content: "\f093";
 }
 
+.fa-user-md:before {
+  content: "\f0f0";
+}
+
 .fa-users:before {
   content: "\f0c0";
 }
@@ -361,11 +469,15 @@
   content: "\f03d";
 }
 
-.fa-volume-down:before {
+/* * new name is volume-low -- 06/30/2025 JH */
+.fa-volume-down:before,
+.fa-volume-low:before {
   content: "\f027";
 }
 
-.fa-volume-up:before {
+/* * new name is volume-high -- 06/30/2025 JH */
+.fa-volume-up:before,
+.fa-volume-high:before {
   content: "\f028";
 }
 
@@ -373,39 +485,10 @@
   content: "\f026";
 }
 
-
-.fa-bread-slice:before {
-  content: "\f7ec";
+.fa-volume-xmark:before {
+  content: "\f6a9";
 }
 
-.fa-apple-alt:before {
-  content: "\f5d1";
+.fa-wifi:before {
+  content: "\f1eb";
 }
-
-.fa-seedling:before {
-  content: "\f4d8";
-}
-
-.fa-cheese:before {
-  content: "\f7ef";
-}
-
-.fa-drumstick-bite:before {
-  content: "\f6d7";
-}
-
-.fa-user-md:before {
-  content: "\f0f0";
-}
-
-.fa-heartbeat:before {
-  content: "\f21e";
-}
-
-.fa-plus-square:before {
-  content: "\f0fe"
-}
-
-
-
-

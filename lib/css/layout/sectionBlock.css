@@ -11,25 +11,26 @@
   max-width: 1114px;
   
   &.large {
-    margin: 1rem 2rem;
-    width: 100%;
+    /* margin: 1rem 2rem; */
+    /* width: 100%; */
     max-width: 1632px;
   }
 
   &.extra-large {
-    margin: 1rem 2rem;
-    width: calc(100% - 4rem);
+    /* margin: 1rem 2rem; */
+    /* width: calc(100% - 4rem); */
     max-width: unset;
   }
 }
 
 .transparent-section {
   width: 100%;
-  margin: 0 0 0 2rem;
+  /* margin: 0 0 0 2rem; */
+  margin: 0;
   max-width: 1632px;
   display: flex;
   flex-direction: column;
-  padding: 2rem 0;
+  /* padding: 2rem; */
   position: relative;
 
   &.extra-large {

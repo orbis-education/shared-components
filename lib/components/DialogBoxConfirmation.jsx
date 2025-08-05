@@ -1,22 +1,16 @@
-import React, { useEffect } from "react";
+import { Component, useEffect } from "react";
 import classnames from "classnames";
-import { noFunctionAvailable, isEmpty /* , getDateTime */ } from "shared-functions";
 
-const DialogBoxConfirmation = (props) => {
+const DialogBoxConfirmation = ({
+  dialogBoxContent = "",
+  dialogBoxOpen = "",
+  dialogBoxSize = "",
+  dialogBoxTitle = "",
+  dialogBoxType = "",
+  setDialogBoxContinue
+}) => {
 
-  // * Available props: -- 11/17/2023 MF
-  // * Properties: dialogBoxOpen, dialogBoxType, dialogBoxSize, dialogBoxTitle, dialogBoxContent -- 11/17/2023 MF
-  // * Functions: setDialogBoxContinue -- 07/20/2023 MF
-
-  // const componentName = "DialogBoxConfirmation";
-
-  let dialogBoxOpen = isEmpty(props) === false && isEmpty(props.dialogBoxOpen) === false ? props.dialogBoxOpen : "";
-  let dialogBoxType = isEmpty(props) === false && isEmpty(props.dialogBoxType) === false ? props.dialogBoxType : ""; // * confirmDelete -- 07/15/2021 MF
-  let dialogBoxSize = isEmpty(props) === false && isEmpty(props.dialogBoxSize) === false ? props.dialogBoxSize : ""; // * sm, md, lg, xl -- 07/15/2021 MF
-  let dialogBoxTitle = isEmpty(props) === false && isEmpty(props.dialogBoxTitle) === false ? props.dialogBoxTitle : "";
-  let dialogBoxContent = isEmpty(props) === false && isEmpty(props.dialogBoxContent) === false ? props.dialogBoxContent : "";
-
-  let setDialogBoxContinue = isEmpty(props) === false && isEmpty(props.setDialogBoxContinue) === false ? props.setDialogBoxContinue : noFunctionAvailable;
+  Component.displayName = "DialogBoxConfirmation";
 
   // * The code that catches the route change on the page doesn't handle if the browser is closed or the back/forward buttons are used. -- 07/15/2021 MF
 
@@ -95,7 +89,7 @@ const DialogBoxConfirmation = (props) => {
 
 
   return (
-    <React.Fragment>
+    <>
 
       {dialogBoxOpen === true ?
 
@@ -123,7 +117,7 @@ const DialogBoxConfirmation = (props) => {
 
         : null}
 
-    </React.Fragment>
+    </>
   );
 };
 
