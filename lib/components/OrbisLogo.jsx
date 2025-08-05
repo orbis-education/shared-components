@@ -1,15 +1,9 @@
-import React from 'react';
-import { isEmpty /* , getDateTime */ } from "shared-functions";
+import { Component } from "react";
 
-const OrbisLogo = (props) => {
+const OrbisLogo = ({ classes = "orbis-logo", width = "100%" }) => {
 
-  // * Available props: -- 07/17/2023 MF
-  // * Properties: classes, width -- 07/17/2023 MF
+  Component.displayName = "OrbisLogo";
 
-  // const componentName = "OrbisLogo";
-
-  let classes = isEmpty(props) === false && isEmpty(props.classes) === false ? props.classes : "orbis-logo";
-  let width = isEmpty(props) === false && isEmpty(props.width) === false ? props.width : "100%";
 
   return (
     <svg className={classes} width={width} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1624.91 556.67">
