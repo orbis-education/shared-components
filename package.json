@@ -8,6 +8,7 @@
     "type": "git",
     "url": "https://github.com/orbis-education/shared-components"
   },
+  "type": "module",
   "private": true,
   "main": "dist/shared-components.umd.cjs",
   "module": "dist/shared-components.js",

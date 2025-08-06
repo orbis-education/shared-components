@@ -1,6 +1,15 @@
 import { Component, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { FormInput, FormDropdown, ToggleSwitch, Header, AlertPopup, CheckboxDropdown, CheckboxGroup, FormRadioGroup } from "../lib";
+import {
+  // AlertPopup,
+  CheckboxDropdown,
+  CheckboxGroup,
+  FormDropdown,
+  FormInput,
+  FormRadioGroup,
+  Header,
+  ToggleSwitch,
+} from "../lib";
 // * https://stackoverflow.com/questions/66384368/how-is-it-possible-to-access-homepage-from-package-json-in-a-react-app -- 12/17/2021 MF
 // * Using Vite requires a different syntax. -- 09/22/2023 MF
 import { version, copyrightYear } from "../package.json";
@@ -73,7 +82,6 @@ const App = () => {
               labelText="Name"
               placeholderText="Enter a name"
               inputHint="Please enter a name."
-              inputDisabled={true}
               inputValue={txtName}
               updateValue={setTxtName}
             />
@@ -83,7 +91,6 @@ const App = () => {
               inputType="textarea"
               labelText="Message"
               placeholderText="Enter your message"
-              inputDisabled={true}
               inputValue={txtMessage}
               updateValue={setTxtMessage}
               onKeyDown={handleEnterKey}
@@ -92,7 +99,6 @@ const App = () => {
             <FormInput
               formInputID="password"
               inputType="password"
-              inputDisabled={true}
             />
 
             <FormDropdown
@@ -106,7 +112,6 @@ const App = () => {
               optionID="accountTypeID"
               optionText={[{ type: "property", text: "accountType" }]}
               inlineError={inlineErrors.ddAccountType}
-              inputDisabled={true}
               inputValue={ddAccountType}
               updateValue={setDdAccountType}
             />
@@ -116,7 +121,6 @@ const App = () => {
               labelText="Will you be using the simulation for clinical replacement?"
               inputHint="Simulation equipment is prioritized for partners that use the simulation for clinical replacement."
               isRequired={true}
-              inputDisabled={true}
               inputValue={rdoClinicalReplacement}
               updateValue={setRdoClinicalReplacement}
             />
@@ -131,7 +135,6 @@ const App = () => {
               ]}
               optionID="accountTypeID"
               optionText={[{ type: "property", text: "accountType" }]}
-              inputDisabled={true}
               inputValue={cbxGrpPartnerID}
               updateValue={setCbxGrpPartnerID}
             />
@@ -147,7 +150,6 @@ const App = () => {
               ]}
               optionID="accountTypeID"
               optionText={[{ type: "property", text: "accountType" }]}
-              inputDisabled={true}
               inputValue={cbxSimulationID}
               updateValue={setCbxSimulationID}
             />
@@ -163,13 +165,12 @@ const App = () => {
               ]}
               optionID="accountTypeID"
               optionText={[{ type: "property", text: "accountType" }]}
-              inputDisabled={true}
               inputValue={rdoProgramID}
               updateValue={setRdoProgramID}
             />
 
             <div className="flex-row">
-              <button type="button" className="btn btn-dark-gray" disabled={true}>Reset</button>
+              <button type="button" className="btn btn-dark-gray">Reset</button>
             </div>
 
           </form>
