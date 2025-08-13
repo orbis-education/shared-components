@@ -1,8 +1,5 @@
-import { Component } from "react";
 
 const OrbisLogo = ({ classes = "orbis-logo", width = "100%" }) => {
-
-  Component.displayName = "OrbisLogo";
 
 
   return (

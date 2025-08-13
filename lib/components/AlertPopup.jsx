@@ -1,4 +1,3 @@
-import { Component } from "react";
 import classnames from "classnames";
 import { parse } from "shared-functions";
 
@@ -7,8 +6,6 @@ const AlertPopup = ({ alertType = "", message = "", includeResetButton = false, 
   // * Available props: -- 12/30/2022 MF
   // * Properties: message, alertType, includeResetButton -- 12/30/2022 MF
   // * Functions: setMessage -- 12/30/2022 MF
-
-  Component.displayName = "AlertPopup";
 
   let alertClasses = classnames("alert", {
     "alert-success": alertType === "success",

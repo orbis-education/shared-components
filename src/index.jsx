@@ -16,11 +16,6 @@ import { version, copyrightYear } from "../package.json";
 import "../lib/css/index.css";
 const applicationVersion = version;
 
-Component.displayName = "index";
-
-// console.log(componentName, "applicationVersion", applicationVersion);
-// console.log(componentName, "copyrightYear", copyrightYear);
-
 const root = createRoot(document.getElementById("root"));
 
 const ddAccountType = "Please select the <strong>Account Type</strong>.";

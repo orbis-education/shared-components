@@ -1,4 +1,3 @@
-import { Component } from "react";
 import classnames from "classnames";
 import { isEmpty, isNonEmptyArray, parse } from "shared-functions";
 import RequiredFieldAsterisk from "./RequiredFieldAsterisk";
@@ -20,8 +19,6 @@ const FormDropdown = ({
   updateValue,
   useInputAddon = false
 }) => {
-
-  Component.displayName = "FormDropdown";
 
   // * If srOnly is set to true, then the form item label is only visible to screen readers. -- 06/21/2023 MF
   let labelClasses = classnames("", {

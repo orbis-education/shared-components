@@ -1,9 +1,6 @@
-import { Component } from "react";
 import OrbisLogo from "./OrbisLogo";
 
 const Header = ({ applicationName = "Application" }) => {
-
-  Component.displayName = "Header";
 
   document.title = `Orbis Education | ${applicationName}`;
 

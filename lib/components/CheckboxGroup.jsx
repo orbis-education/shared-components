@@ -23,8 +23,6 @@ const CheckboxGroup = ({
   updateValue
 }) => {
 
-  Component.displayName = "CheckboxGroup";
-
   const [isCollapsed, setIsCollapsed] = useState(true);
 
   let fieldsetClasses = classnames("form-group", {

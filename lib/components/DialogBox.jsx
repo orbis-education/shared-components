@@ -9,8 +9,6 @@ const DialogBox = ({
   setDialogBoxOpen
 }) => {
 
-  Component.displayName = "DialogBox";
-
   let size = dialogBoxSize;
   let title = dialogBoxTitle;
   let content = dialogBoxContent;

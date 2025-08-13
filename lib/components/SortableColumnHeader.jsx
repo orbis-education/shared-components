@@ -1,4 +1,3 @@
-import { Component } from "react";
 import classnames from "classnames";
 
 const SortableColumnHeader = ({
@@ -9,8 +8,6 @@ const SortableColumnHeader = ({
   sortDirection = "",
   sortProperty = ""
 }) => {
-
-  Component.displayName = "SortableColumnHeader";
 
   let iconClasses = classnames("fa", {
     "fa-sort-up": sortProperty === columnPropertyName && sortDirection === "asc",

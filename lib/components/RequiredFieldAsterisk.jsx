@@ -1,8 +1,5 @@
-import { Component } from "react";
 
 const RequiredFieldAsterisk = () => {
-
-  Component.displayName = "RequiredFieldAsterisk";
 
 
   return (

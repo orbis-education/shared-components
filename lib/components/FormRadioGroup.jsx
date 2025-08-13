@@ -23,8 +23,6 @@ const FormRadioGroup = ({
   updateValue
 }) => {
 
-  Component.displayName = "FormRadioGroup";
-
   const [isCollapsed, setIsCollapsed] = useState(true);
 
   let fieldsetClasses = classnames("form-group", {
