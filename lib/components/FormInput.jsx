@@ -26,8 +26,6 @@ const FormInput = ({
   useInputAddon = false
 }) => {
 
-  Component.displayName = "FormInput";
-
   // * For number, range, date, datetime-local, month, time and week -- 07/25/2023 JH
   // * Default value is null to prevent other input types from having the attribute. -- 07/25/2023 JH
   // * onKeyDown is used exclusively for being able to press enter to submit in a textarea. -- 04/22/2025 JH

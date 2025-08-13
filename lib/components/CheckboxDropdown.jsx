@@ -21,8 +21,6 @@ const CheckboxDropdown = ({
   updateValue
 }) => {
 
-  Component.displayName = "CheckboxDropdown";
-
   const dropdownRef = useRef(null);
 
   const [isDropdownOpen, setIsDropdownOpen] = useNativeClickListener(dropdownRef, false);
