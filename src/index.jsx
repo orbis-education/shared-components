@@ -1,4 +1,4 @@
-import { Component, useState } from "react";
+import { useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
   // AlertPopup,
@@ -8,7 +8,8 @@ import {
   FormInput,
   FormRadioGroup,
   Header,
-  ToggleSwitch,
+  NoResultsText,
+  ToggleSwitch
 } from "../lib";
 // * https://stackoverflow.com/questions/66384368/how-is-it-possible-to-access-homepage-from-package-json-in-a-react-app -- 12/17/2021 MF
 // * Using Vite requires a different syntax. -- 09/22/2023 MF
@@ -71,6 +72,9 @@ const App = () => {
       <main>
         <section className="section-block">
           <form onSubmit={(event) => { handleSubmit(event); }}>
+
+            <NoResultsText>No sessions available.</NoResultsText>
+            <NoResultsText />
 
             <FormInput
               formInputID="txtName"

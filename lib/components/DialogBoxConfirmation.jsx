@@ -1,4 +1,4 @@
-import { Component, useEffect } from "react";
+import { useEffect } from "react";
 import classnames from "classnames";
 
 const DialogBoxConfirmation = ({
