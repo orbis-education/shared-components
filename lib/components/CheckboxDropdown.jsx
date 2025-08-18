@@ -1,4 +1,4 @@
-import { Component, Fragment, useRef } from "react";
+import { Fragment, useRef } from "react";
 import classnames from "classnames";
 import { isEmpty, isNonEmptyArray, formatToString, parse } from "shared-functions";
 import { useNativeClickListener } from "../hooks/useNativeClickListener";

@@ -1,4 +1,4 @@
-import { Component, useState } from "react";
+import { useState } from "react";
 import classnames from "classnames";
 import { isEmpty, parse } from "shared-functions";
 import RequiredFieldAsterisk from "./RequiredFieldAsterisk";
