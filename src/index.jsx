@@ -7,6 +7,7 @@ import {
   FormDropdown,
   FormInput,
   FormRadioGroup,
+  Footer,
   Header,
   NoResultsText,
   ToggleSwitch
@@ -181,7 +182,7 @@ const App = () => {
         <AlertPopup message="also hello, again" alertType="error" />
       </div> */}
 
-      <footer className="copy">&copy; {copyrightYear} Orbis Education. All rights reserved. Version: {applicationVersion}</footer>
+      <Footer copyrightYear={copyrightYear} applicationVersion={applicationVersion} />
     </div>
   );
 };
