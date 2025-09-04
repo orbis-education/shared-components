@@ -71,3 +71,10 @@ footer {
   padding: 2rem;
   margin-bottom: 0;
 }
+
+table .no-results-message {
+  width: 100%;
+  display: inline-block;
+  font-size: 1.25rem;
+  padding: 1rem;
+}
