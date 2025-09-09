@@ -266,3 +266,29 @@ a.btn:visited {
 a.btn {
   line-height: 1;
 }
+
+.btn-link {
+  color: var(--primaryBlue);
+  background-color: rgba(255,255,255,0);
+  border-color: rgba(255,255,255,0);
+  padding: 0;
+
+  &:hover:not(.disabled, :disabled, .readonly), 
+  &:active:not(.disabled, :disabled, .readonly) {
+    color: var(--darkBlue);
+    background-color: rgba(255,255,255,0);
+    border-color: rgba(255,255,255,0);
+    text-decoration: underline;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 0.2rem var(--medBlue_05);
+  }
+
+  &.disabled,
+  &:disabled {
+    background-color: rgba(255,255,255,0);
+    border-color: rgba(255,255,255,0);
+    opacity: .5;
+  }
+}

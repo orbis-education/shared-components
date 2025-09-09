@@ -1,4 +1,4 @@
-import { Component, useState } from "react";
+import { useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
   // AlertPopup,
@@ -7,19 +7,17 @@ import {
   FormDropdown,
   FormInput,
   FormRadioGroup,
+  Footer,
   Header,
-  ToggleSwitch,
+  NoResultsText,
+  ToggleSwitch
 } from "../lib";
 // * https://stackoverflow.com/questions/66384368/how-is-it-possible-to-access-homepage-from-package-json-in-a-react-app -- 12/17/2021 MF
 // * Using Vite requires a different syntax. -- 09/22/2023 MF
 import { version, copyrightYear } from "../package.json";
+import { isEmpty } from "shared-functions";
 import "../lib/css/index.css";
 const applicationVersion = version;
-
-Component.displayName = "index";
-
-// console.log(componentName, "applicationVersion", applicationVersion);
-// console.log(componentName, "copyrightYear", copyrightYear);
 
 const root = createRoot(document.getElementById("root"));
 
@@ -44,6 +42,7 @@ const App = () => {
   const [cbxGrpPartnerID, setCbxGrpPartnerID] = useState("");
   const [cbxSimulationID, setCbxSimulationID] = useState("");
   const [rdoProgramID, setRdoProgramID] = useState("");
+  const [componentToLoad, setComponentToLoad] = useState("");
 
 
   const handleSubmit = (event) => {
@@ -68,13 +67,81 @@ const App = () => {
   };
 
 
+  // ? Add to shared-functions? -- 08/29/2025 JH
+  const returnActiveClass = (componentName, classList) => {
+
+    let newClassList = !isEmpty(classList) ? classList : "";
+
+    newClassList += componentToLoad === componentName ? " active" : "";
+
+    return newClassList;
+
+  };
+
+
   return (
     <div>
 
       <Header applicationName="Shared Components" />
 
+      <nav className="sub-header-nav">
+        <ul>
+          <li>
+            <button
+              type="button"
+              role="link"
+              className={returnActiveClass("")}
+            >
+              Home
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              role="link"
+              className={returnActiveClass("Page1")}
+            >
+              Page 1
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              role="link"
+              className={returnActiveClass("Page2")}
+            >
+              Page 2
+            </button>
+          </li>
+        </ul>
+      </nav>
+
       <main>
+        <section className="section-block mb-4"><NoResultsText>No sessions available.</NoResultsText></section>
+
+        <section className="section-block mb-4">
+          <div className="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colSpan={3}>
+                    <NoResultsText />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
         <section className="section-block">
+
           <form onSubmit={(event) => { handleSubmit(event); }}>
 
             <FormInput
@@ -183,7 +250,7 @@ const App = () => {
         <AlertPopup message="also hello, again" alertType="error" />
       </div> */}
 
-      <footer className="copy">&copy; {copyrightYear} Orbis Education. All rights reserved. Version: {applicationVersion}</footer>
+      <Footer copyrightYear={copyrightYear} applicationVersion={applicationVersion} />
     </div>
   );
 };

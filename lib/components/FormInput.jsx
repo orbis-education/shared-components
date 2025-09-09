@@ -1,6 +1,6 @@
-import { Component, useState } from "react";
+import { useState } from "react";
 import classnames from "classnames";
-import { isEmpty, parse } from "shared-functions";
+import { isEmpty, parse, noFunctionAvailable } from "shared-functions";
 import RequiredFieldAsterisk from "./RequiredFieldAsterisk";
 
 const FormInput = ({
@@ -18,16 +18,14 @@ const FormInput = ({
   isRequired = false,
   labelText = "",
   maxLength = "",
-  onKeyDown,
+  onKeyDown = () => {}, // * Used an empty function instead of noFunctionAvailable so that console logs don't appear on every key down -- 09/02/2025 JH
   placeholderText = "",
   srOnly = "",
   // textareaColumns = "",
   textareaRows = 10,
-  updateValue,
+  updateValue = noFunctionAvailable,
   useInputAddon = false
 }) => {
-
-  Component.displayName = "FormInput";
 
   // * For number, range, date, datetime-local, month, time and week -- 07/25/2023 JH
   // * Default value is null to prevent other input types from having the attribute. -- 07/25/2023 JH

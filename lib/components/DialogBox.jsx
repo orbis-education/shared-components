@@ -1,4 +1,4 @@
-import { Component, useEffect } from "react";
+import { useEffect } from "react";
 import classnames from "classnames";
 
 const DialogBox = ({
@@ -8,8 +8,6 @@ const DialogBox = ({
   dialogBoxTitle = "",
   setDialogBoxOpen
 }) => {
-
-  Component.displayName = "DialogBox";
 
   let size = dialogBoxSize;
   let title = dialogBoxTitle;

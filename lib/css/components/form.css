@@ -604,3 +604,17 @@ fieldset.form-group.checkbox-dropdown-group {
 fieldset .inline-alert {
   margin-top: 1rem;
 }
+
+.horizontal-form {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: .5rem;
+  width: 100%;
+  flex-wrap: wrap;
+
+  .form-group {
+    width: auto;
+  }
+}

@@ -1,4 +1,3 @@
-import { Component } from "react";
 import classnames from "classnames";
 import { isEmpty, parse } from "shared-functions";
 import RequiredFieldAsterisk from "./RequiredFieldAsterisk";
@@ -15,8 +14,6 @@ const ToggleSwitch = ({
   trueValue = "Yes",
   updateValue
 }) => {
-
-  Component.displayName = "FormInput";
 
   // * If srOnly is set to true, then the form item label is only visible to screen readers. -- 06/21/2023 MF
   let labelClasses = classnames("", {

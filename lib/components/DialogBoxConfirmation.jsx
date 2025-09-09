@@ -1,4 +1,4 @@
-import { Component, useEffect } from "react";
+import { useEffect } from "react";
 import classnames from "classnames";
 
 const DialogBoxConfirmation = ({
@@ -9,8 +9,6 @@ const DialogBoxConfirmation = ({
   dialogBoxType = "",
   setDialogBoxContinue
 }) => {
-
-  Component.displayName = "DialogBoxConfirmation";
 
   // * The code that catches the route change on the page doesn't handle if the browser is closed or the back/forward buttons are used. -- 07/15/2021 MF
 
