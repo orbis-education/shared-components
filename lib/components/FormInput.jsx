@@ -17,7 +17,8 @@ const FormInput = ({
   inputValue = "",
   isRequired = false,
   labelText = "",
-  onKeyDown = () => { }, // * Used an empty function instead of noFunctionAvailable so that console logs don't appear on every key down -- 09/02/2025 JH
+  maxLength = "",
+  onKeyDown = () => {}, // * Used an empty function instead of noFunctionAvailable so that console logs don't appear on every key down -- 09/02/2025 JH
   placeholderText = "",
   srOnly = "",
   // textareaColumns = "",
@@ -61,7 +62,16 @@ const FormInput = ({
 
     } else {
 
-      updateValue(event.target.value);
+      let value = event.target.value;
+
+      // * This is used to account for initial values of inputs and pasting/typing values that exceed maxLength. -- 09/09/2025 JW
+      if (!isEmpty(maxLength) && value.length > Number.parseInt(maxLength)) {
+
+        value.slice(0, Number.parseInt(maxLength));
+
+      }
+
+      updateValue(value);
 
     };
 
@@ -112,6 +122,7 @@ const FormInput = ({
           step={inputStep}
           list={datalistName}
           autoFocus={autoFocus}
+          maxLength={maxLength}
         />
 
         : null}
