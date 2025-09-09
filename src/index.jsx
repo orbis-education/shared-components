@@ -83,6 +83,7 @@ const App = () => {
               placeholderText="Enter a name"
               inputHint="Please enter a name."
               inputValue={txtName}
+              maxLength={"255"}
               updateValue={setTxtName}
             />
 
