@@ -1,6 +1,13 @@
 .tooltip-container {
   position: relative;
 
+  /* * Tooltip is center-aligned and appears above the icon by default. -- 09/24/2025 JH
+    xxxxxxxxx
+    xxxxxxxxx
+        v
+        i
+   */ 
+
   &:before {
     content: attr(data-tooltip);
     position: absolute;
@@ -39,6 +46,63 @@
     border-color: #fff transparent transparent transparent;
     display: none;
     z-index: 12;
+  }
+  
+  &.tooltip-right {
+    /* * Tooltip is left-aligned with the box on the right. -- 09/24/2025 JH
+      xxxxxxxxx
+      xxxxxxxxx
+       v
+       i
+     */
+    &:before {
+      left: 0;
+      transform: unset;
+    }
+    &:after {
+      left: .25rem;
+      transform: unset;
+    }
+  }
+
+  &.tooltip-left {
+    /* * Tooltip is right-aligned with the box on the left. -- 09/24/2025 JH
+      xxxxxxxxx
+      xxxxxxxxx
+             v
+             i
+     */
+    &:before {
+      left: unset;
+      right: 0;
+      transform: unset;
+    }
+    &:after {
+      left: unset;
+      right: .5rem;
+      transform: unset;
+    }
+  }
+
+  &.tooltip-down {
+    /* * Tooltip appears below icon instead of above. It's centered by default but can be combined with the left/right classes. -- 09/24/2025 JH
+          i
+          ^
+      xxxxxxxxx
+      xxxxxxxxx
+     */
+    &:before {
+      top: 100%;
+      bottom: unset;
+      margin-top: 10px;
+      box-shadow: 0 0 8px 4px rgba(0,0,0,.2);
+    }
+    &:after {
+      top: 100%;
+      bottom: unset;
+      margin-top: -8px;
+      border-color: transparent transparent #fff transparent;
+    }
   }
 
   &:hover {
