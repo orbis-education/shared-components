@@ -1,6 +1,6 @@
 import classnames from "classnames";
 import { isEmpty, isNonEmptyArray, parse } from "shared-functions";
-import RequiredFieldAsterisk from "./RequiredFieldAsterisk";
+import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
 
 const FormDropdown = ({
   emptyOption = false,
@@ -21,12 +21,12 @@ const FormDropdown = ({
 }) => {
 
   // * If srOnly is set to true, then the form item label is only visible to screen readers. -- 06/21/2023 MF
-  let labelClasses = classnames("", {
+  const labelClasses = classnames("", {
     "sr-only": srOnly === true,
     "input-addon": useInputAddon === true
   });
 
-  let formGroupClasses = classnames("form-group", {
+  const formGroupClasses = classnames("form-group", {
     "with-addon": useInputAddon === true,
     "input-error": isEmpty(inlineError) === false,
     "input-disabled": inputDisabled === true
@@ -41,6 +41,24 @@ const FormDropdown = ({
       )
       .join(" "); // * Join to ensure a single string output. -- 02/25/2025 JW
 
+
+  const handleOnChange = (event) => {
+
+    const convertedNumber = Number.parseFloat(event.target.value);
+
+    if (!isNaN(convertedNumber)) {
+
+      updateValue(convertedNumber);
+
+    } else {
+
+      updateValue(event.target.value);
+
+    };
+
+  };
+
+
   return (
     <div className={formGroupClasses}>
 
@@ -54,7 +72,13 @@ const FormDropdown = ({
 
       {isEmpty(inputHint) === false ? <p className="input-hint">{parse(inputHint)}</p> : null}
 
-      <select className="form-control" id={formInputID} value={inputValue} disabled={inputDisabled} onChange={(event) => { updateValue(event.target.value); }}>
+      <select
+        className="form-control"
+        id={formInputID}
+        value={inputValue}
+        disabled={inputDisabled}
+        onChange={(event) => { handleOnChange(event); }}
+      >
 
         {emptyOption !== true ? <option value="">{placeholderText}</option> : null}
 

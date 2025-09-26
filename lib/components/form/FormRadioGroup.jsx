@@ -1,7 +1,7 @@
 import { Fragment, useState, useEffect } from "react";
 import classnames from "classnames";
 import { isEmpty, isNonEmptyArray, formatToString, parse } from "shared-functions";
-import RequiredFieldAsterisk from "./RequiredFieldAsterisk";
+import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
 
 const FormRadioGroup = ({
   collapseList = false,
@@ -25,16 +25,16 @@ const FormRadioGroup = ({
 
   const [isCollapsed, setIsCollapsed] = useState(true);
 
-  let fieldsetClasses = classnames("form-group", {
+  const fieldsetClasses = classnames("form-group", {
     "input-disabled": inputDisabled === true
   });
 
   // * If srOnly is set to true, then the form item label is only visible to screen readers. -- 06/21/2023 MF
-  let labelClasses = classnames("", {
+  const labelClasses = classnames("", {
     "sr-only": srOnly === true
   });
 
-  let radioGroupClasses = classnames("radio-group", {
+  const radioGroupClasses = classnames("radio-group", {
     "is-collapsible": isCollapsible === true,
     "show": isCollapsed !== true,
     "input-error": isEmpty(inlineError) === false
@@ -80,6 +80,23 @@ const FormRadioGroup = ({
   }, [collapseList]);
 
 
+  const handleOnChange = (event) => {
+
+    const convertedNumber = Number.parseFloat(event.target.value);
+
+    if (!isNaN(convertedNumber)) {
+
+      updateValue(convertedNumber);
+
+    } else {
+
+      updateValue(event.target.value);
+
+    };
+
+  };
+
+
   return (
     <fieldset className={fieldsetClasses}>
 
@@ -96,21 +113,13 @@ const FormRadioGroup = ({
             {isEmpty(inputValue) === false ? <div className="search-filter-count">1</div> : null}
 
             {isCollapsed === true ?
-
               <>
-
                 <i className="fa fa-chevron-down"></i><span className="sr-only">Open</span>
-
               </>
-
               :
-
               <>
-
                 <i className="fa fa-chevron-up"></i><span className="sr-only">Close</span>
-
               </>
-
             }
 
           </button>
@@ -118,11 +127,8 @@ const FormRadioGroup = ({
           :
 
           <>
-
             {legendText}
-
             {isRequired === true ? <RequiredFieldAsterisk /> : null}
-
           </>
 
         }
@@ -155,7 +161,15 @@ const FormRadioGroup = ({
 
                     <label className={`${formatToString(optionDataItem[optionID]) === formatToString(newInputValue) ? "active" : ""}`}>
 
-                      <input type="radio" id={`${formInputID}${optionDataItem[optionID]}`} name={formInputID} value={optionDataItem[optionID]} checked={formatToString(optionDataItem[optionID]) === formatToString(newInputValue)} disabled={inputDisabled} onChange={(event) => { updateValue(event.target.value); }} />
+                      <input
+                        type="radio"
+                        id={`${formInputID}${optionDataItem[optionID]}`}
+                        name={formInputID}
+                        value={optionDataItem[optionID]}
+                        checked={formatToString(optionDataItem[optionID]) === formatToString(newInputValue)}
+                        disabled={inputDisabled}
+                        onChange={(event) => { handleOnChange(event); }}
+                      />
 
                       {optionText.map((optionTextItem, index) => {
 

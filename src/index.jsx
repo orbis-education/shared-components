@@ -9,6 +9,7 @@ import {
   FormRadioGroup,
   Footer,
   Header,
+  Navigation,
   NoResultsText,
   ToggleSwitch
 } from "../lib";
@@ -78,43 +79,46 @@ const App = () => {
 
   };
 
+  const navigationItems = [
+    {
+      name: "Home",
+      componentName: "Home",
+      onClick: () => { window.scrollTo(0, 0); setComponentToLoad("Home"); }
+    },
+    {
+      name: "Page1",
+      componentName: "Page1",
+      type: "dropdown",
+      dropdownItems: [
+        {
+          name: "Dropdown1",
+          componentName: "Dropdown1",
+          onClick: () => { window.scrollTo(0, 0); setComponentToLoad("Dropdown1"); }
+        },
+        {
+          name: "Dropdown2",
+          componentName: "Dropdown2",
+          onClick: () => { window.scrollTo(0, 0); setComponentToLoad("Dropdown2"); }
+        }
+      ]
+    },
+    {
+      name: "Page2",
+      componentName: "Page2",
+      onClick: () => { window.scrollTo(0, 0); setComponentToLoad("Page2"); }
+    }
+  ];
+
 
   return (
     <div>
 
       <Header applicationName="Shared Components" />
 
-      <nav className="sub-header-nav">
-        <ul>
-          <li>
-            <button
-              type="button"
-              role="link"
-              className={returnActiveClass("")}
-            >
-              Home
-            </button>
-          </li>
-          <li>
-            <button
-              type="button"
-              role="link"
-              className={returnActiveClass("Page1")}
-            >
-              Page 1
-            </button>
-          </li>
-          <li>
-            <button
-              type="button"
-              role="link"
-              className={returnActiveClass("Page2")}
-            >
-              Page 2
-            </button>
-          </li>
-        </ul>
-      </nav>
+      <Navigation
+        navigationItems={navigationItems}
+        componentToLoad={componentToLoad}
+      />
 
       <main>
         <section className="section-block mb-4"><NoResultsText>No sessions available.</NoResultsText></section>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import classnames from "classnames";
 import { isEmpty, parse, noFunctionAvailable } from "shared-functions";
-import RequiredFieldAsterisk from "./RequiredFieldAsterisk";
+import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
 
 const FormInput = ({
   autoFocus = false,
@@ -47,17 +47,11 @@ const FormInput = ({
 
   const handleOnChange = (event) => {
 
-    if (inputType === "number") {
+    const convertedNumber = Number.parseFloat(event.target.value);
 
-      if (isEmpty(event.target.value) === false && isNaN(event.target.value) === false) {
+    if (!isNaN(convertedNumber)) {
 
-        updateValue(Number.parseFloat(event.target.value));
-
-      } else {
-
-        updateValue(event.target.value);
-
-      };
+      updateValue(convertedNumber);
 
     } else {
 

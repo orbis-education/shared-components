@@ -1,7 +1,7 @@
 import { Fragment, useState, useEffect } from "react";
 import classnames from "classnames";
 import { isEmpty, isNonEmptyArray, formatToString, parse } from "shared-functions";
-import RequiredFieldAsterisk from "./RequiredFieldAsterisk";
+import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
 
 const CheckboxGroup = ({
   collapseList = false,
