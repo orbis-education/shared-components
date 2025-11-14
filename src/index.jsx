@@ -12,11 +12,11 @@ import {
   NoResultsText,
   ToggleSwitch
 } from "../lib";
+import { returnActiveClass } from "./utilities/applicationFunctions";
+import "../lib/css/index.css";
 // * https://stackoverflow.com/questions/66384368/how-is-it-possible-to-access-homepage-from-package-json-in-a-react-app -- 12/17/2021 MF
 // * Using Vite requires a different syntax. -- 09/22/2023 MF
 import { version, copyrightYear } from "../package.json";
-import { isEmpty } from "shared-functions";
-import "../lib/css/index.css";
 const applicationVersion = version;
 
 const root = createRoot(document.getElementById("root"));
@@ -67,18 +67,6 @@ const App = () => {
   };
 
 
-  // ? Add to shared-functions? -- 08/29/2025 JH
-  const returnActiveClass = (componentName, classList) => {
-
-    let newClassList = !isEmpty(classList) ? classList : "";
-
-    newClassList += componentToLoad === componentName ? " active" : "";
-
-    return newClassList;
-
-  };
-
-
   return (
     <div>
 
@@ -90,7 +78,7 @@ const App = () => {
             <button
               type="button"
               role="link"
-              className={returnActiveClass("")}
+              className={returnActiveClass("", componentToLoad)}
             >
               Home
             </button>
@@ -99,7 +87,7 @@ const App = () => {
             <button
               type="button"
               role="link"
-              className={returnActiveClass("Page1")}
+              className={returnActiveClass("Page1", componentToLoad)}
             >
               Page 1
             </button>
@@ -108,7 +96,7 @@ const App = () => {
             <button
               type="button"
               role="link"
-              className={returnActiveClass("Page2")}
+              className={returnActiveClass("Page2", componentToLoad)}
             >
               Page 2
             </button>
