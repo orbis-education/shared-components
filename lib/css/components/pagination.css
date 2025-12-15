@@ -1,0 +1,38 @@
+.pagination-section {
+  display: inline-flex;
+  gap: .5rem 1rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-bottom: .5rem;
+
+  .form-group {
+    display: inline-flex;
+    width: auto;
+  }
+
+  .pagination-controls {
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid #ced4da;
+    width: auto;
+    background-color: rgba(255,255,255,1);
+    border-radius: 5px;
+    font-size: .875rem;
+  
+    strong {
+      margin: 0 1rem;
+    }
+  
+    .btn {
+      height: 40.5px;
+      border-radius: 0;
+      padding: 10px 14px;
+  
+      &:disabled {
+        opacity: .3;
+      }
+    }
+  }
+}
