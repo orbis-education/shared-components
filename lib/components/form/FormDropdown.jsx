@@ -1,6 +1,6 @@
 import classnames from "classnames";
 import { isEmpty, isNonEmptyArray, parse } from "shared-functions";
-import RequiredFieldAsterisk from "./RequiredFieldAsterisk";
+import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
 
 const FormDropdown = ({
   emptyOption = false,

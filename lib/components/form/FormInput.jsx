@@ -1,7 +1,7 @@
 import { useState } from "react";
 import classnames from "classnames";
 import { isEmpty, parse, noFunctionAvailable } from "shared-functions";
-import RequiredFieldAsterisk from "./RequiredFieldAsterisk";
+import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
 
 const FormInput = ({
   autoFocus = false,
@@ -18,7 +18,7 @@ const FormInput = ({
   isRequired = false,
   labelText = "",
   maxLength = "",
-  onKeyDown = () => {}, // * Used an empty function instead of noFunctionAvailable so that console logs don't appear on every key down -- 09/02/2025 JH
+  onKeyDown = () => { }, // * Used an empty function instead of noFunctionAvailable so that console logs don't appear on every key down -- 09/02/2025 JH
   placeholderText = "",
   srOnly = "",
   // textareaColumns = "",

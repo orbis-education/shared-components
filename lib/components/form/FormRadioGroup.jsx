@@ -1,16 +1,16 @@
 import { Fragment, useState, useEffect } from "react";
 import classnames from "classnames";
 import { isEmpty, isNonEmptyArray, formatToString, parse } from "shared-functions";
-import RequiredFieldAsterisk from "./RequiredFieldAsterisk";
+import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
 
-const CheckboxGroup = ({
+const FormRadioGroup = ({
   collapseList = false,
   formColumns = 1,
   formInputID = "",
   inlineError = "",
   inputDisabled = false,
   inputHint = "",
-  inputValue = [],
+  inputValue = "",
   isCollapsible = false,
   isRequired = false,
   legendText = "",
@@ -34,7 +34,7 @@ const CheckboxGroup = ({
     "sr-only": srOnly === true
   });
 
-  let checkboxGroupClasses = classnames("checkbox-group", {
+  let radioGroupClasses = classnames("radio-group", {
     "is-collapsible": isCollapsible === true,
     "show": isCollapsed !== true,
     "input-error": isEmpty(inlineError) === false
@@ -80,25 +80,6 @@ const CheckboxGroup = ({
   }, [collapseList]);
 
 
-  const handleOnChange = (event) => {
-
-    if (event.target.checked === true) {
-
-      let newCheckedList = [...inputValue, event.target.value];
-
-      updateValue(newCheckedList);
-
-    } else {
-
-      let filteredList = inputValue.filter(value => value !== event.target.value);
-
-      updateValue(filteredList);
-
-    };
-
-  };
-
-
   return (
     <fieldset className={fieldsetClasses}>
 
@@ -112,15 +93,23 @@ const CheckboxGroup = ({
 
             {isRequired === true ? <RequiredFieldAsterisk /> : null}
 
-            {isNonEmptyArray(inputValue) === true ? <div className="search-filter-count">{inputValue.length}</div> : null}
+            {isEmpty(inputValue) === false ? <div className="search-filter-count">1</div> : null}
 
             {isCollapsed === true ?
 
-              <><i className="fa fa-chevron-down"></i><span className="sr-only">Open</span></>
+              <>
+
+                <i className="fa fa-chevron-down"></i><span className="sr-only">Open</span>
+
+              </>
 
               :
 
-              <><i className="fa fa-chevron-up"></i><span className="sr-only">Close</span></>
+              <>
+
+                <i className="fa fa-chevron-up"></i><span className="sr-only">Close</span>
+
+              </>
 
             }
 
@@ -140,7 +129,7 @@ const CheckboxGroup = ({
 
       </legend>
 
-      <ul className={checkboxGroupClasses} style={{ columns: formColumns }}>
+      <ul className={radioGroupClasses} style={{ columns: formColumns }}>
 
         {isEmpty(inputHint) === false ? <p className="input-hint">{parse(inputHint)}</p> : null}
 
@@ -152,40 +141,41 @@ const CheckboxGroup = ({
 
               if (optionDataItem.active === true || isEmpty(optionDataItem.active) === true) {
 
-                let filterInputValue = isNonEmptyArray(inputValue) === true ? inputValue.filter(value => value === formatToString(optionDataItem[optionID])) : [];
+                // TODO: Temporary fix to convert true/false to 1/2. -- 09/13/2023 JH
+                let newInputValue = inputValue;
 
-                let isChecked = isNonEmptyArray(filterInputValue) === true ? true : false;
+                if (typeof newInputValue == "boolean") {
+
+                  newInputValue = newInputValue === true ? 1 : 2;
+
+                };
 
                 return (
                   <li key={optionDataItem[optionID]}>
 
-                    <label>
+                    <label className={`${formatToString(optionDataItem[optionID]) === formatToString(newInputValue) ? "active" : ""}`}>
 
-                      <input type="checkbox" id={`${formInputID}${optionDataItem[optionID]}`} value={optionDataItem[optionID]} checked={isChecked} disabled={inputDisabled} onChange={(event) => { handleOnChange(event); }} />
+                      <input type="radio" id={`${formInputID}${optionDataItem[optionID]}`} name={formInputID} value={optionDataItem[optionID]} checked={formatToString(optionDataItem[optionID]) === formatToString(newInputValue)} disabled={inputDisabled} onChange={(event) => { updateValue(event.target.value); }} />
 
-                      <span className="checkbox-label-text">
+                      {optionText.map((optionTextItem, index) => {
 
-                        {optionText.map((optionTextItem, index) => {
+                        let displayOptionText = "";
 
-                          let displayOptionText = "";
+                        if (optionTextItem.type === "property") {
 
-                          if (optionTextItem.type === "property") {
+                          displayOptionText = optionDataItem[optionTextItem.text];
 
-                            displayOptionText = optionDataItem[optionTextItem.text];
+                        } else if (optionTextItem.type === "string") {
 
-                          } else if (optionTextItem.type === "string") {
+                          displayOptionText = parse(optionTextItem.text);
 
-                            displayOptionText = optionTextItem.text;
+                        };
 
-                          };
+                        return (
+                          <Fragment key={index}>{displayOptionText}</Fragment>
+                        );
 
-                          return (
-                            <Fragment key={index}>{displayOptionText}</Fragment>
-                          );
-
-                        })}
-
-                      </span>
+                      })}
 
                     </label>
 
@@ -210,4 +200,4 @@ const CheckboxGroup = ({
   );
 };
 
-export default CheckboxGroup;
+export default FormRadioGroup;
