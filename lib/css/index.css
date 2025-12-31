@@ -5,6 +5,8 @@
 
 @import "./layout/base.css";
 @import "./layout/header.css";
+@import "./layout/pagination.css";
+@import "./layout/navigation.css";
 @import "./layout/sectionBlock.css";
 @import "./layout/table.css";
 @import "./layout/rows.css";
@@ -16,4 +18,3 @@
 @import "./components/modal.css";
 @import "./components/spinner.css";
 @import "./components/tooltip.css";
-@import "./components/pagination.css";

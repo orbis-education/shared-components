@@ -10,9 +10,9 @@ import {
   Footer,
   Header,
   NoResultsText,
-  ToggleSwitch
+  ToggleSwitch,
+  Navigation
 } from "../lib";
-import { returnActiveClass } from "shared-functions";
 import "../lib/css/index.css";
 // * https://stackoverflow.com/questions/66384368/how-is-it-possible-to-access-homepage-from-package-json-in-a-react-app -- 12/17/2021 MF
 // * Using Vite requires a different syntax. -- 09/22/2023 MF
@@ -42,7 +42,33 @@ const App = () => {
   const [cbxGrpPartnerID, setCbxGrpPartnerID] = useState("");
   const [cbxSimulationID, setCbxSimulationID] = useState("");
   const [rdoProgramID, setRdoProgramID] = useState("");
-  const [componentToLoad, setComponentToLoad] = useState("");
+  const [componentToLoad, setComponentToLoad] = useState("Home");
+
+  const navigationItems = [
+    {
+      name: "Home",
+      componentName: "Home"
+    },
+    {
+      name: "Page 1",
+      componentName: "Page1",
+      type: "dropdown",
+      dropdownItems: [
+        {
+          name: "Dropdown 1",
+          componentName: "Dropdown1"
+        },
+        {
+          name: "Dropdown 2",
+          componentName: "Dropdown2"
+        }
+      ]
+    },
+    {
+      name: "Page 2",
+      componentName: "Page2"
+    }
+  ];
 
 
   const handleSubmit = (event) => {
@@ -67,42 +93,25 @@ const App = () => {
   };
 
 
+  // * if using redux, a function like this will be needed -- 12/31/2025 JH
+  // const handleSetComponentToLoad = (component) => {
+
+  //   dispatch(setComponentToLoad(component))
+
+  // }
+
+
   return (
     <div>
 
       <Header applicationName="Shared Components" />
 
-      <nav className="sub-header-nav">
-        <ul>
-          <li>
-            <button
-              type="button"
-              role="link"
-              className={returnActiveClass("", componentToLoad)}
-            >
-              Home
-            </button>
-          </li>
-          <li>
-            <button
-              type="button"
-              role="link"
-              className={returnActiveClass("Page1", componentToLoad)}
-            >
-              Page 1
-            </button>
-          </li>
-          <li>
-            <button
-              type="button"
-              role="link"
-              className={returnActiveClass("Page2", componentToLoad)}
-            >
-              Page 2
-            </button>
-          </li>
-        </ul>
-      </nav>
+      <Navigation
+        navigationItems={navigationItems}
+        componentToLoad={componentToLoad}
+        // setComponentToLoad={handleSetComponentToLoad}
+        setComponentToLoad={setComponentToLoad}
+      />
 
       <main>
         <section className="section-block mb-4"><NoResultsText>No sessions available.</NoResultsText></section>
