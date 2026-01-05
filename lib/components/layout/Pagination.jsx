@@ -1,4 +1,4 @@
-import FormDropdown from "./FormDropdown";
+import FormDropdown from "../form/FormDropdown";
 
 const Pagination = ({
   defaultResultsPerPage = 30,

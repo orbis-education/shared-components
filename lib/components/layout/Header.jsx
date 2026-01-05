@@ -1,4 +1,4 @@
-import OrbisLogo from "./OrbisLogo";
+import OrbisLogo from "../common/OrbisLogo";
 
 const Header = ({ applicationName = "Application" }) => {
 
