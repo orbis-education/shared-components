@@ -47,7 +47,8 @@ const App = () => {
   const navigationItems = [
     {
       name: "Home",
-      componentName: "Home"
+      componentName: "Home",
+      onClick: () => { window.scrollTo(0, 0); setComponentToLoad("Home"); }
     },
     {
       name: "Page 1",
@@ -56,17 +57,20 @@ const App = () => {
       dropdownItems: [
         {
           name: "Dropdown 1",
-          componentName: "Dropdown1"
+          componentName: "Dropdown1",
+          onClick: () => { window.scrollTo(0, 0); setComponentToLoad("Dropdown1"); }
         },
         {
           name: "Dropdown 2",
-          componentName: "Dropdown2"
+          componentName: "Dropdown2",
+          onClick: () => { window.scrollTo(0, 0); setComponentToLoad("Dropdown2"); }
         }
       ]
     },
     {
       name: "Page 2",
-      componentName: "Page2"
+      componentName: "Page2",
+      onClick: () => { window.scrollTo(0, 0); setComponentToLoad("Page2"); }
     }
   ];
 
@@ -93,14 +97,6 @@ const App = () => {
   };
 
 
-  // * if using redux, a function like this will be needed -- 12/31/2025 JH
-  // const handleSetComponentToLoad = (component) => {
-
-  //   dispatch(setComponentToLoad(component))
-
-  // }
-
-
   return (
     <div>
 
@@ -109,8 +105,6 @@ const App = () => {
       <Navigation
         navigationItems={navigationItems}
         componentToLoad={componentToLoad}
-        // setComponentToLoad={handleSetComponentToLoad}
-        setComponentToLoad={setComponentToLoad}
       />
 
       <main>
