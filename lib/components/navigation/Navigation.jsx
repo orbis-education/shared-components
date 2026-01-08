@@ -4,18 +4,8 @@ import NavigationLink from "./NavigationLink";
 
 const Navigation = ({
   navigationItems = [],
-  componentToLoad = "",
-  setComponentToLoad = noFunctionAvailable
+  componentToLoad = ""
 }) => {
-
-
-  const handleNavigation = (component) => {
-
-    window.scrollTo(0, 0);
-
-    setComponentToLoad(component);
-
-  };
 
 
   const returnActiveClass = (componentName, classList) => {
@@ -41,9 +31,9 @@ const Navigation = ({
               <li key={index}>
 
                 {navigationItem.type === "dropdown" ?
-                  <NavigationDropdown navigationItem={navigationItem} returnActiveClass={returnActiveClass} handleNavigation={handleNavigation} />
+                  <NavigationDropdown navigationItem={navigationItem} returnActiveClass={returnActiveClass} />
                   :
-                  <NavigationLink navigationItem={navigationItem} returnActiveClass={returnActiveClass} handleNavigation={handleNavigation} />
+                  <NavigationLink navigationItem={navigationItem} returnActiveClass={returnActiveClass} />
                 }
 
               </li>

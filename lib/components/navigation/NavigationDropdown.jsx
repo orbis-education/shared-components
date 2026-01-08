@@ -5,9 +5,8 @@ import { isEmptyArray, noFunctionAvailable } from "shared-functions";
 import NavigationLink from "./NavigationLink";
 
 const NavigationDropdown = ({
-  navigationItem = { name: "", componentName: "", type: "", dropdownItems: [] },
-  returnActiveClass = noFunctionAvailable,
-  handleNavigation = noFunctionAvailable
+  navigationItem = { name: "", type: "", dropdownItems: [] },
+  returnActiveClass = noFunctionAvailable
 }) => {
 
   const dropdownRef = useRef(null);
@@ -27,7 +26,7 @@ const NavigationDropdown = ({
         onClick={() => { setIsDropdownOpen(!isDropdownOpen); }}
         ref={dropdownRef}
       >
-        Dropdown <i className={dropdownIcon} />
+        {navigationItem.name} <i className={dropdownIcon} />
       </button>
 
       {isDropdownOpen === true && !isEmptyArray(navigationItem?.dropdownItems) ?
@@ -38,7 +37,7 @@ const NavigationDropdown = ({
 
             return (
               <li key={index}>
-                <NavigationLink navigationItem={dropdownItem} returnActiveClass={returnActiveClass} handleNavigation={handleNavigation} />
+                <NavigationLink navigationItem={dropdownItem} returnActiveClass={returnActiveClass} />
               </li>
             );
           })}
