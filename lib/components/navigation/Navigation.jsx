@@ -7,6 +7,7 @@ const Navigation = ({
   componentToLoad = ""
 }) => {
 
+  const filteredNavigationItems = navigationItems.filter(navigationItem => navigationItem.isPresent === true);
 
   const returnActiveClass = (componentName, classList) => {
 
@@ -22,11 +23,11 @@ const Navigation = ({
   return (
     <nav className="sub-header-nav">
       <ul>
-        {!isEmptyArray(navigationItems) ?
+        {!isEmptyArray(filteredNavigationItems) ?
 
           <>
 
-            {navigationItems.map((navigationItem, index) => (
+            {filteredNavigationItems.map((navigationItem, index) => (
 
               <li key={index}>
 

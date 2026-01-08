@@ -17,6 +17,7 @@ const NavigationDropdown = ({
     "fa-caret-down": isDropdownOpen !== true
   });
 
+  const filteredDropdownItems = navigationItem?.dropdownItems.filter(dropdownItem => dropdownItem.isPresent === true);
 
   return (
     <>
@@ -29,11 +30,11 @@ const NavigationDropdown = ({
         {navigationItem.name} <i className={dropdownIcon} />
       </button>
 
-      {isDropdownOpen === true && !isEmptyArray(navigationItem?.dropdownItems) ?
+      {isDropdownOpen === true && !isEmptyArray(filteredDropdownItems) ?
 
         <ul className="dropdown">
 
-          {navigationItem.dropdownItems.map((dropdownItem, index) => {
+          {filteredDropdownItems.map((dropdownItem, index) => {
 
             return (
               <li key={index}>
