@@ -7,7 +7,8 @@ const Navigation = ({
   componentToLoad = ""
 }) => {
 
-  const filteredNavigationItems = navigationItems.filter(navigationItem => navigationItem.isPresent === true);
+  const filteredNavigationItems = navigationItems.filter(navigationItem => isEmpty(navigationItem.isPresent) || navigationItem.isPresent === true);
+
 
   const returnActiveClass = (componentName, classList) => {
 
