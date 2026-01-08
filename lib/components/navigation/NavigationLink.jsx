@@ -4,7 +4,8 @@ const NavigationLink = ({
   navigationItem = {
     name: "",
     componentName: "",
-    type: ""
+    type: "",
+    onClick: noFunctionAvailable
   },
   returnActiveClass = noFunctionAvailable
 }) => (
