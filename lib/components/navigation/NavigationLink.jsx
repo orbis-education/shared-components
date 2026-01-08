@@ -5,7 +5,8 @@ const NavigationLink = ({
     name: "",
     componentName: "",
     type: "",
-    onClick: noFunctionAvailable
+    onClick: noFunctionAvailable,
+    children: null
   },
   returnActiveClass = noFunctionAvailable
 }) => (
