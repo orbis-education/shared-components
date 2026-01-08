@@ -1,28 +1,28 @@
 import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { FormInput } from "shared-components";
-import { emailFormat, isEmpty, getDateTime, getFirstItem, convertSpecialCharacters, convertNullEmptyString, formatTrim, addLog, addErrorLog, getBrowserData, allowLogging } from "shared-functions";
-import { sessionTokenName, setFetchAuthorization } from "../../utilities/applicationFunctions";
-import { setDatabaseAvailable, setUserTokenExpired } from "../../app/applicationSettingsSlice";
-import { setLoggedInUser, setComponentToLoad } from "../../app/activitySlice";
-import { addSuccessMessage, addErrorMessage, clearMessages } from "../../app/errorMessageSlice";
+import FormInput from "../form/FormInput";
+import { emailFormat, isEmpty, getDateTime, getFirstItem, convertSpecialCharacters, convertNullEmptyString, formatTrim, addLog, addErrorLog, getBrowserData, allowLogging, noFunctionAvailable } from "shared-functions";
 
-const Profile = () => {
-
-  const dispatch = useDispatch();
-  // const navigate = useNavigate(); // ! in LOR
-
-  const applicationVersion = useSelector(state => state.applicationSettings.applicationVersion);
-  const baseURL = useSelector(state => state.applicationSettings.baseURL);
-  // const browserData = useSelector(state => state.applicationSettings.browserData); // ! in LOR
-  const computerLog = useSelector(state => state.applicationSettings.computerLog);
-  const userIdentifier = useSelector(state => state.applicationSettings.userIdentifier);
-  const demonstrationMode = useSelector(state => state.applicationSettings.demonstrationMode);
-  const environmentMode = useSelector(state => state.applicationSettings.environmentMode);
-  const databaseAvailable = useSelector(state => state.applicationSettings.databaseAvailable);
-
-  const loggedInUser = useSelector(state => state.activity.loggedInUser);
-  const sessionToken = useSelector(state => state.activity.sessionToken);
+const Profile = ({
+  applicationVersion = "",
+  baseURL = "",
+  computerLog = {},
+  userIdentifier = "",
+  demonstrationMode = false,
+  environmentMode = "",
+  databaseAvailable = true,
+  sessionToken = null,
+  loggedInUser = {},
+  disabled = true,
+  sessionTokenName = "",
+  handleNavigation = noFunctionAvailable,
+  setFetchAuthorization = noFunctionAvailable,
+  setDatabaseAvailable = noFunctionAvailable,
+  setUserTokenExpired = noFunctionAvailable,
+  setLoggedInUser = noFunctionAvailable,
+  addSuccessMessage = noFunctionAvailable,
+  addErrorMessage = noFunctionAvailable,
+  clearMessages = noFunctionAvailable
+}) => {
 
   const [currentUser, setCurrentUser] = useState({});
   const [userID, setUserID] = useState(null);
@@ -34,18 +34,7 @@ const Profile = () => {
 
   const [inlineErrors, setInlineErrors] = useState({});
 
-  // ! in LOR
-  // let disabled = !isEmpty(loggedInUser) ? loggedInUser.shared : loggedInUser.shared;
-  // let disabled = true;
 
-  // if (!isEmpty(loggedInUser)) {
-
-  //   disabled = loggedInUser.shared;
-
-  // };
-
-
-  // ! different in LOR
   useEffect(() => {
 
     let currentSessionToken = localStorage.getItem(sessionTokenName);
@@ -56,10 +45,9 @@ const Profile = () => {
 
       let operation = "Attempted Page Visit";
 
-      addLog(baseURL, setFetchAuthorization(null, environmentMode, demonstrationMode), databaseAvailable, allowLogging(), { operation, userIdentifier, href: window.location.href, applicationVersion, browserData: JSON.stringify(getBrowserData()), transactionData: { loggedInUser, computerLog }, dateEntered: getDateTime() });
+      addLog(baseURL, setFetchAuthorization("", environmentMode, demonstrationMode), databaseAvailable, allowLogging(), { operation, userIdentifier, href: window.location.href, applicationVersion, browserData: JSON.stringify(getBrowserData()), transactionData: { loggedInUser, computerLog }, dateEntered: getDateTime() });
 
-      dispatch(setComponentToLoad("")); // navigate(`/?${parametersURL}`);
-      // navigate("/");
+      handleNavigation();
 
     };
 
@@ -141,7 +129,8 @@ const Profile = () => {
 
     // window.scrollTo(0, 0);
 
-    dispatch(clearMessages());
+    clearMessages();
+
 
     let operation = "Save Record";
 
@@ -252,7 +241,7 @@ const Profile = () => {
 
         // * Display the error messages. -- 04/16/2021 MF
         // console.log(errorMessages);
-        dispatch(addErrorMessage(`${operation}: ${errorMessages}`));
+        addErrorMessage(`${operation}: ${errorMessages}`);
 
       };
 
@@ -289,7 +278,6 @@ const Profile = () => {
   };
 
 
-  // ! different in LOR
   const processTransaction = (transactionType) => {
 
     let url = `${baseURL}users/`;
@@ -354,11 +342,11 @@ const Profile = () => {
 
         } else {
 
-          addErrorLog(baseURL, setFetchAuthorization(null, environmentMode, demonstrationMode), databaseAvailable, allowLogging(), { operation: `${operation} SQL Server`, transactionData: { url, response: { ok: response.ok, redirected: response.redirected, status: response.status, statusText: response.statusText, type: response.type, url: response.url }, data, primaryKeyID, previousRecord, recordObject, applicationVersion, loggedInUser, computerLog }, errorData: { message: `${response.status} ${response.statusText} ${response.url}` }, dateEntered: getDateTime() });
+          addErrorLog(baseURL, setFetchAuthorization("", environmentMode, demonstrationMode), databaseAvailable, allowLogging(), { operation: `${operation} SQL Server`, transactionData: { url, response: { ok: response.ok, redirected: response.redirected, status: response.status, statusText: response.statusText, type: response.type, url: response.url }, data, primaryKeyID, previousRecord, recordObject, applicationVersion, loggedInUser, computerLog }, errorData: { message: `${response.status} ${response.statusText} ${response.url}` }, dateEntered: getDateTime() });
 
           if (response.status === 401) {
 
-            dispatch(setUserTokenExpired(true));
+            setUserTokenExpired(true);
 
           };
 
@@ -391,29 +379,29 @@ const Profile = () => {
             newLoggedInUser.email = convertNullEmptyString(dataRecord.email);
             newLoggedInUser.password = convertNullEmptyString(dataRecord.password);
 
-            dispatch(setLoggedInUser(newLoggedInUser));
+            setLoggedInUser(newLoggedInUser);
 
-            dispatch(setDatabaseAvailable(true)); // not in lor
+            setDatabaseAvailable(true);
 
-            addLog(baseURL, setFetchAuthorization(null, environmentMode, demonstrationMode), databaseAvailable, allowLogging(), { operation, userIdentifier, href: window.location.href, applicationVersion, browserData: JSON.stringify(getBrowserData()), transactionData: { dataRecord, previousRecord, loggedInUser, computerLog }, dateEntered: getDateTime() });
+            addLog(baseURL, setFetchAuthorization("", environmentMode, demonstrationMode), databaseAvailable, allowLogging(), { operation, userIdentifier, href: window.location.href, applicationVersion, browserData: JSON.stringify(getBrowserData()), transactionData: { dataRecord, previousRecord, loggedInUser, computerLog }, dateEntered: getDateTime() });
 
-            dispatch(addSuccessMessage(`${operation}: ${data.message}`));
+            addSuccessMessage(`${operation}: ${data.message}`);
 
           } else {
 
             // console.error(operation, "data.message", data.message);
 
-            dispatch(addErrorMessage(`${operation}: ${data.message}`));
+            addErrorMessage(`${operation}: ${data.message}`);
 
-            addErrorLog(baseURL, setFetchAuthorization(null, environmentMode, demonstrationMode), databaseAvailable, allowLogging(), { operation: `${operation} SQL Server`, transactionData: { url, response: { ok: response.ok, redirected: response.redirected, status: response.status, statusText: response.statusText, type: response.type, url: response.url }, data, primaryKeyID, previousRecord, recordObject, applicationVersion, loggedInUser, computerLog }, errorData: { message: data.message }, dateEntered: getDateTime() });
+            addErrorLog(baseURL, setFetchAuthorization("", environmentMode, demonstrationMode), databaseAvailable, allowLogging(), { operation: `${operation} SQL Server`, transactionData: { url, response: { ok: response.ok, redirected: response.redirected, status: response.status, statusText: response.statusText, type: response.type, url: response.url }, data, primaryKeyID, previousRecord, recordObject, applicationVersion, loggedInUser, computerLog }, errorData: { message: data.message }, dateEntered: getDateTime() });
 
           };
 
         } else {
 
-          dispatch(addErrorMessage(`${operation}: No Results Returned.`));
+          addErrorMessage(`${operation}: No Results Returned.`);
 
-          addErrorLog(baseURL, setFetchAuthorization(null, environmentMode, demonstrationMode), databaseAvailable, allowLogging(), { operation: `${operation} SQL Server`, transactionData: { url, response: { ok: response.ok, redirected: response.redirected, status: response.status, statusText: response.statusText, type: response.type, url: response.url }, data, primaryKeyID, previousRecord, recordObject, applicationVersion, loggedInUser, computerLog }, errorData: { message: "No Results Returned." }, dateEntered: getDateTime() });
+          addErrorLog(baseURL, setFetchAuthorization("", environmentMode, demonstrationMode), databaseAvailable, allowLogging(), { operation: `${operation} SQL Server`, transactionData: { url, response: { ok: response.ok, redirected: response.redirected, status: response.status, statusText: response.statusText, type: response.type, url: response.url }, data, primaryKeyID, previousRecord, recordObject, applicationVersion, loggedInUser, computerLog }, errorData: { message: "No Results Returned." }, dateEntered: getDateTime() });
 
         };
 
@@ -422,11 +410,11 @@ const Profile = () => {
 
         // console.error(operation, "error", error);
 
-        dispatch(addErrorMessage(`${operation}: ${convertSpecialCharacters(error.name)}: ${convertSpecialCharacters(error.message)}`));
+        addErrorMessage(`${operation}: ${convertSpecialCharacters(error.name)}: ${convertSpecialCharacters(error.message)}`);
 
-        addErrorLog(baseURL, setFetchAuthorization(null, environmentMode, demonstrationMode), databaseAvailable, allowLogging(), { operation, userIdentifier, transactionData: { primaryKeyID, previousRecord, recordObject, applicationVersion, loggedInUser, computerLog }, errorData: { name: error.name, message: error.message, inner: error.inner, stack: error.stack }, dateEntered: getDateTime() });
+        addErrorLog(baseURL, setFetchAuthorization("", environmentMode, demonstrationMode), databaseAvailable, allowLogging(), { operation, userIdentifier, transactionData: { primaryKeyID, previousRecord, recordObject, applicationVersion, loggedInUser, computerLog }, errorData: { name: error.name, message: error.message, inner: error.inner, stack: error.stack }, dateEntered: getDateTime() });
 
-        dispatch(setDatabaseAvailable(false));
+        setDatabaseAvailable(false);
 
       });
 
@@ -447,21 +435,21 @@ const Profile = () => {
 
         <p><strong>Username</strong>: {txtUsername}</p>
 
-        <FormInput formInputID="txtFirstName" inputType="text" labelText="First Name" isRequired={true} inlineError={inlineErrors.txtFirstName} inputValue={txtFirstName} updateValue={setTxtFirstName} />
+        <FormInput formInputID="txtFirstName" inputType="text" labelText="First Name" isRequired={true} inlineError={inlineErrors.txtFirstName} disabled={disabled} inputValue={txtFirstName} updateValue={setTxtFirstName} />
 
-        <FormInput formInputID="txtLastName" inputType="text" labelText="Last Name" isRequired={true} inlineError={inlineErrors.txtLastName} inputValue={txtLastName} updateValue={setTxtLastName} />
+        <FormInput formInputID="txtLastName" inputType="text" labelText="Last Name" isRequired={true} inlineError={inlineErrors.txtLastName} disabled={disabled} inputValue={txtLastName} updateValue={setTxtLastName} />
 
-        <FormInput formInputID="txtEmail" inputType="text" labelText="Email" isRequired={true} inlineError={inlineErrors.txtEmail} inputValue={txtEmail} updateValue={setTxtEmail} />
+        <FormInput formInputID="txtEmail" inputType="text" labelText="Email" isRequired={true} inlineError={inlineErrors.txtEmail} disabled={disabled} inputValue={txtEmail} updateValue={setTxtEmail} />
 
-        <FormInput formInputID="txtPassword" inputType="text" labelText="Password (Only updated if a value is entered)" isRequired={true} inputValue={txtPassword} updateValue={setTxtPassword} />
+        <FormInput formInputID="txtPassword" inputType="text" labelText="Password (Only updated if a value is entered)" isRequired={true} disabled={disabled} inputValue={txtPassword} updateValue={setTxtPassword} />
 
         <div className="flex-row">
 
           <button type="button" className="btn btn-primary" onClick={saveRecord}>Save</button>
 
-          <button type="button" className="btn btn-dark-gray" onClick={() => { loadRecord(); dispatch(clearMessages()); setInlineErrors({}); }}>Reset</button>
+          <button type="button" className="btn btn-dark-gray" onClick={() => { loadRecord(); clearMessages(); setInlineErrors({}); }}>Reset</button>
 
-          {/* <button type="button" className="btn btn-outline" onClick={() => { setCurrentUser({}); dispatch(clearMessages()); setInlineErrors({}); }}>Cancel</button> */}
+          {/* <button type="button" className="btn btn-outline" onClick={() => { setCurrentUser({}); clearMessages() setInlineErrors({}); }}>Cancel</button> */}
 
         </div>
 
