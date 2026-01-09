@@ -5,20 +5,25 @@ const NavigationLink = ({
     name: "",
     componentName: "",
     type: "",
-    onClick: noFunctionAvailable
+    onClick: noFunctionAvailable,
+    children: null
   },
   returnActiveClass = noFunctionAvailable
 }) => (
+  <>
 
-  <button
-    type="button"
-    role="link"
-    className={returnActiveClass(navigationItem.componentName)}
-    onClick={navigationItem.onClick}
-  >
-    {navigationItem.name}
-  </button>
+    <button
+      type="button"
+      role="link"
+      className={returnActiveClass(navigationItem.componentName)}
+      onClick={navigationItem.onClick}
+    >
+      {navigationItem.name}
+    </button>
 
+    {!isEmpty(navigationItem.children) ? navigationItem.children : null}
+
+  </>
 );
 
 export default NavigationLink;
