@@ -1,4 +1,4 @@
-import { noFunctionAvailable } from "shared-functions";
+import { isEmpty, noFunctionAvailable } from "shared-functions";
 
 const NavigationLink = ({
   navigationItem = {

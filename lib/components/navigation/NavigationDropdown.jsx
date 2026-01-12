@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import classnames from "classnames";
 import { useNativeClickListener } from "../../hooks/useNativeClickListener";
-import { isEmptyArray, noFunctionAvailable } from "shared-functions";
+import { isEmpty, isEmptyArray, noFunctionAvailable } from "shared-functions";
 import NavigationLink from "./NavigationLink";
 
 const NavigationDropdown = ({
