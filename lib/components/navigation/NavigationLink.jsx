@@ -4,6 +4,7 @@ const NavigationLink = ({
   navigationItem = {
     name: "",
     componentName: "",
+    isPresent: true,
     type: "",
     onClick: noFunctionAvailable,
     children: null

@@ -1,11 +1,17 @@
 import { isEmpty, isEmptyArray, noFunctionAvailable } from "shared-functions";
 import NavigationDropdown from "./NavigationDropdown";
 import NavigationLink from "./NavigationLink";
+import { NavigationItem } from "./NavigationTypes";
+
+type NavigationProps = {
+  navigationItems = NavigationItem[];
+componentToLoad = string;
+}
 
 const Navigation = ({
   navigationItems = [],
   componentToLoad = ""
-}) => {
+}: NavigationProps) => {
 
   const filteredNavigationItems = navigationItems.filter(navigationItem => isEmpty(navigationItem.isPresent) || navigationItem.isPresent === true);
 
