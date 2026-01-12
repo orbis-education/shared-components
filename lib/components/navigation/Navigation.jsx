@@ -1,4 +1,4 @@
-import { isEmpty, isEmptyArray, noFunctionAvailable } from "shared-functions";
+import { isEmpty, isEmptyArray } from "shared-functions";
 import NavigationDropdown from "./NavigationDropdown";
 import NavigationLink from "./NavigationLink";
 
