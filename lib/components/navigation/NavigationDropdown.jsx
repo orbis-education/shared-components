@@ -17,7 +17,7 @@ const NavigationDropdown = ({
     "fa-caret-down": isDropdownOpen !== true
   });
 
-  const filteredDropdownItems = navigationItem?.dropdownItems.filter(dropdownItem => isEmpty(navigationItem.isPresent) || dropdownItem.isPresent === true);
+  const filteredDropdownItems = navigationItem?.dropdownItems.filter(dropdownItem => isEmpty(dropdownItem.isPresent) || dropdownItem.isPresent === true);
 
   return (
     <>
