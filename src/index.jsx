@@ -52,8 +52,8 @@ const App = () => {
     },
     {
       name: "Page 1",
-      componentName: "Page1",
       type: "dropdown",
+      isPresent: true,
       dropdownItems: [
         {
           name: "Dropdown 1",
