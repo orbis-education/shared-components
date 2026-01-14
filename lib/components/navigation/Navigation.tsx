@@ -4,9 +4,9 @@ import NavigationLink from "./NavigationLink";
 import { NavigationItem } from "./NavigationTypes";
 
 type NavigationProps = {
-  navigationItems = NavigationItem[];
-componentToLoad = string;
-}
+  navigationItems: NavigationItem[];
+  componentToLoad: string;
+};
 
 const Navigation = ({
   navigationItems = [],
@@ -16,9 +16,10 @@ const Navigation = ({
   const filteredNavigationItems = navigationItems.filter(navigationItem => isEmpty(navigationItem.isPresent) || navigationItem.isPresent === true);
 
 
-  const returnActiveClass = (componentName, classList) => {
+  const returnActiveClass = (componentName: string | null, classList?: string) => {
 
-    let newClassList = !isEmpty(classList) ? classList : "";
+    // let newClassList: string = !isEmpty(classList) ? classList : "";
+    let newClassList: string = classList ?? "";
 
     newClassList += componentToLoad === componentName ? " active" : "";
 
@@ -34,7 +35,7 @@ const Navigation = ({
 
           <>
 
-            {filteredNavigationItems.map((navigationItem, index) => (
+            {filteredNavigationItems.map((navigationItem: NavigationItem, index) => (
 
               <li key={index}>
 

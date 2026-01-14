@@ -10,4 +10,7 @@ export type NavigationItem = {
     isPresent?: boolean;
     onClick?: () => void;
   }[];
+  children?: React.ReactNode;
 };
+
+export type returnActiveClassFunction = (componentName: string | null, classList?: string) => string;

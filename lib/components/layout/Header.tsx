@@ -1,10 +1,14 @@
 import OrbisLogo from "../common/OrbisLogo";
 
-const Header = ({ applicationName = "Application" }) => {
+type HeaderProps = {
+  applicationName: string;
+};
+
+const Header = ({ applicationName = "Application" }: HeaderProps) => {
 
   document.title = `Orbis Education | ${applicationName}`;
 
-  let homeURL = "/";
+  let homeURL: string = "/";
 
   if (window.location.href.includes("intranet.orbiseducation.com") === true) {
 

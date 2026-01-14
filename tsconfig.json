@@ -29,6 +29,7 @@
     }
   },
   "include": [
+    "lib",
     "src",
     "vite-env.d.ts"
   ],

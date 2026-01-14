@@ -1,4 +1,10 @@
 import { isEmpty, noFunctionAvailable } from "shared-functions";
+import { NavigationItem, returnActiveClassFunction } from "./NavigationTypes";
+
+type NavigationLinkProps = {
+  navigationItem: NavigationItem;
+  returnActiveClass: returnActiveClassFunction;
+};
 
 const NavigationLink = ({
   navigationItem = {
@@ -10,13 +16,13 @@ const NavigationLink = ({
     children: null
   },
   returnActiveClass = noFunctionAvailable
-}) => (
+}: NavigationLinkProps) => (
   <>
 
     <button
       type="button"
       role="link"
-      className={returnActiveClass(navigationItem.componentName)}
+      className={returnActiveClass(navigationItem?.componentName)}
       onClick={navigationItem.onClick}
     >
       {navigationItem.name}
