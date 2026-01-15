@@ -12,7 +12,7 @@ const Profile = ({
   databaseAvailable = true,
   sessionToken = null,
   loggedInUser = {},
-  disabled = true,
+  disabled = false,
   sessionTokenName = "",
   handleNavigation = noFunctionAvailable,
   setFetchAuthorization = noFunctionAvailable,
@@ -435,13 +435,13 @@ const Profile = ({
 
         <p><strong>Username</strong>: {txtUsername}</p>
 
-        <FormInput formInputID="txtFirstName" inputType="text" labelText="First Name" isRequired={true} inlineError={inlineErrors.txtFirstName} disabled={disabled} inputValue={txtFirstName} updateValue={setTxtFirstName} />
+        <FormInput formInputID="txtFirstName" inputType="text" labelText="First Name" isRequired={true} inlineError={inlineErrors.txtFirstName} inputDisabled={disabled} inputValue={txtFirstName} updateValue={setTxtFirstName} />
 
-        <FormInput formInputID="txtLastName" inputType="text" labelText="Last Name" isRequired={true} inlineError={inlineErrors.txtLastName} disabled={disabled} inputValue={txtLastName} updateValue={setTxtLastName} />
+        <FormInput formInputID="txtLastName" inputType="text" labelText="Last Name" isRequired={true} inlineError={inlineErrors.txtLastName} inputDisabled={disabled} inputValue={txtLastName} updateValue={setTxtLastName} />
 
-        <FormInput formInputID="txtEmail" inputType="text" labelText="Email" isRequired={true} inlineError={inlineErrors.txtEmail} disabled={disabled} inputValue={txtEmail} updateValue={setTxtEmail} />
+        <FormInput formInputID="txtEmail" inputType="text" labelText="Email" isRequired={true} inlineError={inlineErrors.txtEmail} inputDisabled={disabled} inputValue={txtEmail} updateValue={setTxtEmail} />
 
-        <FormInput formInputID="txtPassword" inputType="text" labelText="Password (Only updated if a value is entered)" isRequired={true} disabled={disabled} inputValue={txtPassword} updateValue={setTxtPassword} />
+        <FormInput formInputID="txtPassword" inputType="text" labelText="Password (Only updated if a value is entered)" isRequired={true} inputDisabled={disabled} inputValue={txtPassword} updateValue={setTxtPassword} />
 
         <div className="flex-row">
 
