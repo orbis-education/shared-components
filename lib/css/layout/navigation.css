@@ -71,6 +71,7 @@
 
           > a,
           > button {
+            text-align: left;
             display: block;
             width: 100%;
             padding: .25rem 1rem;
