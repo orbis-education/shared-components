@@ -61,7 +61,7 @@ const App = () => {
           onClick: () => { window.scrollTo(0, 0); setComponentToLoad("Dropdown1"); }
         },
         {
-          name: "Dropdown 2",
+          name: "Dropdown Item 2",
           componentName: "Dropdown2",
           onClick: () => { window.scrollTo(0, 0); setComponentToLoad("Dropdown2"); }
         }
@@ -71,6 +71,11 @@ const App = () => {
       name: "Page 2",
       componentName: "Page2",
       onClick: () => { window.scrollTo(0, 0); setComponentToLoad("Page2"); }
+    },
+    {
+      name: "Another Nav Link",
+      componentName: "Page3",
+      onClick: () => { window.scrollTo(0, 0); setComponentToLoad("Page3"); }
     }
   ];
 
