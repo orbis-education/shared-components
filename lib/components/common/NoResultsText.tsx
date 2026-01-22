@@ -1,5 +1,5 @@
 type NoResultsTextProps = {
-  children: string;
+  children?: string;
 };
 
 const NoResultsText = ({ children = "No search results." }: NoResultsTextProps) =>

@@ -22,7 +22,7 @@ const NavigationLink = ({
     <button
       type="button"
       role="link"
-      className={returnActiveClass(navigationItem?.componentName)}
+      className={returnActiveClass(navigationItem?.componentName ? navigationItem.componentName : "")}
       onClick={navigationItem.onClick}
     >
       {navigationItem.name}

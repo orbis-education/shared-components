@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from "react";
+import { Fragment, useState, useEffect, Dispatch, SetStateAction } from "react";
 import classnames from "classnames";
 import { isEmpty, isNonEmptyArray, formatToString, parse } from "shared-functions";
 import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
@@ -22,7 +22,7 @@ type FormRadioGroupProps = {
   srOnly?: boolean;
   startCollapsed?: boolean;
   setCollapseList?: (value: boolean) => void;
-  updateValue: (value: string) => void;
+  updateValue: Dispatch<SetStateAction<string>> | ((value: string) => void);
 };
 
 const FormRadioGroup = ({
@@ -95,7 +95,7 @@ const FormRadioGroup = ({
     if (collapseList === true) {
 
       setIsCollapsed(true);
-      setCollapseList(false);
+      setCollapseList?.(false);
 
     }
 

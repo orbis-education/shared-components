@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import classnames from "classnames";
 import { isEmpty, isNonEmptyArray, parse } from "shared-functions";
 import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
@@ -18,7 +19,7 @@ type FormDropdownProps = {
   placeholder?: string;
   srOnly?: boolean;
   useInputAddon?: boolean;
-  updateValue: (value: string | number) => void;
+  updateValue: Dispatch<SetStateAction<any>> | ((value: any) => void);
 };
 
 const FormDropdown = ({

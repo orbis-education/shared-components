@@ -1,8 +1,7 @@
-import { Fragment, useRef, ChangeEvent } from "react";
+import { Fragment, useRef, ChangeEvent, Dispatch, SetStateAction } from "react";
 import classnames from "classnames";
 import { isEmpty, isNonEmptyArray, formatToString, parse } from "shared-functions";
-import { type UseNativeClickListener, useNativeClickListener } from "../../hooks/useNativeClickListener";
-
+import { useNativeClickListener } from "../../hooks/useNativeClickListener";
 import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
 import { createOptionDisplayText } from "./formFunctions";
 import { OptionText } from "../../types/FormTypes";
@@ -21,7 +20,7 @@ type CheckboxDropdownProps = {
   isRequired?: boolean;
   placeholder?: string;
   srOnly?: boolean;
-  updateValue: (value: any[]) => void;
+  updateValue: Dispatch<SetStateAction<any[]>> | ((value: any[]) => void);
 };
 
 const CheckboxDropdown = ({

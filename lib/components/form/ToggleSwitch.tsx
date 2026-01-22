@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import classnames from "classnames";
 import { isEmpty, parse } from "shared-functions";
 import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
@@ -12,7 +13,7 @@ type ToggleSwitchProps = {
   isRequired?: boolean;
   srOnly?: boolean;
   trueValue?: string;
-  updateValue: (value: boolean) => void;
+  updateValue: Dispatch<SetStateAction<boolean>> | ((value: boolean) => void);
 };
 
 const ToggleSwitch = ({

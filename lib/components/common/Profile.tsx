@@ -11,12 +11,12 @@ type ProfileProps = {
   demonstrationMode: boolean;
   environmentMode: string;
   databaseAvailable: boolean;
-  sessionToken: string;
-  loggedInUser?: LoggedInUser; // ?
+  sessionToken: string | null;
+  loggedInUser?: LoggedInUser | null; // ?
   disabled: boolean;
   sessionTokenName: string;
   handleNavigation: () => void;
-  setFetchAuthorization: (sessionToken: string, environmentMode: string, demonstrationMode: boolean) => string;
+  setFetchAuthorization: (sessionToken: string | null, environmentMode: string, demonstrationMode: boolean) => string;
   setDatabaseAvailable: (value: boolean) => void;
   setUserTokenExpired: (value: boolean) => void;
   setLoggedInUser: (user: LoggedInUser) => void;
@@ -55,8 +55,8 @@ const Profile = ({
   clearMessages = noFunctionAvailable
 }: ProfileProps) => {
 
-  const [currentUser, setCurrentUser] = useState<User>(null);
-  const [userID, setUserID] = useState<number>(null);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [userID, setUserID] = useState<number | null>(null);
   const [txtUsername, setTxtUsername] = useState<string>("");
   const [txtFirstName, setTxtFirstName] = useState<string>("");
   const [txtLastName, setTxtLastName] = useState<string>("");
@@ -131,14 +131,22 @@ const Profile = ({
 
   const loadRecord = () => {
 
+    // * From ai chat: -- 01/22/2026 JH
+    // * The issue is that TypeScript doesn't narrow the type after the isEmpty() check. The isEmpty() function from your shared-functions library likely returns a boolean, but TypeScript doesn't have type guard information about it.
+    // * Even though you're checking !isEmpty(loggedInUser), TypeScript still treats loggedInUser as LoggedInUser | null inside that block because it doesn't recognize isEmpty() as a type guard.
     if (!isEmpty(loggedInUser)) {
 
       setCurrentUser(loggedInUser);
-      setUserID(loggedInUser.userID);
-      setTxtUsername(loggedInUser.username);
-      setTxtFirstName(loggedInUser.firstName);
-      setTxtLastName(loggedInUser.lastName);
-      setTxtEmail(loggedInUser.email);
+      // setUserID(loggedInUser.userID);
+      setUserID(loggedInUser && loggedInUser.userID !== undefined ? loggedInUser.userID : null);
+      // setTxtUsername(loggedInUser.username);
+      setTxtUsername(loggedInUser && loggedInUser.username !== undefined ? loggedInUser.username : "");
+      // setTxtFirstName(loggedInUser.firstName);
+      setTxtFirstName(loggedInUser && loggedInUser.firstName !== undefined ? loggedInUser.firstName : "");
+      // setTxtLastName(loggedInUser.lastName);
+      setTxtLastName(loggedInUser && loggedInUser.lastName !== undefined ? loggedInUser.lastName : "");
+      // setTxtEmail(loggedInUser.email);
+      setTxtEmail(loggedInUser && loggedInUser.email !== undefined ? loggedInUser.email : "");
       // setTxtPassword(loggedInUser.password);
 
     } else {
@@ -316,8 +324,8 @@ const Profile = ({
     let data: any = ""; // ?
     let operation: string = "";
     let method: string = "";
-    let previousRecord: LoggedInUser = loggedInUser;
-    let primaryKeyID: number = userID;
+    let previousRecord: LoggedInUser | null = loggedInUser;
+    let primaryKeyID: number | null = userID;
 
     let recordObject: any = { // ?
       // username: convertNullEmptyString(formatTrim(txtUsername)),
@@ -325,7 +333,8 @@ const Profile = ({
       lastName: convertNullEmptyString(formatTrim(txtLastName)),
       email: convertNullEmptyString(formatTrim(txtEmail)),
       password: convertNullEmptyString(formatTrim(txtPassword)),
-      updatedBy: !isEmpty(loggedInUser) && loggedInUser.userID
+      // updatedBy: !isEmpty(loggedInUser) && loggedInUser.userID
+      updatedBy: loggedInUser ? loggedInUser.userID : null
     };
 
     // if (transactionType === "I") {
@@ -402,7 +411,7 @@ const Profile = ({
             setTxtEmail(convertNullEmptyString(dataRecord.email));
             setTxtPassword(convertNullEmptyString(dataRecord.password));
 
-            let newLoggedInUser: LoggedInUser = { ...currentUser };
+            let newLoggedInUser: any = { ...currentUser };
 
             newLoggedInUser.username = convertNullEmptyString(dataRecord.username);
             newLoggedInUser.firstName = convertNullEmptyString(dataRecord.firstName);

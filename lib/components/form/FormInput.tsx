@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, KeyboardEvent, Dispatch, SetStateAction } from "react";
 import classnames from "classnames";
 import { isEmpty, parse } from "shared-functions";
 import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
@@ -22,8 +22,8 @@ type FormInputProps = {
   step?: number | null;
   type?: string;
   useInputAddon?: boolean;
-  onKeyDown?: () => void; // ? (event: KeyboardEvent) => void
-  updateValue: (value: any) => void;
+  onKeyDown?: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
+  updateValue: Dispatch<SetStateAction<any>> | ((value: any) => void);
 };
 
 const FormInput = ({
@@ -66,6 +66,13 @@ const FormInput = ({
     "input-error": !isEmpty(inlineError),
     "input-disabled": disabled
   });
+
+  let numberAttributes: any = {};
+
+  if (!isEmpty(min)) numberAttributes.min = min;
+  if (!isEmpty(max)) numberAttributes.max = max;
+  if (!isEmpty(step)) numberAttributes.step = step;
+  if (!isEmpty(maxLength)) numberAttributes.maxLength = maxLength;
 
 
   const handleOnChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -128,26 +135,6 @@ const FormInput = ({
 
         : null}
 
-      {/* // TODO: Add other input types. -- 08/07/2023 JH */}
-      {type !== "textarea" && type !== "toggle" && type !== "password" && type !== "color" ?
-
-        <input
-          type={type}
-          id={id}
-          placeholder={placeholder}
-          value={value}
-          disabled={disabled}
-          onChange={handleOnChange}
-          min={min}
-          max={max}
-          step={step}
-          list={list}
-          autoFocus={autoFocus}
-          maxLength={maxLength}
-        />
-
-        : null}
-
       {type === "color" ?
 
         <div className="color-input-container">
@@ -176,9 +163,6 @@ const FormInput = ({
             value={value}
             disabled={disabled}
             onChange={handleOnChange}
-            // min={min}
-            // max={max}
-            // step={step}
             autoFocus={autoFocus}
           />
 
@@ -193,6 +177,22 @@ const FormInput = ({
           </div>
 
         </div>
+
+        : null}
+
+      {type !== "textarea" && type !== "toggle" && type !== "password" && type !== "color" ?
+
+        <input
+          type={type}
+          id={id}
+          placeholder={placeholder}
+          value={value}
+          disabled={disabled}
+          onChange={handleOnChange}
+          list={list}
+          autoFocus={autoFocus}
+          {...numberAttributes}
+        />
 
         : null}
 

@@ -8,7 +8,7 @@ type AlertPopupProps = {
   alertType: AlertType;
   message: string;
   includeResetButton?: boolean;
-  setMessage: Dispatch<SetStateAction<string>>;
+  setMessage: Dispatch<SetStateAction<string>> | ((value: string) => void);
 };
 
 const AlertPopup = ({

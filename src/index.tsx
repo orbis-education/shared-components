@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, FormEvent, KeyboardEvent } from "react";
 import { createRoot } from "react-dom/client";
 import {
   // AlertPopup,
@@ -19,7 +19,10 @@ import "../lib/css/index.css";
 import { version, copyrightYear } from "../package.json";
 const applicationVersion = version;
 
-const root = createRoot(document.getElementById("root"));
+// * from ai chat: -- 01/22/2026 JH
+// * TypeScript error occurs because document.getElementById("root") can return null if an element with that ID doesn't exist, but createRoot() expects a non-null HTMLElement.
+// * The ! (non-null assertion operator) tells TypeScript that you're confident the element exists.
+const root = createRoot(document.getElementById("root")!);
 
 const ddAccountType = "Please select the <strong>Account Type</strong>.";
 
@@ -30,19 +33,17 @@ const inlineErrors = {
   cbxUserPermissions: ""
 };
 
-const setDdAccountType = (value) => {
-  console.log("setDdAccountType", value);
-};
-
 const App = () => {
 
-  const [txtName, setTxtName] = useState("hi");
-  const [txtMessage, setTxtMessage] = useState("");
-  const [rdoClinicalReplacement, setRdoClinicalReplacement] = useState(false);
-  const [cbxGrpPartnerID, setCbxGrpPartnerID] = useState("");
-  const [cbxSimulationID, setCbxSimulationID] = useState("");
-  const [rdoProgramID, setRdoProgramID] = useState("");
-  const [componentToLoad, setComponentToLoad] = useState("Home");
+  const [txtName, setTxtName] = useState<string>("hi");
+  const [txtMessage, setTxtMessage] = useState<string>("");
+  const [txtPassword, setTxtPassword] = useState<string>("");
+  const [ddAccountType, setDdAccountType] = useState<string>("");
+  const [rdoClinicalReplacement, setRdoClinicalReplacement] = useState<boolean>(false);
+  const [cbxGrpPartnerID, setCbxGrpPartnerID] = useState<any[]>([]);
+  const [cbxSimulationID, setCbxSimulationID] = useState<any[]>([]);
+  const [rdoProgramID, setRdoProgramID] = useState<string>("");
+  const [componentToLoad, setComponentToLoad] = useState<string>("Home");
 
   const navigationItems = [
     {
@@ -80,7 +81,7 @@ const App = () => {
   ];
 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
 
     event.preventDefault();
 
@@ -89,15 +90,15 @@ const App = () => {
   };
 
 
-  const handleEnterKey = (event) => {
+  const handleEnterKey = (event: KeyboardEvent<HTMLTextAreaElement>) => {
 
     if (event.keyCode === 13 && event.shiftKey === false) {
 
       event.preventDefault();
 
-      handleSubmit(event);
+      handleSubmit(event as unknown as FormEvent<HTMLFormElement>);
 
-    };
+    }
 
   };
 
@@ -138,7 +139,7 @@ const App = () => {
 
         <section className="section-block">
 
-          <form onSubmit={(event) => { handleSubmit(event); }}>
+          <form onSubmit={handleSubmit}>
 
             <FormInput
               id="txtName"
@@ -146,7 +147,7 @@ const App = () => {
               placeholder="Enter a name"
               hint="Please enter a name."
               value={txtName}
-              maxLength={"255"}
+              maxLength={255}
               updateValue={setTxtName}
             />
 
@@ -163,6 +164,9 @@ const App = () => {
             <FormInput
               id="password"
               type="password"
+              label="Password"
+              value={txtPassword}
+              updateValue={setTxtPassword}
             />
 
             <FormDropdown

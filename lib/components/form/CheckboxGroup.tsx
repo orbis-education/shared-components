@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect, ChangeEvent } from "react";
+import { Fragment, useState, useEffect, ChangeEvent, Dispatch, SetStateAction } from "react";
 import classnames from "classnames";
 import { isEmpty, isNonEmptyArray, formatToString, parse } from "shared-functions";
 import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
@@ -22,7 +22,7 @@ type CheckboxGroupProps = {
   srOnly?: boolean;
   startCollapsed?: boolean;
   setCollapseList?: (value: boolean) => void;
-  updateValue: (value: any[]) => void;
+  updateValue: Dispatch<SetStateAction<any[]>> | ((value: any[]) => void);
 };
 
 const CheckboxGroup = ({
