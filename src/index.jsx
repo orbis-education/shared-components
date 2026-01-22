@@ -141,33 +141,33 @@ const App = () => {
           <form onSubmit={(event) => { handleSubmit(event); }}>
 
             <FormInput
-              formInputID="txtName"
-              labelText="Name"
-              placeholderText="Enter a name"
-              inputHint="Please enter a name."
-              inputValue={txtName}
+              id="txtName"
+              label="Name"
+              placeholder="Enter a name"
+              hint="Please enter a name."
+              value={txtName}
               maxLength={"255"}
               updateValue={setTxtName}
             />
 
             <FormInput
-              formInputID="txtMessage"
-              inputType="textarea"
-              labelText="Message"
-              placeholderText="Enter your message"
-              inputValue={txtMessage}
+              id="txtMessage"
+              type="textarea"
+              label="Message"
+              placeholder="Enter your message"
+              value={txtMessage}
               updateValue={setTxtMessage}
               onKeyDown={handleEnterKey}
             />
 
             <FormInput
-              formInputID="password"
-              inputType="password"
+              id="password"
+              type="password"
             />
 
             <FormDropdown
-              formInputID="ddAccountType"
-              labelText="Account Type"
+              id="ddAccountType"
+              label="Account Type"
               isRequired={true}
               optionData={[
                 { accountTypeID: 1, accountType: "User" },
@@ -176,60 +176,60 @@ const App = () => {
               optionID="accountTypeID"
               optionText={[{ type: "property", text: "accountType" }]}
               inlineError={inlineErrors.ddAccountType}
-              inputValue={ddAccountType}
+              value={ddAccountType}
               updateValue={setDdAccountType}
             />
 
             <ToggleSwitch
-              formInputID="rdoClinicalReplacement"
-              labelText="Will you be using the simulation for clinical replacement?"
-              inputHint="Simulation equipment is prioritized for partners that use the simulation for clinical replacement."
+              id="rdoClinicalReplacement"
+              label="Will you be using the simulation for clinical replacement?"
+              hint="Simulation equipment is prioritized for partners that use the simulation for clinical replacement."
               isRequired={true}
-              inputValue={rdoClinicalReplacement}
+              value={rdoClinicalReplacement}
               updateValue={setRdoClinicalReplacement}
             />
 
             <CheckboxDropdown
-              formInputID="cbxGrpPartnerID"
-              legendText="Partner"
-              placeholderText="Select Partner(s)"
+              id="cbxGrpPartnerID"
+              legend="Partner"
+              placeholder="Select Partner(s)"
               optionData={[
                 { accountTypeID: 1, accountType: "User" },
                 { accountTypeID: 2, accountType: "Admin" }
               ]}
               optionID="accountTypeID"
               optionText={[{ type: "property", text: "accountType" }]}
-              inputValue={cbxGrpPartnerID}
+              value={cbxGrpPartnerID}
               updateValue={setCbxGrpPartnerID}
             />
 
             <CheckboxGroup
-              formInputID="cbxSimulationID"
-              legendText="Simulation(s) Requested"
+              id="cbxSimulationID"
+              legend="Simulation(s) Requested"
               isRequired={true}
-              formColumns={2}
+              columns={2}
               optionData={[
                 { accountTypeID: 1, accountType: "User" },
                 { accountTypeID: 2, accountType: "Admin" }
               ]}
               optionID="accountTypeID"
               optionText={[{ type: "property", text: "accountType" }]}
-              inputValue={cbxSimulationID}
+              value={cbxSimulationID}
               updateValue={setCbxSimulationID}
             />
 
             <FormRadioGroup
-              formInputID="rdoProgramID"
-              legendText="Program"
+              id="rdoProgramID"
+              legend="Program"
               isRequired={true}
-              formColumns={2}
+              columns={2}
               optionData={[
                 { accountTypeID: 1, accountType: "User" },
                 { accountTypeID: 2, accountType: "Admin" }
               ]}
               optionID="accountTypeID"
               optionText={[{ type: "property", text: "accountType" }]}
-              inputValue={rdoProgramID}
+              value={rdoProgramID}
               updateValue={setRdoProgramID}
             />
 

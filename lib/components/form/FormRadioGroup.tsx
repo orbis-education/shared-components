@@ -2,53 +2,53 @@ import { Fragment, useState, useEffect } from "react";
 import classnames from "classnames";
 import { isEmpty, isNonEmptyArray, formatToString, parse } from "shared-functions";
 import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
-import { createOptionDisplayText } from "./FormFunctions";
+import { createOptionDisplayText } from "./formFunctions";
 import { OptionText } from "../../types/FormTypes";
 
 type FormRadioGroupProps = {
-  collapseList?: boolean;
-  formColumns?: number;
-  formInputID: string;
-  inlineError?: string;
-  inputDisabled?: boolean;
-  inputHint?: string;
-  inputValue: string;
-  isCollapsible?: boolean;
-  isRequired?: boolean;
-  legendText?: string;
+  id: string;
   optionData: any[];
   optionID: string;
   optionText: OptionText[];
-  setCollapseList?: (value: boolean) => void;
+  value: string;
+  collapseList?: boolean;
+  columns?: number;
+  disabled?: boolean;
+  hint?: string;
+  inlineError?: string;
+  isCollapsible?: boolean;
+  isRequired?: boolean;
+  legend?: string;
   srOnly?: boolean;
   startCollapsed?: boolean;
+  setCollapseList?: (value: boolean) => void;
   updateValue: (value: string) => void;
 };
 
 const FormRadioGroup = ({
-  collapseList = false,
-  formColumns = 1,
-  formInputID = "",
-  inlineError = "",
-  inputDisabled = false,
-  inputHint = "",
-  inputValue = "",
-  isCollapsible = false,
-  isRequired = false,
-  legendText = "",
+  id = "",
   optionData = [],
   optionID = "",
   optionText = [],
-  setCollapseList,
+  value = "",
+  collapseList = false,
+  columns = 1,
+  disabled = false,
+  hint = "",
+  inlineError = "",
+  isCollapsible = false,
+  isRequired = false,
+  legend = "",
   srOnly = false,
   startCollapsed = true,
+  setCollapseList,
   updateValue
 }: FormRadioGroupProps) => {
 
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
 
   const fieldsetClasses: string = classnames("form-group", {
-    "input-disabled": inputDisabled
+    "input-disabled": disabled
   });
 
   // * If srOnly is set to true, then the form item label is only visible to screen readers. -- 06/21/2023 MF
@@ -111,11 +111,11 @@ const FormRadioGroup = ({
 
           <button type="button" className="btn btn-transparent collapse-checkboxes-button" onClick={() => { setIsCollapsed(!isCollapsed); }}>
 
-            {legendText}
+            {legend}
 
             {isRequired ? <RequiredFieldAsterisk /> : null}
 
-            {!isEmpty(inputValue) ? <div className="search-filter-count">1</div> : null}
+            {!isEmpty(value) ? <div className="search-filter-count">1</div> : null}
 
             {isCollapsed ?
 
@@ -137,7 +137,7 @@ const FormRadioGroup = ({
 
           <>
 
-            {legendText}
+            {legend}
 
             {isRequired ? <RequiredFieldAsterisk /> : null}
 
@@ -147,9 +147,9 @@ const FormRadioGroup = ({
 
       </legend>
 
-      <ul className={radioGroupClasses} style={{ columns: formColumns }}>
+      <ul className={radioGroupClasses} style={{ columns: columns }}>
 
-        {!isEmpty(inputHint) ? <p className="input-hint">{parse(inputHint)}</p> : null}
+        {!isEmpty(hint) ? <p className="input-hint">{parse(hint)}</p> : null}
 
         {isNonEmptyArray(optionData) && !isEmpty(optionID) && isNonEmptyArray(optionText) ?
 
@@ -160,26 +160,26 @@ const FormRadioGroup = ({
               if (optionDataItem.active === true || isEmpty(optionDataItem.active)) {
 
                 // TODO: Temporary fix to convert true/false to 1/2. -- 09/13/2023 JH
-                let newInputValue: string | number = inputValue;
+                let newvalue: string | number = value;
 
-                if (typeof newInputValue == "boolean") {
+                if (typeof newvalue == "boolean") {
 
-                  newInputValue = newInputValue === true ? 1 : 2;
+                  newvalue = newvalue === true ? 1 : 2;
 
                 }
 
                 return (
                   <li key={optionDataItem[optionID]}>
 
-                    <label className={`${formatToString(optionDataItem[optionID]) === formatToString(newInputValue) ? "active" : ""}`}>
+                    <label className={`${formatToString(optionDataItem[optionID]) === formatToString(newvalue) ? "active" : ""}`}>
 
                       <input
                         type="radio"
-                        id={`${formInputID}${optionDataItem[optionID]}`}
-                        name={formInputID}
+                        id={`${id}${optionDataItem[optionID]}`}
+                        name={id}
                         value={optionDataItem[optionID]}
-                        checked={formatToString(optionDataItem[optionID]) === formatToString(newInputValue)}
-                        disabled={inputDisabled}
+                        checked={formatToString(optionDataItem[optionID]) === formatToString(newvalue)}
+                        disabled={disabled}
                         onChange={(event) => { updateValue(event.target.value); }}
                       />
 

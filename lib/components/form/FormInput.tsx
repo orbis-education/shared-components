@@ -1,54 +1,52 @@
 import { useState, ChangeEvent } from "react";
 import classnames from "classnames";
-import { isEmpty, parse, noFunctionAvailable } from "shared-functions";
+import { isEmpty, parse } from "shared-functions";
 import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
 
 type FormInputProps = {
+  id: string;
+  label: string;
+  value: string;
   autoFocus?: boolean;
-  datalistName?: string;
-  formInputID: string;
+  disabled?: boolean;
+  hint?: string;
   inlineError?: string;
-  inputDisabled?: boolean;
-  inputHint?: string;
-  inputMax?: number;
-  inputMin?: number;
-  inputStep?: number;
-  inputType?: string;
-  inputValue: string;
   isRequired?: boolean;
-  labelText: string;
+  list?: string;
+  max?: number;
   maxLength?: number;
-  onKeyDown?: () => void; // ? (event: KeyboardEvent) => void
-  placeholderText?: string;
+  min?: number;
+  placeholder?: string;
+  rows?: number;
   srOnly?: boolean;
-  // textareaColumns?: string;
-  textareaRows?: number;
-  updateValue: (value: any) => void;
+  step?: number;
+  type?: string;
   useInputAddon?: boolean;
+  onKeyDown?: () => void; // ? (event: KeyboardEvent) => void
+  updateValue: (value: any) => void;
 };
 
 const FormInput = ({
+  id = "",
+  label = "",
+  value = "",
   autoFocus = false,
-  datalistName = "",
-  formInputID = "",
+  disabled = false,
+  hint = "",
   inlineError = "",
-  inputDisabled = false,
-  inputHint = "",
-  inputMax = null,
-  inputMin = null,
-  inputStep = null,
-  inputType = "text",
-  inputValue = "",
   isRequired = false,
-  labelText = "",
+  list = "",
+  max = null,
   maxLength = null,
-  onKeyDown = () => { }, // * Used an empty function instead of noFunctionAvailable so that console logs don't appear on every key down -- 09/02/2025 JH
-  placeholderText = "",
+  min = null,
+  placeholder = "",
+  rows = 10,
+  step = null,
   srOnly = false,
-  // textareaColumns = "",
-  textareaRows = 10,
-  updateValue = () => { },
-  useInputAddon = false
+  type = "text",
+  useInputAddon = false,
+  onKeyDown = () => { }, // * Used an empty function instead of noFunctionAvailable so that console logs don't appear on every key down -- 09/02/2025 JH
+  updateValue = () => { }
 }: FormInputProps) => {
 
   // * For number, range, date, datetime-local, month, time and week -- 07/25/2023 JH
@@ -66,13 +64,13 @@ const FormInput = ({
   const formGroupClasses: string = classnames("form-group", {
     "with-addon": useInputAddon,
     "input-error": !isEmpty(inlineError),
-    "input-disabled": inputDisabled
+    "input-disabled": disabled
   });
 
 
   const handleOnChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 
-    if (inputType === "number") {
+    if (type === "number") {
 
       if (!isEmpty(event.target.value) && !isNaN(+event.target.value)) {
 
@@ -105,26 +103,25 @@ const FormInput = ({
   return (
     <div className={formGroupClasses}>
 
-      <label htmlFor={formInputID} className={labelClasses}>
+      <label htmlFor={id} className={labelClasses}>
 
-        {labelText}
+        {label}
 
         {isRequired === true ? <RequiredFieldAsterisk /> : null}
 
       </label>
 
-      {isEmpty(inputHint) === false ? <p className="input-hint">{parse(inputHint)}</p> : null}
+      {isEmpty(hint) === false ? <p className="input-hint">{parse(hint)}</p> : null}
 
-      {inputType === "textarea" ?
+      {type === "textarea" ?
 
         <textarea
-          id={formInputID}
-          name={formInputID}
-          placeholder={placeholderText}
-          rows={textareaRows}
-          // cols={textareaColumns} 
-          value={inputValue}
-          disabled={inputDisabled}
+          id={id}
+          name={id}
+          placeholder={placeholder}
+          rows={rows}
+          value={value}
+          disabled={disabled}
           onChange={handleOnChange}
           onKeyDown={onKeyDown}
         />
@@ -132,56 +129,56 @@ const FormInput = ({
         : null}
 
       {/* // TODO: Add other input types. -- 08/07/2023 JH */}
-      {inputType !== "textarea" && inputType !== "toggle" && inputType !== "password" && inputType !== "color" ?
+      {type !== "textarea" && type !== "toggle" && type !== "password" && type !== "color" ?
 
         <input
-          type={inputType}
-          id={formInputID}
-          placeholder={placeholderText}
-          value={inputValue}
-          disabled={inputDisabled}
+          type={type}
+          id={id}
+          placeholder={placeholder}
+          value={value}
+          disabled={disabled}
           onChange={handleOnChange}
-          min={inputMin}
-          max={inputMax}
-          step={inputStep}
-          list={datalistName}
+          min={min}
+          max={max}
+          step={step}
+          list={list}
           autoFocus={autoFocus}
           maxLength={maxLength}
         />
 
         : null}
 
-      {inputType === "color" ?
+      {type === "color" ?
 
         <div className="color-input-container">
           <input
-            type={inputType}
-            id={formInputID}
-            placeholder={placeholderText}
-            value={inputValue}
-            disabled={inputDisabled}
+            type={type}
+            id={id}
+            placeholder={placeholder}
+            value={value}
+            disabled={disabled}
             onChange={handleOnChange}
             autoFocus={autoFocus}
           />
-          {inputValue}
+          {value}
         </div>
 
         : null}
 
-      {inputType === "password" ?
+      {type === "password" ?
 
         <div className="form-group__password-input-group">
 
           <input
             type={showPassword}
-            id={formInputID}
-            placeholder={placeholderText}
-            value={inputValue}
-            disabled={inputDisabled}
+            id={id}
+            placeholder={placeholder}
+            value={value}
+            disabled={disabled}
             onChange={handleOnChange}
-            // min={inputMin}
-            // max={inputMax}
-            // step={inputStep}
+            // min={min}
+            // max={max}
+            // step={step}
             autoFocus={autoFocus}
           />
 

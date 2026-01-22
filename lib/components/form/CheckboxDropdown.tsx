@@ -3,39 +3,39 @@ import classnames from "classnames";
 import { isEmpty, isNonEmptyArray, formatToString, parse } from "shared-functions";
 import { useNativeClickListener } from "../../hooks/useNativeClickListener";
 import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
-import { createOptionDisplayText } from "./FormFunctions";
+import { createOptionDisplayText } from "./formFunctions";
 import { OptionText } from "../../types/FormTypes";
 
 type CheckboxDropdownProps = {
-  formColumns: number;
-  formInputID: string;
-  inlineError: string;
-  inputDisabled: boolean;
-  inputHint: string;
-  inputValue: any[];
-  isRequired: boolean;
-  legendText: string;
+  id: string;
+  legend: string;
   optionData: any[];
   optionID: string;
   optionText: OptionText[];
-  placeholderText: string;
-  srOnly: boolean;
+  value: any[];
+  columns?: number;
+  disabled?: boolean;
+  hint?: string;
+  inlineError?: string;
+  isRequired?: boolean;
+  placeholder?: string;
+  srOnly?: boolean;
   updateValue: (value: any[]) => void;
 };
 
 const CheckboxDropdown = ({
-  formColumns = 1,
-  formInputID = "",
-  inlineError = "",
-  inputDisabled = false,
-  inputHint = "",
-  inputValue = [],
-  isRequired = false,
-  legendText = "",
+  id = "",
+  legend = "",
   optionData = [],
   optionID = "",
   optionText = [],
-  placeholderText = "Select Value",
+  value = [],
+  columns = 1,
+  disabled = false,
+  hint = "",
+  inlineError = "",
+  isRequired = false,
+  placeholder = "Select Value",
   srOnly = false,
   updateValue
 }: CheckboxDropdownProps) => {
@@ -45,7 +45,7 @@ const CheckboxDropdown = ({
   const [isDropdownOpen, setIsDropdownOpen] = useNativeClickListener<boolean>(dropdownRef, false);
 
   const fieldsetClasses: string = classnames("form-group checkbox-dropdown-group", {
-    "input-disabled": inputDisabled
+    "input-disabled": disabled
   });
 
   // * If srOnly is set to true, then the form item label is only visible to screen readers. -- 06/21/2023 MF
@@ -63,13 +63,13 @@ const CheckboxDropdown = ({
 
     if (event.target.checked === true) {
 
-      let newCheckedList: any[] = [...inputValue, event.target.value];
+      let newCheckedList: any[] = [...value, event.target.value];
 
       updateValue(newCheckedList);
 
     } else {
 
-      let filteredList: any[] = inputValue.filter(value => value !== event.target.value);
+      let filteredList: any[] = value.filter(value => value !== event.target.value);
 
       updateValue(filteredList);
 
@@ -83,13 +83,13 @@ const CheckboxDropdown = ({
 
       <legend className={labelClasses}>
 
-        {legendText} {isRequired ? <RequiredFieldAsterisk /> : null}
+        {legend} {isRequired ? <RequiredFieldAsterisk /> : null}
 
       </legend>
 
       <button type="button" className="btn btn-transparent open-dropdown-button" onClick={() => { setIsDropdownOpen(!isDropdownOpen); }}>
 
-        {isNonEmptyArray(inputValue) ? <>{inputValue.length} selected</> : placeholderText}
+        {isNonEmptyArray(value) ? <>{value.length} selected</> : placeholder}
 
         {isDropdownOpen ?
 
@@ -107,9 +107,9 @@ const CheckboxDropdown = ({
 
         <div className={checkboxDropdownClasses}>
 
-          <ul className="checkbox-dropdown" style={{ columns: formColumns }}>
+          <ul className="checkbox-dropdown" style={{ columns: columns }}>
 
-            {!isEmpty(inputHint) ? <p className="input-hint">{parse(inputHint)}</p> : null}
+            {!isEmpty(hint) ? <p className="input-hint">{parse(hint)}</p> : null}
 
             {isNonEmptyArray(optionData) && !isEmpty(optionID) && isNonEmptyArray(optionText) ?
 
@@ -119,9 +119,9 @@ const CheckboxDropdown = ({
 
                   if (optionDataItem.active === true || isEmpty(optionDataItem.active)) {
 
-                    const filterInputValue = isNonEmptyArray(inputValue) ? inputValue.filter(value => value === formatToString(optionDataItem[optionID])) : [];
+                    const filtervalue = isNonEmptyArray(value) ? value.filter(value => value === formatToString(optionDataItem[optionID])) : [];
 
-                    const isChecked = isNonEmptyArray(filterInputValue);
+                    const isChecked = isNonEmptyArray(filtervalue);
 
                     return (
                       <li key={optionDataItem[optionID]}>
@@ -130,10 +130,10 @@ const CheckboxDropdown = ({
 
                           <input
                             type="checkbox"
-                            id={`${formInputID}${optionDataItem[optionID]}`}
+                            id={`${id}${optionDataItem[optionID]}`}
                             value={optionDataItem[optionID]}
                             checked={isChecked}
-                            disabled={inputDisabled}
+                            disabled={disabled}
                             onChange={handleOnChange}
                           />
 

@@ -2,53 +2,53 @@ import { Fragment, useState, useEffect, ChangeEvent } from "react";
 import classnames from "classnames";
 import { isEmpty, isNonEmptyArray, formatToString, parse } from "shared-functions";
 import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
-import { createOptionDisplayText } from "./FormFunctions";
+import { createOptionDisplayText } from "./formFunctions";
 import { OptionText } from "../../types/FormTypes";
 
 type CheckboxGroupProps = {
-  collapseList?: boolean;
-  formColumns?: number;
-  formInputID: string;
-  inlineError?: string;
-  inputDisabled?: boolean;
-  inputHint?: string;
-  inputValue: any[];
-  isCollapsible?: boolean;
-  isRequired?: boolean;
-  legendText: string;
+  id: string;
+  legend: string;
+  value: any[];
   optionData: any[];
   optionID: string;
   optionText: OptionText[];
-  setCollapseList?: (value: boolean) => void;
+  collapseList?: boolean;
+  columns?: number;
+  disabled?: boolean;
+  hint?: string;
+  inlineError?: string;
+  isCollapsible?: boolean;
+  isRequired?: boolean;
   srOnly?: boolean;
   startCollapsed?: boolean;
+  setCollapseList?: (value: boolean) => void;
   updateValue: (value: any[]) => void;
 };
 
 const CheckboxGroup = ({
-  collapseList = false,
-  formColumns = 1,
-  formInputID = "",
-  inlineError = "",
-  inputDisabled = false,
-  inputHint = "",
-  inputValue = [],
-  isCollapsible = false,
-  isRequired = false,
-  legendText = "",
+  id = "",
+  legend = "",
+  value = [],
   optionData = [],
   optionID = "",
   optionText = [],
-  setCollapseList,
+  collapseList = false,
+  columns = 1,
+  disabled = false,
+  hint = "",
+  inlineError = "",
+  isCollapsible = false,
+  isRequired = false,
   srOnly = false,
   startCollapsed = true,
+  setCollapseList,
   updateValue
 }: CheckboxGroupProps) => {
 
   const [isCollapsed, setIsCollapsed] = useState(true);
 
   const fieldsetClasses: string = classnames("form-group", {
-    "input-disabled": inputDisabled
+    "input-disabled": disabled
   });
 
   // * If srOnly is set to true, then the form item label is only visible to screen readers. -- 06/21/2023 MF
@@ -106,13 +106,13 @@ const CheckboxGroup = ({
 
     if (event.target.checked === true) {
 
-      let newCheckedList = [...inputValue, event.target.value];
+      let newCheckedList = [...value, event.target.value];
 
       updateValue(newCheckedList);
 
     } else {
 
-      let filteredList = inputValue.filter(value => value !== event.target.value);
+      let filteredList = value.filter(value => value !== event.target.value);
 
       updateValue(filteredList);
 
@@ -130,11 +130,11 @@ const CheckboxGroup = ({
 
           <button type="button" className="btn btn-transparent collapse-checkboxes-button" onClick={() => { setIsCollapsed(!isCollapsed); }}>
 
-            {legendText}
+            {legend}
 
             {isRequired ? <RequiredFieldAsterisk /> : null}
 
-            {isNonEmptyArray(inputValue) ? <div className="search-filter-count">{inputValue.length}</div> : null}
+            {isNonEmptyArray(value) ? <div className="search-filter-count">{value.length}</div> : null}
 
             {isCollapsed ?
 
@@ -152,7 +152,7 @@ const CheckboxGroup = ({
 
           <>
 
-            {legendText}
+            {legend}
 
             {isRequired ? <RequiredFieldAsterisk /> : null}
 
@@ -162,9 +162,9 @@ const CheckboxGroup = ({
 
       </legend>
 
-      <ul className={checkboxGroupClasses} style={{ columns: formColumns }}>
+      <ul className={checkboxGroupClasses} style={{ columns: columns }}>
 
-        {!isEmpty(inputHint) ? <p className="input-hint">{parse(inputHint)}</p> : null}
+        {!isEmpty(hint) ? <p className="input-hint">{parse(hint)}</p> : null}
 
         {isNonEmptyArray(optionData) && !isEmpty(optionID) && isNonEmptyArray(optionText) ?
 
@@ -174,9 +174,9 @@ const CheckboxGroup = ({
 
               if (optionDataItem.active === true || isEmpty(optionDataItem.active)) {
 
-                const filterInputValue: any[] = isNonEmptyArray(inputValue) ? inputValue.filter(value => value === formatToString(optionDataItem[optionID])) : [];
+                const filtervalue: any[] = isNonEmptyArray(value) ? value.filter(value => value === formatToString(optionDataItem[optionID])) : [];
 
-                const isChecked: boolean = isNonEmptyArray(filterInputValue) === true;
+                const isChecked: boolean = isNonEmptyArray(filtervalue) === true;
 
                 return (
                   <li key={optionDataItem[optionID]}>
@@ -185,10 +185,10 @@ const CheckboxGroup = ({
 
                       <input
                         type="checkbox"
-                        id={`${formInputID}${optionDataItem[optionID]}`}
+                        id={`${id}${optionDataItem[optionID]}`}
                         value={optionDataItem[optionID]}
                         checked={isChecked}
-                        disabled={inputDisabled}
+                        disabled={disabled}
                         onChange={handleOnChange}
                       />
 

@@ -9,42 +9,42 @@ This repository contains shared components that are available for use by all app
 This is a text input to be used in forms. Can be changed to other types of inputs (text, password, number, etc.) or a textarea.
 | Prop Name | Type | Description |
 | :-------: | :--: | ----------- |
-| formInputID | string | pattern is to name it the same as the state used for inputValue |
-| inputType | string | text, textarea, password, number, etc. "text" is the default value. |
-| labelText | string | |
+| id | string | pattern is to name it the same as the state used for value |
+| type | string | text, textarea, password, number, etc. "text" is the default value. |
+| label | string | |
 | isRequired | boolean | if true, displays red * next to label text |
 | inlineError | string | inlineErrors.txtState - shows inline error message, logic for errors should be set in parent component |
-| placeholderText | string |  |
-| inputHint | string | displays hint text in a `<p>` below the label and above the input |
+| placeholder | string |  |
+| hint | string | displays hint text in a `<p>` below the label and above the input |
 | srOnly | boolean | if true, label is only visible to screen readers |
-| inputDisabled | boolean | |
+| disabled | boolean | |
 | useInputAddon | boolean | displays label in a gray box, inline with the input and to the left |
 | datalistName | array | name to link to a datalist. Actual datalist needs to be set outside of the component |
-| textareaRows | number | if inputType is textarea, sets height of the textarea in rows |
-| inputMin | number | used for number inputs |
-| inputMax | number | used for number inputs |
+| rows | number | if type is textarea, sets height of the textarea in rows |
+| min | number | used for number inputs |
+| max | number | used for number inputs |
 | inputStep | number | used for number inputs |
-| inputValue | string or number | state used for value of input  |
+| value | string or number | state used for value of input  |
 | updateValue | function | setState function to update value of input |
 
 Example: <br>
 ```
 <FormInput 
-  formInputID="txtUsername" 
-  labelText="Username"
+  id="txtUsername" 
+  label="Username"
   isRequired={true} 
   inlineError={inlineErrors.txtUsername} 
-  inputValue={txtUsername} 
+  value={txtUsername} 
   updateValue={setTxtUsername} />
 
 <FormInput 
-  formInputID="txtPassword" 
-  inputType="password" 
-  labelText="Password"
+  id="txtPassword" 
+  type="password" 
+  label="Password"
   isRequired={true} 
   inlineError={inlineErrors.txtPassword} 
-  inputHint="Your password must be at least eight characters and must contain at least one number, one uppercase letter, one lowercase letter, and one special character." 
-  inputValue={txtPassword} 
+  hint="Your password must be at least eight characters and must contain at least one number, one uppercase letter, one lowercase letter, and one special character." 
+  value={txtPassword} 
   updateValue={setTxtPassword} />
 ```
 
@@ -56,34 +56,34 @@ Output: <br>
 This is a "select" form element.
 | Prop Name | Type | Description |
 | :-------: | :--: | ----------- |
-| formInputID | string | pattern is to name it the same as the state used for inputValue |
-| labelText | string | |
-| inputHint | string | displays hint text in a `<p>` below the label and above the input |
+| id | string | pattern is to name it the same as the state used for value |
+| label | string | |
+| hint | string | displays hint text in a `<p>` below the label and above the input |
 | isRequired | boolean | if true, displays red * next to label text |
 | srOnly | boolean | if true, label is only visible to screen readers |
-| inputDisabled | boolean | |
+| disabled | boolean | |
 | inlineError | string | inlineErrors.txtState - shows inline error message, logic for errors should be set in parent component |
-| placeholderText | string | used for emptyOption |
-| emptyOption | boolean | if true, adds an option with no value: `<option value="">{placeholderText}</option>` |
+| placeholder | string | used for emptyOption |
+| emptyOption | boolean | if true, adds an option with no value: `<option value="">{placeholder}</option>` |
 | optionData | array | array of objects to loop through |
 | optionID | string | the name of the id property in the optionData, used for the option key and value. In a loop, it would be `optionData[i][optionID]` |
 | optionText | array of objects | optionText is an array of objects, which gets mapped through to display the text of each option. For type of "property", it uses the optionData array again. In a loop, it would be `optionData[i][optionText[j][text]]`. The below example is equivalent to: `optionData.simulationName + " (" + optionData.simulationTypeName + ")"`. |
 | | | Example: `optionText={[{ type: "property", text: "simulationName" }, { type: "string", text: " (" }, { type: "property", text: "simulationTypeName" }, { type: "string", text: ")" }]}` |
-| inputValue | string | state used for value of input  |
+| value | string | state used for value of input  |
 | updateValue | function | setState function to update value of input |
 
 Example: <br>
 ```
 <FormDropdown
-  formInputID=""
-  labelText=""
+  id=""
+  label=""
   srOnly=""
-  inputHint=""
+  hint=""
   isRequired={boolean}
-  inputDisabled={boolean}
+  disabled={boolean}
   useInputAddon={boolean}
   inlineError={inlineErrors.ddState}
-  placeholderText="" 
+  placeholder="" 
   emptyOption={boolean} 
   optionData={array} 
   optionID="string" 
@@ -104,27 +104,27 @@ Output: <br>
 Display a group of radio buttons or checkboxes. Both components have the same exact props, and both follow similiar patterns used in FormDropdown.
 | Prop Name | Type | Description |
 | :-------: | :--: | ----------- |
-| formInputID | string | pattern is to name it the same as the state used for inputValue |
-| legendText | string | Text to be displayed in `<legend>` tag |
+| id | string | pattern is to name it the same as the state used for value |
+| legend | string | Text to be displayed in `<legend>` tag |
 | srOnly | boolean | if true, label is only visible to screen readers |
 | isRequired | boolean | if true, displays red * next to label text |
-| inputDisabled | boolean | |
+| disabled | boolean | |
 | inlineError | string | inlineErrors.txtState - shows inline error message, logic for errors should be set in parent component |
-| formColumns | string | How many columns should be displayed, is 1 by default |
+| columns | string | How many columns should be displayed, is 1 by default |
 | isCollapsible | boolean | Whether the group can be collpased or not |
 | startCollapsed | boolean | If group can be collapsed, then whether it should start that way or not. Is true by default. |
 | optionData | array | array of objects to loop through |
 | optionID | string | the name of the id property in the optionData, used for the option key and value. In a loop, it would be `optionData[i][optionID]` |
 | optionText | array of objects | optionText is an array of objects, which gets mapped through to display the text of each option. For type of "property", it uses the optionData array again. In a loop, it would be `optionData[i][optionText[j][text]]`. The below example is equivalent to: `optionData.simulationName + " (" + optionData.simulationTypeName + ")"`. |
 | | | Example: `optionText={[{ type: "property", text: "simulationName" }, { type: "string", text: " (" }, { type: "property", text: "simulationTypeName" }, { type: "string", text: ")" }]}` |
-| inputValue | string or number | state used for value of input |
+| value | string or number | state used for value of input |
 | updateValue | function | setState function to update value of input |
 
 Example: <br>
 ```
 <CheckboxGroup 
-  formInputID="cbxUserPermissions" 
-  legendText="User Permissions" 
+  id="cbxUserPermissions" 
+  legend="User Permissions" 
   isRequired={true} 
   optionData={[
     { userPermissionID: 1, userPermission: "Read" }, 
@@ -133,13 +133,13 @@ Example: <br>
   optionID="userPermissionID" 
   optionText={[{ type: "property", text: "userPermission" }]} 
   inlineError={inlineErrors.cbxUserPermissions} 
-  inputValue={cbxUserPermissions} 
+  value={cbxUserPermissions} 
   updateValue={setCbxUserPermissions} 
 />
 
 <FormRadioGroup 
-  formInputID="rdoActive" 
-  legendText="Active" 
+  id="rdoActive" 
+  legend="Active" 
   isRequired={true} 
   optionData={[
     { optionID: 1, optionText: "Yes" }, 
@@ -148,7 +148,7 @@ Example: <br>
   optionID="optionID" 
   optionText={[{ type: "property", text: "optionText" }]} 
   inlineError={inlineErrors.rdoActive} 
-  inputValue={rdoActive} 
+  value={rdoActive} 
   updateValue={setRdoActive}
 />
 ```
@@ -161,15 +161,15 @@ Output: <br>
 Displays a toggle switch. This uses radio inputs behind the scenes so that it can function properly inside a form.
 | Prop Name | Type | Description |
 | :-------: | :--: | ----------- |
-| formInputID | string | pattern is to name it the same as the state used for inputValue |
-| labelText | string | |
+| id | string | pattern is to name it the same as the state used for value |
+| label | string | |
 | isRequired | boolean | if true, displays red * next to label text |
-| inputHint | string | displays hint text in a `<p>` below the label and above the input |
+| hint | string | displays hint text in a `<p>` below the label and above the input |
 | srOnly | boolean | if true, label is only visible to screen readers |
-| inputDisabled | boolean | |
-| trueValue | string | Display text for when inputValue is true. Default value is "Yes" |
-| falseValue | string | Display text for when inputValue is false. Default value is "No" |
-| inputValue | string | state used for value of input |
+| disabled | boolean | |
+| trueValue | string | Display text for when value is true. Default value is "Yes" |
+| falseValue | string | Display text for when value is false. Default value is "No" |
+| value | string | state used for value of input |
 | updateValue | function | setState function to update value of input |
 
 Output: <br>

@@ -3,26 +3,26 @@ import { isEmpty, parse } from "shared-functions";
 import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
 
 type ToggleSwitchProps = {
+  id: string;
+  label: string;
+  value: boolean;
+  disabled?: boolean;
   falseValue?: string;
-  formInputID: string;
-  inputDisabled?: boolean;
-  inputHint?: string;
-  inputValue: boolean;
+  hint?: string;
   isRequired?: boolean;
-  labelText: string;
   srOnly?: boolean;
   trueValue?: string;
   updateValue: (value: boolean) => void;
 };
 
 const ToggleSwitch = ({
+  id = "",
+  label = "",
+  value = false,
+  disabled = false,
   falseValue = "No",
-  formInputID = "",
-  inputDisabled = false,
-  inputHint = "",
-  inputValue = false,
+  hint = "",
   isRequired = false,
-  labelText = "",
   srOnly = false,
   trueValue = "Yes",
   updateValue
@@ -34,7 +34,7 @@ const ToggleSwitch = ({
   });
 
   const fieldsetClasses: string = classnames("form-group toggle-switch-container", {
-    "input-disabled": inputDisabled
+    "input-disabled": disabled
   });
 
 
@@ -43,23 +43,23 @@ const ToggleSwitch = ({
 
       <legend className={labelClasses}>
 
-        {labelText}
+        {label}
 
         {isRequired ? <RequiredFieldAsterisk /> : null}
 
       </legend>
 
-      {!isEmpty(inputHint) ? <p className="input-hint">{parse(inputHint)}</p> : null}
+      {!isEmpty(hint) ? <p className="input-hint">{parse(hint)}</p> : null}
 
-      <div className="toggle-switch" onClick={() => { if (!inputDisabled) { updateValue(!inputValue); } }}>
+      <div className="toggle-switch" onClick={() => { if (!disabled) { updateValue(!value); } }}>
 
-        <div className={`toggle-switch__button ${inputValue ? "active" : ""}`}></div>
+        <div className={`toggle-switch__button ${value ? "active" : ""}`}></div>
 
-        <div className="toggle-switch__text">{inputValue ? <>{trueValue}</> : <>{falseValue}</>}</div>
+        <div className="toggle-switch__text">{value ? <>{trueValue}</> : <>{falseValue}</>}</div>
 
         <label className="sr-only">
 
-          <input type="radio" id={`${formInputID}false`} checked={!inputValue} value="false" disabled={inputDisabled} onChange={() => { updateValue(false); }} />
+          <input type="radio" id={`${id}false`} checked={!value} value="false" disabled={disabled} onChange={() => { updateValue(false); }} />
 
           {falseValue}
 
@@ -67,7 +67,7 @@ const ToggleSwitch = ({
 
         <label className="sr-only">
 
-          <input type="radio" id={`${formInputID}true`} checked={inputValue} value="true" disabled={inputDisabled} onChange={() => { updateValue(true); }} />
+          <input type="radio" id={`${id}true`} checked={value} value="true" disabled={disabled} onChange={() => { updateValue(true); }} />
 
           {trueValue}
 

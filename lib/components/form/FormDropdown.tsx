@@ -4,39 +4,39 @@ import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
 import { OptionText } from "../../types/FormTypes";
 
 type FormDropdownProps = {
-  emptyOption?: boolean;
-  formInputID: string;
-  inlineError?: string;
-  inputDisabled?: boolean;
-  inputHint?: string;
-  inputValue: string | number;
-  isRequired?: boolean;
-  labelText: string;
+  id: string;
+  label: string;
   optionData: any[];
   optionID: string;
   optionText: OptionText[];
-  placeholderText?: string;
+  value: string | number;
+  disabled?: boolean;
+  emptyOption?: boolean;
+  hint?: string;
+  inlineError?: string;
+  isRequired?: boolean;
+  placeholder?: string;
   srOnly?: boolean;
-  updateValue: (value: string | number) => void;
   useInputAddon?: boolean;
+  updateValue: (value: string | number) => void;
 };
 
 const FormDropdown = ({
-  emptyOption = false,
-  formInputID = "",
-  inlineError = "",
-  inputDisabled = false,
-  inputHint = "",
-  inputValue = "",
-  isRequired = false,
-  labelText = "",
+  id = "",
+  label = "",
   optionData = [],
   optionID = "",
   optionText = [],
-  placeholderText = "Select Value",
+  value = "",
+  disabled = false,
+  emptyOption = false,
+  hint = "",
+  inlineError = "",
+  isRequired = false,
+  placeholder = "Select Value",
   srOnly = false,
-  updateValue,
-  useInputAddon = false
+  useInputAddon = false,
+  updateValue
 }: FormDropdownProps) => {
 
   // * If srOnly is set to true, then the form item label is only visible to screen readers. -- 06/21/2023 MF
@@ -48,7 +48,7 @@ const FormDropdown = ({
   const formGroupClasses: string = classnames("form-group", {
     "with-addon": useInputAddon,
     "input-error": !isEmpty(inlineError),
-    "input-disabled": inputDisabled
+    "input-disabled": disabled
   });
 
   const getOptionDisplayText = (optionDataItem: any, optionText: OptionText[]) =>
@@ -64,25 +64,25 @@ const FormDropdown = ({
   return (
     <div className={formGroupClasses}>
 
-      <label htmlFor={formInputID} className={labelClasses}>
+      <label htmlFor={id} className={labelClasses}>
 
-        {labelText}
+        {label}
 
         {isRequired === true ? <RequiredFieldAsterisk /> : null}
 
       </label>
 
-      {isEmpty(inputHint) === false ? <p className="input-hint">{parse(inputHint)}</p> : null}
+      {isEmpty(hint) === false ? <p className="input-hint">{parse(hint)}</p> : null}
 
       <select
         className="form-control"
-        id={formInputID}
-        value={inputValue}
-        disabled={inputDisabled}
+        id={id}
+        value={value}
+        disabled={disabled}
         onChange={(event) => { updateValue(event.target.value); }}
       >
 
-        {emptyOption !== true ? <option value="">{placeholderText}</option> : null}
+        {emptyOption !== true ? <option value="">{placeholder}</option> : null}
 
         {isNonEmptyArray(optionData) && !isEmpty(optionID) && isNonEmptyArray(optionText) ?
 

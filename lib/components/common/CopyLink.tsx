@@ -4,16 +4,16 @@ import { isEmpty } from "shared-functions";
 
 type CopyLinkProps = {
   urlToCopy: string;
-  labelText: string;
-  inputDisabled: boolean;
+  label: string;
+  disabled: boolean;
   buttonType: string;
   tooltipStyle: string;
 };
 
 const CopyLink = ({
   urlToCopy,
-  labelText = "Copy URL",
-  inputDisabled,
+  label = "Copy URL",
+  disabled,
   buttonType = "default",
   tooltipStyle = ""
 }: CopyLinkProps) => {
@@ -61,9 +61,9 @@ const CopyLink = ({
         <button
           type="button"
           className={tooltipClasses}
-          data-tooltip={copiedSuccessfully ? "Copied" : labelText}
+          data-tooltip={copiedSuccessfully ? "Copied" : label}
           onClick={copyLinkToClipboard}
-          disabled={inputDisabled}
+          disabled={disabled}
         >
           {copiedSuccessfully ?
             <>
@@ -73,7 +73,7 @@ const CopyLink = ({
             :
             <>
               <i className="fa fa-copy" />
-              <span className="sr-only">{labelText}</span>
+              <span className="sr-only">{label}</span>
             </>
           }
         </button>
@@ -84,13 +84,13 @@ const CopyLink = ({
           type="button"
           className={buttonClasses}
           onClick={copyLinkToClipboard}
-          disabled={inputDisabled}
+          disabled={disabled}
         >
           {copiedSuccessfully ?
             <>
               <i className="fas fa-check"></i> Copied
             </>
-            : labelText}
+            : label}
         </button>
 
       }

@@ -467,45 +467,45 @@ const Profile = ({
         <p><strong>Username</strong>: {txtUsername}</p>
 
         <FormInput
-          formInputID="txtFirstName"
-          inputType="text"
-          labelText="First Name"
+          id="txtFirstName"
+          type="text"
+          label="First Name"
           isRequired={true}
           inlineError={inlineErrors.txtFirstName}
-          inputDisabled={disabled}
-          inputValue={txtFirstName}
+          disabled={disabled}
+          value={txtFirstName}
           updateValue={setTxtFirstName}
         />
 
         <FormInput
-          formInputID="txtLastName"
-          inputType="text"
-          labelText="Last Name"
+          id="txtLastName"
+          type="text"
+          label="Last Name"
           isRequired={true}
           inlineError={inlineErrors.txtLastName}
-          inputDisabled={disabled}
-          inputValue={txtLastName}
+          disabled={disabled}
+          value={txtLastName}
           updateValue={setTxtLastName}
         />
 
         <FormInput
-          formInputID="txtEmail"
-          inputType="text"
-          labelText="Email"
+          id="txtEmail"
+          type="text"
+          label="Email"
           isRequired={true}
           inlineError={inlineErrors.txtEmail}
-          inputDisabled={disabled}
-          inputValue={txtEmail}
+          disabled={disabled}
+          value={txtEmail}
           updateValue={setTxtEmail}
         />
 
         <FormInput
-          formInputID="txtPassword"
-          inputType="text"
-          labelText="Password (Only updated if a value is entered)"
+          id="txtPassword"
+          type="text"
+          label="Password (Only updated if a value is entered)"
           isRequired={true}
-          inputDisabled={disabled}
-          inputValue={txtPassword}
+          disabled={disabled}
+          value={txtPassword}
           updateValue={setTxtPassword}
         />
 

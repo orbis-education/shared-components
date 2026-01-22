@@ -27,8 +27,8 @@ const Pagination = ({
     <div className="pagination-section">
 
       <FormDropdown
-        formInputID="ddResultsPerPage"
-        labelText="Results per Page"
+        id="ddResultsPerPage"
+        label="Results per Page"
         optionData={[
           { sizeID: defaultResultsPerPage, optionText: defaultResultsPerPage },
           { sizeID: defaultResultsPerPage * 2, optionText: defaultResultsPerPage * 2 },
@@ -39,7 +39,7 @@ const Pagination = ({
         optionText={[{ type: "property", text: "optionText" }]}
         emptyOption={true}
         useInputAddon={true}
-        inputValue={ddResultsPerPage}
+        value={ddResultsPerPage}
         updateValue={setDdResultsPerPage}
       />
 
