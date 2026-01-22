@@ -95,7 +95,10 @@ const CheckboxGroup = ({
     if (collapseList === true) {
 
       setIsCollapsed(true);
-      setCollapseList(false);
+
+      // * ?. is ai suggested fix for the below error: -- 01/22/2026 JH
+      // * Cannot invoke an object which is possibly 'undefined'.
+      setCollapseList?.(false);
 
     }
 

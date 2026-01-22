@@ -13,13 +13,13 @@ type FormInputProps = {
   inlineError?: string;
   isRequired?: boolean;
   list?: string;
-  max?: number;
-  maxLength?: number;
-  min?: number;
+  max?: number | null;
+  maxLength?: number | null;
+  min?: number | null;
   placeholder?: string;
   rows?: number;
   srOnly?: boolean;
-  step?: number;
+  step?: number | null;
   type?: string;
   useInputAddon?: boolean;
   onKeyDown?: () => void; // ? (event: KeyboardEvent) => void
@@ -87,9 +87,9 @@ const FormInput = ({
       let value = event.target.value;
 
       // * This is used to account for initial values of inputs and pasting/typing values that exceed maxLength. -- 09/09/2025 JW
-      if (!isEmpty(maxLength) && value.length > maxLength) {
+      if (!isEmpty(maxLength) && value.length > (maxLength ?? 0)) {
 
-        value.slice(0, maxLength);
+        value = value.slice(0, maxLength ?? undefined);
 
       }
 

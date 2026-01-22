@@ -1,7 +1,8 @@
 import { Fragment, useRef, ChangeEvent } from "react";
 import classnames from "classnames";
 import { isEmpty, isNonEmptyArray, formatToString, parse } from "shared-functions";
-import { useNativeClickListener } from "../../hooks/useNativeClickListener";
+import { type UseNativeClickListener, useNativeClickListener } from "../../hooks/useNativeClickListener";
+
 import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
 import { createOptionDisplayText } from "./formFunctions";
 import { OptionText } from "../../types/FormTypes";
@@ -40,9 +41,9 @@ const CheckboxDropdown = ({
   updateValue
 }: CheckboxDropdownProps) => {
 
-  const dropdownRef = useRef<HTMLFieldSetElement>(null);
+  const dropdownRef = useRef<HTMLFieldSetElement | null>(null);
 
-  const [isDropdownOpen, setIsDropdownOpen] = useNativeClickListener<boolean>(dropdownRef, false);
+  const [isDropdownOpen, setIsDropdownOpen] = useNativeClickListener(dropdownRef, false);
 
   const fieldsetClasses: string = classnames("form-group checkbox-dropdown-group", {
     "input-disabled": disabled
