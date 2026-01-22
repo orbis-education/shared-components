@@ -3,6 +3,7 @@ export type NavigationItem = {
   componentName?: string;
   type?: string;
   isPresent?: boolean;
+  classes?: string;
   onClick?: () => void;
   dropdownItems?: {
     name: string;

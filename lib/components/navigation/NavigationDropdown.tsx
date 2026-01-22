@@ -11,7 +11,7 @@ type NavigationDropdownProps = {
 };
 
 const NavigationDropdown = ({
-  navigationItem = { name: "", type: "", dropdownItems: [] },
+  navigationItem = { name: "", type: "", classes: "", dropdownItems: [] },
   returnActiveClass = noFunctionAvailable
 }: NavigationDropdownProps) => {
 
@@ -29,6 +29,8 @@ const NavigationDropdown = ({
   // const filteredDropdownItems = navigationItem?.dropdownItems.filter(dropdownItem => isEmpty(navigationItem.isPresent) || dropdownItem.isPresent === true);
   const filteredDropdownItems = (navigationItem?.dropdownItems ?? []).filter(dropdownItem => isEmpty(dropdownItem.isPresent) || dropdownItem.isPresent === true);
 
+  const dropdownClassnames = !isEmpty(navigationItem?.classes) ? `dropdown ${navigationItem.classes}` : "dropdown";
+
   return (
     <>
 
@@ -42,7 +44,7 @@ const NavigationDropdown = ({
 
       {isDropdownOpen === true && !isEmptyArray(filteredDropdownItems) ?
 
-        <ul className="dropdown">
+        <ul className={dropdownClassnames}>
 
           {filteredDropdownItems.map((dropdownItem, index) => {
 
