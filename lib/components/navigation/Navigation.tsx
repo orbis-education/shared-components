@@ -1,7 +1,7 @@
 import { isEmpty, isEmptyArray } from "shared-functions";
 import NavigationDropdown from "./NavigationDropdown";
 import NavigationLink from "./NavigationLink";
-import { NavigationItem } from "./NavigationTypes";
+import { NavigationItem } from "../../types/NavigationTypes";
 
 type NavigationProps = {
   navigationItems: NavigationItem[];

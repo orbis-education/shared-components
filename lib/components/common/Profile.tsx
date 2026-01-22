@@ -1,6 +1,37 @@
 import { useState, useEffect } from "react";
 import FormInput from "../form/FormInput";
 import { emailFormat, isEmpty, getDateTime, getFirstItem, convertSpecialCharacters, convertNullEmptyString, formatTrim, addLog, addErrorLog, getBrowserData, allowLogging, noFunctionAvailable } from "shared-functions";
+import { User, LoggedInUser } from "../../types/User";
+
+type ProfileProps = {
+  applicationVersion: string;
+  baseURL: string;
+  computerLog: any; // ?
+  userIdentifier: string;
+  demonstrationMode: boolean;
+  environmentMode: string;
+  databaseAvailable: boolean;
+  sessionToken: string;
+  loggedInUser?: LoggedInUser; // ?
+  disabled: boolean;
+  sessionTokenName: string;
+  handleNavigation: () => void;
+  setFetchAuthorization: (sessionToken: string, environmentMode: string, demonstrationMode: boolean) => string;
+  setDatabaseAvailable: (value: boolean) => void;
+  setUserTokenExpired: (value: boolean) => void;
+  setLoggedInUser: (user: LoggedInUser) => void;
+  addSuccessMessage: (message: string) => void;
+  addErrorMessage: (message: string) => void;
+  clearMessages: () => void;
+};
+
+type InlineErrors = {
+  txtUsername?: string;
+  txtFirstName?: string;
+  txtLastName?: string;
+  txtEmail?: string;
+  txtPassword?: string;
+};
 
 const Profile = ({
   applicationVersion = "",
@@ -11,7 +42,7 @@ const Profile = ({
   environmentMode = "",
   databaseAvailable = true,
   sessionToken = null,
-  loggedInUser = {},
+  loggedInUser = null,
   disabled = false,
   sessionTokenName = "",
   handleNavigation = noFunctionAvailable,
@@ -22,17 +53,17 @@ const Profile = ({
   addSuccessMessage = noFunctionAvailable,
   addErrorMessage = noFunctionAvailable,
   clearMessages = noFunctionAvailable
-}) => {
+}: ProfileProps) => {
 
-  const [currentUser, setCurrentUser] = useState({});
-  const [userID, setUserID] = useState(null);
-  const [txtUsername, setTxtUsername] = useState("");
-  const [txtFirstName, setTxtFirstName] = useState("");
-  const [txtLastName, setTxtLastName] = useState("");
-  const [txtEmail, setTxtEmail] = useState("");
-  const [txtPassword, setTxtPassword] = useState("");
+  const [currentUser, setCurrentUser] = useState<User>(null);
+  const [userID, setUserID] = useState<number>(null);
+  const [txtUsername, setTxtUsername] = useState<string>("");
+  const [txtFirstName, setTxtFirstName] = useState<string>("");
+  const [txtLastName, setTxtLastName] = useState<string>("");
+  const [txtEmail, setTxtEmail] = useState<string>("");
+  const [txtPassword, setTxtPassword] = useState<string>("");
 
-  const [inlineErrors, setInlineErrors] = useState({});
+  const [inlineErrors, setInlineErrors] = useState<InlineErrors>({});
 
 
   useEffect(() => {
@@ -49,7 +80,7 @@ const Profile = ({
 
       handleNavigation();
 
-    };
+    }
 
   }, [loggedInUser]);
 
@@ -73,7 +104,7 @@ const Profile = ({
           txtFirstName: ""
         });
 
-      };
+      }
 
       if (!isEmpty(inlineErrors.txtLastName) && !isEmpty(txtLastName)) {
 
@@ -82,7 +113,7 @@ const Profile = ({
           txtLastName: ""
         });
 
-      };
+      }
 
       if (!isEmpty(inlineErrors.txtEmail) && !isEmpty(txtEmail) && !isEmpty(txtEmail.match(emailFormat))) {
 
@@ -91,9 +122,9 @@ const Profile = ({
           txtEmail: ""
         });
 
-      };
+      }
 
-    };
+    }
 
   }, [txtFirstName, txtLastName, txtEmail, inlineErrors]);
 
@@ -112,7 +143,7 @@ const Profile = ({
 
     } else {
 
-      setCurrentUser({});
+      setCurrentUser(null);
       setUserID(null);
       setTxtUsername("");
       setTxtFirstName("");
@@ -120,7 +151,7 @@ const Profile = ({
       setTxtEmail("");
       setTxtPassword("");
 
-    };
+    }
 
   };
 
@@ -132,13 +163,13 @@ const Profile = ({
     clearMessages();
 
 
-    let operation = "Save Record";
+    let operation: string = "Save Record";
 
-    let transactionValid = false;
-    let errorMessages = "";
-    let formatErrorMessages = "";
+    let transactionValid: boolean = false;
+    let errorMessages: string = "";
+    let formatErrorMessages: string = "";
 
-    let inlineErrorMessages = {};
+    let inlineErrorMessages: InlineErrors = {};
 
     // if (isEmpty(formatTrim(txtUsername))) {
 
@@ -157,7 +188,7 @@ const Profile = ({
         txtFirstName: "Please enter the <strong>First Name</strong>."
       };
 
-    };
+    }
 
     if (isEmpty(formatTrim(txtLastName))) {
 
@@ -169,7 +200,7 @@ const Profile = ({
         txtLastName: "Please enter the <strong>Last Name</strong>."
       };
 
-    };
+    }
 
     if (isEmpty(formatTrim(txtEmail))) {
 
@@ -193,9 +224,9 @@ const Profile = ({
           txtEmail: "Please enter a valid email address for the <strong>Email</strong>."
         };
 
-      };
+      }
 
-    };
+    }
 
     // if (isEmpty(formatTrim(txtPassword))) {
 
@@ -208,7 +239,7 @@ const Profile = ({
 
       formatErrorMessages = `${formatErrorMessages}<br />Please fix the errors with the indicated fields in the form.`;
 
-    };
+    }
 
     // * This is too slow running to label the transaction as valid or invalid. -- 05/06/2021 MF
     // errorMessages = buildErrorMessages("users", errorMessages, formatErrorMessages);
@@ -218,7 +249,7 @@ const Profile = ({
       // errorMessages = `Please enter the user's ${errorMessages.substring(1)}.`;
       errorMessages = `Please enter the user's${errorMessages.replace(/^,/, "")}.`;
 
-    };
+    }
 
     if (!isEmpty(formatErrorMessages)) {
 
@@ -231,9 +262,9 @@ const Profile = ({
         // errorMessages = Parse(errorMessages + formatErrorMessages);
         errorMessages = errorMessages + formatErrorMessages;
 
-      };
+      }
 
-    };
+    }
 
     if (!isEmpty(errorMessages) || !isEmpty(inlineErrorMessages)) {
 
@@ -243,13 +274,13 @@ const Profile = ({
         // console.log(errorMessages);
         addErrorMessage(`${operation}: ${errorMessages}`);
 
-      };
+      }
 
       if (!isEmpty(inlineErrorMessages)) {
 
         setInlineErrors(inlineErrorMessages);
 
-      };
+      }
 
       transactionValid = false;
 
@@ -257,7 +288,7 @@ const Profile = ({
 
       transactionValid = true;
 
-    };
+    }
 
     if (transactionValid === true) {
 
@@ -271,24 +302,24 @@ const Profile = ({
       // * Update the record. -- 04/16/2021 MF
       processTransaction("U");
 
-      // };
+      // }
 
-    };
+    }
 
   };
 
 
-  const processTransaction = (transactionType) => {
+  const processTransaction = (transactionType: string) => {
 
-    let url = `${baseURL}users/`;
-    let response = "";
-    let data = "";
-    let operation = "";
-    let method = "";
-    let previousRecord = loggedInUser;
-    let primaryKeyID = userID;
+    let url: string = `${baseURL}users/`;
+    let response: any = ""; // ?
+    let data: any = ""; // ?
+    let operation: string = "";
+    let method: string = "";
+    let previousRecord: LoggedInUser = loggedInUser;
+    let primaryKeyID: number = userID;
 
-    let recordObject = {
+    let recordObject: any = { // ?
       // username: convertNullEmptyString(formatTrim(txtUsername)),
       firstName: convertNullEmptyString(formatTrim(txtFirstName)),
       lastName: convertNullEmptyString(formatTrim(txtLastName)),
@@ -323,7 +354,7 @@ const Profile = ({
       //   recordObject.userID = primaryKeyID;
       //   recordObject.active = false;
 
-    };
+    }
 
     fetch(url, {
       method: method,
@@ -352,7 +383,7 @@ const Profile = ({
 
           return Promise.reject(Error(response.status + " Fetch failed."));
 
-        };
+        }
 
       })
       .then(results => {
@@ -371,7 +402,7 @@ const Profile = ({
             setTxtEmail(convertNullEmptyString(dataRecord.email));
             setTxtPassword(convertNullEmptyString(dataRecord.password));
 
-            let newLoggedInUser = { ...currentUser };
+            let newLoggedInUser: LoggedInUser = { ...currentUser };
 
             newLoggedInUser.username = convertNullEmptyString(dataRecord.username);
             newLoggedInUser.firstName = convertNullEmptyString(dataRecord.firstName);
@@ -395,7 +426,7 @@ const Profile = ({
 
             addErrorLog(baseURL, setFetchAuthorization("", environmentMode, demonstrationMode), databaseAvailable, allowLogging(), { operation: `${operation} SQL Server`, transactionData: { url, response: { ok: response.ok, redirected: response.redirected, status: response.status, statusText: response.statusText, type: response.type, url: response.url }, data, primaryKeyID, previousRecord, recordObject, applicationVersion, loggedInUser, computerLog }, errorData: { message: data.message }, dateEntered: getDateTime() });
 
-          };
+          }
 
         } else {
 
@@ -403,7 +434,7 @@ const Profile = ({
 
           addErrorLog(baseURL, setFetchAuthorization("", environmentMode, demonstrationMode), databaseAvailable, allowLogging(), { operation: `${operation} SQL Server`, transactionData: { url, response: { ok: response.ok, redirected: response.redirected, status: response.status, statusText: response.statusText, type: response.type, url: response.url }, data, primaryKeyID, previousRecord, recordObject, applicationVersion, loggedInUser, computerLog }, errorData: { message: "No Results Returned." }, dateEntered: getDateTime() });
 
-        };
+        }
 
       })
       .catch((error) => {
@@ -435,13 +466,48 @@ const Profile = ({
 
         <p><strong>Username</strong>: {txtUsername}</p>
 
-        <FormInput formInputID="txtFirstName" inputType="text" labelText="First Name" isRequired={true} inlineError={inlineErrors.txtFirstName} inputDisabled={disabled} inputValue={txtFirstName} updateValue={setTxtFirstName} />
+        <FormInput
+          formInputID="txtFirstName"
+          inputType="text"
+          labelText="First Name"
+          isRequired={true}
+          inlineError={inlineErrors.txtFirstName}
+          inputDisabled={disabled}
+          inputValue={txtFirstName}
+          updateValue={setTxtFirstName}
+        />
 
-        <FormInput formInputID="txtLastName" inputType="text" labelText="Last Name" isRequired={true} inlineError={inlineErrors.txtLastName} inputDisabled={disabled} inputValue={txtLastName} updateValue={setTxtLastName} />
+        <FormInput
+          formInputID="txtLastName"
+          inputType="text"
+          labelText="Last Name"
+          isRequired={true}
+          inlineError={inlineErrors.txtLastName}
+          inputDisabled={disabled}
+          inputValue={txtLastName}
+          updateValue={setTxtLastName}
+        />
 
-        <FormInput formInputID="txtEmail" inputType="text" labelText="Email" isRequired={true} inlineError={inlineErrors.txtEmail} inputDisabled={disabled} inputValue={txtEmail} updateValue={setTxtEmail} />
+        <FormInput
+          formInputID="txtEmail"
+          inputType="text"
+          labelText="Email"
+          isRequired={true}
+          inlineError={inlineErrors.txtEmail}
+          inputDisabled={disabled}
+          inputValue={txtEmail}
+          updateValue={setTxtEmail}
+        />
 
-        <FormInput formInputID="txtPassword" inputType="text" labelText="Password (Only updated if a value is entered)" isRequired={true} inputDisabled={disabled} inputValue={txtPassword} updateValue={setTxtPassword} />
+        <FormInput
+          formInputID="txtPassword"
+          inputType="text"
+          labelText="Password (Only updated if a value is entered)"
+          isRequired={true}
+          inputDisabled={disabled}
+          inputValue={txtPassword}
+          updateValue={setTxtPassword}
+        />
 
         <div className="flex-row">
 

@@ -1,6 +1,25 @@
 import classnames from "classnames";
 import { isEmpty, isNonEmptyArray, parse } from "shared-functions";
 import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
+import { OptionText } from "../../types/FormTypes";
+
+type FormDropdownProps = {
+  emptyOption?: boolean;
+  formInputID: string;
+  inlineError?: string;
+  inputDisabled?: boolean;
+  inputHint?: string;
+  inputValue: string | number;
+  isRequired?: boolean;
+  labelText: string;
+  optionData: any[];
+  optionID: string;
+  optionText: OptionText[];
+  placeholderText?: string;
+  srOnly?: boolean;
+  updateValue: (value: string | number) => void;
+  useInputAddon?: boolean;
+};
 
 const FormDropdown = ({
   emptyOption = false,
@@ -15,31 +34,32 @@ const FormDropdown = ({
   optionID = "",
   optionText = [],
   placeholderText = "Select Value",
-  srOnly = "",
+  srOnly = false,
   updateValue,
   useInputAddon = false
-}) => {
+}: FormDropdownProps) => {
 
   // * If srOnly is set to true, then the form item label is only visible to screen readers. -- 06/21/2023 MF
-  let labelClasses = classnames("", {
-    "sr-only": srOnly === true,
-    "input-addon": useInputAddon === true
+  const labelClasses: string = classnames("", {
+    "sr-only": srOnly,
+    "input-addon": useInputAddon
   });
 
-  let formGroupClasses = classnames("form-group", {
-    "with-addon": useInputAddon === true,
-    "input-error": isEmpty(inlineError) === false,
-    "input-disabled": inputDisabled === true
+  const formGroupClasses: string = classnames("form-group", {
+    "with-addon": useInputAddon,
+    "input-error": !isEmpty(inlineError),
+    "input-disabled": inputDisabled
   });
 
-  const getOptionDisplayText = (optionDataItem, optionText) =>
+  const getOptionDisplayText = (optionDataItem: any, optionText: OptionText[]) =>
     optionText
-      .map((optionTextItem) =>
+      .map((optionTextItem: any) =>
         optionTextItem.type === "property"
           ? optionDataItem[optionTextItem.text] // * Extract value from object. -- 02/25/2025 JW
           : optionTextItem.text // * Use direct string. -- 02/25/2025 JW
       )
       .join(" "); // * Join to ensure a single string output. -- 02/25/2025 JW
+
 
   return (
     <div className={formGroupClasses}>
@@ -54,11 +74,17 @@ const FormDropdown = ({
 
       {isEmpty(inputHint) === false ? <p className="input-hint">{parse(inputHint)}</p> : null}
 
-      <select className="form-control" id={formInputID} value={inputValue} disabled={inputDisabled} onChange={(event) => { updateValue(event.target.value); }}>
+      <select
+        className="form-control"
+        id={formInputID}
+        value={inputValue}
+        disabled={inputDisabled}
+        onChange={(event) => { updateValue(event.target.value); }}
+      >
 
         {emptyOption !== true ? <option value="">{placeholderText}</option> : null}
 
-        {isNonEmptyArray(optionData) === true && isEmpty(optionID) === false && isNonEmptyArray(optionText) === true ?
+        {isNonEmptyArray(optionData) && !isEmpty(optionID) && isNonEmptyArray(optionText) ?
 
           optionData.map((optionDataItem) => (
             <option key={optionDataItem[optionID]} value={optionDataItem[optionID]}>

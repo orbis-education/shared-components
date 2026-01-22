@@ -1,17 +1,25 @@
-import { useEffect } from "react";
+import { useEffect, Dispatch, SetStateAction } from "react";
 import classnames from "classnames";
+
+type DialogBoxProps = {
+  dialogBoxContent: string,
+  dialogBoxOpen: boolean,
+  dialogBoxSize: string,
+  dialogBoxTitle: string,
+  setDialogBoxOpen: Dispatch<SetStateAction<boolean>>;
+};
 
 const DialogBox = ({
   dialogBoxContent = "",
-  dialogBoxOpen = "",
+  dialogBoxOpen = false,
   dialogBoxSize = "",
   dialogBoxTitle = "",
   setDialogBoxOpen
-}) => {
+}: DialogBoxProps) => {
 
-  let size = dialogBoxSize;
-  let title = dialogBoxTitle;
-  let content = dialogBoxContent;
+  let size: string = dialogBoxSize;
+  let title: string = dialogBoxTitle;
+  let content: string = dialogBoxContent;
 
   const modalStyles = classnames("modal-dialog", {
     "modal-sm": size === "sm",
@@ -24,13 +32,13 @@ const DialogBox = ({
   // * Close modal on ESC key. -- 02/13/2024 JH
   useEffect(() => {
 
-    const handleKeyDown = (event) => {
+    const handleKeyDown = (event: KeyboardEvent) => {
 
       if (event.key === "Escape") {
 
         setDialogBoxOpen(false);
 
-      };
+      }
 
     };
 
@@ -47,16 +55,16 @@ const DialogBox = ({
   return (
     <>
 
-      {dialogBoxOpen === true ?
+      {dialogBoxOpen ?
 
-        <div className="modal" tabIndex="-1" aria-hidden="true">
+        <div className="modal" tabIndex={-1} aria-hidden="true">
           <div className={modalStyles}>
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">
                   {title}
                 </h5>
-                <button type="button" className="close" onClick={(event) => { setDialogBoxOpen(!dialogBoxOpen); }} title="Close">
+                <button type="button" className="close" onClick={() => { setDialogBoxOpen(!dialogBoxOpen); }} title="Close">
                   <i className="fa fa-close"></i><span className="sr-only">Close</span>
                 </button>
               </div>
@@ -64,12 +72,12 @@ const DialogBox = ({
                 {content}
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-primary" onClick={(event) => { setDialogBoxOpen(!dialogBoxOpen); }}>OK</button>
-                {/* <button type="button" className="btn btn-cancel" onClick={(event) => { dispatch(clearMessages()); setDialogBoxOpen(!dialogBoxOpen); }}>Cancel</button> */}
+                <button type="button" className="btn btn-primary" onClick={() => { setDialogBoxOpen(!dialogBoxOpen); }}>OK</button>
+                {/* <button type="button" className="btn btn-cancel" onClick={() => { dispatch(clearMessages()); setDialogBoxOpen(!dialogBoxOpen); }}>Cancel</button> */}
               </div>
             </div>
           </div>
-          <div className="modal-backdrop" onClick={(event) => { setDialogBoxOpen(!dialogBoxOpen); }}></div>
+          <div className="modal-backdrop" onClick={() => { setDialogBoxOpen(!dialogBoxOpen); }}></div>
         </div>
 
         : null}

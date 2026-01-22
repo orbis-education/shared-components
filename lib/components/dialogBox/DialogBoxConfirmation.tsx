@@ -1,20 +1,29 @@
-import { useEffect } from "react";
+import { useEffect, Dispatch, SetStateAction } from "react";
 import classnames from "classnames";
+
+type DialogBoxConfirmationProps = {
+  dialogBoxContent: string,
+  dialogBoxOpen: boolean,
+  dialogBoxSize: string,
+  dialogBoxTitle: string,
+  dialogBoxType: string,
+  setDialogBoxContinue: Dispatch<SetStateAction<boolean>>;
+};
 
 const DialogBoxConfirmation = ({
   dialogBoxContent = "",
-  dialogBoxOpen = "",
+  dialogBoxOpen = false,
   dialogBoxSize = "",
   dialogBoxTitle = "",
   dialogBoxType = "",
   setDialogBoxContinue
-}) => {
+}: DialogBoxConfirmationProps) => {
 
   // * The code that catches the route change on the page doesn't handle if the browser is closed or the back/forward buttons are used. -- 07/15/2021 MF
 
-  let size = dialogBoxSize;
-  let title = dialogBoxTitle;
-  let content = dialogBoxContent;
+  let size: string = dialogBoxSize;
+  let title: string = dialogBoxTitle;
+  let content: string = dialogBoxContent;
 
   if (dialogBoxType === "confirmDelete") {
 
@@ -52,19 +61,19 @@ const DialogBoxConfirmation = ({
     title = "Close Program?";
     content = "Are you sure you want to close this program?";
 
-  };
+  }
 
 
   // * Close modal on ESC key. -- 02/13/2024 JH
   useEffect(() => {
 
-    const handleKeyDown = (event) => {
+    const handleKeyDown = (event: KeyboardEvent) => {
 
       if (event.key === "Escape") {
 
         setDialogBoxContinue(false);
 
-      };
+      }
 
     };
 
@@ -78,7 +87,7 @@ const DialogBoxConfirmation = ({
   }, []);
 
 
-  const modalStyles = classnames("modal-dialog", {
+  const modalStyles: string = classnames("modal-dialog", {
     "modal-sm": size === "sm",
     "modal-md": size === "md",
     "modal-lg": size === "lg",
@@ -91,7 +100,7 @@ const DialogBoxConfirmation = ({
 
       {dialogBoxOpen === true ?
 
-        <div className="modal" tabIndex="-1" aria-hidden="true">
+        <div className="modal" tabIndex={-1} aria-hidden="true">
           <div className={modalStyles}>
             <div className="modal-content">
               <div className="modal-header">

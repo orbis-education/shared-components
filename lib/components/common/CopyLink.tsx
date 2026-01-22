@@ -1,6 +1,14 @@
-import { useState } from "react";
+import { useState, MouseEvent } from "react";
 import classnames from "classnames";
 import { isEmpty } from "shared-functions";
+
+type CopyLinkProps = {
+  urlToCopy: string;
+  labelText: string;
+  inputDisabled: boolean;
+  buttonType: string;
+  tooltipStyle: string;
+};
 
 const CopyLink = ({
   urlToCopy,
@@ -8,23 +16,23 @@ const CopyLink = ({
   inputDisabled,
   buttonType = "default",
   tooltipStyle = ""
-}) => {
+}: CopyLinkProps) => {
 
-  const [copiedSuccessfully, setCopiedSuccessfully] = useState(false);
+  const [copiedSuccessfully, setCopiedSuccessfully] = useState<boolean>(false);
 
-  const buttonClasses = classnames("btn", {
+  const buttonClasses: string = classnames("btn", {
     "btn-success": copiedSuccessfully,
     "btn-light-gray": !copiedSuccessfully
   });
 
-  const tooltipClasses = classnames("btn btn-transparent tooltip-container", {
+  const tooltipClasses: string = classnames("btn btn-transparent tooltip-container", {
     "tooltip-right": tooltipStyle === "right",
     "tooltip-left": tooltipStyle === "left",
     "tooltip-down": tooltipStyle === "down"
   });
 
 
-  const copyLinkToClipboard = (event) => {
+  const copyLinkToClipboard = (event: MouseEvent) => {
 
     event.stopPropagation();
 
@@ -40,7 +48,7 @@ const CopyLink = ({
 
       }, 2000);
 
-    };
+    }
 
   };
 
@@ -78,7 +86,7 @@ const CopyLink = ({
           onClick={copyLinkToClipboard}
           disabled={inputDisabled}
         >
-          {copiedSuccessfully === true ?
+          {copiedSuccessfully ?
             <>
               <i className="fas fa-check"></i> Copied
             </>

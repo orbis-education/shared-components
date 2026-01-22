@@ -1,5 +1,14 @@
 import FormDropdown from "../form/FormDropdown";
 
+type PaginationProps = {
+  defaultResultsPerPage: number;
+  ddResultsPerPage: number;
+  currentPageNumber: number;
+  totalPages: number;
+  setDdResultsPerPage: (value: number) => void;
+  setCurrentPageNumber: (value: number) => void;
+};
+
 const Pagination = ({
   defaultResultsPerPage = 30,
   ddResultsPerPage = 30,
@@ -7,9 +16,9 @@ const Pagination = ({
   totalPages = 1,
   setDdResultsPerPage,
   setCurrentPageNumber
-}) => {
+}: PaginationProps) => {
 
-  const handlePageClick = (value) => {
+  const handlePageClick = (value: number) => {
     window.scrollTo(0, 0);
     setCurrentPageNumber(value);
   };

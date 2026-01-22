@@ -1,13 +1,24 @@
+import { Dispatch, SetStateAction } from "react";
 import classnames from "classnames";
 import { parse } from "shared-functions";
 
-const AlertPopup = ({ alertType = "", message = "", includeResetButton = false, setMessage }) => {
+type AlertType = "error" | "success" | "info" | "warning" | "";
 
-  // * Available props: -- 12/30/2022 MF
-  // * Properties: message, alertType, includeResetButton -- 12/30/2022 MF
-  // * Functions: setMessage -- 12/30/2022 MF
+type AlertPopupProps = {
+  alertType: AlertType;
+  message: string;
+  includeResetButton?: boolean;
+  setMessage: Dispatch<SetStateAction<string>>;
+};
 
-  let alertClasses = classnames("alert", {
+const AlertPopup = ({
+  alertType = "",
+  message = "",
+  includeResetButton = false,
+  setMessage
+}: AlertPopupProps) => {
+
+  const alertClasses: string = classnames("alert", {
     "alert-success": alertType === "success",
     "alert-warning": alertType === "warning",
     "alert-info": alertType === "info",
@@ -24,7 +35,7 @@ const AlertPopup = ({ alertType = "", message = "", includeResetButton = false, 
           {parse(message)}
         </div>
 
-        {includeResetButton === true ?
+        {includeResetButton ?
 
           <button type="button" className="refresh" onClick={() => window.location.reload()}>
             Refresh

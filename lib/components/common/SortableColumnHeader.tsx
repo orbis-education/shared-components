@@ -1,4 +1,14 @@
+import { Dispatch, SetStateAction } from "react";
 import classnames from "classnames";
+
+type SortableColumnHeaderProps = {
+  columnPropertyName: string;
+  columnText: string;
+  sortDirection: string;
+  sortProperty: string;
+  setSortDirection: Dispatch<SetStateAction<string>>;
+  setSortProperty: Dispatch<SetStateAction<string>>;
+};
 
 const SortableColumnHeader = ({
   columnPropertyName = "",
@@ -7,16 +17,16 @@ const SortableColumnHeader = ({
   setSortProperty,
   sortDirection = "",
   sortProperty = ""
-}) => {
+}: SortableColumnHeaderProps) => {
 
-  let iconClasses = classnames("fa", {
+  const iconClasses: string = classnames("fa", {
     "fa-sort-up": sortProperty === columnPropertyName && sortDirection === "asc",
     "fa-sort-down": sortProperty === columnPropertyName && sortDirection === "desc",
     "fa-sort": sortProperty !== columnPropertyName || sortDirection === "unsorted"
   });
 
 
-  const handleSort = (propertyToSort) => {
+  const handleSort = (propertyToSort: string) => {
 
     if (sortDirection === "unsorted" || propertyToSort !== sortProperty) {
 
@@ -33,7 +43,7 @@ const SortableColumnHeader = ({
       setSortProperty("");
       setSortDirection("unsorted");
 
-    };
+    }
 
   };
 

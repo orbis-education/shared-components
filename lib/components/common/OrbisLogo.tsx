@@ -1,5 +1,9 @@
+type OrbisLogoProps = {
+  classes?: string;
+  width?: string;
+};
 
-const OrbisLogo = ({ classes = "orbis-logo", width = "100%" }) => {
+const OrbisLogo = ({ classes = "orbis-logo", width = "100%" }: OrbisLogoProps) => {
 
 
   return (

@@ -1,6 +1,21 @@
-import { useEffect } from "react";
+import { useEffect, Dispatch, SetStateAction } from "react";
 import { isEmpty, noFunctionAvailable } from "shared-functions";
 import AlertPopup from "./AlertPopup";
+
+type MessagesProps = {
+  informationMessage: string;
+  successMessage: string;
+  warningMessage: string;
+  errorMessage: string;
+  informationMessageVisible: boolean;
+  successMessageVisible: boolean;
+  warningMessageVisible: boolean;
+  errorMessageVisible: boolean;
+  addInformationMessage: Dispatch<SetStateAction<string>>;
+  addSuccessMessage: Dispatch<SetStateAction<string>>;
+  addWarningMessage: Dispatch<SetStateAction<string>>;
+  addErrorMessage: Dispatch<SetStateAction<string>>;
+};
 
 const Messages = ({
   informationMessage = "",
@@ -15,7 +30,7 @@ const Messages = ({
   addSuccessMessage = noFunctionAvailable,
   addWarningMessage = noFunctionAvailable,
   addErrorMessage = noFunctionAvailable
-}) => {
+}: MessagesProps) => {
 
 
   // * When the component is mounted, the alert is displayed for 5 seconds. -- 08/30/2021 MF
@@ -30,30 +45,30 @@ const Messages = ({
 
       }, 5000);
 
-    };
+    }
 
   }, [successMessage]);
 
 
-  const updateInformationMessage = (alertItemContent) => {
+  const updateInformationMessage = (alertItemContent: string) => {
 
     addInformationMessage(alertItemContent);
 
   };
 
-  const updateSuccessMessage = (alertItemContent) => {
+  const updateSuccessMessage = (alertItemContent: string) => {
 
     addSuccessMessage(alertItemContent);
 
   };
 
-  const updateWarningMessage = (alertItemContent) => {
+  const updateWarningMessage = (alertItemContent: string) => {
 
     addWarningMessage(alertItemContent);
 
   };
 
-  const updateErrorMessage = (alertItemContent) => {
+  const updateErrorMessage = (alertItemContent: string) => {
 
     addErrorMessage(alertItemContent);
 
@@ -63,25 +78,25 @@ const Messages = ({
   return (
     <div className="alert-messages-container">
 
-      {informationMessageVisible === true ?
+      {informationMessageVisible ?
 
         <AlertPopup message={informationMessage} setMessage={updateInformationMessage} alertType="info" />
 
         : null}
 
-      {successMessageVisible === true ?
+      {successMessageVisible ?
 
         <AlertPopup message={successMessage} setMessage={updateSuccessMessage} alertType="success" />
 
         : null}
 
-      {warningMessageVisible === true ?
+      {warningMessageVisible ?
 
         <AlertPopup message={warningMessage} setMessage={updateWarningMessage} alertType="warning" />
 
         : null}
 
-      {errorMessageVisible === true ?
+      {errorMessageVisible ?
 
         <AlertPopup message={errorMessage} setMessage={updateErrorMessage} alertType="error" />
 
