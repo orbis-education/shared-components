@@ -5,7 +5,7 @@ import { isEmpty, isEmptyArray, noFunctionAvailable } from "shared-functions";
 import NavigationLink from "./NavigationLink";
 
 const NavigationDropdown = ({
-  navigationItem = { name: "", type: "", dropdownItems: [] },
+  navigationItem = { name: "", type: "", classes: "", dropdownItems: [] },
   returnActiveClass = noFunctionAvailable
 }) => {
 
@@ -16,6 +16,8 @@ const NavigationDropdown = ({
     "fa-caret-up": isDropdownOpen === true,
     "fa-caret-down": isDropdownOpen !== true
   });
+
+  const dropdownClassnames = !isEmpty(navigationItem.classes) ? `dropdown ${classes}` : "dropdown";
 
   const filteredDropdownItems = navigationItem?.dropdownItems.filter(dropdownItem => isEmpty(dropdownItem.isPresent) || dropdownItem.isPresent === true);
 
@@ -32,7 +34,7 @@ const NavigationDropdown = ({
 
       {isDropdownOpen === true && !isEmptyArray(filteredDropdownItems) ?
 
-        <ul className="dropdown">
+        <ul className={dropdownClassnames}>
 
           {filteredDropdownItems.map((dropdownItem, index) => {
 
