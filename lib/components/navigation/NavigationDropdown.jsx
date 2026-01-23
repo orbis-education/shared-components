@@ -17,7 +17,7 @@ const NavigationDropdown = ({
     "fa-caret-down": isDropdownOpen !== true
   });
 
-  const dropdownClassnames = !isEmpty(navigationItem.classes) ? `dropdown ${classes}` : "dropdown";
+  const dropdownClassnames = !isEmpty(navigationItem?.classes) ? `dropdown ${navigationItem.classes}` : "dropdown";
 
   const filteredDropdownItems = navigationItem?.dropdownItems.filter(dropdownItem => isEmpty(dropdownItem.isPresent) || dropdownItem.isPresent === true);
 
