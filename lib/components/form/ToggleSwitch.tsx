@@ -52,7 +52,7 @@ const ToggleSwitch = ({
 
       {!isEmpty(hint) ? <p className="input-hint">{parse(hint)}</p> : null}
 
-      <div className="toggle-switch" onClick={() => { if (!disabled) { updateValue(!value); } }}>
+      <div className="toggle-switch" onClick={() => !disabled &&  updateValue(!value)}>
 
         <div className={`toggle-switch__button ${value ? "active" : ""}`}></div>
 
@@ -60,7 +60,14 @@ const ToggleSwitch = ({
 
         <label className="sr-only">
 
-          <input type="radio" id={`${id}false`} checked={!value} value="false" disabled={disabled} onChange={() => { updateValue(false); }} />
+          <input
+            type="radio"
+            id={`${id}false`}
+            checked={!value}
+            value="false"
+            disabled={disabled}
+            onChange={() => updateValue(false)} 
+          />
 
           {falseValue}
 
@@ -68,7 +75,14 @@ const ToggleSwitch = ({
 
         <label className="sr-only">
 
-          <input type="radio" id={`${id}true`} checked={value} value="true" disabled={disabled} onChange={() => { updateValue(true); }} />
+          <input
+            type="radio"
+            id={`${id}true`}
+            checked={value}
+            value="true"
+            disabled={disabled}
+            onChange={() => updateValue(true)} 
+          />
 
           {trueValue}
 

@@ -36,7 +36,7 @@ const NavigationDropdown = ({
 
       <button
         type="button"
-        onClick={() => { setIsDropdownOpen(!isDropdownOpen); }}
+        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         ref={dropdownRef}
       >
         {navigationItem.name} <i className={dropdownIcon} />

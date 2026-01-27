@@ -73,17 +73,17 @@ const FormDropdown = ({
 
       </label>
 
-      {isEmpty(hint) === false ? <p className="input-hint">{parse(hint)}</p> : null}
+      {!isEmpty(hint) ? <p className="input-hint">{parse(hint)}</p> : null}
 
       <select
         className="form-control"
         id={id}
         value={value}
         disabled={disabled}
-        onChange={(event) => { updateValue(event.target.value); }}
+        onChange={(event) => updateValue(event.target.value)}
       >
 
-        {emptyOption !== true ? <option value="">{placeholder}</option> : null}
+        {!emptyOption ? <option value="">{placeholder}</option> : null}
 
         {isNonEmptyArray(optionData) && !isEmpty(optionID) && isNonEmptyArray(optionText) ?
 
@@ -97,7 +97,7 @@ const FormDropdown = ({
 
       </select>
 
-      {isEmpty(inlineError) === false ? <div className="inline-alert inline-alert-danger">{parse(inlineError)}</div> : null}
+      {!isEmpty(inlineError) ? <div className="inline-alert inline-alert-danger">{parse(inlineError)}</div> : null}
 
     </div>
   );

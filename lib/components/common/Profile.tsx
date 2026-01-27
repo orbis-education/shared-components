@@ -134,19 +134,19 @@ const Profile = ({
     // * From ai chat: -- 01/22/2026 JH
     // * The issue is that TypeScript doesn't narrow the type after the isEmpty() check. The isEmpty() function from your shared-functions library likely returns a boolean, but TypeScript doesn't have type guard information about it.
     // * Even though you're checking !isEmpty(loggedInUser), TypeScript still treats loggedInUser as LoggedInUser | null inside that block because it doesn't recognize isEmpty() as a type guard.
-    if (!isEmpty(loggedInUser)) {
+    if (loggedInUser !== null) {
 
       setCurrentUser(loggedInUser);
       // setUserID(loggedInUser.userID);
-      setUserID(loggedInUser && loggedInUser.userID !== undefined ? loggedInUser.userID : null);
-      // setTxtUsername(loggedInUser.username);
-      setTxtUsername(loggedInUser && loggedInUser.username !== undefined ? loggedInUser.username : "");
-      // setTxtFirstName(loggedInUser.firstName);
-      setTxtFirstName(loggedInUser && loggedInUser.firstName !== undefined ? loggedInUser.firstName : "");
-      // setTxtLastName(loggedInUser.lastName);
-      setTxtLastName(loggedInUser && loggedInUser.lastName !== undefined ? loggedInUser.lastName : "");
-      // setTxtEmail(loggedInUser.email);
-      setTxtEmail(loggedInUser && loggedInUser.email !== undefined ? loggedInUser.email : "");
+      setUserID(loggedInUser.userID !== undefined ? loggedInUser.userID : null);
+      setTxtUsername(loggedInUser.username);
+      // setTxtUsername(loggedInUser.username !== undefined ? loggedInUser.username : "");
+      setTxtFirstName(loggedInUser.firstName);
+      // setTxtFirstName(loggedInUser.firstName !== undefined ? loggedInUser.firstName : "");
+      setTxtLastName(loggedInUser.lastName);
+      // setTxtLastName(loggedInUser.lastName !== undefined ? loggedInUser.lastName : "");
+      setTxtEmail(loggedInUser.email);
+      // setTxtEmail(loggedInUser.email !== undefined ? loggedInUser.email : "");
       // setTxtPassword(loggedInUser.password);
 
     } else {
@@ -334,7 +334,7 @@ const Profile = ({
       email: convertNullEmptyString(formatTrim(txtEmail)),
       password: convertNullEmptyString(formatTrim(txtPassword)),
       // updatedBy: !isEmpty(loggedInUser) && loggedInUser.userID
-      updatedBy: loggedInUser ? loggedInUser.userID : null
+      updatedBy: loggedInUser?.userID && null
     };
 
     // if (transactionType === "I") {

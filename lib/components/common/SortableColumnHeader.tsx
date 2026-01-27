@@ -51,7 +51,7 @@ const SortableColumnHeader = ({
   return (
     <div className="sortable-column-heading">
       {columnText}
-      <button type="button" className="btn btn-transparent sort-button" onClick={() => { handleSort(columnPropertyName); }}>
+      <button type="button" className="btn btn-transparent sort-button" onClick={() => handleSort(columnPropertyName)}>
         <i className={iconClasses}></i>
       </button>
     </div>

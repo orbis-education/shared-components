@@ -114,11 +114,11 @@ const FormInput = ({
 
         {label}
 
-        {isRequired === true ? <RequiredFieldAsterisk /> : null}
+        {isRequired ? <RequiredFieldAsterisk /> : null}
 
       </label>
 
-      {isEmpty(hint) === false ? <p className="input-hint">{parse(hint)}</p> : null}
+      {!isEmpty(hint) ? <p className="input-hint">{parse(hint)}</p> : null}
 
       {type === "textarea" ?
 
@@ -168,8 +168,8 @@ const FormInput = ({
 
           <div
             className="form-group__password-input-group__password-addon"
-            onMouseOver={() => { setShowPassword("text"); }}
-            onMouseOut={() => { setShowPassword("password"); }}
+            onMouseOver={() => setShowPassword("text")}
+            onMouseOut={() => setShowPassword("password")}
             title="Hover to show password."
           >
             <i className="fas fa-eye"></i>
@@ -196,7 +196,7 @@ const FormInput = ({
 
         : null}
 
-      {isEmpty(inlineError) === false ? <div className="inline-alert inline-alert-danger">{parse(inlineError)}</div> : null}
+      {!isEmpty(inlineError) ? <div className="inline-alert inline-alert-danger">{parse(inlineError)}</div> : null}
 
     </div>
   );

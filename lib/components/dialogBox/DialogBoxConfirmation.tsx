@@ -107,7 +107,7 @@ const DialogBoxConfirmation = ({
                 <h5 className="modal-title" id="exampleModalLabel">
                   {title}
                 </h5>
-                <button type="button" className="close" onClick={(event) => { setDialogBoxContinue(false); }} title="Close">
+                <button type="button" className="close" onClick={() => setDialogBoxContinue(false)} title="Close">
                   <i className="fa fa-close"></i><span className="sr-only">Close</span>
                 </button>
               </div>
@@ -115,8 +115,8 @@ const DialogBoxConfirmation = ({
                 {content}
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-primary" onClick={(event) => { setDialogBoxContinue(true); }}>OK</button>
-                <button type="button" className="btn btn-cancel" onClick={(event) => { setDialogBoxContinue(false); }}>Cancel</button>
+                <button type="button" className="btn btn-primary" onClick={() => setDialogBoxContinue(true)}>OK</button>
+                <button type="button" className="btn btn-cancel" onClick={() => setDialogBoxContinue(false)}>Cancel</button>
               </div>
             </div>
           </div>

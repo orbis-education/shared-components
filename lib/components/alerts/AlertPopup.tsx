@@ -43,7 +43,7 @@ const AlertPopup = ({
 
           : null}
 
-        <button type="button" className="alert__close-button" onClick={() => { setMessage(""); }}>
+        <button type="button" className="alert__close-button" onClick={() => setMessage("")}>
           <i className="fas fa-close"></i>
         </button>
 

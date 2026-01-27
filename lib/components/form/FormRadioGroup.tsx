@@ -66,7 +66,7 @@ const FormRadioGroup = ({
   useEffect(() => {
 
     // * If isCollapsible is false, then isCollapsed is always false. -- 10/10/2023 MF
-    if (isCollapsible === true) {
+    if (isCollapsible) {
 
       setIsCollapsed(true);
 
@@ -92,7 +92,7 @@ const FormRadioGroup = ({
 
   useEffect(() => {
 
-    if (collapseList === true) {
+    if (collapseList) {
 
       setIsCollapsed(true);
       setCollapseList?.(false);
@@ -109,7 +109,7 @@ const FormRadioGroup = ({
 
         {isCollapsible ?
 
-          <button type="button" className="btn btn-transparent collapse-checkboxes-button" onClick={() => { setIsCollapsed(!isCollapsed); }}>
+          <button type="button" className="btn btn-transparent collapse-checkboxes-button" onClick={() => setIsCollapsed(!isCollapsed)}>
 
             {legend}
 
@@ -147,7 +147,7 @@ const FormRadioGroup = ({
 
       </legend>
 
-      <ul className={radioGroupClasses} style={{ columns: columns }}>
+      <ul className={radioGroupClasses} style={{ columns }}>
 
         {!isEmpty(hint) ? <p className="input-hint">{parse(hint)}</p> : null}
 
@@ -180,7 +180,7 @@ const FormRadioGroup = ({
                         value={optionDataItem[optionID]}
                         checked={formatToString(optionDataItem[optionID]) === formatToString(newvalue)}
                         disabled={disabled}
-                        onChange={(event) => { updateValue(event.target.value); }}
+                        onChange={(event) => updateValue(event.target.value)}
                       />
 
                       {optionText.map((optionTextItem: OptionText, index: number) => (

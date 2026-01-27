@@ -87,7 +87,7 @@ const CheckboxDropdown = ({
 
       </legend>
 
-      <button type="button" className="btn btn-transparent open-dropdown-button" onClick={() => { setIsDropdownOpen(!isDropdownOpen); }}>
+      <button type="button" className="btn btn-transparent open-dropdown-button" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
 
         {isNonEmptyArray(value) ? <>{value.length} selected</> : placeholder}
 
@@ -107,7 +107,7 @@ const CheckboxDropdown = ({
 
         <div className={checkboxDropdownClasses}>
 
-          <ul className="checkbox-dropdown" style={{ columns: columns }}>
+          <ul className="checkbox-dropdown" style={{ columns }}>
 
             {!isEmpty(hint) ? <p className="input-hint">{parse(hint)}</p> : null}
 

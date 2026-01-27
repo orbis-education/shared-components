@@ -64,7 +64,7 @@ const DialogBox = ({
                 <h5 className="modal-title" id="exampleModalLabel">
                   {title}
                 </h5>
-                <button type="button" className="close" onClick={() => { setDialogBoxOpen(!dialogBoxOpen); }} title="Close">
+                <button type="button" className="close" onClick={() => setDialogBoxOpen(!dialogBoxOpen)} title="Close">
                   <i className="fa fa-close"></i><span className="sr-only">Close</span>
                 </button>
               </div>
@@ -72,12 +72,12 @@ const DialogBox = ({
                 {content}
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-primary" onClick={() => { setDialogBoxOpen(!dialogBoxOpen); }}>OK</button>
+                <button type="button" className="btn btn-primary" onClick={() => setDialogBoxOpen(!dialogBoxOpen)}>OK</button>
                 {/* <button type="button" className="btn btn-cancel" onClick={() => { dispatch(clearMessages()); setDialogBoxOpen(!dialogBoxOpen); }}>Cancel</button> */}
               </div>
             </div>
           </div>
-          <div className="modal-backdrop" onClick={() => { setDialogBoxOpen(!dialogBoxOpen); }}></div>
+          <div className="modal-backdrop" onClick={() => setDialogBoxOpen(!dialogBoxOpen)}></div>
         </div>
 
         : null}

@@ -45,7 +45,7 @@ const CheckboxGroup = ({
   updateValue
 }: CheckboxGroupProps) => {
 
-  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
 
   const fieldsetClasses: string = classnames("form-group", {
     "input-disabled": disabled
@@ -66,7 +66,7 @@ const CheckboxGroup = ({
   useEffect(() => {
 
     // * If isCollapsible is false, then isCollapsed is always false. -- 10/10/2023 MF
-    if (isCollapsible === true) {
+    if (isCollapsible) {
 
       setIsCollapsed(true);
 
@@ -92,7 +92,7 @@ const CheckboxGroup = ({
 
   useEffect(() => {
 
-    if (collapseList === true) {
+    if (collapseList) {
 
       setIsCollapsed(true);
 
@@ -131,7 +131,7 @@ const CheckboxGroup = ({
 
         {isCollapsible ?
 
-          <button type="button" className="btn btn-transparent collapse-checkboxes-button" onClick={() => { setIsCollapsed(!isCollapsed); }}>
+          <button type="button" className="btn btn-transparent collapse-checkboxes-button" onClick={() => setIsCollapsed(!isCollapsed)}>
 
             {legend}
 
@@ -165,7 +165,7 @@ const CheckboxGroup = ({
 
       </legend>
 
-      <ul className={checkboxGroupClasses} style={{ columns: columns }}>
+      <ul className={checkboxGroupClasses} style={{ columns }}>
 
         {!isEmpty(hint) ? <p className="input-hint">{parse(hint)}</p> : null}
 
@@ -179,7 +179,7 @@ const CheckboxGroup = ({
 
                 const filtervalue: any[] = isNonEmptyArray(value) ? value.filter(value => value === formatToString(optionDataItem[optionID])) : [];
 
-                const isChecked: boolean = isNonEmptyArray(filtervalue) === true;
+                const isChecked: boolean = isNonEmptyArray(filtervalue);
 
                 return (
                   <li key={optionDataItem[optionID]}>

@@ -1,5 +1,7 @@
+import { ReactNode } from "react";
+
 type NoResultsTextProps = {
-  children?: string;
+  children?: ReactNode;
 };
 
 const NoResultsText = ({ children = "No search results." }: NoResultsTextProps) =>
