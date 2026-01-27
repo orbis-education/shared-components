@@ -19,8 +19,8 @@ const NavigationDropdown = ({
   const [isDropdownOpen, setIsDropdownOpen] = useNativeClickListener(dropdownRef, false);
 
   const dropdownIcon = classnames("fa", {
-    "fa-caret-up": isDropdownOpen === true,
-    "fa-caret-down": isDropdownOpen !== true
+    "fa-caret-up": isDropdownOpen,
+    "fa-caret-down": !isDropdownOpen
   });
 
   // * copliot fix -- 01/13/2026 JH
