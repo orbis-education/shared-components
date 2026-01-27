@@ -334,7 +334,7 @@ const Profile = ({
       email: convertNullEmptyString(formatTrim(txtEmail)),
       password: convertNullEmptyString(formatTrim(txtPassword)),
       // updatedBy: !isEmpty(loggedInUser) && loggedInUser.userID
-      updatedBy: loggedInUser?.userID && null
+      updatedBy: loggedInUser?.userID ?? null
     };
 
     // if (transactionType === "I") {
