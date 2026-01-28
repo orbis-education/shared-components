@@ -67,7 +67,7 @@ const FormInput = ({
     "input-disabled": disabled
   });
 
-  let numberAttributes: any = {};
+  const numberAttributes: any = {};
 
   if (!isEmpty(min)) numberAttributes.min = min;
   if (!isEmpty(max)) numberAttributes.max = max;

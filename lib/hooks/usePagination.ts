@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { isEmptyArray } from "shared-functions";
 
 type UsePaginationProps = {
-  allRecords: any[];
+  allRecords: unknown[];
   defaultResultsPerPage: number;
 };
 
@@ -15,32 +15,21 @@ const usePagination = ({
   const [ddResultsPerPage, setDdResultsPerPage] = useState<number>(defaultResultsPerPage);
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
-  const [currentPageRecords, setCurrentPageRecords] = useState<any[]>([]);
+  const [currentPageRecords, setCurrentPageRecords] = useState<unknown[]>([]);
 
 
-  useEffect(() => {
-
-    if (!isEmptyArray(allRecords)) {
-
-      determineTotalPages(allRecords);
-
-    };
-
-  }, [ddResultsPerPage, currentPageNumber]);
-
-
-  const determineTotalPages = (searchResults: any[]) => {
+  const determineTotalPages = (searchResults: unknown[]) => {
 
     if (!isEmptyArray(searchResults)) {
 
-      let pageSize = !isNaN(ddResultsPerPage) ? ddResultsPerPage : searchResults.length;
+      const pageSize = !isNaN(ddResultsPerPage) ? ddResultsPerPage : searchResults.length;
 
-      let indexOfLastRecord = currentPageNumber * pageSize;
-      let indexOfFirstRecord = indexOfLastRecord - pageSize;
+      const indexOfLastRecord = currentPageNumber * pageSize;
+      const indexOfFirstRecord = indexOfLastRecord - pageSize;
 
-      let newTotalPages = Math.ceil(searchResults.length / pageSize);
+      const newTotalPages = Math.ceil(searchResults.length / pageSize);
 
-      let newCurrentPageRecords = searchResults.slice(indexOfFirstRecord, indexOfLastRecord);
+      const newCurrentPageRecords = searchResults.slice(indexOfFirstRecord, indexOfLastRecord);
 
       setTotalPages(newTotalPages);
 
@@ -51,15 +40,27 @@ const usePagination = ({
 
         setCurrentPageNumber(newTotalPages);
 
-      };
+      }
 
     } else {
 
       setCurrentPageRecords([]);
 
-    };
+    }
 
   };
+
+
+  useEffect(() => {
+
+    if (!isEmptyArray(allRecords)) {
+
+      determineTotalPages(allRecords);
+
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ddResultsPerPage, currentPageNumber]);
 
 
   return { ddResultsPerPage, currentPageNumber, totalPages, currentPageRecords, setDdResultsPerPage, setCurrentPageNumber, setCurrentPageRecords, determineTotalPages };

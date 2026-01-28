@@ -17,9 +17,9 @@ const DialogBox = ({
   setDialogBoxOpen
 }: DialogBoxProps) => {
 
-  let size: string = dialogBoxSize;
-  let title: string = dialogBoxTitle;
-  let content: string = dialogBoxContent;
+  const size: string = dialogBoxSize;
+  const title: string = dialogBoxTitle;
+  const content: string = dialogBoxContent;
 
   const modalStyles = classnames("modal-dialog", {
     "modal-sm": size === "sm",

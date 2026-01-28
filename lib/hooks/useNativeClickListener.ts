@@ -1,5 +1,4 @@
-import { useState, useEffect, RefObject, MouseEvent } from "react";
-import { isEmpty } from "shared-functions";
+import { useState, useEffect, RefObject } from "react";
 
 export type UseNativeClickListener = (element: RefObject<HTMLElement | null>, initialState: boolean) => [boolean, (isActive: boolean) => void];
 

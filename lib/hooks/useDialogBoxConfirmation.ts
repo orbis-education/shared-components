@@ -39,6 +39,20 @@ export const useDialogBoxConfirmation = () => {
   }, [confirmationDialogBoxOpen]);
 
 
+  const reset = () => {
+
+    setConfirmationDialogBoxSize("");
+    setConfirmationDialogBoxTitle("");
+    setConfirmationDialogBoxContent("");
+    setConfirmationDialogBoxType(null);
+    setConfirmationDialogBoxOpen(false);
+    setConfirmationDialogBoxContinue(false);
+    setDeletingRecord(false);
+    setHardDeletingRecord(false);
+
+  };
+
+
   useEffect(() => {
 
     if (deletingRecord) {
@@ -84,18 +98,7 @@ export const useDialogBoxConfirmation = () => {
   }, [deletingRecord, hardDeletingRecord, confirmationDialogBoxContinue]);
 
 
-  const reset = () => {
-
-    setConfirmationDialogBoxSize("");
-    setConfirmationDialogBoxTitle("");
-    setConfirmationDialogBoxContent("");
-    setConfirmationDialogBoxType(null);
-    setConfirmationDialogBoxOpen(false);
-    setConfirmationDialogBoxContinue(false);
-    setDeletingRecord(false);
-    setHardDeletingRecord(false);
-
-  };
+  
 
 
   const confirmAction = (data: DialogBox) => {
@@ -145,7 +148,7 @@ export const useDialogBoxConfirmation = () => {
 
       setConfirmationDialogBoxContinue(null);
 
-    };
+    }
 
   };
 
