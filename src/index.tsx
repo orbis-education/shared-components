@@ -24,8 +24,6 @@ const applicationVersion = version;
 // * The ! (non-null assertion operator) tells TypeScript that you're confident the element exists.
 const root = createRoot(document.getElementById("root")!);
 
-const ddAccountType = "Please select the <strong>Account Type</strong>.";
-
 const inlineErrors = {
   txtUsername: "",
   txtPassword: "",
@@ -40,8 +38,8 @@ const App = () => {
   const [txtPassword, setTxtPassword] = useState<string>("");
   const [ddAccountType, setDdAccountType] = useState<string>("");
   const [rdoClinicalReplacement, setRdoClinicalReplacement] = useState<boolean>(false);
-  const [cbxGrpPartnerID, setCbxGrpPartnerID] = useState<any[]>([]);
-  const [cbxSimulationID, setCbxSimulationID] = useState<any[]>([]);
+  const [cbxGrpPartnerID, setCbxGrpPartnerID] = useState<unknown[]>([]);
+  const [cbxSimulationID, setCbxSimulationID] = useState<unknown[]>([]);
   const [rdoProgramID, setRdoProgramID] = useState<string>("");
   const [componentToLoad, setComponentToLoad] = useState<string>("Home");
 

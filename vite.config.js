@@ -6,6 +6,7 @@ import postcssImport from "postcss-import";
 import postcssPresetEnv from "postcss-preset-env";
 import postcssNested from "postcss-nested";
 import autoprefixer from "autoprefixer";
+import eslintPlugin from 'vite-plugin-eslint';
 
 export default defineConfig(({ mode }) => {
   // * Load env file based on `mode` in the current working directory.
@@ -15,7 +16,10 @@ export default defineConfig(({ mode }) => {
   return {
     base: "./",
     plugins: [
-      react(), 
+      react(),
+      eslintPlugin({
+        include: ["lib/**/*.{ts,tsx}", "src/**/*.{ts,tsx}"]
+      }),
       dts({
         entryRoot: "lib",
         outDir: "dist",

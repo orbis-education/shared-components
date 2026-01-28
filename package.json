@@ -47,7 +47,6 @@
     "autoprefixer": "^10.4.22",
     "classnames": "^2.5.1",
     "eslint": "8.57.0",
-    "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
@@ -58,8 +57,10 @@
     "postcss-preset-env": "^10.4.0",
     "rimraf": "^6.1.0",
     "typescript": "^5.9.3",
+    "typescript-eslint": "^8.54.0",
     "vite": "^7.2.2",
-    "vite-plugin-dts": "^4.5.4"
+    "vite-plugin-dts": "^4.5.4",
+    "vite-plugin-eslint": "^1.8.1"
   },
   "browserslist": {
     "production": [
