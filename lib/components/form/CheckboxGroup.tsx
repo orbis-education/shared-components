@@ -109,13 +109,13 @@ const CheckboxGroup = ({
 
     if (event.target.checked === true) {
 
-      let newCheckedList = [...value, event.target.value];
+      const newCheckedList = [...value, event.target.value];
 
       updateValue(newCheckedList);
 
     } else {
 
-      let filteredList = value.filter(value => value !== event.target.value);
+      const filteredList = value.filter(value => value !== event.target.value);
 
       updateValue(filteredList);
 
@@ -210,7 +210,7 @@ const CheckboxGroup = ({
                   </li>
                 );
 
-              } else { return null; };
+              } else { return null; }
 
             })}
 

@@ -56,16 +56,16 @@ export interface User {
   applicationName?: string;
   userRoleID?: number;
   userRole?: string;
-};
+}
 
 export interface UserRequest extends User {
   userRequestID?: number;
   positionName?: string;
-};
+}
 
 export interface LoggedInUser extends User {
   isSystemAdministrator?: boolean;
   isAdministrator?: boolean;
   isExtendedRealitySimulationSpecialist?: boolean;
   isDirectorSimulationAndIntegratedSimulationOperations?: boolean;
-};
+}

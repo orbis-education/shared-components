@@ -68,13 +68,13 @@ const Profile = ({
 
   useEffect(() => {
 
-    let currentSessionToken = localStorage.getItem(sessionTokenName);
+    const currentSessionToken = localStorage.getItem(sessionTokenName);
 
     // * When going directly to the page in a new tab or when refreshing, the loggedInUser isn't available yet in Redux so currentSessionToken is checked instead. -- 06/28/2024 MF
     // // * The check for only isEmpty(loggedInUser) won't work because, like in the above comment, currentSessionToken has a value and loggedInUser does not when this code is run. The check for loggedInUser must also have a check on the user role included. -- 08/26/2024 MF
     if (isEmpty(currentSessionToken) || isEmpty(loggedInUser)) {
 
-      let operation = "Attempted Page Visit";
+      const operation = "Attempted Page Visit";
 
       addLog(baseURL, setFetchAuthorization("", environmentMode, demonstrationMode), databaseAvailable, allowLogging(), { operation, userIdentifier, href: window.location.href, applicationVersion, browserData: JSON.stringify(getBrowserData()), transactionData: { loggedInUser, computerLog }, dateEntered: getDateTime() });
 
@@ -171,7 +171,7 @@ const Profile = ({
     clearMessages();
 
 
-    let operation: string = "Save Record";
+    const operation: string = "Save Record";
 
     let transactionValid: boolean = false;
     let errorMessages: string = "";
@@ -319,15 +319,15 @@ const Profile = ({
 
   const processTransaction = (transactionType: string) => {
 
-    let url: string = `${baseURL}users/`;
+    const url: string = `${baseURL}users/`;
     let response: any = ""; // ?
     let data: any = ""; // ?
     let operation: string = "";
     let method: string = "";
-    let previousRecord: LoggedInUser | null = loggedInUser;
-    let primaryKeyID: number | null = userID;
+    const previousRecord: LoggedInUser | null = loggedInUser;
+    const primaryKeyID: number | null = userID;
 
-    let recordObject: any = { // ?
+    const recordObject: any = { // ?
       // username: convertNullEmptyString(formatTrim(txtUsername)),
       firstName: convertNullEmptyString(formatTrim(txtFirstName)),
       lastName: convertNullEmptyString(formatTrim(txtLastName)),
@@ -388,7 +388,7 @@ const Profile = ({
 
             setUserTokenExpired(true);
 
-          };
+          }
 
           return Promise.reject(Error(response.status + " Fetch failed."));
 
@@ -403,7 +403,7 @@ const Profile = ({
 
           if (data.transactionSuccess && !isEmpty(data.records)) {
 
-            let dataRecord = getFirstItem(data.records);
+            const dataRecord = getFirstItem(data.records);
 
             setTxtUsername(convertNullEmptyString(dataRecord.username));
             setTxtFirstName(convertNullEmptyString(dataRecord.firstName));
@@ -411,7 +411,7 @@ const Profile = ({
             setTxtEmail(convertNullEmptyString(dataRecord.email));
             setTxtPassword(convertNullEmptyString(dataRecord.password));
 
-            let newLoggedInUser: any = { ...currentUser };
+            const newLoggedInUser: any = { ...currentUser };
 
             newLoggedInUser.username = convertNullEmptyString(dataRecord.username);
             newLoggedInUser.firstName = convertNullEmptyString(dataRecord.firstName);

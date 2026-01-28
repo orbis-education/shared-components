@@ -24,7 +24,7 @@ const usePagination = ({
 
       determineTotalPages(allRecords);
 
-    };
+    }
 
   }, [ddResultsPerPage, currentPageNumber]);
 
@@ -33,14 +33,14 @@ const usePagination = ({
 
     if (!isEmptyArray(searchResults)) {
 
-      let pageSize = !isNaN(ddResultsPerPage) ? ddResultsPerPage : searchResults.length;
+      const pageSize = !isNaN(ddResultsPerPage) ? ddResultsPerPage : searchResults.length;
 
-      let indexOfLastRecord = currentPageNumber * pageSize;
-      let indexOfFirstRecord = indexOfLastRecord - pageSize;
+      const indexOfLastRecord = currentPageNumber * pageSize;
+      const indexOfFirstRecord = indexOfLastRecord - pageSize;
 
-      let newTotalPages = Math.ceil(searchResults.length / pageSize);
+      const newTotalPages = Math.ceil(searchResults.length / pageSize);
 
-      let newCurrentPageRecords = searchResults.slice(indexOfFirstRecord, indexOfLastRecord);
+      const newCurrentPageRecords = searchResults.slice(indexOfFirstRecord, indexOfLastRecord);
 
       setTotalPages(newTotalPages);
 
@@ -51,13 +51,13 @@ const usePagination = ({
 
         setCurrentPageNumber(newTotalPages);
 
-      };
+      }
 
     } else {
 
       setCurrentPageRecords([]);
 
-    };
+    }
 
   };
 

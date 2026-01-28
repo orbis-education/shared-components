@@ -63,13 +63,13 @@ const CheckboxDropdown = ({
 
     if (event.target.checked === true) {
 
-      let newCheckedList: any[] = [...value, event.target.value];
+      const newCheckedList: any[] = [...value, event.target.value];
 
       updateValue(newCheckedList);
 
     } else {
 
-      let filteredList: any[] = value.filter(value => value !== event.target.value);
+      const filteredList: any[] = value.filter(value => value !== event.target.value);
 
       updateValue(filteredList);
 

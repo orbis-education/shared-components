@@ -14,7 +14,7 @@ const Header = ({ applicationName = "Application" }: HeaderProps) => {
 
     homeURL = "./";
 
-  };
+  }
 
 
   return (
