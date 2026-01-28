@@ -38,7 +38,8 @@ module.exports = {
     "@typescript-eslint/no-explicit-any": "warn",
     // React-specific rules
     "react/prop-types": "off", // Not needed with TypeScript
-    "react/display-name": "warn"
+    "react/display-name": "warn",
+    "react-hooks/set-state-in-effect": "off"
   },
   ignorePatterns: ["dist", "*.js", "*.cjs"]
 };

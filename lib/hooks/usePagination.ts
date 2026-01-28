@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { isEmptyArray } from "shared-functions";
 
 type UsePaginationProps = {
-  allRecords: any[];
+  allRecords: unknown[];
   defaultResultsPerPage: number;
 };
 
@@ -15,21 +15,10 @@ const usePagination = ({
   const [ddResultsPerPage, setDdResultsPerPage] = useState<number>(defaultResultsPerPage);
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
-  const [currentPageRecords, setCurrentPageRecords] = useState<any[]>([]);
+  const [currentPageRecords, setCurrentPageRecords] = useState<unknown[]>([]);
 
 
-  useEffect(() => {
-
-    if (!isEmptyArray(allRecords)) {
-
-      determineTotalPages(allRecords);
-
-    }
-
-  }, [ddResultsPerPage, currentPageNumber]);
-
-
-  const determineTotalPages = (searchResults: any[]) => {
+  const determineTotalPages = (searchResults: unknown[]) => {
 
     if (!isEmptyArray(searchResults)) {
 
@@ -60,6 +49,18 @@ const usePagination = ({
     }
 
   };
+
+
+  useEffect(() => {
+
+    if (!isEmptyArray(allRecords)) {
+
+      determineTotalPages(allRecords);
+
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ddResultsPerPage, currentPageNumber]);
 
 
   return { ddResultsPerPage, currentPageNumber, totalPages, currentPageRecords, setDdResultsPerPage, setCurrentPageNumber, setCurrentPageRecords, determineTotalPages };

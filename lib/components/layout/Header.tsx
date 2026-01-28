@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import OrbisLogo from "../common/OrbisLogo";
 
 type HeaderProps = {
@@ -6,15 +7,14 @@ type HeaderProps = {
 
 const Header = ({ applicationName = "Application" }: HeaderProps) => {
 
-  document.title = `Orbis Education | ${applicationName}`;
+  const homeURL: string = window.location.href.includes("intranet.orbiseducation.com") ? "./" : "/";
 
-  let homeURL: string = "/";
+  
+  useEffect(() => {
 
-  if (window.location.href.includes("intranet.orbiseducation.com") === true) {
+    document.title = `Orbis Education | ${applicationName}`;
 
-    homeURL = "./";
-
-  }
+  }, [applicationName]);
 
 
   return (

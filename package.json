@@ -29,9 +29,7 @@
     "preview": "vite preview",
     "lint": "eslint --max-warnings=0 lib src",
     "lint:fix": "eslint --max-warnings=0 lib src --fix",
-    "typecheck": "tsc --noEmit",
-    "prebuild": "rimraf dist",
-    "prepublish": "npm run build"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "react": "19.2.0",

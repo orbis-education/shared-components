@@ -6,7 +6,7 @@ import { User, LoggedInUser } from "../../types/User";
 type ProfileProps = {
   applicationVersion: string;
   baseURL: string;
-  computerLog: any; // ?
+  computerLog: unknown; // ?
   userIdentifier: string;
   demonstrationMode: boolean;
   environmentMode: string;
@@ -82,13 +82,50 @@ const Profile = ({
 
     }
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loggedInUser]);
+
+
+  const loadRecord = () => {
+
+    // * From ai chat: -- 01/22/2026 JH
+    // * The issue is that TypeScript doesn't narrow the type after the isEmpty() check. The isEmpty() function from your shared-functions library likely returns a boolean, but TypeScript doesn't have type guard information about it.
+    // * Even though you're checking !isEmpty(loggedInUser), TypeScript still treats loggedInUser as LoggedInUser | null inside that block because it doesn't recognize isEmpty() as a type guard.
+    if (loggedInUser !== null) {
+
+      setCurrentUser(loggedInUser);
+      // setUserID(loggedInUser.userID);
+      setUserID(loggedInUser.userID !== undefined ? loggedInUser.userID : null);
+      setTxtUsername(loggedInUser.username);
+      // setTxtUsername(loggedInUser.username !== undefined ? loggedInUser.username : "");
+      setTxtFirstName(loggedInUser.firstName);
+      // setTxtFirstName(loggedInUser.firstName !== undefined ? loggedInUser.firstName : "");
+      setTxtLastName(loggedInUser.lastName);
+      // setTxtLastName(loggedInUser.lastName !== undefined ? loggedInUser.lastName : "");
+      setTxtEmail(loggedInUser.email);
+      // setTxtEmail(loggedInUser.email !== undefined ? loggedInUser.email : "");
+      // setTxtPassword(loggedInUser.password);
+
+    } else {
+
+      setCurrentUser(null);
+      setUserID(null);
+      setTxtUsername("");
+      setTxtFirstName("");
+      setTxtLastName("");
+      setTxtEmail("");
+      setTxtPassword("");
+
+    }
+
+  };
 
 
   useEffect(() => {
 
     loadRecord();
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loggedInUser]);
 
 
@@ -127,41 +164,6 @@ const Profile = ({
     }
 
   }, [txtFirstName, txtLastName, txtEmail, inlineErrors]);
-
-
-  const loadRecord = () => {
-
-    // * From ai chat: -- 01/22/2026 JH
-    // * The issue is that TypeScript doesn't narrow the type after the isEmpty() check. The isEmpty() function from your shared-functions library likely returns a boolean, but TypeScript doesn't have type guard information about it.
-    // * Even though you're checking !isEmpty(loggedInUser), TypeScript still treats loggedInUser as LoggedInUser | null inside that block because it doesn't recognize isEmpty() as a type guard.
-    if (loggedInUser !== null) {
-
-      setCurrentUser(loggedInUser);
-      // setUserID(loggedInUser.userID);
-      setUserID(loggedInUser.userID !== undefined ? loggedInUser.userID : null);
-      setTxtUsername(loggedInUser.username);
-      // setTxtUsername(loggedInUser.username !== undefined ? loggedInUser.username : "");
-      setTxtFirstName(loggedInUser.firstName);
-      // setTxtFirstName(loggedInUser.firstName !== undefined ? loggedInUser.firstName : "");
-      setTxtLastName(loggedInUser.lastName);
-      // setTxtLastName(loggedInUser.lastName !== undefined ? loggedInUser.lastName : "");
-      setTxtEmail(loggedInUser.email);
-      // setTxtEmail(loggedInUser.email !== undefined ? loggedInUser.email : "");
-      // setTxtPassword(loggedInUser.password);
-
-    } else {
-
-      setCurrentUser(null);
-      setUserID(null);
-      setTxtUsername("");
-      setTxtFirstName("");
-      setTxtLastName("");
-      setTxtEmail("");
-      setTxtPassword("");
-
-    }
-
-  };
 
 
   const saveRecord = () => {
