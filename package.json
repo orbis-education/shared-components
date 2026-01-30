@@ -27,6 +27,7 @@
     "start": "vite --open",
     "build": "vite build",
     "preview": "vite preview",
+    "prebuild": "rimraf dist",
     "lint": "eslint --max-warnings=0 lib src",
     "lint:fix": "eslint --max-warnings=0 lib src --fix",
     "typecheck": "tsc --noEmit"
