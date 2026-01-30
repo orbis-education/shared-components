@@ -10,6 +10,4 @@ import { version, copyrightYear } from "../package.json";
 // * The ! (non-null assertion operator) tells TypeScript that you're confident the element exists.
 const root = createRoot(document.getElementById("root")!);
 
-
-
 root.render(<App applicationVersion={version} copyrightYear={copyrightYear} />);
