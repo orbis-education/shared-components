@@ -1,0 +1,23 @@
+import { Dispatch, SetStateAction } from 'react';
+import { OptionText } from '../../types/FormTypes';
+type CheckboxGroupProps = {
+    id: string;
+    legend: string;
+    value: any[];
+    optionData: any[];
+    optionID: string;
+    optionText: OptionText[];
+    collapseList?: boolean;
+    columns?: number;
+    disabled?: boolean;
+    hint?: string;
+    inlineError?: string;
+    isCollapsible?: boolean;
+    isRequired?: boolean;
+    srOnly?: boolean;
+    startCollapsed?: boolean;
+    setCollapseList?: (value: boolean) => void;
+    updateValue: Dispatch<SetStateAction<any[]>> | ((value: any[]) => void);
+};
+declare const CheckboxGroup: ({ id, legend, value, optionData, optionID, optionText, collapseList, columns, disabled, hint, inlineError, isCollapsible, isRequired, srOnly, startCollapsed, setCollapseList, updateValue }: CheckboxGroupProps) => import("react/jsx-runtime").JSX.Element;
+export default CheckboxGroup;
