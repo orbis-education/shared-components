@@ -1,0 +1,24 @@
+import { LoggedInUser } from '../../types/User';
+type ProfileProps = {
+    applicationVersion: string;
+    baseURL: string;
+    computerLog: unknown;
+    userIdentifier: string;
+    demonstrationMode: boolean;
+    environmentMode: string;
+    databaseAvailable: boolean;
+    sessionToken: string | null;
+    loggedInUser?: LoggedInUser | null;
+    disabled: boolean;
+    sessionTokenName: string;
+    handleNavigation: () => void;
+    setFetchAuthorization: (sessionToken: string | null, environmentMode: string, demonstrationMode: boolean) => string;
+    setDatabaseAvailable: (value: boolean) => void;
+    setUserTokenExpired: (value: boolean) => void;
+    setLoggedInUser: (user: LoggedInUser) => void;
+    addSuccessMessage: (message: string) => void;
+    addErrorMessage: (message: string) => void;
+    clearMessages: () => void;
+};
+declare const Profile: ({ applicationVersion, baseURL, computerLog, userIdentifier, demonstrationMode, environmentMode, databaseAvailable, sessionToken, loggedInUser, disabled, sessionTokenName, handleNavigation, setFetchAuthorization, setDatabaseAvailable, setUserTokenExpired, setLoggedInUser, addSuccessMessage, addErrorMessage, clearMessages }: ProfileProps) => import("react/jsx-runtime").JSX.Element;
+export default Profile;

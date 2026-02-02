@@ -1,0 +1,21 @@
+import { Dispatch, SetStateAction } from 'react';
+import { OptionText } from '../../types/FormTypes';
+type FormDropdownProps = {
+    id: string;
+    label: string;
+    optionData: any[];
+    optionID: string;
+    optionText: OptionText[];
+    value: string | number;
+    disabled?: boolean;
+    emptyOption?: boolean;
+    hint?: string;
+    inlineError?: string;
+    isRequired?: boolean;
+    placeholder?: string;
+    srOnly?: boolean;
+    useInputAddon?: boolean;
+    updateValue: Dispatch<SetStateAction<any>> | ((value: any) => void);
+};
+declare const FormDropdown: ({ id, label, optionData, optionID, optionText, value, disabled, emptyOption, hint, inlineError, isRequired, placeholder, srOnly, useInputAddon, updateValue }: FormDropdownProps) => import("react/jsx-runtime").JSX.Element;
+export default FormDropdown;

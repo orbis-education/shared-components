@@ -1,0 +1,25 @@
+import { KeyboardEvent, Dispatch, SetStateAction } from 'react';
+type FormInputProps = {
+    id: string;
+    label: string;
+    value: string;
+    autoFocus?: boolean;
+    disabled?: boolean;
+    hint?: string;
+    inlineError?: string;
+    isRequired?: boolean;
+    list?: string;
+    max?: number | null;
+    maxLength?: number | null;
+    min?: number | null;
+    placeholder?: string;
+    rows?: number;
+    srOnly?: boolean;
+    step?: number | null;
+    type?: string;
+    useInputAddon?: boolean;
+    onKeyDown?: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
+    updateValue: Dispatch<SetStateAction<any>> | ((value: any) => void);
+};
+declare const FormInput: ({ id, label, value, autoFocus, disabled, hint, inlineError, isRequired, list, max, maxLength, min, placeholder, rows, step, srOnly, type, useInputAddon, onKeyDown, updateValue }: FormInputProps) => import("react/jsx-runtime").JSX.Element;
+export default FormInput;
