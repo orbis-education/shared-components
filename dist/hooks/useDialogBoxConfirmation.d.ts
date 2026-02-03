@@ -10,10 +10,10 @@ export declare const useDialogBoxConfirmation: () => {
     confirmationDialogBoxSize: string;
     confirmationDialogBoxTitle: string;
     confirmationDialogBoxContent: string;
-    confirmationDialogBoxType: string | null;
+    confirmationDialogBoxType: string;
     confirmationDialogBoxContinue: boolean | null;
     confirmAction: (data: DialogBox) => void;
-    deleteRecord: (data: DialogBox) => void;
+    deleteRecord: (data?: DialogBox) => void;
     hardDeleteRecord: (data: DialogBox) => void;
     closeDeleteDialogBox: () => void;
     setConfirmationDialogBoxContinue: import('react').Dispatch<import('react').SetStateAction<boolean | null>>;

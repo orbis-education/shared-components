@@ -3269,20 +3269,20 @@ const ot = /* @__PURE__ */ mt(It), lt = ot.default || ot, ct = /^[a-zA-Z0-9.!#$%
   };
   return /* @__PURE__ */ t.jsx("nav", { className: "sub-header-nav", children: /* @__PURE__ */ t.jsx("ul", { children: Oe(i) ? null : /* @__PURE__ */ t.jsx(t.Fragment, { children: i.map((l, o) => /* @__PURE__ */ t.jsx("li", { children: l.type === "dropdown" ? /* @__PURE__ */ t.jsx(Xt, { navigationItem: l, returnActiveClass: c }) : /* @__PURE__ */ t.jsx(bt, { navigationItem: l, returnActiveClass: c }) }, o)) }) }) });
 }, ur = () => {
-  const [e, a] = I(null), [i, c] = I(""), [l, o] = I(""), [m, f] = I(""), [r, s] = I(!1), [d, v] = I(!1), [y, j] = I(!1), [C, R] = I(!1), [g, _] = I("");
+  const [e, a] = I(""), [i, c] = I(""), [l, o] = I(""), [m, f] = I(""), [r, s] = I(!1), [d, v] = I(null), [y, j] = I(!1), [C, R] = I(!1), [g, _] = I("");
   B(() => {
     r && document.body.style.overflow !== "hidden" ? document.body.style.overflow = "hidden" : document.body.style.overflow = "auto";
   }, [r]);
   const b = () => {
-    c(""), o(""), f(""), a(null), s(!1), v(!1), j(!1), R(!1);
+    c(""), o(""), f(""), a(""), s(!1), v(null), j(!1), R(!1);
   };
   B(() => {
-    y && (d === !0 ? (_("D"), b()) : d !== !1 && (b(), _(""))), C && (d === !0 ? (_("HD"), b()) : d === !1 && (b(), _(""))), !y && !C && d !== null && b();
+    d !== null && (y ? d ? (_("D"), b()) : (b(), _("")) : C ? d ? (_("HD"), b()) : (b(), _("")) : b());
   }, [y, C, d]);
   const A = (x) => {
     E(x) || u(x);
   }, D = (x) => {
-    const N = E(x?.dialogBoxType) ? "confirmRemove" : x.dialogBoxType;
+    const N = E(x?.dialogBoxType) ? "confirmRemove" : x?.dialogBoxType;
     j(!0), u({ dialogBoxType: N });
   }, n = (x) => {
     const N = E(x?.dialogBoxType) ? "confirmRemove" : x.dialogBoxType;
@@ -3291,7 +3291,7 @@ const ot = /* @__PURE__ */ mt(It), lt = ot.default || ot, ct = /^[a-zA-Z0-9.!#$%
     E(x) || (s(!0), c(x.dialogBoxSize || ""), o(x.dialogBoxTitle || ""), f(x.dialogBoxContent || ""), a(x.dialogBoxType || ""), v(null));
   };
   return { processTransactionValue: g, confirmationDialogBoxOpen: r, confirmationDialogBoxSize: i, confirmationDialogBoxTitle: l, confirmationDialogBoxContent: m, confirmationDialogBoxType: e, confirmationDialogBoxContinue: d, confirmAction: A, deleteRecord: D, hardDeleteRecord: n, closeDeleteDialogBox: () => {
-    s(!1), a(null);
+    s(!1), a("");
   }, setConfirmationDialogBoxContinue: v, setProcessTransactionValue: _ };
 }, fr = ({
   allRecords: e = [],
