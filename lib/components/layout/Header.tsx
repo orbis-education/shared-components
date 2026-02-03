@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import OrbisLogo from "../common/OrbisLogo";
 
 type HeaderProps = {
@@ -9,13 +8,8 @@ const Header = ({ applicationName = "Application" }: HeaderProps) => {
 
   const homeURL: string = window.location.href.includes("intranet.orbiseducation.com") ? "./" : "/";
 
-  
-  useEffect(() => {
-
-    document.title = `Orbis Education | ${applicationName}`;
-
-  }, [applicationName]);
-
+  // eslint-disable-next-line react-hooks/immutability
+  document.title = `Orbis Education | ${applicationName}`;
 
   return (
     <header>

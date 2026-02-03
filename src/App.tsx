@@ -1,4 +1,4 @@
-import { useState, FormEvent, KeyboardEvent } from "react";
+import { useState, FormEvent, KeyboardEvent, useEffect } from "react";
 import {
   // AlertPopup,
   CheckboxDropdown,
@@ -10,7 +10,9 @@ import {
   Header,
   NoResultsText,
   ToggleSwitch,
-  Navigation
+  Navigation,
+  DialogBoxConfirmation,
+  useDialogBoxConfirmation
 } from "../lib";
 
 const inlineErrors = {
@@ -36,6 +38,8 @@ const App = ({ applicationVersion = "0.0.0", copyrightYear = "2025" }: AppProps)
   const [cbxSimulationID, setCbxSimulationID] = useState<unknown[]>([]);
   const [rdoProgramID, setRdoProgramID] = useState<string>("");
   const [componentToLoad, setComponentToLoad] = useState<string>("Home");
+
+  const { processTransactionValue, confirmationDialogBoxOpen, confirmationDialogBoxType, deleteRecord, setConfirmationDialogBoxContinue, setProcessTransactionValue } = useDialogBoxConfirmation();
 
   const navigationItems = [
     {
@@ -95,8 +99,28 @@ const App = ({ applicationVersion = "0.0.0", copyrightYear = "2025" }: AppProps)
   };
 
 
+  // * Used for passing on the transaction value from the delete hook. -- 10/16/2023 JH
+  useEffect(() => {
+
+    if (processTransactionValue) {
+
+      setProcessTransactionValue("");
+
+    }
+
+  }, [processTransactionValue]);
+
+
   return (
     <div>
+
+      <DialogBoxConfirmation dialogBoxOpen={confirmationDialogBoxOpen} dialogBoxType={confirmationDialogBoxType} setDialogBoxContinue={setConfirmationDialogBoxContinue} />
+
+      <div>
+
+          <button type="button" className="btn btn-danger" onClick={() => { deleteRecord(); }}>Delete</button>
+
+      </div>
 
       <Header applicationName="Shared Components" />
 

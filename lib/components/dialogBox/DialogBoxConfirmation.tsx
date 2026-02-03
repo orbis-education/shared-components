@@ -2,12 +2,12 @@ import { useEffect, Dispatch, SetStateAction } from "react";
 import classnames from "classnames";
 
 type DialogBoxConfirmationProps = {
-  dialogBoxContent: string,
+  dialogBoxContent?: string,
   dialogBoxOpen: boolean,
-  dialogBoxSize: string,
-  dialogBoxTitle: string,
+  dialogBoxSize?: string,
+  dialogBoxTitle?: string,
   dialogBoxType: string,
-  setDialogBoxContinue: Dispatch<SetStateAction<boolean>>;
+  setDialogBoxContinue: Dispatch<SetStateAction<boolean | null>>;
 };
 
 const DialogBoxConfirmation = ({
