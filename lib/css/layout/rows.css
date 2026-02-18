@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: .5rem;
+  gap: 0.5rem;
   width: 100%;
 
   &.justify-end {
@@ -43,14 +43,13 @@
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
-    gap: .5rem;
+    gap: 0.5rem;
   }
 
   &__left {
     justify-content: flex-start;
   }
 
-  
   &__right {
     justify-content: flex-end;
   }
@@ -69,9 +68,15 @@
     justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: wrap;
-    gap: .5rem;
+    gap: 0.5rem;
 
-    h1, h2, h3, h4, h5, h6, p {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
       width: 100%;
       margin: 0 !important;
       padding: 0 !important;
@@ -83,6 +88,6 @@
     justify-content: flex-end;
     align-items: flex-start;
     flex-wrap: wrap;
-    gap: .5rem;
+    gap: 0.5rem;
   }
 }

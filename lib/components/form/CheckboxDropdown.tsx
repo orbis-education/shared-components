@@ -4,15 +4,17 @@ import { isEmpty, isNonEmptyArray, formatToString, parse } from "shared-function
 import { useNativeClickListener } from "../../hooks/useNativeClickListener";
 import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
 import { createOptionDisplayText } from "./formFunctions";
-import { OptionText } from "../../types/FormTypes";
+import { OptionText } from "@/types/FormTypes";
+
+type CheckboxDropdownOption = Record<string, unknown>;
 
 type CheckboxDropdownProps = {
   id: string;
   legend: string;
-  optionData: any[];
+  optionData: CheckboxDropdownOption[];
   optionID: string;
   optionText: OptionText[];
-  value: any[];
+  value: string[];
   columns?: number;
   disabled?: boolean;
   hint?: string;
@@ -20,7 +22,7 @@ type CheckboxDropdownProps = {
   isRequired?: boolean;
   placeholder?: string;
   srOnly?: boolean;
-  updateValue: Dispatch<SetStateAction<any[]>> | ((value: any[]) => void);
+  updateValue: Dispatch<SetStateAction<string[]>> | ((value: string[]) => void);
 };
 
 const CheckboxDropdown = ({
@@ -39,7 +41,6 @@ const CheckboxDropdown = ({
   srOnly = false,
   updateValue
 }: CheckboxDropdownProps) => {
-
   const dropdownRef = useRef<HTMLFieldSetElement | null>(null);
 
   const [isDropdownOpen, setIsDropdownOpen] = useNativeClickListener(dropdownRef, false);
@@ -58,116 +59,89 @@ const CheckboxDropdown = ({
     "input-error": !isEmpty(inlineError)
   });
 
-
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const checkedValue = event.target.value; // string
 
-    if (event.target.checked === true) {
-
-      const newCheckedList: any[] = [...value, event.target.value];
-
-      updateValue(newCheckedList);
-
+    if (event.target.checked) {
+      updateValue([...value, checkedValue]);
     } else {
-
-      const filteredList: any[] = value.filter(value => value !== event.target.value);
-
-      updateValue(filteredList);
-
+      updateValue(value.filter(v => v !== checkedValue));
     }
-
   };
-
 
   return (
     <fieldset className={fieldsetClasses} ref={dropdownRef}>
-
       <legend className={labelClasses}>
-
         {legend} {isRequired ? <RequiredFieldAsterisk /> : null}
-
       </legend>
 
-      <button type="button" className="btn btn-transparent open-dropdown-button" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-
+      <button
+        type="button"
+        className="btn btn-transparent open-dropdown-button"
+        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+      >
         {isNonEmptyArray(value) ? <>{value.length} selected</> : placeholder}
 
-        {isDropdownOpen ?
-
-          <><i className="fa fa-angle-up"></i><span className="sr-only">Close</span></>
-
-          :
-
-          <><i className="fa fa-angle-down"></i><span className="sr-only">Open</span></>
-
-        }
-
+        {isDropdownOpen ? (
+          <>
+            <i className="fa fa-angle-up"></i>
+            <span className="sr-only">Close</span>
+          </>
+        ) : (
+          <>
+            <i className="fa fa-angle-down"></i>
+            <span className="sr-only">Open</span>
+          </>
+        )}
       </button>
 
-      {isDropdownOpen ?
-
+      {isDropdownOpen ? (
         <div className={checkboxDropdownClasses}>
-
           <ul className="checkbox-dropdown" style={{ columns }}>
-
             {!isEmpty(hint) ? <p className="input-hint">{parse(hint)}</p> : null}
 
-            {isNonEmptyArray(optionData) && !isEmpty(optionID) && isNonEmptyArray(optionText) ?
-
+            {isNonEmptyArray(optionData) && !isEmpty(optionID) && isNonEmptyArray(optionText) ? (
               <>
-
-                {optionData.map((optionDataItem) => {
-
+                {optionData.map(optionDataItem => {
                   if (optionDataItem.active === true || isEmpty(optionDataItem.active)) {
-
-                    const filtervalue = isNonEmptyArray(value) ? value.filter(value => value === formatToString(optionDataItem[optionID])) : [];
-
-                    const isChecked = isNonEmptyArray(filtervalue);
+                    const optionIdAsString = formatToString(optionDataItem[optionID]);
+                    const isChecked = value.includes(optionIdAsString);
 
                     return (
-                      <li key={optionDataItem[optionID]}>
-
+                      <li key={optionIdAsString}>
                         <label>
-
                           <input
                             type="checkbox"
-                            id={`${id}${optionDataItem[optionID]}`}
-                            value={optionDataItem[optionID]}
+                            id={`${id}${optionIdAsString}`}
+                            value={optionIdAsString}
                             checked={isChecked}
                             disabled={disabled}
                             onChange={handleOnChange}
                           />
 
                           <span className="checkbox-label-text">
-
                             {optionText.map((optionTextItem: OptionText, index: number) => (
-
-                              <Fragment key={index}>{createOptionDisplayText(optionDataItem, optionTextItem)}</Fragment>
-
+                              <Fragment key={index}>
+                                {createOptionDisplayText(optionDataItem, optionTextItem)}
+                              </Fragment>
                             ))}
-
                           </span>
-
                         </label>
-
                       </li>
                     );
-
-                  } else { return null; }
-
+                  } else {
+                    return null;
+                  }
                 })}
-
               </>
-
-              : null}
-
+            ) : null}
           </ul>
-
         </div>
+      ) : null}
 
-        : null}
-
-      {!isEmpty(inlineError) ? <div className="inline-alert inline-alert-danger">{parse(inlineError)}</div> : null}
-
+      {!isEmpty(inlineError) ? (
+        <div className="inline-alert inline-alert-danger">{parse(inlineError)}</div>
+      ) : null}
     </fieldset>
   );
 };

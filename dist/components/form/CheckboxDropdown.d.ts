@@ -1,12 +1,13 @@
 import { Dispatch, SetStateAction } from 'react';
 import { OptionText } from '../../types/FormTypes';
+type CheckboxDropdownOption = Record<string, unknown>;
 type CheckboxDropdownProps = {
     id: string;
     legend: string;
-    optionData: any[];
+    optionData: CheckboxDropdownOption[];
     optionID: string;
     optionText: OptionText[];
-    value: any[];
+    value: string[];
     columns?: number;
     disabled?: boolean;
     hint?: string;
@@ -14,7 +15,7 @@ type CheckboxDropdownProps = {
     isRequired?: boolean;
     placeholder?: string;
     srOnly?: boolean;
-    updateValue: Dispatch<SetStateAction<any[]>> | ((value: any[]) => void);
+    updateValue: Dispatch<SetStateAction<string[]>> | ((value: string[]) => void);
 };
 declare const CheckboxDropdown: ({ id, legend, optionData, optionID, optionText, value, columns, disabled, hint, inlineError, isRequired, placeholder, srOnly, updateValue }: CheckboxDropdownProps) => import("react/jsx-runtime").JSX.Element;
 export default CheckboxDropdown;

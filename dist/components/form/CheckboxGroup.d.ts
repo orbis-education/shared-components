@@ -3,8 +3,8 @@ import { OptionText } from '../../types/FormTypes';
 type CheckboxGroupProps = {
     id: string;
     legend: string;
-    value: any[];
-    optionData: any[];
+    value: string[];
+    optionData: Record<string, unknown>[];
     optionID: string;
     optionText: OptionText[];
     collapseList?: boolean;
@@ -17,7 +17,7 @@ type CheckboxGroupProps = {
     srOnly?: boolean;
     startCollapsed?: boolean;
     setCollapseList?: (value: boolean) => void;
-    updateValue: Dispatch<SetStateAction<any[]>> | ((value: any[]) => void);
+    updateValue: Dispatch<SetStateAction<string[]>> | ((value: string[]) => void);
 };
 declare const CheckboxGroup: ({ id, legend, value, optionData, optionID, optionText, collapseList, columns, disabled, hint, inlineError, isCollapsible, isRequired, srOnly, startCollapsed, setCollapseList, updateValue }: CheckboxGroupProps) => import("react/jsx-runtime").JSX.Element;
 export default CheckboxGroup;

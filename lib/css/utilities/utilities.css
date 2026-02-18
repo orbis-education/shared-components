@@ -4,7 +4,7 @@
   padding: 0;
 
   li {
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -32,7 +32,7 @@
 }
 
 /* * display-none matches the pattern of the classes above better -- 09/03/2024 JH */
-.hide-element, 
+.hide-element,
 .display-none {
   display: none !important;
 }
@@ -76,7 +76,7 @@
 }
 
 .opacity-50 {
-  opacity: .5 !important;
+  opacity: 0.5 !important;
 }
 
 /* margin utilities copied from bootstrap */
@@ -95,10 +95,10 @@
   margin: 0 !important;
 }
 .m-1 {
-  margin: calc(var(--spacer) * .25) !important;
+  margin: calc(var(--spacer) * 0.25) !important;
 }
 .m-2 {
-  margin: calc(var(--spacer) * .5) !important;
+  margin: calc(var(--spacer) * 0.5) !important;
 }
 .m-3 {
   margin: var(--spacer) !important;
@@ -114,10 +114,10 @@
   margin-top: 0 !important;
 }
 .mt-1 {
-  margin-top: calc(var(--spacer) * .25) !important;
+  margin-top: calc(var(--spacer) * 0.25) !important;
 }
 .mt-2 {
-  margin-top: calc(var(--spacer) * .5) !important;
+  margin-top: calc(var(--spacer) * 0.5) !important;
 }
 .mt-3 {
   margin-top: var(--spacer) !important;
@@ -133,10 +133,10 @@
   margin-bottom: 0 !important;
 }
 .mb-1 {
-  margin-bottom: calc(var(--spacer) * .25) !important;
+  margin-bottom: calc(var(--spacer) * 0.25) !important;
 }
 .mb-2 {
-  margin-bottom: calc(var(--spacer) * .5) !important;
+  margin-bottom: calc(var(--spacer) * 0.5) !important;
 }
 .mb-3 {
   margin-bottom: var(--spacer) !important;
@@ -152,10 +152,10 @@
   margin-left: 0 !important;
 }
 .ml-1 {
-  margin-left: calc(var(--spacer) * .25) !important;
+  margin-left: calc(var(--spacer) * 0.25) !important;
 }
 .ml-2 {
-  margin-left: calc(var(--spacer) * .5) !important;
+  margin-left: calc(var(--spacer) * 0.5) !important;
 }
 .ml-3 {
   margin-left: var(--spacer) !important;
@@ -171,10 +171,10 @@
   margin-right: 0 !important;
 }
 .mr-1 {
-  margin-right: calc(var(--spacer) * .25) !important;
+  margin-right: calc(var(--spacer) * 0.25) !important;
 }
 .mr-2 {
-  margin-right: calc(var(--spacer) * .5) !important;
+  margin-right: calc(var(--spacer) * 0.5) !important;
 }
 .mr-3 {
   margin-right: var(--spacer) !important;
