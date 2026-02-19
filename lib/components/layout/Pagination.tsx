@@ -40,7 +40,7 @@ const Pagination = ({
         value={Number.isNaN(ddResultsPerPage) ? "all" : String(ddResultsPerPage)}
         updateValue={(raw: string) => {
           setDdResultsPerPage(raw === "all" ? Number.NaN : Number(raw));
-          setCurrentPageNumber(1); // optional but usually desirable when page size changes
+          setCurrentPageNumber(1); // * optional but usually desirable when page size changes -- 02/19/2026 JW
         }}
       />
 
