@@ -10,7 +10,7 @@ import prettierConfig from "eslint-config-prettier";
 export default [
   // Global ignores
   {
-    ignores: ["dist/**", "node_modules/**", "resources/**"]
+    ignores: ["dist/**", "build/**", "node_modules/**", "resources/**"]
   },
   // Main configuration
   {
