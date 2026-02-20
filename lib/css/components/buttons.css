@@ -23,7 +23,7 @@ button {
 a.btn,
 a.btn:visited {
   display: inline-block;
-  color: rgba(255,255,255,1);
+  color: rgba(255, 255, 255, 1);
   background-color: var(--darkBlue);
   border: 1px solid var(--darkBlue);
   border-radius: 4px;
@@ -36,7 +36,7 @@ a.btn:visited {
     cursor: pointer;
   }
 
-  &:hover:not(.disabled, :disabled, .readonly), 
+  &:hover:not(.disabled, :disabled, .readonly),
   &:active:not(.disabled, :disabled, .readonly) {
     background-color: var(--medBlue);
     border-color: var(--medBlue);
@@ -58,7 +58,7 @@ a.btn:visited {
     background-color: var(--red);
     border-color: var(--red);
 
-    &:hover:not(.disabled, :disabled, .readonly), 
+    &:hover:not(.disabled, :disabled, .readonly),
     &:active:not(.disabled, :disabled, .readonly) {
       background-color: var(--darkerRed);
       border-color: var(--darkerRed);
@@ -75,12 +75,12 @@ a.btn:visited {
       opacity: 1;
     }
   }
-  
+
   &.btn-success {
     background-color: var(--green);
     border-color: var(--green);
 
-    &:hover:not(.disabled, :disabled, .readonly), 
+    &:hover:not(.disabled, :disabled, .readonly),
     &:active:not(.disabled, :disabled, .readonly) {
       background-color: var(--darkerGreen);
       border-color: var(--darkerGreen);
@@ -102,7 +102,7 @@ a.btn:visited {
     background-color: var(--primaryBlue);
     border-color: var(--primaryBlue);
 
-    &:hover:not(.disabled, :disabled, .readonly), 
+    &:hover:not(.disabled, :disabled, .readonly),
     &:active:not(.disabled, :disabled, .readonly) {
       background-color: var(--medBlue);
       border-color: var(--medBlue);
@@ -121,47 +121,47 @@ a.btn:visited {
   }
 
   &.btn-dark-gray {
-    background-color: rgba(82,76,76,1);
-    border-color: rgba(82,76,76,1);
+    background-color: rgba(82, 76, 76, 1);
+    border-color: rgba(82, 76, 76, 1);
 
     &:hover:not(.disabled, :disabled, .readonly),
     &:active:not(.disabled, :disabled, .readonly) {
-      background-color: rgba(46,40,40,1);
-      border-color: rgba(46,40,40,1);
+      background-color: rgba(46, 40, 40, 1);
+      border-color: rgba(46, 40, 40, 1);
     }
 
     &:focus {
-      box-shadow: 0 0 0 0.2rem rgba(46,40,40,.5);
+      box-shadow: 0 0 0 0.2rem rgba(46, 40, 40, 0.5);
     }
 
     &.disabled,
     &:disabled {
-      background-color: rgba(82,76,76,.3);
-      border-color: rgba(82,76,76,.1);
+      background-color: rgba(82, 76, 76, 0.3);
+      border-color: rgba(82, 76, 76, 0.1);
       opacity: 1;
     }
   }
 
   &.btn-light-gray {
     color: var(--darkBlue);
-    background-color: rgba(230,230,230,1);
-    border-color: rgba(230,230,230,1);
+    background-color: rgba(230, 230, 230, 1);
+    border-color: rgba(230, 230, 230, 1);
 
     &:hover:not(.disabled, :disabled, .readonly),
     &:active:not(.disabled, :disabled, .readonly) {
       color: var(--darkBlue);
-      background-color: rgba(209,209,209,1);
-      border-color: rgba(209,209,209,1);
+      background-color: rgba(209, 209, 209, 1);
+      border-color: rgba(209, 209, 209, 1);
     }
 
     &:focus {
-      box-shadow: 0 0 0 0.2rem rgba(209,209,209,.5);
+      box-shadow: 0 0 0 0.2rem rgba(209, 209, 209, 0.5);
     }
 
     &.disabled,
     &:disabled {
-      background-color: rgba(230,230,230,.3);
-      border-color: rgba(230,230,230,.1);
+      background-color: rgba(230, 230, 230, 0.3);
+      border-color: rgba(230, 230, 230, 0.1);
       color: var(--darkBlue_03);
       opacity: 1;
     }
@@ -169,14 +169,14 @@ a.btn:visited {
 
   &.btn-transparent {
     color: var(--primaryBlue);
-    background-color: rgba(255,255,255,0);
-    border-color: rgba(255,255,255,0);
+    background-color: rgba(255, 255, 255, 0);
+    border-color: rgba(255, 255, 255, 0);
 
-    &:hover:not(.disabled, :disabled, .readonly), 
+    &:hover:not(.disabled, :disabled, .readonly),
     &:active:not(.disabled, :disabled, .readonly) {
       color: var(--darkBlue);
-      background-color: rgba(255,255,255,0);
-      border-color: rgba(255,255,255,0);
+      background-color: rgba(255, 255, 255, 0);
+      border-color: rgba(255, 255, 255, 0);
     }
 
     &:focus {
@@ -185,9 +185,9 @@ a.btn:visited {
 
     &.disabled,
     &:disabled {
-      background-color: rgba(255,255,255,0);
-      border-color: rgba(255,255,255,0);
-      opacity: .5;
+      background-color: rgba(255, 255, 255, 0);
+      border-color: rgba(255, 255, 255, 0);
+      opacity: 0.5;
     }
 
     /* * uses most of the same properties as btn-transparent, just changes the color to red -- 10/13/2023 JH  */
@@ -202,26 +202,26 @@ a.btn:visited {
   }
 
   &.btn-outline {
-    color: rgba(0,0,0, 1);
-    background-color: rgba(255,255,255, 1);
+    color: rgba(0, 0, 0, 1);
+    background-color: rgba(255, 255, 255, 1);
     border-color: rgba(108, 117, 125, 1);
 
     &:hover:not(.disabled, :disabled, .readonly),
     &:active:not(.disabled, :disabled, .readonly) {
-      background-color: rgba(239,239,239, 1);
+      background-color: rgba(239, 239, 239, 1);
       border-color: rgba(108, 117, 125, 1);
-      color: rgba(0,0,0, 1);
+      color: rgba(0, 0, 0, 1);
     }
 
     &:focus {
-      box-shadow: 0 0 0 0.2rem rgba(108, 117, 125,.5);
+      box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
     }
 
     &.disabled,
     &:disabled {
-      color: rgba(0,0,0,.3);
-      background-color: rgba(255,255,255, .3);
-      border-color: rgba(108, 117, 125, .3);
+      color: rgba(0, 0, 0, 0.3);
+      background-color: rgba(255, 255, 255, 0.3);
+      border-color: rgba(108, 117, 125, 0.3);
       opacity: 1;
     }
   }
@@ -235,9 +235,9 @@ a.btn:visited {
     text-align: center;
     border: none;
     font-weight: 400;
-    font-size: .875rem;
+    font-size: 0.875rem;
 
-    &:hover:not(.disabled, :disabled, .readonly), 
+    &:hover:not(.disabled, :disabled, .readonly),
     &:active:not(.disabled, :disabled, .readonly) {
       background-color: transparent;
       color: var(--medBlue);
@@ -253,7 +253,7 @@ a.btn:visited {
       color: var(--medBlue);
       background-color: transparent;
       border: none;
-      opacity: .5;
+      opacity: 0.5;
       cursor: default;
     }
   }
@@ -269,15 +269,15 @@ a.btn {
 
 .btn-link {
   color: var(--primaryBlue);
-  background-color: rgba(255,255,255,0);
-  border-color: rgba(255,255,255,0);
+  background-color: rgba(255, 255, 255, 0);
+  border-color: rgba(255, 255, 255, 0);
   padding: 0;
 
-  &:hover:not(.disabled, :disabled, .readonly), 
+  &:hover:not(.disabled, :disabled, .readonly),
   &:active:not(.disabled, :disabled, .readonly) {
     color: var(--darkBlue);
-    background-color: rgba(255,255,255,0);
-    border-color: rgba(255,255,255,0);
+    background-color: rgba(255, 255, 255, 0);
+    border-color: rgba(255, 255, 255, 0);
     text-decoration: underline;
   }
 
@@ -287,8 +287,8 @@ a.btn {
 
   &.disabled,
   &:disabled {
-    background-color: rgba(255,255,255,0);
-    border-color: rgba(255,255,255,0);
-    opacity: .5;
+    background-color: rgba(255, 255, 255, 0);
+    border-color: rgba(255, 255, 255, 0);
+    opacity: 0.5;
   }
 }

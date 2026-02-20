@@ -17,7 +17,6 @@ const CopyLink = ({
   buttonType = "default",
   tooltipStyle = ""
 }: CopyLinkProps) => {
-
   const [copiedSuccessfully, setCopiedSuccessfully] = useState<boolean>(false);
 
   const buttonClasses: string = classnames("btn", {
@@ -31,33 +30,23 @@ const CopyLink = ({
     "tooltip-down": tooltipStyle === "down"
   });
 
-
   const copyLinkToClipboard = (event: MouseEvent) => {
-
     event.stopPropagation();
 
     if (!isEmpty(urlToCopy)) {
-
       navigator.clipboard.writeText(urlToCopy);
 
       setCopiedSuccessfully(true);
 
       setTimeout(() => {
-
         setCopiedSuccessfully(false);
-
       }, 2000);
-
     }
-
   };
-
 
   return (
     <>
-
-      {buttonType === "icon" ?
-
+      {buttonType === "icon" ? (
         <button
           type="button"
           className={tooltipClasses}
@@ -65,36 +54,34 @@ const CopyLink = ({
           onClick={copyLinkToClipboard}
           disabled={disabled}
         >
-          {copiedSuccessfully ?
+          {copiedSuccessfully ? (
             <>
               <i className="fa fa-check green-text" />
               <span className="sr-only">Copied</span>
             </>
-            :
+          ) : (
             <>
               <i className="fa fa-copy" />
               <span className="sr-only">{label}</span>
             </>
-          }
+          )}
         </button>
-
-        :
-
+      ) : (
         <button
           type="button"
           className={buttonClasses}
           onClick={copyLinkToClipboard}
           disabled={disabled}
         >
-          {copiedSuccessfully ?
+          {copiedSuccessfully ? (
             <>
               <i className="fas fa-check"></i> Copied
             </>
-            : label}
+          ) : (
+            label
+          )}
         </button>
-
-      }
-
+      )}
     </>
   );
 };

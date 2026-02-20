@@ -1,12 +1,21 @@
-import { useState, ChangeEvent, KeyboardEvent, Dispatch, SetStateAction } from "react";
+import {
+  useState,
+  ChangeEvent,
+  HTMLInputTypeAttribute,
+  KeyboardEventHandler,
+  Dispatch,
+  SetStateAction
+} from "react";
 import classnames from "classnames";
 import { isEmpty, parse } from "shared-functions";
 import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
 
-type FormInputProps = {
+type FieldValue = string | number | readonly string[] | undefined;
+
+type FormInputProps<TValue extends FieldValue = string> = {
   id: string;
   label: string;
-  value: string;
+  value: TValue;
   autoFocus?: boolean;
   disabled?: boolean;
   hint?: string;
@@ -20,16 +29,16 @@ type FormInputProps = {
   rows?: number;
   srOnly?: boolean;
   step?: number | null;
-  type?: string;
+  type?: HTMLInputTypeAttribute | "textarea";
   useInputAddon?: boolean;
-  onKeyDown?: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
-  updateValue: Dispatch<SetStateAction<any>> | ((value: any) => void);
+  onKeyDown?: KeyboardEventHandler<HTMLTextAreaElement>;
+  updateValue: Dispatch<SetStateAction<TValue>> | ((value: TValue) => void);
 };
 
-const FormInput = ({
+const FormInput = <TValue extends FieldValue = string>({
   id = "",
   label = "",
-  value = "",
+  value,
   autoFocus = false,
   disabled = false,
   hint = "",
@@ -45,15 +54,14 @@ const FormInput = ({
   srOnly = false,
   type = "text",
   useInputAddon = false,
-  onKeyDown = () => { }, // * Used an empty function instead of noFunctionAvailable so that console logs don't appear on every key down -- 09/02/2025 JH
-  updateValue = () => { }
-}: FormInputProps) => {
-
+  onKeyDown = () => {}, // * Used an empty function instead of noFunctionAvailable so that console logs don't appear on every key down -- 09/02/2025 JH
+  updateValue = (_: TValue) => {}
+}: FormInputProps<TValue>) => {
   // * For number, range, date, datetime-local, month, time and week -- 07/25/2023 JH
   // * Default value is null to prevent other input types from having the attribute. -- 07/25/2023 JH
   // * onKeyDown is used exclusively for being able to press enter to submit in a textarea. -- 04/22/2025 JH
 
-  const [showPassword, setShowPassword] = useState<string>("password");
+  const [showPassword, setShowPassword] = useState<"password" | "text">("password");
 
   // * If srOnly is set to true, then the form item label is only visible to screen readers. -- 06/21/2023 MF
   const labelClasses: string = classnames("", {
@@ -67,76 +75,56 @@ const FormInput = ({
     "input-disabled": disabled
   });
 
-  const numberAttributes: any = {};
+  const numberAttributes: Pick<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    "min" | "max" | "step" | "maxLength"
+  > = {};
 
-  if (!isEmpty(min)) numberAttributes.min = min;
-  if (!isEmpty(max)) numberAttributes.max = max;
-  if (!isEmpty(step)) numberAttributes.step = step;
-  if (!isEmpty(maxLength)) numberAttributes.maxLength = maxLength;
-
+  // * condition is true only if the property is not null and not undefined. != instead of !== is intentional -- 02/18/2026 JW
+  if (min != null) numberAttributes.min = min;
+  if (max != null) numberAttributes.max = max;
+  if (step != null) numberAttributes.step = step;
+  if (maxLength != null) numberAttributes.maxLength = maxLength;
 
   const handleOnChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const raw = event.target.value;
 
     if (type === "number") {
-
-      if (!isEmpty(event.target.value) && !isNaN(+event.target.value)) {
-
-        updateValue(+event.target.value);
-
-      } else {
-
-        updateValue(event.target.value);
-
-      }
-
-    } else {
-
-      let value = event.target.value;
-
-      // * This is used to account for initial values of inputs and pasting/typing values that exceed maxLength. -- 09/09/2025 JW
-      if (!isEmpty(maxLength) && value.length > (maxLength ?? 0)) {
-
-        value = value.slice(0, maxLength ?? undefined);
-
-      }
-
-      updateValue(value);
-
+      const next = raw === "" ? ("" as unknown) : Number(raw);
+      updateValue((Number.isNaN(next as number) ? raw : next) as unknown as TValue);
+      return;
     }
 
-  };
+    let next = raw;
+    if (maxLength != null && next.length > maxLength) next = next.slice(0, maxLength);
 
+    updateValue(next as unknown as TValue);
+  };
 
   return (
     <div className={formGroupClasses}>
-
       <label htmlFor={id} className={labelClasses}>
-
         {label}
 
         {isRequired ? <RequiredFieldAsterisk /> : null}
-
       </label>
 
       {!isEmpty(hint) ? <p className="input-hint">{parse(hint)}</p> : null}
 
-      {type === "textarea" ?
-
+      {type === "textarea" ? (
         <textarea
           id={id}
           name={id}
           placeholder={placeholder}
           rows={rows}
-          value={value}
+          value={value == null ? "" : String(value)}
           disabled={disabled}
           onChange={handleOnChange}
           onKeyDown={onKeyDown}
         />
+      ) : null}
 
-        : null}
-
-      {type === "color" ?
-
+      {type === "color" ? (
         <div className="color-input-container">
           <input
             type={type}
@@ -149,13 +137,10 @@ const FormInput = ({
           />
           {value}
         </div>
+      ) : null}
 
-        : null}
-
-      {type === "password" ?
-
+      {type === "password" ? (
         <div className="form-group__password-input-group">
-
           <input
             type={showPassword}
             id={id}
@@ -175,13 +160,10 @@ const FormInput = ({
             <i className="fas fa-eye"></i>
             <span className="sr-only">Hover to show password.</span>
           </div>
-
         </div>
+      ) : null}
 
-        : null}
-
-      {type !== "textarea" && type !== "toggle" && type !== "password" && type !== "color" ?
-
+      {type !== "textarea" && type !== "toggle" && type !== "password" && type !== "color" ? (
         <input
           type={type}
           id={id}
@@ -193,11 +175,11 @@ const FormInput = ({
           autoFocus={autoFocus}
           {...numberAttributes}
         />
+      ) : null}
 
-        : null}
-
-      {!isEmpty(inlineError) ? <div className="inline-alert inline-alert-danger">{parse(inlineError)}</div> : null}
-
+      {!isEmpty(inlineError) ? (
+        <div className="inline-alert inline-alert-danger">{parse(inlineError)}</div>
+      ) : null}
     </div>
   );
 };

@@ -14,4 +14,7 @@ export type NavigationItem = {
   children?: React.ReactNode;
 };
 
-export type returnActiveClassFunction = (componentName: string | null, classList?: string) => string;
+export type ReturnActiveClassFunction = (
+  componentName: string | null,
+  classList?: string
+) => string;

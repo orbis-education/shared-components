@@ -17,7 +17,6 @@ const AlertPopup = ({
   includeResetButton = false,
   setMessage
 }: AlertPopupProps) => {
-
   const alertClasses: string = classnames("alert", {
     "alert-success": alertType === "success",
     "alert-warning": alertType === "warning",
@@ -25,30 +24,21 @@ const AlertPopup = ({
     "alert-danger": alertType === "error"
   });
 
-
   return (
     <div className="alert-container">
-
       <div className={alertClasses}>
+        <div className="alert__message-text">{parse(message)}</div>
 
-        <div className="alert__message-text">
-          {parse(message)}
-        </div>
-
-        {includeResetButton ?
-
+        {includeResetButton ? (
           <button type="button" className="refresh" onClick={() => window.location.reload()}>
             Refresh
           </button>
-
-          : null}
+        ) : null}
 
         <button type="button" className="alert__close-button" onClick={() => setMessage("")}>
           <i className="fas fa-close"></i>
         </button>
-
       </div>
-
     </div>
   );
 };

@@ -19,7 +19,7 @@ header {
     position: relative;
 
     &:before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
@@ -48,7 +48,7 @@ header {
 @media (max-width: 480px) {
   header {
     flex-direction: column;
-    gap: .5rem;
+    gap: 0.5rem;
   }
 
   header h1 {

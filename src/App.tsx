@@ -23,29 +23,38 @@ const inlineErrors = {
 };
 
 type AppProps = {
-  applicationVersion: string;
-  copyrightYear: string;
+  applicationVersion?: string;
+  copyrightYear?: string;
 };
 
 const App = ({ applicationVersion = "0.0.0", copyrightYear = "2025" }: AppProps) => {
-
   const [txtName, setTxtName] = useState<string>("hi");
   const [txtMessage, setTxtMessage] = useState<string>("");
   const [txtPassword, setTxtPassword] = useState<string>("");
   const [ddAccountType, setDdAccountType] = useState<string>("");
   const [rdoClinicalReplacement, setRdoClinicalReplacement] = useState<boolean>(false);
-  const [cbxGrpPartnerID, setCbxGrpPartnerID] = useState<unknown[]>([]);
-  const [cbxSimulationID, setCbxSimulationID] = useState<unknown[]>([]);
+  const [cbxGrpPartnerID, setCbxGrpPartnerID] = useState<string[]>([]);
+  const [cbxSimulationID, setCbxSimulationID] = useState<string[]>([]);
   const [rdoProgramID, setRdoProgramID] = useState<string>("");
   const [componentToLoad, setComponentToLoad] = useState<string>("Home");
 
-  const { processTransactionValue, confirmationDialogBoxOpen, confirmationDialogBoxType, deleteRecord, setConfirmationDialogBoxContinue, setProcessTransactionValue } = useDialogBoxConfirmation();
+  const {
+    processTransactionValue,
+    confirmationDialogBoxOpen,
+    confirmationDialogBoxType,
+    deleteRecord,
+    setConfirmationDialogBoxContinue,
+    setProcessTransactionValue
+  } = useDialogBoxConfirmation();
 
   const navigationItems = [
     {
       name: "Home",
       componentName: "Home",
-      onClick: () => { window.scrollTo(0, 0); setComponentToLoad("Home"); }
+      onClick: () => {
+        window.scrollTo(0, 0);
+        setComponentToLoad("Home");
+      }
     },
     {
       name: "Page 1",
@@ -55,82 +64,89 @@ const App = ({ applicationVersion = "0.0.0", copyrightYear = "2025" }: AppProps)
         {
           name: "Dropdown 1",
           componentName: "Dropdown1",
-          onClick: () => { window.scrollTo(0, 0); setComponentToLoad("Dropdown1"); }
+          onClick: () => {
+            window.scrollTo(0, 0);
+            setComponentToLoad("Dropdown1");
+          }
         },
         {
           name: "Dropdown Item 2",
           componentName: "Dropdown2",
-          onClick: () => { window.scrollTo(0, 0); setComponentToLoad("Dropdown2"); }
+          onClick: () => {
+            window.scrollTo(0, 0);
+            setComponentToLoad("Dropdown2");
+          }
         }
       ]
     },
     {
       name: "Page 2",
       componentName: "Page2",
-      onClick: () => { window.scrollTo(0, 0); setComponentToLoad("Page2"); }
+      onClick: () => {
+        window.scrollTo(0, 0);
+        setComponentToLoad("Page2");
+      }
     },
     {
       name: "Another Nav Link",
       componentName: "Page3",
-      onClick: () => { window.scrollTo(0, 0); setComponentToLoad("Page3"); }
+      onClick: () => {
+        window.scrollTo(0, 0);
+        setComponentToLoad("Page3");
+      }
     }
   ];
 
-
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-
     event.preventDefault();
 
     console.log("Form submitted!");
-
   };
 
-
   const handleEnterKey = (event: KeyboardEvent<HTMLTextAreaElement>) => {
-
     if (event.keyCode === 13 && event.shiftKey === false) {
-
       event.preventDefault();
 
       handleSubmit(event as unknown as FormEvent<HTMLFormElement>);
-
     }
-
   };
-
 
   // * Used for passing on the transaction value from the delete hook. -- 10/16/2023 JH
   useEffect(() => {
-
     if (processTransactionValue) {
-
       setProcessTransactionValue("");
-
     }
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [processTransactionValue]);
-
 
   return (
     <div>
-
-      <DialogBoxConfirmation dialogBoxOpen={confirmationDialogBoxOpen} dialogBoxType={confirmationDialogBoxType} setDialogBoxContinue={setConfirmationDialogBoxContinue} />
+      <DialogBoxConfirmation
+        dialogBoxOpen={confirmationDialogBoxOpen}
+        dialogBoxType={confirmationDialogBoxType}
+        setDialogBoxContinue={setConfirmationDialogBoxContinue}
+      />
 
       <div>
-
-          <button type="button" className="btn btn-danger" onClick={() => { deleteRecord(); }}>Delete</button>
-
+        <button
+          type="button"
+          className="btn btn-danger"
+          onClick={() => {
+            deleteRecord();
+          }}
+        >
+          Delete
+        </button>
       </div>
 
       <Header applicationName="Shared Components" />
 
-      <Navigation
-        navigationItems={navigationItems}
-        componentToLoad={componentToLoad}
-      />
+      <Navigation navigationItems={navigationItems} componentToLoad={componentToLoad} />
 
       <main>
-        <section className="section-block mb-4"><NoResultsText>No sessions available.</NoResultsText></section>
+        <section className="section-block mb-4">
+          <NoResultsText>No sessions available.</NoResultsText>
+        </section>
 
         <section className="section-block mb-4">
           <div className="table-container">
@@ -154,9 +170,7 @@ const App = ({ applicationVersion = "0.0.0", copyrightYear = "2025" }: AppProps)
         </section>
 
         <section className="section-block">
-
           <form onSubmit={handleSubmit}>
-
             <FormInput
               id="txtName"
               label="Name"
@@ -254,9 +268,10 @@ const App = ({ applicationVersion = "0.0.0", copyrightYear = "2025" }: AppProps)
             />
 
             <div className="flex-row">
-              <button type="button" className="btn btn-dark-gray">Reset</button>
+              <button type="button" className="btn btn-dark-gray">
+                Reset
+              </button>
             </div>
-
           </form>
         </section>
       </main>

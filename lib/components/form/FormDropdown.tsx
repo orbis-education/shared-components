@@ -2,15 +2,15 @@ import { Dispatch, SetStateAction } from "react";
 import classnames from "classnames";
 import { isEmpty, isNonEmptyArray, parse } from "shared-functions";
 import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
-import { OptionText } from "../../types/FormTypes";
+import { OptionText } from "@/types/FormTypes";
 
-type FormDropdownProps = {
+type FormDropdownProps<TOption extends Record<string, unknown> = Record<string, unknown>> = {
   id: string;
   label: string;
-  optionData: any[];
-  optionID: string;
+  optionData: TOption[];
+  optionID: keyof TOption & string;
   optionText: OptionText[];
-  value: string | number;
+  value: string;
   disabled?: boolean;
   emptyOption?: boolean;
   hint?: string;
@@ -19,14 +19,14 @@ type FormDropdownProps = {
   placeholder?: string;
   srOnly?: boolean;
   useInputAddon?: boolean;
-  updateValue: Dispatch<SetStateAction<any>> | ((value: any) => void);
+  updateValue: Dispatch<SetStateAction<string>> | ((value: string) => void);
 };
 
-const FormDropdown = ({
+const FormDropdown = <TOption extends Record<string, unknown> = Record<string, unknown>>({
   id = "",
   label = "",
   optionData = [],
-  optionID = "",
+  optionID = "" as keyof TOption & string,
   optionText = [],
   value = "",
   disabled = false,
@@ -38,8 +38,7 @@ const FormDropdown = ({
   srOnly = false,
   useInputAddon = false,
   updateValue
-}: FormDropdownProps) => {
-
+}: FormDropdownProps<TOption>) => {
   // * If srOnly is set to true, then the form item label is only visible to screen readers. -- 06/21/2023 MF
   const labelClasses: string = classnames("", {
     "sr-only": srOnly,
@@ -52,25 +51,21 @@ const FormDropdown = ({
     "input-disabled": disabled
   });
 
-  const getOptionDisplayText = (optionDataItem: any, optionText: OptionText[]) =>
+  const getOptionDisplayText = (optionDataItem: TOption, optionText: OptionText[]) =>
     optionText
-      .map((optionTextItem: any) =>
+      .map(optionTextItem =>
         optionTextItem.type === "property"
-          ? optionDataItem[optionTextItem.text] // * Extract value from object. -- 02/25/2025 JW
-          : optionTextItem.text // * Use direct string. -- 02/25/2025 JW
+          ? String(optionDataItem[optionTextItem.text as keyof TOption] ?? "")
+          : optionTextItem.text
       )
-      .join(" "); // * Join to ensure a single string output. -- 02/25/2025 JW
-
+      .join(" ");
 
   return (
     <div className={formGroupClasses}>
-
       <label htmlFor={id} className={labelClasses}>
-
         {label}
 
         {isRequired === true ? <RequiredFieldAsterisk /> : null}
-
       </label>
 
       {!isEmpty(hint) ? <p className="input-hint">{parse(hint)}</p> : null}
@@ -80,25 +75,25 @@ const FormDropdown = ({
         id={id}
         value={value}
         disabled={disabled}
-        onChange={(event) => updateValue(event.target.value)}
+        onChange={event => updateValue(event.target.value)}
       >
-
         {!emptyOption ? <option value="">{placeholder}</option> : null}
 
-        {isNonEmptyArray(optionData) && !isEmpty(optionID) && isNonEmptyArray(optionText) ?
-
-          optionData.map((optionDataItem) => (
-            <option key={optionDataItem[optionID]} value={optionDataItem[optionID]}>
-              {getOptionDisplayText(optionDataItem, optionText)}
-            </option>
-          ))
-
+        {isNonEmptyArray(optionData) && !isEmpty(optionID) && isNonEmptyArray(optionText)
+          ? optionData.map((optionDataItem, index) => {
+              const optionValue = String(optionDataItem[optionID] ?? "");
+              return (
+                <option key={optionValue || index} value={optionValue}>
+                  {getOptionDisplayText(optionDataItem, optionText)}
+                </option>
+              );
+            })
           : null}
-
       </select>
 
-      {!isEmpty(inlineError) ? <div className="inline-alert inline-alert-danger">{parse(inlineError)}</div> : null}
-
+      {!isEmpty(inlineError) ? (
+        <div className="inline-alert inline-alert-danger">{parse(inlineError)}</div>
+      ) : null}
     </div>
   );
 };

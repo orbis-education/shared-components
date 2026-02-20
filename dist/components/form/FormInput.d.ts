@@ -1,8 +1,9 @@
-import { KeyboardEvent, Dispatch, SetStateAction } from 'react';
-type FormInputProps = {
+import { HTMLInputTypeAttribute, KeyboardEventHandler, Dispatch, SetStateAction } from 'react';
+type FieldValue = string | number | readonly string[] | undefined;
+type FormInputProps<TValue extends FieldValue = string> = {
     id: string;
     label: string;
-    value: string;
+    value: TValue;
     autoFocus?: boolean;
     disabled?: boolean;
     hint?: string;
@@ -16,10 +17,10 @@ type FormInputProps = {
     rows?: number;
     srOnly?: boolean;
     step?: number | null;
-    type?: string;
+    type?: HTMLInputTypeAttribute | "textarea";
     useInputAddon?: boolean;
-    onKeyDown?: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
-    updateValue: Dispatch<SetStateAction<any>> | ((value: any) => void);
+    onKeyDown?: KeyboardEventHandler<HTMLTextAreaElement>;
+    updateValue: Dispatch<SetStateAction<TValue>> | ((value: TValue) => void);
 };
-declare const FormInput: ({ id, label, value, autoFocus, disabled, hint, inlineError, isRequired, list, max, maxLength, min, placeholder, rows, step, srOnly, type, useInputAddon, onKeyDown, updateValue }: FormInputProps) => import("react/jsx-runtime").JSX.Element;
+declare const FormInput: <TValue extends FieldValue = string>({ id, label, value, autoFocus, disabled, hint, inlineError, isRequired, list, max, maxLength, min, placeholder, rows, step, srOnly, type, useInputAddon, onKeyDown, updateValue }: FormInputProps<TValue>) => import("react/jsx-runtime").JSX.Element;
 export default FormInput;

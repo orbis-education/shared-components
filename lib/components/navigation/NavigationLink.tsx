@@ -1,9 +1,9 @@
 import { isEmpty, noFunctionAvailable } from "shared-functions";
-import { NavigationItem, returnActiveClassFunction } from "../../types/NavigationTypes";
+import { NavigationItem, ReturnActiveClassFunction } from "@/types/NavigationTypes";
 
 type NavigationLinkProps = {
   navigationItem: NavigationItem;
-  returnActiveClass: returnActiveClassFunction;
+  returnActiveClass: ReturnActiveClassFunction;
 };
 
 const NavigationLink = ({
@@ -18,7 +18,6 @@ const NavigationLink = ({
   returnActiveClass = noFunctionAvailable
 }: NavigationLinkProps) => (
   <>
-
     <button
       type="button"
       role="link"
@@ -29,7 +28,6 @@ const NavigationLink = ({
     </button>
 
     {!isEmpty(navigationItem.children) ? navigationItem.children : null}
-
   </>
 );
 
