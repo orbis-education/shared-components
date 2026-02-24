@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "jsx": "react-jsx",
@@ -14,12 +18,24 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "types": ["vite/client"],
+    "types": [
+      "vite/client"
+    ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["lib/*"]
+      "@/*": [
+        "lib/*"
+      ]
     }
   },
-  "include": ["lib", "src", "vite-env.d.ts"],
-  "exclude": ["node_modules", "dist", "resources"]
+  "include": [
+    "lib",
+    "src",
+    "vite-env.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "resources"
+  ]
 }

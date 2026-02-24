@@ -1,16 +1,25 @@
-# Ignore build outputs
-dist
-build
-coverage
+# Prettier ignore file
+# Ignore build output
+build/
+dist/
+coverage/
+resources/
+public/instructor/
+public/projectFiles/
+public/webGL/
 
 # Ignore dependencies
-node_modules
+node_modules/
 
-# Ignore lock files
+# Ignore package files
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
 
-# Ignore generated files
+# Ignore log files
 *.log
+
+# Ignore generated files
 .DS_Store
+*.min.js
+*.min.css
