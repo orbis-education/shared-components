@@ -5,7 +5,6 @@ type HeaderProps = {
 };
 
 const Header = ({ applicationName = "Application" }: HeaderProps) => {
-
   const homeURL: string = window.location.href.includes("intranet.orbiseducation.com") ? "./" : "/";
 
   // eslint-disable-next-line react-hooks/immutability
@@ -13,13 +12,11 @@ const Header = ({ applicationName = "Application" }: HeaderProps) => {
 
   return (
     <header>
-
       <a href={homeURL} className="orbis-logo-link">
         <OrbisLogo />
       </a>
 
       <h1>{applicationName}</h1>
-
     </header>
   );
 };

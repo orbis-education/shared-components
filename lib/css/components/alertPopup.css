@@ -1,6 +1,6 @@
 .alert-messages-container {
   position: sticky;
-  top: .5rem;
+  top: 0.5rem;
   left: 0;
   width: 100%;
   height: 0;
@@ -18,7 +18,7 @@
   background-color: #fcfffc;
 
   &:before {
-    content: '\f00c';
+    content: "\f00c";
     background-color: #155724;
   }
 }
@@ -28,7 +28,7 @@
   background-color: #fffefb;
 
   &:before {
-    content: '\f071';
+    content: "\f071";
     background-color: #856405;
   }
 }
@@ -38,7 +38,7 @@
   background-color: #fffafa;
 
   &:before {
-    content: '\f057';
+    content: "\f057";
     background-color: #721c24;
   }
 }
@@ -48,7 +48,7 @@
   background-color: #fafeff;
 
   &:before {
-    content: '\f05a';
+    content: "\f05a";
     background-color: #0c5460;
   }
 }
@@ -56,7 +56,7 @@
 .alert {
   position: relative;
   z-index: 1000;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.4);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
   left: 50%;
   transform: translateX(-50%);
   color: #343434;
@@ -67,7 +67,7 @@
   border-radius: 5px;
 
   &:before {
-    color: rgba(255,255,255,1);
+    color: rgba(255, 255, 255, 1);
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     width: 50px;
@@ -86,7 +86,7 @@
 }
 
 .alert__message-text {
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 .alert__close-button {
@@ -96,24 +96,24 @@
 .alert button.alert__close-button {
   background-color: transparent;
   border: none;
-  color: rgba(0,0,0,.7);
-  padding: .5rem;
+  color: rgba(0, 0, 0, 0.7);
+  padding: 0.5rem;
   font-size: 1rem;
-  margin-left: .5rem;
-  
+  margin-left: 0.5rem;
+
   &:hover {
     background-color: transparent !important;
     border: none;
-    color: rgba(0,0,0,1);
-    padding: .5rem;
+    color: rgba(0, 0, 0, 1);
+    padding: 0.5rem;
     font-size: 1rem;
-    margin-left: .5rem;
+    margin-left: 0.5rem;
   }
 }
 
 .alert .refresh {
-  background-color: rgba(255,255,255,.1);
-  border: 1px solid rgba(0,0,0,.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.5);
   border-radius: 3px;
   margin-left: 2rem;
   position: relative;
@@ -121,14 +121,14 @@
 }
 
 .alert .refresh:hover {
-  background-color: rgba(255,255,255,.3);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .alert.alert-danger .refresh {
   border: 1px solid #721c24;
   background-color: #fffafa;
   color: #721c24;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
 .alert.alert-danger .refresh:hover {

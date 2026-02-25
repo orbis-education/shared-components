@@ -17,7 +17,6 @@ const Pagination = ({
   setDdResultsPerPage,
   setCurrentPageNumber
 }: PaginationProps) => {
-
   const handlePageClick = (value: number) => {
     window.scrollTo(0, 0);
     setCurrentPageNumber(value);
@@ -25,22 +24,24 @@ const Pagination = ({
 
   return (
     <div className="pagination-section">
-
       <FormDropdown
         id="ddResultsPerPage"
         label="Results per Page"
         optionData={[
-          { sizeID: defaultResultsPerPage, optionText: defaultResultsPerPage },
-          { sizeID: defaultResultsPerPage * 2, optionText: defaultResultsPerPage * 2 },
-          { sizeID: defaultResultsPerPage * 3, optionText: defaultResultsPerPage * 3 },
+          { sizeID: String(defaultResultsPerPage), optionText: defaultResultsPerPage },
+          { sizeID: String(defaultResultsPerPage * 2), optionText: defaultResultsPerPage * 2 },
+          { sizeID: String(defaultResultsPerPage * 3), optionText: defaultResultsPerPage * 3 },
           { sizeID: "all", optionText: "All" }
         ]}
         optionID="sizeID"
         optionText={[{ type: "property", text: "optionText" }]}
         emptyOption={true}
         useInputAddon={true}
-        value={ddResultsPerPage}
-        updateValue={setDdResultsPerPage}
+        value={Number.isNaN(ddResultsPerPage) ? "all" : String(ddResultsPerPage)}
+        updateValue={(raw: string) => {
+          setDdResultsPerPage(raw === "all" ? Number.NaN : Number(raw));
+          setCurrentPageNumber(1); // * optional but usually desirable when page size changes -- 02/19/2026 JW
+        }}
       />
 
       <div className="pagination-controls">
@@ -66,7 +67,9 @@ const Pagination = ({
           <span className="sr-only">Go to Previous Page</span>
         </button>
 
-        <strong>Page {currentPageNumber} of {totalPages}</strong>
+        <strong>
+          Page {currentPageNumber} of {totalPages}
+        </strong>
 
         <button
           type="button"
@@ -89,9 +92,7 @@ const Pagination = ({
           <i className="fa fa-angle-double-right" />
           <span className="sr-only">Go to Last Page</span>
         </button>
-
       </div>
-
     </div>
   );
 };

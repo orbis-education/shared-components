@@ -13,7 +13,7 @@
     "noEmit": true,
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
-    "incremental": false,
+    "incremental": true,
     "composite": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -24,7 +24,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": [
-        "src/*"
+        "lib/*"
       ]
     }
   },

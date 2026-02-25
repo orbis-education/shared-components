@@ -6,7 +6,7 @@
     xxxxxxxxx
         v
         i
-   */ 
+   */
 
   &:before {
     content: attr(data-tooltip);
@@ -25,7 +25,7 @@
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
-    box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
     border: 1px solid #ddd;
     display: none;
     z-index: 12;
@@ -47,7 +47,7 @@
     display: none;
     z-index: 12;
   }
-  
+
   &.tooltip-right {
     /* * Tooltip is left-aligned with the box on the right. -- 09/24/2025 JH
       xxxxxxxxx
@@ -60,7 +60,7 @@
       transform: unset;
     }
     &:after {
-      left: .25rem;
+      left: 0.25rem;
       transform: unset;
     }
   }
@@ -79,7 +79,7 @@
     }
     &:after {
       left: unset;
-      right: .5rem;
+      right: 0.5rem;
       transform: unset;
     }
   }
@@ -95,7 +95,7 @@
       top: 100%;
       bottom: unset;
       margin-top: 10px;
-      box-shadow: 0 0 8px 4px rgba(0,0,0,.2);
+      box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.2);
     }
     &:after {
       top: 100%;
@@ -106,7 +106,8 @@
   }
 
   &:hover {
-    &:before, &:after {
+    &:before,
+    &:after {
       display: block;
     }
   }

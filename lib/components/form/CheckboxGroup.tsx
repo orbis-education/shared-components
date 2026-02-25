@@ -3,13 +3,13 @@ import classnames from "classnames";
 import { isEmpty, isNonEmptyArray, formatToString, parse } from "shared-functions";
 import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
 import { createOptionDisplayText } from "./formFunctions";
-import { OptionText } from "../../types/FormTypes";
+import type { OptionText } from "@/types/FormTypes";
 
 type CheckboxGroupProps = {
   id: string;
   legend: string;
-  value: any[];
-  optionData: any[];
+  value: string[];
+  optionData: Record<string, unknown>[];
   optionID: string;
   optionText: OptionText[];
   collapseList?: boolean;
@@ -22,7 +22,7 @@ type CheckboxGroupProps = {
   srOnly?: boolean;
   startCollapsed?: boolean;
   setCollapseList?: (value: boolean) => void;
-  updateValue: Dispatch<SetStateAction<any[]>> | ((value: any[]) => void);
+  updateValue: Dispatch<SetStateAction<string[]>> | ((value: string[]) => void);
 };
 
 const CheckboxGroup = ({
@@ -44,7 +44,6 @@ const CheckboxGroup = ({
   setCollapseList,
   updateValue
 }: CheckboxGroupProps) => {
-
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
 
   const fieldsetClasses: string = classnames("form-group", {
@@ -58,173 +57,128 @@ const CheckboxGroup = ({
 
   const checkboxGroupClasses: string = classnames("checkbox-group", {
     "is-collapsible": isCollapsible,
-    "show": !isCollapsed,
+    show: !isCollapsed,
     "input-error": !isEmpty(inlineError)
   });
 
-
   useEffect(() => {
-
     // * If isCollapsible is false, then isCollapsed is always false. -- 10/10/2023 MF
     if (isCollapsible) {
-
       setIsCollapsed(true);
-
     } else {
-
       setIsCollapsed(false);
-
     }
-
   }, [isCollapsible]);
 
-
   useEffect(() => {
-
     if (startCollapsed === false) {
-
       setIsCollapsed(false);
-
     }
-
   }, [startCollapsed]);
 
-
   useEffect(() => {
-
     if (collapseList) {
-
       setIsCollapsed(true);
 
       // * ?. is ai suggested fix for the below error: -- 01/22/2026 JH
       // * Cannot invoke an object which is possibly 'undefined'.
       setCollapseList?.(false);
-
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [collapseList]);
 
-
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const checkedValue = event.target.value;
 
-    if (event.target.checked === true) {
-
-      const newCheckedList = [...value, event.target.value];
-
-      updateValue(newCheckedList);
-
-    } else {
-
-      const filteredList = value.filter(value => value !== event.target.value);
-
-      updateValue(filteredList);
-
-    }
-
+    updateValue(
+      event.target.checked ? [...value, checkedValue] : value.filter(v => v !== checkedValue)
+    );
   };
-
 
   return (
     <fieldset className={fieldsetClasses}>
-
       <legend className={labelClasses}>
-
-        {isCollapsible ?
-
-          <button type="button" className="btn btn-transparent collapse-checkboxes-button" onClick={() => setIsCollapsed(!isCollapsed)}>
-
+        {isCollapsible ? (
+          <button
+            type="button"
+            className="btn btn-transparent collapse-checkboxes-button"
+            onClick={() => setIsCollapsed(!isCollapsed)}
+          >
             {legend}
 
             {isRequired ? <RequiredFieldAsterisk /> : null}
 
-            {isNonEmptyArray(value) ? <div className="search-filter-count">{value.length}</div> : null}
+            {isNonEmptyArray(value) ? (
+              <div className="search-filter-count">{value.length}</div>
+            ) : null}
 
-            {isCollapsed ?
-
-              <><i className="fa fa-chevron-down"></i><span className="sr-only">Open</span></>
-
-              :
-
-              <><i className="fa fa-chevron-up"></i><span className="sr-only">Close</span></>
-
-            }
-
+            {isCollapsed ? (
+              <>
+                <i className="fa fa-chevron-down"></i>
+                <span className="sr-only">Open</span>
+              </>
+            ) : (
+              <>
+                <i className="fa fa-chevron-up"></i>
+                <span className="sr-only">Close</span>
+              </>
+            )}
           </button>
-
-          :
-
+        ) : (
           <>
-
             {legend}
 
             {isRequired ? <RequiredFieldAsterisk /> : null}
-
           </>
-
-        }
-
+        )}
       </legend>
 
       <ul className={checkboxGroupClasses} style={{ columns }}>
-
         {!isEmpty(hint) ? <p className="input-hint">{parse(hint)}</p> : null}
 
-        {isNonEmptyArray(optionData) && !isEmpty(optionID) && isNonEmptyArray(optionText) ?
-
+        {isNonEmptyArray(optionData) && !isEmpty(optionID) && isNonEmptyArray(optionText) ? (
           <>
-
-            {optionData.map((optionDataItem) => {
-
+            {optionData.map((optionDataItem, index) => {
               if (optionDataItem.active === true || isEmpty(optionDataItem.active)) {
-
-                const filtervalue: any[] = isNonEmptyArray(value) ? value.filter(value => value === formatToString(optionDataItem[optionID])) : [];
-
-                const isChecked: boolean = isNonEmptyArray(filtervalue);
+                const optionIdAsString = formatToString(optionDataItem[optionID]);
+                const isChecked = value.includes(optionIdAsString);
 
                 return (
-                  <li key={optionDataItem[optionID]}>
-
+                  <li key={index}>
                     <label>
-
                       <input
                         type="checkbox"
-                        id={`${id}${optionDataItem[optionID]}`}
-                        value={optionDataItem[optionID]}
+                        id={`${id}${optionIdAsString}`}
+                        value={optionIdAsString}
                         checked={isChecked}
                         disabled={disabled}
                         onChange={handleOnChange}
                       />
 
                       <span className="checkbox-label-text">
-
                         {optionText.map((optionTextItem: OptionText, index: number) => (
-
-                          <Fragment key={index}>{createOptionDisplayText(optionDataItem, optionTextItem)}</Fragment>
-
+                          <Fragment key={index}>
+                            {createOptionDisplayText(optionDataItem, optionTextItem)}
+                          </Fragment>
                         ))}
-
                       </span>
-
                     </label>
-
                   </li>
                 );
-
-              } else { return null; }
-
+              } else {
+                return null;
+              }
             })}
-
           </>
-
-          : null}
-
+        ) : null}
       </ul>
 
-      {!isEmpty(inlineError) ? <div className="inline-alert inline-alert-danger">{parse(inlineError)}</div> : null}
+      {!isEmpty(inlineError) ? (
+        <div className="inline-alert inline-alert-danger">{parse(inlineError)}</div>
+      ) : null}
 
       {isCollapsible ? <hr /> : null}
-
     </fieldset>
   );
 };

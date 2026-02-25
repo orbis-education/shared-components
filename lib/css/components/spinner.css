@@ -2,7 +2,7 @@
   width: 100%;
   max-width: 640px;
   background-color: #fff;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   margin-top: 2rem;
   display: flex;
@@ -15,7 +15,7 @@
 
 .loading-spinner {
   font-size: 4rem;
-  animation: .75s linear infinite loading-spinner;
+  animation: 0.75s linear infinite loading-spinner;
 }
 
 @keyframes loading-spinner {

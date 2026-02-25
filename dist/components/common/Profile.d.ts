@@ -1,15 +1,15 @@
 import { LoggedInUser } from '../../types/User';
 type ProfileProps = {
-    applicationVersion: string;
-    baseURL: string;
-    computerLog: unknown;
-    userIdentifier: string;
-    demonstrationMode: boolean;
-    environmentMode: string;
-    databaseAvailable: boolean;
-    sessionToken: string | null;
+    applicationVersion?: string;
+    baseURL?: string;
+    computerLog?: Record<string, unknown>;
+    userIdentifier?: string;
+    demonstrationMode?: boolean;
+    environmentMode?: string;
+    databaseAvailable?: boolean;
+    sessionToken?: string | null;
     loggedInUser?: LoggedInUser | null;
-    disabled: boolean;
+    disabled?: boolean;
     sessionTokenName: string;
     handleNavigation: () => void;
     setFetchAuthorization: (sessionToken: string | null, environmentMode: string, demonstrationMode: boolean) => string;
