@@ -1,4 +1,4 @@
-import { useEffect, Dispatch, SetStateAction } from "react";
+import { useEffect, useRef, Dispatch, SetStateAction } from "react";
 import classnames from "classnames";
 
 type DialogBoxConfirmationProps = {
@@ -19,6 +19,8 @@ const DialogBoxConfirmation = ({
   setDialogBoxContinue
 }: DialogBoxConfirmationProps) => {
   // * The code that catches the route change on the page doesn't handle if the browser is closed or the back/forward buttons are used. -- 07/15/2021 MF
+
+  const dialogRef = useRef<HTMLDialogElement | null>(null);
 
   let size: string = dialogBoxSize;
   let title: string = dialogBoxTitle;
@@ -51,6 +53,13 @@ const DialogBoxConfirmation = ({
     content = "Are you sure you want to close this program?";
   }
 
+  const modalStyles: string = classnames("modal-dialog", {
+    "modal-sm": size === "sm",
+    "modal-md": size === "md",
+    "modal-lg": size === "lg",
+    "modal-xl": size === "xl"
+  });
+
   // * Close modal on ESC key. -- 02/13/2024 JH
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -68,54 +77,51 @@ const DialogBoxConfirmation = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const modalStyles: string = classnames("modal-dialog", {
-    "modal-sm": size === "sm",
-    "modal-md": size === "md",
-    "modal-lg": size === "lg",
-    "modal-xl": size === "xl"
-  });
+  useEffect(() => {
+    if (dialogRef.current) {
+      if (dialogBoxOpen) {
+        dialogRef.current.showModal();
+      } else {
+        dialogRef.current.close();
+      }
+    }
+  }, [dialogRef, dialogBoxOpen]);
 
   return (
     <>
-      {dialogBoxOpen === true ? (
-        <div className="modal" tabIndex={-1} aria-hidden="true">
-          <div className={modalStyles}>
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">
-                  {title}
-                </h5>
-                <button
-                  type="button"
-                  className="close"
-                  onClick={() => setDialogBoxContinue(false)}
-                  title="Close"
-                >
-                  <i className="fa fa-close"></i>
-                  <span className="sr-only">Close</span>
-                </button>
-              </div>
-              <div className="modal-body">{content}</div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={() => setDialogBoxContinue(true)}
-                >
-                  OK
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-cancel"
-                  onClick={() => setDialogBoxContinue(false)}
-                >
-                  Cancel
-                </button>
-              </div>
-            </div>
-          </div>
+      <dialog className={modalStyles} ref={dialogRef} /* closedby="any" */>
+        <div className="modal-header">
+          <h5 className="modal-title" id="exampleModalLabel">
+            {title}
+          </h5>
+          <button
+            type="button"
+            className="close"
+            onClick={() => setDialogBoxContinue(false)}
+            title="Close"
+          >
+            <i className="fa fa-close"></i>
+            <span className="sr-only">Close</span>
+          </button>
         </div>
-      ) : null}
+        <div className="modal-body">{content}</div>
+        <div className="modal-footer">
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => setDialogBoxContinue(true)}
+          >
+            OK
+          </button>
+          <button
+            type="button"
+            className="btn btn-cancel"
+            onClick={() => setDialogBoxContinue(false)}
+          >
+            Cancel
+          </button>
+        </div>
+      </dialog>
     </>
   );
 };

@@ -23,14 +23,14 @@ export const useDialogBoxConfirmation = () => {
 
   const [processTransactionValue, setProcessTransactionValue] = useState<string>("");
 
-  // * Prevent scrolling when modal is open -- 12/04/2023 JH
-  useEffect(() => {
-    if (confirmationDialogBoxOpen && document.body.style.overflow !== "hidden") {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  }, [confirmationDialogBoxOpen]);
+  // // * Prevent scrolling when modal is open -- 12/04/2023 JH
+  // useEffect(() => {
+  //   if (confirmationDialogBoxOpen && document.body.style.overflow !== "hidden") {
+  //     document.body.style.overflow = "hidden";
+  //   } else {
+  //     document.body.style.overflow = "auto";
+  //   }
+  // }, [confirmationDialogBoxOpen]);
 
   const reset = () => {
     setConfirmationDialogBoxSize("");
