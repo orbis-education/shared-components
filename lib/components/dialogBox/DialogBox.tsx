@@ -29,36 +29,35 @@ const DialogBox = ({
     "modal-xl": size === "xl"
   });
 
-  // * Close modal on ESC key. -- 02/13/2024 JH
+  // * keep dialogRef.current.open and dialogBoxOpen/dialogBoxContinue in sync -- 03/04/2026 JH
   useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setDialogBoxOpen(false);
-      }
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+
+    if (dialogBoxOpen) {
+      dialog.showModal();
+    } else {
+      dialog.close();
+    }
+
+    const handleCloseDialog = (event: Event) => {
+      event.preventDefault();
+      if (dialogBoxOpen) setDialogBoxOpen(false);
     };
 
-    window.addEventListener("keydown", handleKeyDown);
+    dialog.addEventListener("close", handleCloseDialog);
+    dialog.addEventListener("cancel", handleCloseDialog);
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      dialog.removeEventListener("close", handleCloseDialog);
+      dialog.removeEventListener("cancel", handleCloseDialog);
     };
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    if (dialogRef.current) {
-      if (dialogBoxOpen) {
-        dialogRef.current.showModal();
-      } else {
-        dialogRef.current.close();
-      }
-    }
-  }, [dialogRef, dialogBoxOpen]);
+  }, [dialogBoxOpen]);
 
   return (
     <>
-      <dialog className={modalStyles} ref={dialogRef} /* closedby="any" */>
+      {/* eslint-disable-next-line react/no-unknown-property */}
+      <dialog className={modalStyles} ref={dialogRef} closedby="any">
         <div className="modal-header">
           <h5 className="modal-title" id="exampleModalLabel">
             {title}
