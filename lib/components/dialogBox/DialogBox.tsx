@@ -1,4 +1,4 @@
-import { useEffect, Dispatch, SetStateAction } from "react";
+import { useEffect, useRef, Dispatch, SetStateAction } from "react";
 import classnames from "classnames";
 
 type DialogBoxProps = {
@@ -16,6 +16,8 @@ const DialogBox = ({
   dialogBoxTitle = "",
   setDialogBoxOpen
 }: DialogBoxProps) => {
+  const dialogRef = useRef<HTMLDialogElement | null>(null);
+
   const size: string = dialogBoxSize;
   const title: string = dialogBoxTitle;
   const content: string = dialogBoxContent;
@@ -27,59 +29,61 @@ const DialogBox = ({
     "modal-xl": size === "xl"
   });
 
-  // * Close modal on ESC key. -- 02/13/2024 JH
+  // * keep dialogRef.current.open and dialogBoxOpen/dialogBoxContinue in sync -- 03/04/2026 JH
   useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setDialogBoxOpen(false);
-      }
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+
+    if (dialogBoxOpen) {
+      dialog.showModal();
+    } else {
+      dialog.close();
+    }
+
+    const handleCloseDialog = (event: Event) => {
+      event.preventDefault();
+      if (dialogBoxOpen) setDialogBoxOpen(false);
     };
 
-    window.addEventListener("keydown", handleKeyDown);
+    dialog.addEventListener("close", handleCloseDialog);
+    dialog.addEventListener("cancel", handleCloseDialog);
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      dialog.removeEventListener("close", handleCloseDialog);
+      dialog.removeEventListener("cancel", handleCloseDialog);
     };
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dialogBoxOpen]);
 
   return (
     <>
-      {dialogBoxOpen ? (
-        <div className="modal" tabIndex={-1} aria-hidden="true">
-          <div className={modalStyles}>
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">
-                  {title}
-                </h5>
-                <button
-                  type="button"
-                  className="close"
-                  onClick={() => setDialogBoxOpen(!dialogBoxOpen)}
-                  title="Close"
-                >
-                  <i className="fa fa-close"></i>
-                  <span className="sr-only">Close</span>
-                </button>
-              </div>
-              <div className="modal-body">{content}</div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={() => setDialogBoxOpen(!dialogBoxOpen)}
-                >
-                  OK
-                </button>
-                {/* <button type="button" className="btn btn-cancel" onClick={() => { dispatch(clearMessages()); setDialogBoxOpen(!dialogBoxOpen); }}>Cancel</button> */}
-              </div>
-            </div>
-          </div>
-          <div className="modal-backdrop" onClick={() => setDialogBoxOpen(!dialogBoxOpen)}></div>
+      {/* eslint-disable-next-line react/no-unknown-property */}
+      <dialog className={modalStyles} ref={dialogRef} closedby="any">
+        <div className="modal-header">
+          <h5 className="modal-title" id="exampleModalLabel">
+            {title}
+          </h5>
+          <button
+            type="button"
+            className="close"
+            onClick={() => setDialogBoxOpen(!dialogBoxOpen)}
+            title="Close"
+          >
+            <i className="fa fa-close"></i>
+            <span className="sr-only">Close</span>
+          </button>
         </div>
-      ) : null}
+        <div className="modal-body">{content}</div>
+        <div className="modal-footer">
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => setDialogBoxOpen(!dialogBoxOpen)}
+          >
+            OK
+          </button>
+        </div>
+      </dialog>
     </>
   );
 };
