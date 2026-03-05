@@ -52,6 +52,7 @@ const DialogBox = ({
       dialog.removeEventListener("close", handleCloseDialog);
       dialog.removeEventListener("cancel", handleCloseDialog);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dialogBoxOpen]);
 
   return (
