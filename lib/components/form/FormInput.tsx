@@ -2,6 +2,7 @@ import {
   useState,
   ChangeEvent,
   HTMLInputTypeAttribute,
+  InputHTMLAttributes,
   KeyboardEventHandler,
   Dispatch,
   SetStateAction
@@ -76,7 +77,7 @@ const FormInput = <TValue extends FieldValue = string>({
   });
 
   const numberAttributes: Pick<
-    React.InputHTMLAttributes<HTMLInputElement>,
+    InputHTMLAttributes<HTMLInputElement>,
     "min" | "max" | "step" | "maxLength"
   > = {};
 
