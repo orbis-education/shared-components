@@ -1,23 +1,27 @@
 {
   // ESLint Configuration
   "eslint.enable": true,
-  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
   "eslint.run": "onType",
-  "eslint.workingDirectories": ["."],
+  "eslint.workingDirectories": [
+    "."
+  ],
   "eslint.useESLintClass": true,
   "eslint.codeAction.showDocumentation": {
     "enable": true
   },
-
   // Prettier Configuration
   "prettier.enable": true,
   "prettier.requireConfig": true,
-
   // Format on Save Settings
   "editor.formatOnSave": true,
-  "editor.formatOnPaste": true,
+  "editor.formatOnPaste": false,
   "editor.formatOnType": false,
-
   // Default Formatters
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
@@ -38,19 +42,16 @@
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-
   // ESLint Auto-fix
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "never"
   },
-
   // Additional Editor Settings
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.detectIndentation": false,
   "files.eol": "\n",
-
   // File Association
   "files.associations": {
     "*.jsx": "javascriptreact"
