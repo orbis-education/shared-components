@@ -31,3 +31,6 @@ logs
 .DS_Store
 *.min.js
 *.min.css
+
+# Format JSON files with a different formater -- 04/07/2026 MF
+*.json
