@@ -1,4 +1,4 @@
-import { useState, FormEvent, KeyboardEvent, useEffect } from "react";
+import { useState, SubmitEvent, KeyboardEvent, useEffect } from "react";
 import {
   // AlertPopup,
   CheckboxDropdown,
@@ -12,7 +12,9 @@ import {
   ToggleSwitch,
   Navigation,
   DialogBoxConfirmation,
-  useDialogBoxConfirmation
+  useDialogBoxConfirmation,
+  SortableList,
+  useDragAndDropSort
 } from "../lib";
 
 const inlineErrors = {
@@ -27,6 +29,36 @@ type AppProps = {
   copyrightYear?: string;
 };
 
+type ListItem = {
+  listID: number;
+  listItemName: string;
+  listItemSubtitle?: string;
+};
+
+const initialList: ListItem[] = [
+  {
+    listID: 1,
+    listItemName: "Item 1"
+  },
+  {
+    listID: 2,
+    listItemName: "Item 2"
+  },
+  {
+    listID: 3,
+    listItemName: "Item 3"
+  },
+  {
+    listID: 4,
+    listItemName: "Item 4",
+    listItemSubtitle: "Item 4 subtitle"
+  },
+  {
+    listID: 5,
+    listItemName: "Item 5"
+  }
+];
+
 const App = ({ applicationVersion = "0.0.0", copyrightYear = "2025" }: AppProps) => {
   const [txtName, setTxtName] = useState<string>("hi");
   const [txtMessage, setTxtMessage] = useState<string>("");
@@ -38,6 +70,8 @@ const App = ({ applicationVersion = "0.0.0", copyrightYear = "2025" }: AppProps)
   const [rdoProgramID, setRdoProgramID] = useState<string>("");
   const [componentToLoad, setComponentToLoad] = useState<string>("Home");
 
+  const [list, setList] = useState<ListItem[]>(initialList);
+
   const {
     processTransactionValue,
     confirmationDialogBoxOpen,
@@ -46,6 +80,23 @@ const App = ({ applicationVersion = "0.0.0", copyrightYear = "2025" }: AppProps)
     setConfirmationDialogBoxContinue,
     setProcessTransactionValue
   } = useDialogBoxConfirmation();
+
+  type ProcessTransaction = (listItem: ListItem, index: number) => void;
+  const processTransaction: ProcessTransaction = (listItem, index) => {
+    // eslint-disable-next-line no-console
+    console.log("listItem", listItem);
+    // eslint-disable-next-line no-console
+    console.log("index", index);
+  };
+
+  const {
+    dragAndDrop,
+    handleDragStart,
+    handleDragOver,
+    handleDrop,
+    onDragLeave,
+    handleManualMove
+  } = useDragAndDropSort<ListItem>({ updateArray: setList, callback: processTransaction });
 
   const navigationItems = [
     {
@@ -97,17 +148,18 @@ const App = ({ applicationVersion = "0.0.0", copyrightYear = "2025" }: AppProps)
     }
   ];
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    // eslint-disable-next-line no-console
     console.log("Form submitted!");
   };
 
   const handleEnterKey = (event: KeyboardEvent<HTMLTextAreaElement>) => {
-    if (event.keyCode === 13 && event.shiftKey === false) {
+    if (event.key === "Enter" && event.shiftKey === false) {
       event.preventDefault();
 
-      handleSubmit(event as unknown as FormEvent<HTMLFormElement>);
+      handleSubmit(event as unknown as SubmitEvent<HTMLFormElement>);
     }
   };
 
@@ -126,18 +178,6 @@ const App = ({ applicationVersion = "0.0.0", copyrightYear = "2025" }: AppProps)
         dialogBoxType={confirmationDialogBoxType}
         setDialogBoxContinue={setConfirmationDialogBoxContinue}
       />
-
-      <div>
-        <button
-          type="button"
-          className="btn btn-danger"
-          onClick={() => {
-            deleteRecord();
-          }}
-        >
-          Delete
-        </button>
-      </div>
 
       <Header applicationName="Shared Components" />
 
@@ -167,6 +207,20 @@ const App = ({ applicationVersion = "0.0.0", copyrightYear = "2025" }: AppProps)
               </tbody>
             </table>
           </div>
+        </section>
+
+        <section className="section-block">
+          <SortableList
+            list={list}
+            titleField="listItemName"
+            subtitleField="listItemSubtitle"
+            dragAndDrop={dragAndDrop}
+            handleDragStart={handleDragStart}
+            handleDragOver={handleDragOver}
+            handleDrop={handleDrop}
+            onDragLeave={onDragLeave}
+            handleManualMove={handleManualMove}
+          />
         </section>
 
         <section className="section-block">
@@ -268,8 +322,20 @@ const App = ({ applicationVersion = "0.0.0", copyrightYear = "2025" }: AppProps)
             />
 
             <div className="flex-row">
+              <button type="submit" className="btn btn-primary">
+                Submit
+              </button>
               <button type="button" className="btn btn-dark-gray">
                 Reset
+              </button>
+              <button
+                type="button"
+                className="btn btn-danger"
+                onClick={() => {
+                  deleteRecord();
+                }}
+              >
+                Delete
               </button>
             </div>
           </form>

@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type NavigationItem = {
   name: string;
   componentName?: string;
@@ -11,7 +13,7 @@ export type NavigationItem = {
     isPresent?: boolean;
     onClick?: () => void;
   }[];
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 export type ReturnActiveClassFunction = (

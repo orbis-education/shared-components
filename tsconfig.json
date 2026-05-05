@@ -21,10 +21,9 @@
     "types": [
       "vite/client"
     ],
-    "baseUrl": ".",
     "paths": {
       "@/*": [
-        "lib/*"
+        "./lib/*"
       ]
     }
   },

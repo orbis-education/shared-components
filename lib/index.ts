@@ -9,6 +9,7 @@ export { default as OrbisLogo } from "./components/common/OrbisLogo";
 export { default as Profile } from "./components/common/Profile";
 export { default as RequiredFieldAsterisk } from "./components/common/RequiredFieldAsterisk";
 export { default as SortableColumnHeader } from "./components/common/SortableColumnHeader";
+export { default as SortableList } from "./components/common/SortableList";
 export { default as Spinner } from "./components/common/Spinner";
 
 export { default as DialogBox } from "./components/dialogBox/DialogBox";
@@ -30,5 +31,6 @@ export { default as NavigationDropdown } from "./components/navigation/Navigatio
 export { default as NavigationLink } from "./components/navigation/NavigationLink";
 
 export { default as useDialogBoxConfirmation } from "./hooks/useDialogBoxConfirmation";
+export { default as useDragAndDropSort } from "./hooks/useDragAndDropSort";
 export { default as useNativeClickListener } from "./hooks/useNativeClickListener";
 export { default as usePagination } from "./hooks/usePagination";

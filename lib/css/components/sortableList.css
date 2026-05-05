@@ -1,0 +1,100 @@
+.sortable-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &__item {
+    display: flex;
+    align-items: stretch;
+    padding: 0.25rem 0;
+    align-items: stretch;
+
+    &__order-number {
+      grid-area: number;
+      padding: 0 1rem;
+      font-weight: 700;
+      background-color: #eee;
+      display: flex;
+      align-items: center;
+      border-radius: 0.25rem 0 0 0.25rem;
+      border: 1px solid #ddd;
+      border-right: none;
+    }
+
+    &__buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: stretch;
+      background-color: #eee;
+      border-radius: 0 0.25rem 0.25rem 0;
+      border: 1px solid #ddd;
+      border-left: none;
+
+      .btn {
+        height: 100%;
+        width: 100%;
+        padding: 0.35rem 0.65rem;
+
+        &:first-child {
+          grid-area: up-button;
+          border-radius: 0 0.25rem 0 0;
+        }
+
+        &:last-child {
+          grid-area: down-button;
+          border-radius: 0 0 0.25rem 0;
+        }
+      }
+    }
+
+    &__drag-item {
+      display: flex;
+      flex-direction: column;
+      /* justify-content: flex-start; */
+      width: 100%;
+      align-items: flex-start;
+      /* gap: 1rem; */
+      cursor: move;
+      border-radius: 0;
+      padding: 1rem 1rem;
+      border: 1px solid #ddd;
+
+      &__title {
+        font-weight: 700;
+      }
+
+      &__subtitle {
+        font-style: italic;
+        opacity: 0.8;
+      }
+
+      &.dropArea {
+        color: #fff;
+        background: #fff;
+        position: relative;
+
+        &:before {
+          content: "";
+          color: var(--primaryBlue);
+          font-size: 1rem;
+          text-transform: uppercase;
+          width: 100%;
+          height: 100%;
+          border: 2px dashed var(--medBlue);
+          border-radius: 3px;
+          position: absolute;
+          left: -2px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+      &:hover {
+        background: var(--primaryBlue);
+        color: #fff;
+      }
+    }
+  }
+}
