@@ -3690,7 +3690,7 @@ const ot = /* @__PURE__ */ ht(Gt), lt = ot.default || ot, ct = /^[a-zA-Z0-9.!#$%
       });
     },
     handleDragOver: (n) => {
-      if (n.preventDefault(), i.originalOrder && i.draggedFrom) {
+      if (n.preventDefault(), i.originalOrder && i.draggedFrom !== null) {
         let l = i.originalOrder;
         const p = i.draggedFrom, v = Number(n.currentTarget.dataset.position), T = l[p], C = l.filter((R, x) => x !== p);
         l = [

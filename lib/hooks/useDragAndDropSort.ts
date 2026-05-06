@@ -41,7 +41,7 @@ const useDragAndDropSort = <T>({ updateArray, callback }: UseDragAndDropSortProp
   const handleDragOver: HandleDragOver = event => {
     event.preventDefault();
 
-    if (dragAndDrop.originalOrder && dragAndDrop.draggedFrom) {
+    if (dragAndDrop.originalOrder && dragAndDrop.draggedFrom !== null) {
       let newList: T[] = dragAndDrop.originalOrder;
       const draggedFrom: number = dragAndDrop.draggedFrom;
       const draggedTo: number = Number(event.currentTarget.dataset.position);
