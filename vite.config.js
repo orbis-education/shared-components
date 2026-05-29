@@ -42,7 +42,7 @@ export default defineConfig(({ mode }) => {
       },
       cssCodeSplit: false,
       rollupOptions: {
-        external: ["react", "react-dom"] // * External dependencies -- 02/18/2026 JW
+        external: ["react", "react-dom", "react/jsx-runtime"] // * External dependencies -- 02/18/2026 JW
       }
     }
   };
