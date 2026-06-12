@@ -323,25 +323,21 @@ const Profile = ({
     };
 
     // if (transactionType === "I") {
-
     //   // * Add the record. -- 04/16/2021 MF
-    //   operation = "Added User";
+    //   operation = "Added User Profile";
     //   method = "POST";
     //   recordObject.active = true;
-
     // } else
     if (transactionType === "U") {
       // * Update the record. -- 04/16/2021 MF
-      operation = "Updated User";
+      operation = "Updated User Profile";
       method = "PUT";
       // url += primaryKeyID;
       recordObject.userID = primaryKeyID;
       // recordObject.active = loggedInUser.active;
-
       // } else if (transactionType === "D") {
-
       //   // * Delete the record. -- 06/02/2021 MF
-      //   operation = "Deleted User";
+      //   operation = "Deleted User Profile";
       //   method = "PUT";
       //   url += primaryKeyID;
       //   recordObject.userID = primaryKeyID;
