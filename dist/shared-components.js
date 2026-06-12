@@ -2391,7 +2391,7 @@ const et = /* @__PURE__ */ ct(Lt), tt = et.default || et, nt = /^[a-zA-Z0-9.!#$%
       password: B(ne(A)),
       updatedBy: t?.userID ?? null
     };
-    j = "Updated User", Le = "PUT", ae.userID = pe, fetch(K, {
+    j = "Updated User Profile", Le = "PUT", ae.userID = pe, fetch(K, {
       method: Le,
       headers: new Headers({
         "Content-Type": "application/json",
