@@ -1,4 +1,4 @@
-import { NavigationItem } from '../../types/NavigationTypes';
+import { NavigationItem } from '../../types/Navigation';
 type NavigationProps = {
     navigationItems: NavigationItem[];
     componentToLoad: string;

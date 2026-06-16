@@ -50,10 +50,14 @@ export interface UserRequest extends User {
     zipCode?: string;
 }
 export interface LoggedInUser extends User {
-    isSystemAdministrator: boolean;
-    isAdministrator: boolean;
-    isExtendedRealitySimulationSpecialist: boolean;
+    isViewer: boolean;
+    isViewerPlusSource: boolean;
+    isViewerPlusStatistics: boolean;
+    isEditor: boolean;
+    isSimulationOperationsSpecialist: boolean;
     isLabAndSimulationResourceManager: boolean;
+    isAdministrator: boolean;
+    isSystemAdministrator: boolean;
     enteredUsername?: string;
     enteredPassword?: string;
     status?: string;
