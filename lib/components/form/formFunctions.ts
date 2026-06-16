@@ -1,5 +1,5 @@
 import { parse } from "shared-functions";
-import { OptionText } from "@/types/FormTypes";
+import type { OptionText } from "@/types/Form";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const createOptionDisplayText = (optionDataItem: any, optionTextItem: OptionText) => {

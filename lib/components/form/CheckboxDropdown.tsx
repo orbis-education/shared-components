@@ -4,7 +4,7 @@ import { isEmpty, isNonEmptyArray, formatToString, parse } from "shared-function
 import { useNativeClickListener } from "../../hooks/useNativeClickListener";
 import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
 import { createOptionDisplayText } from "./formFunctions";
-import { OptionText } from "@/types/FormTypes";
+import type { OptionText } from "@/types/Form";
 
 type CheckboxDropdownOption = Record<string, unknown>;
 

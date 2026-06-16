@@ -7,7 +7,7 @@ import type {
   HandleDrop,
   OnDragLeave,
   HandleManualMove
-} from "@/types/DragAndDropTypes";
+} from "@/types/DragAndDrop";
 
 type UseDragAndDropSortProps<T> = {
   updateArray: Dispatch<SetStateAction<T[]>> | ((value: T[]) => void);
