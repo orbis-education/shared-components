@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { OptionText } from '../../types/FormTypes';
+import { OptionText } from '../../types/Form';
 type FormDropdownProps<TOption extends Record<string, unknown> = Record<string, unknown>> = {
     id: string;
     label: string;

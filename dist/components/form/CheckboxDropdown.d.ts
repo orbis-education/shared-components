@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { OptionText } from '../../types/FormTypes';
+import { OptionText } from '../../types/Form';
 type CheckboxDropdownOption = Record<string, unknown>;
 type CheckboxDropdownProps = {
     id: string;

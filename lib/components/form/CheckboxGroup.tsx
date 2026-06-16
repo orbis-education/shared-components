@@ -3,7 +3,7 @@ import classnames from "classnames";
 import { isEmpty, isNonEmptyArray, formatToString, parse } from "shared-functions";
 import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
 import { createOptionDisplayText } from "./formFunctions";
-import type { OptionText } from "@/types/FormTypes";
+import type { OptionText } from "@/types/Form";
 
 type CheckboxGroupProps = {
   id: string;

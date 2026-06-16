@@ -1,4 +1,4 @@
-import { NavigationItem, ReturnActiveClassFunction } from '../../types/NavigationTypes';
+import { NavigationItem, ReturnActiveClassFunction } from '../../types/Navigation';
 type NavigationLinkProps = {
     navigationItem: NavigationItem;
     returnActiveClass: ReturnActiveClassFunction;

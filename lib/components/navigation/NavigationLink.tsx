@@ -1,5 +1,5 @@
 import { isEmpty, noFunctionAvailable } from "shared-functions";
-import { NavigationItem, ReturnActiveClassFunction } from "@/types/NavigationTypes";
+import type { NavigationItem, ReturnActiveClassFunction } from "@/types/Navigation";
 
 type NavigationLinkProps = {
   navigationItem: NavigationItem;

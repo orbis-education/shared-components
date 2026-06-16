@@ -6,7 +6,7 @@ import type {
   HandleDrop,
   OnDragLeave,
   HandleManualMove
-} from "@/types/DragAndDropTypes";
+} from "@/types/DragAndDrop";
 
 type SortableListProps<T extends Record<string, unknown>> = {
   list: T[];

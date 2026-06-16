@@ -3,7 +3,7 @@ import classnames from "classnames";
 import { useNativeClickListener } from "../../hooks/useNativeClickListener";
 import { isEmpty, isEmptyArray, noFunctionAvailable } from "shared-functions";
 import NavigationLink from "./NavigationLink";
-import { NavigationItem, ReturnActiveClassFunction } from "@/types/NavigationTypes";
+import type { NavigationItem, ReturnActiveClassFunction } from "@/types/Navigation";
 
 type NavigationDropdownProps = {
   navigationItem: NavigationItem;

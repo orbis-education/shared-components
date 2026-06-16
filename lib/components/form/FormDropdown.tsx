@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 import classnames from "classnames";
 import { isEmpty, isNonEmptyArray, parse } from "shared-functions";
 import RequiredFieldAsterisk from "../common/RequiredFieldAsterisk";
-import { OptionText } from "@/types/FormTypes";
+import type { OptionText } from "@/types/Form";
 
 type FormDropdownProps<TOption extends Record<string, unknown> = Record<string, unknown>> = {
   id: string;
