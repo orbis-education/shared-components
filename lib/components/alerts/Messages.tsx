@@ -11,10 +11,10 @@ type MessagesProps = {
   successMessageVisible: boolean;
   warningMessageVisible: boolean;
   errorMessageVisible: boolean;
-  addInformationMessage: Dispatch<SetStateAction<string>>;
-  addSuccessMessage: Dispatch<SetStateAction<string>>;
-  addWarningMessage: Dispatch<SetStateAction<string>>;
-  addErrorMessage: Dispatch<SetStateAction<string>>;
+  addInformationMessage: Dispatch<SetStateAction<string>> | ((value: string) => void);
+  addSuccessMessage: Dispatch<SetStateAction<string>> | ((value: string) => void);
+  addWarningMessage: Dispatch<SetStateAction<string>> | ((value: string) => void);
+  addErrorMessage: Dispatch<SetStateAction<string>> | ((value: string) => void);
 };
 
 const Messages = ({

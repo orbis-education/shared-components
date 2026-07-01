@@ -10,6 +10,7 @@ import {
   Header,
   NoResultsText,
   ToggleSwitch,
+  Messages,
   Navigation,
   DialogBoxConfirmation,
   useDialogBoxConfirmation,
@@ -69,6 +70,24 @@ const App = ({ applicationVersion = "0.0.0", copyrightYear = "2025" }: AppProps)
   const [cbxSimulationID, setCbxSimulationID] = useState<string[]>([]);
   const [rdoProgramID, setRdoProgramID] = useState<string>("");
   const [componentToLoad, setComponentToLoad] = useState<string>("Home");
+  const [messages, setMessages] = useState({
+    information: {
+      message: "Information message",
+      visible: false
+    },
+    success: {
+      message: "Success message",
+      visible: false
+    },
+    warning: {
+      message: "Warning message",
+      visible: false
+    },
+    error: {
+      message: "Error message",
+      visible: false
+    }
+  });
 
   const [list, setList] = useState<ListItem[]>(initialList);
 
@@ -171,6 +190,16 @@ const App = ({ applicationVersion = "0.0.0", copyrightYear = "2025" }: AppProps)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [processTransactionValue]);
 
+  const handleToggleMessageClick = (type: "information" | "success" | "warning" | "error") => {
+    setMessages(prevMessages => ({
+      ...prevMessages,
+      [type]: {
+        ...prevMessages[type],
+        visible: !prevMessages[type].visible
+      }
+    }));
+  };
+
   return (
     <div>
       <DialogBoxConfirmation
@@ -179,9 +208,39 @@ const App = ({ applicationVersion = "0.0.0", copyrightYear = "2025" }: AppProps)
         setDialogBoxContinue={setConfirmationDialogBoxContinue}
       />
 
+      <Messages
+        informationMessage={messages.information.message}
+        successMessage={messages.success.message}
+        warningMessage={messages.warning.message}
+        errorMessage={messages.error.message}
+        informationMessageVisible={messages.information.visible}
+        successMessageVisible={messages.success.visible}
+        warningMessageVisible={messages.warning.visible}
+        errorMessageVisible={messages.error.visible}
+        addInformationMessage={() => handleToggleMessageClick("information")}
+        addSuccessMessage={() => handleToggleMessageClick("success")}
+        addWarningMessage={() => handleToggleMessageClick("warning")}
+        addErrorMessage={() => handleToggleMessageClick("error")}
+      />
+
       <Header applicationName="Shared Components" />
 
       <Navigation navigationItems={navigationItems} componentToLoad={componentToLoad} />
+
+      <div className="flex-row justify-center">
+        <button className="btn btn-primary" onClick={() => handleToggleMessageClick("information")}>
+          Information Message
+        </button>
+        <button className="btn btn-success" onClick={() => handleToggleMessageClick("success")}>
+          Success Message
+        </button>
+        <button className="btn btn-light-gray" onClick={() => handleToggleMessageClick("warning")}>
+          Warning Message
+        </button>
+        <button className="btn btn-danger" onClick={() => handleToggleMessageClick("error")}>
+          Error Message
+        </button>
+      </div>
 
       <main>
         <section className="section-block mb-4">
