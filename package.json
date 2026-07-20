@@ -1,6 +1,6 @@
 {
   "name": "shared-components",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Contains common components that are available for use by all applications developed.",
   "author": "Orbis Education",
   "copyrightYear": "2026",
@@ -62,8 +62,8 @@
     "postcss-import": "^16.1.1",
     "postcss-nested": "^7.0.2",
     "postcss-preset-env": "^11.1.2",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
     "rimraf": "^6.1.2",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.54.0",

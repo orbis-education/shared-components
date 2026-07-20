@@ -1,4 +1,4 @@
-import { useState, SubmitEvent, KeyboardEvent, useEffect } from "react";
+import { useState, SubmitEvent, KeyboardEvent, useEffect, useRef } from "react";
 import {
   // AlertPopup,
   CheckboxDropdown,
@@ -15,7 +15,8 @@ import {
   DialogBoxConfirmation,
   useDialogBoxConfirmation,
   SortableList,
-  useDragAndDropSort
+  useDragAndDropSort,
+  useNativeClickListener
 } from "../lib";
 
 const inlineErrors = {
@@ -61,6 +62,7 @@ const initialList: ListItem[] = [
 ];
 
 const App = ({ applicationVersion = "0.0.0", copyrightYear = "2025" }: AppProps) => {
+  const testRef = useRef(null);
   const [txtName, setTxtName] = useState<string>("hi");
   const [txtMessage, setTxtMessage] = useState<string>("");
   const [txtPassword, setTxtPassword] = useState<string>("");
@@ -90,6 +92,8 @@ const App = ({ applicationVersion = "0.0.0", copyrightYear = "2025" }: AppProps)
   });
 
   const [list, setList] = useState<ListItem[]>(initialList);
+
+  const [isActive, setIsActive] = useNativeClickListener(testRef, false);
 
   const {
     processTransactionValue,
@@ -228,18 +232,41 @@ const App = ({ applicationVersion = "0.0.0", copyrightYear = "2025" }: AppProps)
       <Navigation navigationItems={navigationItems} componentToLoad={componentToLoad} />
 
       <div className="flex-row justify-center">
-        <button className="btn btn-primary" onClick={() => handleToggleMessageClick("information")}>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={() => handleToggleMessageClick("information")}
+        >
           Information Message
         </button>
-        <button className="btn btn-success" onClick={() => handleToggleMessageClick("success")}>
+        <button
+          type="button"
+          className="btn btn-success"
+          onClick={() => handleToggleMessageClick("success")}
+        >
           Success Message
         </button>
-        <button className="btn btn-light-gray" onClick={() => handleToggleMessageClick("warning")}>
+        <button
+          type="button"
+          className="btn btn-light-gray"
+          onClick={() => handleToggleMessageClick("warning")}
+        >
           Warning Message
         </button>
-        <button className="btn btn-danger" onClick={() => handleToggleMessageClick("error")}>
+        <button
+          type="button"
+          className="btn btn-danger"
+          onClick={() => handleToggleMessageClick("error")}
+        >
           Error Message
         </button>
+      </div>
+
+      <div className="flex-row align-center justify-center mt-3" ref={testRef}>
+        <button type="button" className="btn btn-dark-gray" onClick={() => setIsActive(!isActive)}>
+          Toggle isActive
+        </button>
+        {isActive ? <span>isActive is true</span> : null}
       </div>
 
       <main>
