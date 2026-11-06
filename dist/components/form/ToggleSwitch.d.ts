@@ -11,5 +11,5 @@ type ToggleSwitchProps = {
     trueValue?: string;
     updateValue: Dispatch<SetStateAction<boolean>> | ((value: boolean) => void);
 };
-declare const ToggleSwitch: ({ id, label, value, disabled, falseValue, hint, isRequired, srOnly, trueValue, updateValue }: ToggleSwitchProps) => import("react/jsx-runtime").JSX.Element;
+declare const ToggleSwitch: ({ id, label, value, disabled, falseValue, hint, isRequired, srOnly, trueValue, updateValue }: ToggleSwitchProps) => import("react").JSX.Element;
 export default ToggleSwitch;

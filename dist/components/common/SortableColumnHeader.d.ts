@@ -7,5 +7,5 @@ type SortableColumnHeaderProps = {
     setSortDirection: Dispatch<SetStateAction<string>>;
     setSortProperty: Dispatch<SetStateAction<string>>;
 };
-declare const SortableColumnHeader: ({ columnPropertyName, columnText, setSortDirection, setSortProperty, sortDirection, sortProperty }: SortableColumnHeaderProps) => import("react/jsx-runtime").JSX.Element;
+declare const SortableColumnHeader: ({ columnPropertyName, columnText, setSortDirection, setSortProperty, sortDirection, sortProperty }: SortableColumnHeaderProps) => import("react").JSX.Element;
 export default SortableColumnHeader;

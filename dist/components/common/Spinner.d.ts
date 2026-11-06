@@ -1,2 +1,2 @@
-declare const Spinner: () => import("react/jsx-runtime").JSX.Element;
+declare const Spinner: () => import("react").JSX.Element;
 export default Spinner;

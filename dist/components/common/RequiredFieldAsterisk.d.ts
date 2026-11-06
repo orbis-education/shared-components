@@ -1,2 +1,2 @@
-declare const RequiredFieldAsterisk: () => import("react/jsx-runtime").JSX.Element;
+declare const RequiredFieldAsterisk: () => import("react").JSX.Element;
 export default RequiredFieldAsterisk;

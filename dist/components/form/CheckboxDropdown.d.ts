@@ -17,5 +17,5 @@ type CheckboxDropdownProps = {
     srOnly?: boolean;
     updateValue: Dispatch<SetStateAction<string[]>> | ((value: string[]) => void);
 };
-declare const CheckboxDropdown: ({ id, legend, optionData, optionID, optionText, value, columns, disabled, hint, inlineError, isRequired, placeholder, srOnly, updateValue }: CheckboxDropdownProps) => import("react/jsx-runtime").JSX.Element;
+declare const CheckboxDropdown: ({ id, legend, optionData, optionID, optionText, value, columns, disabled, hint, inlineError, isRequired, placeholder, srOnly, updateValue }: CheckboxDropdownProps) => import("react").JSX.Element;
 export default CheckboxDropdown;

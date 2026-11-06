@@ -1,5 +1,5 @@
 type HeaderProps = {
     applicationName: string;
 };
-declare const Header: ({ applicationName }: HeaderProps) => import("react/jsx-runtime").JSX.Element;
+declare const Header: ({ applicationName }: HeaderProps) => import("react").JSX.Element;
 export default Header;
