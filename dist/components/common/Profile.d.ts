@@ -20,5 +20,5 @@ type ProfileProps = {
     addErrorMessage: (message: string) => void;
     clearMessages: () => void;
 };
-declare const Profile: ({ applicationVersion, baseURL, computerLog, userIdentifier, demonstrationMode, environmentMode, databaseAvailable, sessionToken, loggedInUser, disabled, sessionTokenName, handleNavigation, setFetchAuthorization, setDatabaseAvailable, setUserTokenExpired, setLoggedInUser, addSuccessMessage, addErrorMessage, clearMessages }: ProfileProps) => import("react/jsx-runtime").JSX.Element;
+declare const Profile: ({ applicationVersion, baseURL, computerLog, userIdentifier, demonstrationMode, environmentMode, databaseAvailable, sessionToken, loggedInUser, disabled, sessionTokenName, handleNavigation, setFetchAuthorization, setDatabaseAvailable, setUserTokenExpired, setLoggedInUser, addSuccessMessage, addErrorMessage, clearMessages }: ProfileProps) => import("react").JSX.Element;
 export default Profile;

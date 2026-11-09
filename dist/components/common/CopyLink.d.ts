@@ -5,5 +5,5 @@ type CopyLinkProps = {
     buttonType: string;
     tooltipStyle: string;
 };
-declare const CopyLink: ({ urlToCopy, label, disabled, buttonType, tooltipStyle }: CopyLinkProps) => import("react/jsx-runtime").JSX.Element;
+declare const CopyLink: ({ urlToCopy, label, disabled, buttonType, tooltipStyle }: CopyLinkProps) => import("react").JSX.Element;
 export default CopyLink;

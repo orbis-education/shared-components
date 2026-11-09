@@ -11,6 +11,7 @@ type FormDropdownProps<TOption extends Record<string, unknown> = Record<string, 
   optionID: keyof TOption & string;
   optionText: OptionText[];
   value: string;
+  autoComplete?: string;
   disabled?: boolean;
   emptyOption?: boolean;
   hint?: string;
@@ -29,6 +30,7 @@ const FormDropdown = <TOption extends Record<string, unknown> = Record<string, u
   optionID = "" as keyof TOption & string,
   optionText = [],
   value = "",
+  autoComplete,
   disabled = false,
   emptyOption = false,
   hint = "",
@@ -73,6 +75,7 @@ const FormDropdown = <TOption extends Record<string, unknown> = Record<string, u
       <select
         className="form-control"
         id={id}
+        autoComplete={autoComplete}
         value={value}
         disabled={disabled}
         onChange={event => updateValue(event.target.value)}

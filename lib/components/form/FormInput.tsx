@@ -17,6 +17,7 @@ type FormInputProps<TValue extends FieldValue = string> = {
   id: string;
   label: string;
   value: TValue;
+  autoComplete?: string;
   autoFocus?: boolean;
   disabled?: boolean;
   hint?: string;
@@ -40,6 +41,7 @@ const FormInput = <TValue extends FieldValue = string>({
   id = "",
   label = "",
   value,
+  autoComplete,
   autoFocus = false,
   disabled = false,
   hint = "",
@@ -115,6 +117,7 @@ const FormInput = <TValue extends FieldValue = string>({
       {type === "textarea" ? (
         <textarea
           id={id}
+          autoComplete={autoComplete}
           name={id}
           placeholder={placeholder}
           rows={rows}
@@ -130,6 +133,7 @@ const FormInput = <TValue extends FieldValue = string>({
           <input
             type={type}
             id={id}
+            autoComplete={autoComplete}
             placeholder={placeholder}
             value={value}
             disabled={disabled}
@@ -145,6 +149,7 @@ const FormInput = <TValue extends FieldValue = string>({
           <input
             type={showPassword}
             id={id}
+            autoComplete={autoComplete}
             placeholder={placeholder}
             value={value}
             disabled={disabled}
@@ -168,6 +173,7 @@ const FormInput = <TValue extends FieldValue = string>({
         <input
           type={type}
           id={id}
+          autoComplete={autoComplete}
           placeholder={placeholder}
           value={value}
           disabled={disabled}

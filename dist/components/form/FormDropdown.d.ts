@@ -7,6 +7,7 @@ type FormDropdownProps<TOption extends Record<string, unknown> = Record<string, 
     optionID: keyof TOption & string;
     optionText: OptionText[];
     value: string;
+    autoComplete?: string;
     disabled?: boolean;
     emptyOption?: boolean;
     hint?: string;
@@ -17,5 +18,5 @@ type FormDropdownProps<TOption extends Record<string, unknown> = Record<string, 
     useInputAddon?: boolean;
     updateValue: Dispatch<SetStateAction<string>> | ((value: string) => void);
 };
-declare const FormDropdown: <TOption extends Record<string, unknown> = Record<string, unknown>>({ id, label, optionData, optionID, optionText, value, disabled, emptyOption, hint, inlineError, isRequired, placeholder, srOnly, useInputAddon, updateValue }: FormDropdownProps<TOption>) => import("react/jsx-runtime").JSX.Element;
+declare const FormDropdown: <TOption extends Record<string, unknown> = Record<string, unknown>>({ id, label, optionData, optionID, optionText, value, autoComplete, disabled, emptyOption, hint, inlineError, isRequired, placeholder, srOnly, useInputAddon, updateValue }: FormDropdownProps<TOption>) => import("react").JSX.Element;
 export default FormDropdown;

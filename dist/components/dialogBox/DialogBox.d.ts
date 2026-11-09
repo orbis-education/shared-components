@@ -6,5 +6,5 @@ type DialogBoxProps = {
     dialogBoxTitle: string;
     setDialogBoxOpen: Dispatch<SetStateAction<boolean>>;
 };
-declare const DialogBox: ({ dialogBoxContent, dialogBoxOpen, dialogBoxSize, dialogBoxTitle, setDialogBoxOpen }: DialogBoxProps) => import("react/jsx-runtime").JSX.Element;
+declare const DialogBox: ({ dialogBoxContent, dialogBoxOpen, dialogBoxSize, dialogBoxTitle, setDialogBoxOpen }: DialogBoxProps) => import("react").JSX.Element;
 export default DialogBox;

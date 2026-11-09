@@ -19,5 +19,5 @@ type CheckboxGroupProps = {
     setCollapseList?: (value: boolean) => void;
     updateValue: Dispatch<SetStateAction<string[]>> | ((value: string[]) => void);
 };
-declare const CheckboxGroup: ({ id, legend, value, optionData, optionID, optionText, collapseList, columns, disabled, hint, inlineError, isCollapsible, isRequired, srOnly, startCollapsed, setCollapseList, updateValue }: CheckboxGroupProps) => import("react/jsx-runtime").JSX.Element;
+declare const CheckboxGroup: ({ id, legend, value, optionData, optionID, optionText, collapseList, columns, disabled, hint, inlineError, isCollapsible, isRequired, srOnly, startCollapsed, setCollapseList, updateValue }: CheckboxGroupProps) => import("react").JSX.Element;
 export default CheckboxGroup;

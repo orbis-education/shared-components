@@ -4,6 +4,7 @@ type FormInputProps<TValue extends FieldValue = string> = {
     id: string;
     label: string;
     value: TValue;
+    autoComplete?: string;
     autoFocus?: boolean;
     disabled?: boolean;
     hint?: string;
@@ -22,5 +23,5 @@ type FormInputProps<TValue extends FieldValue = string> = {
     onKeyDown?: KeyboardEventHandler<HTMLTextAreaElement>;
     updateValue: Dispatch<SetStateAction<TValue>> | ((value: TValue) => void);
 };
-declare const FormInput: <TValue extends FieldValue = string>({ id, label, value, autoFocus, disabled, hint, inlineError, isRequired, list, max, maxLength, min, placeholder, rows, step, srOnly, type, useInputAddon, onKeyDown, updateValue }: FormInputProps<TValue>) => import("react/jsx-runtime").JSX.Element;
+declare const FormInput: <TValue extends FieldValue = string>({ id, label, value, autoComplete, autoFocus, disabled, hint, inlineError, isRequired, list, max, maxLength, min, placeholder, rows, step, srOnly, type, useInputAddon, onKeyDown, updateValue }: FormInputProps<TValue>) => import("react").JSX.Element;
 export default FormInput;

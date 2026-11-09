@@ -6,5 +6,5 @@ type AlertPopupProps = {
     includeResetButton?: boolean;
     setMessage: Dispatch<SetStateAction<string>> | ((value: string) => void);
 };
-declare const AlertPopup: ({ alertType, message, includeResetButton, setMessage }: AlertPopupProps) => import("react/jsx-runtime").JSX.Element;
+declare const AlertPopup: ({ alertType, message, includeResetButton, setMessage }: AlertPopupProps) => import("react").JSX.Element;
 export default AlertPopup;

@@ -22,5 +22,5 @@ type FormRadioGroupProps = {
     setCollapseList?: Dispatch<SetStateAction<boolean>>;
     updateValue: Dispatch<SetStateAction<string>> | ((value: string) => void);
 };
-declare const FormRadioGroup: ({ id, optionData, optionID, optionText, value, collapseList, columns, disabled, hint, inlineError, isCollapsible, isRequired, legend, srOnly, startCollapsed, setCollapseList, updateValue }: FormRadioGroupProps) => import("react/jsx-runtime").JSX.Element;
+declare const FormRadioGroup: ({ id, optionData, optionID, optionText, value, collapseList, columns, disabled, hint, inlineError, isCollapsible, isRequired, legend, srOnly, startCollapsed, setCollapseList, updateValue }: FormRadioGroupProps) => import("react").JSX.Element;
 export default FormRadioGroup;

@@ -6,5 +6,5 @@ type PaginationProps = {
     setDdResultsPerPage: (value: number) => void;
     setCurrentPageNumber: (value: number) => void;
 };
-declare const Pagination: ({ defaultResultsPerPage, ddResultsPerPage, currentPageNumber, totalPages, setDdResultsPerPage, setCurrentPageNumber }: PaginationProps) => import("react/jsx-runtime").JSX.Element;
+declare const Pagination: ({ defaultResultsPerPage, ddResultsPerPage, currentPageNumber, totalPages, setDdResultsPerPage, setCurrentPageNumber }: PaginationProps) => import("react").JSX.Element;
 export default Pagination;
